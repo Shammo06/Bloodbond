@@ -5,11 +5,12 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import App from './App';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <progress className="progress w-56"></progress>,
+    element: <App></App>,
   },
 ]);
 
