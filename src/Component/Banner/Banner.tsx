@@ -1,58 +1,21 @@
-import { NavLink } from "react-router-dom";
-
-const Navbar = () => {
-  const links = (
-    <>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
-      <li>
-        <NavLink to="/about">About Us</NavLink>
-      </li>
-      <li>
-        <NavLink to="/mission">Mission</NavLink>
-      </li>
-    </>
-  );
+const Banner = () => {
   return (
-    <div className="navbar bg-base-100">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            {links}
-          </ul>
-        </div>
-        <p className=" text-xl font-bold text-red-500">
-          Blood<span className="text-black">Bond</span>
+    <div>
+      <div className="max-w-lg mx-auto space-y-5">
+        <h2 className=" text-2xl md:text-5xl font-bold ">
+          Donate Blood, Save Lives Today!
+        </h2>
+        <p>
+          Welcome to our blood donation website. Join us in making a difference
+          by donating blood and helping those in need.
         </p>
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
-      </div>
-      <div className="navbar-end">
-        <button className="btn btn-outline">Join</button>
+        <div className="space-x-3">
+          <button className="btn btn-outline">Register as Donor</button>
+          <button className="btn btn-outline">Find Donor</button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Navbar;
+export default Banner;

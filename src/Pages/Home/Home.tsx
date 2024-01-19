@@ -3,7 +3,7 @@ import Statistics from "../../Component/Statistics/Statistics";
 
 const Home = () => {
   return (
-    <div>
+    <div className="space-y-5 md:mt-5">
       <Banner></Banner>
       <Statistics></Statistics>
     </div>
