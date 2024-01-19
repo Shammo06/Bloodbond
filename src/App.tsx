@@ -1,12 +1,15 @@
+ 
 import "./App.css";
 import Navbar from "./Component/Navbar/Navbar";
-import Footer from "./Component/Footer/Footer";
+import Banner from './Component/Banner/Banner'
+import Footer from "./Component/Footer/Footer";  
 
 function App() {
   return (
-    <div>
+    <div>        
       <Navbar></Navbar>
-      <Footer></Footer>
+      <Banner></Banner>
+      <Footer></Footer>  
     </div>
   );
 }
