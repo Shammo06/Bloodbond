@@ -1,6 +1,4 @@
 
-
-
 const Mission = () => {
     return (
         <div>
