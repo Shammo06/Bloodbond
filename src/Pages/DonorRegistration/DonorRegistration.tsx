@@ -1,24 +1,34 @@
+import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-// export interface dis {
-//     name: any;
-//     code: any;
-//   }
+
 
 const DonorRegistration = () => {
 
-    const [dist, setDist] = useState<any[]>([])
-    const [upazilas, setUpazilas] = useState<any[]>([])
+    const [dist, setDist] = useState<any[]>([]);
+    const [upazilas, setUpazilas] = useState<any[]>([]);
 
-    fetch('/public/District.json')
-        .then(res => res.json())
+    fetch('/District.json')
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`Failed to fetch District data. Status: ${res.status}`);
+            }
+            return res.json();
+        })
         .then(data => setDist(data))
+        .catch(error => console.error('Error fetching District data:', error));
 
-    fetch('/public/Upazila.json')
-        .then(res => res.json())
+    fetch('/Upazila.json')
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`Failed to fetch Upazila data. Status: ${res.status}`);
+            }
+            return res.json();
+        })
         .then(data => setUpazilas(data))
-
+        .catch(error => console.error('Error fetching Upazila data:', error));
+    0
 
     const [error, setError] = useState('');
 
@@ -26,22 +36,41 @@ const DonorRegistration = () => {
     const {
         register,
         formState: { errors },
-        handleSubmit,
+        handleSubmit
     } = useForm();
 
+    // const hosting_key = import.meta.env.VITE_IMG_KEY 
+    const hosting_api = `https://api.imgbb.com/1/upload?key=facfae059fe84bd1276342cabb1b01ed`
+
     const onSubmit = (data: any) => {
-        const { name, email, password, phone, upazila, district, conPassword, blood } = data;
+        const { name, photo, email, password, phone, upazila, district, conPassword, blood } = data;
         if (password !== conPassword) {
-            setError("Password not matched")
+            setError("* Password not matched")
         }
         else {
             setError('')
-            console.log(name, email, password, phone, upazila, district, conPassword, blood)
+            const imageFile = { image: photo[0] }
+            axios.post(hosting_api, imageFile, {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                }
+            })
+                .then(res => {
+                    const imgUrl = res.data.data.image.url
+                    console.log(name, imgUrl, email, password, phone, upazila, district, conPassword, blood)
+
+
+                    // TODO: set backend here.......................
+
+
+
+                })
+                .catch(error => console.error(error))
         }
     }
 
     return (
-        <div>
+        <div className="px-1">
             <form onSubmit={handleSubmit(onSubmit)} className="bg-red-400 w-full mx-auto lg:w-3/4 p-5 my-10 rounded-lg">
                 <h2 className="text-3xl font-bold text-black text-center">Donor Registration</h2>
                 <div className="grid md:grid-cols-2 gap-5">
@@ -51,10 +80,22 @@ const DonorRegistration = () => {
                         </label>
                         <input type="text" className="input input-bordered"
                             {...register("name", { required: true })}
-                            aria-invalid={errors.name ? "true" : "false"}
+
                         />
                         {errors.name?.type === "required" && (
-                            <p role="alert">Name is required</p>
+                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Name is required</p>
+                        )}
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text text-black">Profile photo</span>
+                        </label>
+                        <input type="file" className="file-input file-input-bordered w-full"
+                            {...register("photo", { required: true })}
+
+                        />
+                        {errors.photo?.type === "required" && (
+                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Photo is required</p>
                         )}
                     </div>
                     <div className="form-control">
@@ -63,31 +104,31 @@ const DonorRegistration = () => {
                         </label>
                         <input type="email" className="input input-bordered"
                             {...register("email", { required: true })}
-                            aria-invalid={errors.email ? "true" : "false"}
+
                         />
                         {errors.firstName?.type === "required" && (
-                            <p className="text-red-400" role="alert">Email is required</p>
+                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Email is required</p>
                         )}
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text text-black">Your Phone Number</span>
                         </label>
-                        <input type="number" className="input input-bordered"
+                        <input placeholder="+880 1XXXXXXXXX" type="number" className="input input-bordered"
                             {...register("phone", { required: true })}
-                            aria-invalid={errors.phone ? "true" : "false"}
+
                         />
                         {errors.phone?.type === "required" && (
-                            <p role="alert">Phone number is required</p>
+                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Phone number is required</p>
                         )}
                     </div>
-                    <div data-aos="fade-left" className="form-control">
+                    <div className="form-control">
                         <label className="label">
                             <span className="label-text text-black">Blood Group</span>
                         </label>
                         <select className="input input-bordered"
                             {...register("blood", { required: true })}
-                            aria-invalid={errors.blood ? "true" : "false"}>
+                        >
                             <option value=""></option>
                             <option value="A+">A+</option>
                             <option value="A-">A-</option>
@@ -104,34 +145,46 @@ const DonorRegistration = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-black">District</span>
+                            <span className="label-text text-black">Your District</span>
                         </label>
                         <select className="input input-bordered"
                             {...register("district", { required: true })}
-                            aria-invalid={errors.district ? "true" : "false"}>
+                        >
                             <option value=""></option>
                             {
-                                dist?.map(dis => <option value={dis?.name}>{dis?.name}</option>)
+                                dist?.map(dis => <option key={dis?.id} value={dis?.name}>{dis?.name}</option>)
                             }
                         </select>
                         {errors.district?.type === "required" && (
-                            <p role="alert">District is required</p>
+                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* District is required</p>
                         )}
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-black">Upazila</span>
+                            <span className="label-text text-black">Your Upazila</span>
                         </label>
                         <select className="input input-bordered"
                             {...register("upazila", { required: true })}
-                            aria-invalid={errors.upazila ? "true" : "false"}>
+                        >
                             <option value=""></option>
                             {
-                                upazilas?.map(upa => <option value={upa?.name}>{upa?.name}</option>)
+                                upazilas?.map(upa => <option key={upa?.id} value={upa?.name}>{upa?.name}</option>)
                             }
                         </select>
                         {errors.upazila?.type === "required" && (
-                            <p role="alert">Upazila is required</p>
+                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Upazila is required</p>
+                        )}
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text text-black">Your Address</span>
+                        </label>
+                        <input type="text" className="input input-bordered"
+                            {...register("address", { required: true })}
+
+                        />
+                        {errors.address?.type === "required" && (
+                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Address is required</p>
                         )}
                     </div>
                     <div className="form-control">
@@ -139,12 +192,18 @@ const DonorRegistration = () => {
                             <span className="label-text text-black">Password</span>
                         </label>
                         <input type="text" className="input input-bordered"
-                            {...register("password", { required: true })}
-                            aria-invalid={errors.password ? "true" : "false"}
+                            {...register("password", { required: true, pattern: /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{6,15}$/ })}
+
                         />
                         {errors.password?.type === "required" && (
-                            <p role="alert">Password is required</p>
+                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Password is required</p>
                         )}
+                        {errors.password?.type === 'pattern' && (<ul className="text-red-600 list-disc text-sm font-semibold mt-1 ml-4">
+                            <li>Ensure the length is minimum 6 characters.</li>
+                            <li>At least one upper case letter.</li>
+                            <li>At least one digit.</li>
+                            <li>At least one special character.</li>
+                        </ul>)}
                     </div>
                     <div className="form-control">
                         <label className="label">
@@ -152,9 +211,9 @@ const DonorRegistration = () => {
                         </label>
                         <input type="text" className="input input-bordered"
                             {...register("conPassword", { required: true })}
-                            aria-invalid={errors.conPassword ? "true" : "false"}
+
                         />
-                        {error ? error : ''}
+                        {error ? <p className="text-red-600 font-bold text-center mt-1">{error}</p> : ''}
                     </div>
                 </div>
                 <input className="btn btn-primary w-full mt-4" type="submit" value="REGISTER" />
