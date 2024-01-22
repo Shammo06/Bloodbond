@@ -49,7 +49,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-outline">Join</button>
+        <NavLink to="/login" className="btn btn-outline">
+          Join
+        </NavLink>
       </div>
     </div>
   );
