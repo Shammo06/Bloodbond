@@ -7,6 +7,7 @@ import About from "./Pages/About/About";
 import Mission from "./Pages/Mission";
 import Layout from "./Pages/Layout/Layout";
 import Home from "./Pages/Home/Home";
+import DonorRegistration from "./Pages/DonorRegistration/DonorRegistration";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
         path: "/mission",
         element: <Mission></Mission>,
       },
+      {
+        path: "/donorRegistration",
+        element: <DonorRegistration></DonorRegistration>
+      }
     ],
   },
 ]);
