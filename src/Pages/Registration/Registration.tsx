@@ -1,7 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import "./Login.css";
 import { Link } from "react-router-dom";
+import * as Yup from "yup";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -15,7 +14,7 @@ const initialValues = {
   password: "",
 };
 
-const Login: React.FC = () => {
+const Registration: React.FC = () => {
   const handleSubmit = (values: typeof initialValues) => {
     console.log("Form values:", values);
   };
@@ -23,7 +22,9 @@ const Login: React.FC = () => {
   return (
     <div>
       <div className="container mx-auto py-32">
-        <h3 className="text-center text-4xl font-bold mb-16">Please Login</h3>
+        <h3 className="text-center text-4xl font-bold mb-16">
+          Please Registration
+        </h3>
         <div>
           <Formik
             initialValues={initialValues}
@@ -67,13 +68,13 @@ const Login: React.FC = () => {
               </div>
               <label className="label font-semibold">
                 <p>
-                  Do not have an account?{" "}
+                  Already have an account?{" "}
                   <span>
                     <Link
                       className="register-link text-blue-700 hover:font-bold"
-                      to="/register"
+                      to="/login"
                     >
-                      Register
+                      Login
                     </Link>
                   </span>
                 </p>
@@ -83,7 +84,7 @@ const Login: React.FC = () => {
                   type="submit"
                   className="btn bg-[#EA062B] text-white hover:bg-[#EA062B]"
                 >
-                  Login
+                  Registration
                 </button>
               </div>
             </Form>
@@ -94,4 +95,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default Registration;
