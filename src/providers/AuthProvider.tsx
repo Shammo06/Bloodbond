@@ -7,7 +7,7 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-interface AuthContextProps {
+export interface AuthContextProps {
   user: User | null;
   loading: boolean;
   createUser: (email: string, password: string) => Promise<void>;
