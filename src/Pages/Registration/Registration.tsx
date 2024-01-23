@@ -6,12 +6,23 @@ const validationSchema = Yup.object({
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
-  password: Yup.string().required("Password is required"),
+  name: Yup.string().required("Name is required"),
+  password: Yup.string()
+    .required("Password is required")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{6,}$/,
+      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"
+    ),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref("password"), undefined], "Passwords must match")
+    .required("Confirm password is required"),
 });
 
 const initialValues = {
   email: "",
+  name: "",
   password: "",
+  confirmPassword: "",
 };
 
 const Registration: React.FC = () => {
@@ -51,6 +62,23 @@ const Registration: React.FC = () => {
               </div>
               <div className="form-control font-semibold">
                 <label className="label">
+                  <span>Name</span>
+                </label>
+                <Field
+                  className="input input-bordered"
+                  type="name"
+                  id="name"
+                  name="name"
+                  placeholder="Name"
+                />
+                <ErrorMessage
+                  className="text-red-500 mt-1 font-semibold"
+                  name="name"
+                  component="div"
+                />
+              </div>
+              <div className="form-control font-semibold">
+                <label className="label">
                   <span>Password</span>
                 </label>
                 <Field
@@ -63,6 +91,23 @@ const Registration: React.FC = () => {
                 <ErrorMessage
                   className="text-red-500 mt-1 font-semibold"
                   name="password"
+                  component="div"
+                />
+              </div>
+              <div className="form-control font-semibold">
+                <label className="label">
+                  <span>Confirm Password</span>
+                </label>
+                <Field
+                  className="input input-bordered"
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                />
+                <ErrorMessage
+                  className="text-red-500 mt-1 font-semibold"
+                  name="confirmPassword"
                   component="div"
                 />
               </div>
