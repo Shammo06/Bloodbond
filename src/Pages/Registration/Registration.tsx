@@ -36,8 +36,17 @@ const Registration: React.FC = () => {
   const handleSubmit = (values: typeof initialValues) => {
     const email = values.email;
     const password = values.password;
-    const photo = values.photo;
-    console.log(email, password, photo, values);
+
+    const fileInput = document.getElementById("photo") as HTMLInputElement;
+
+    if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
+      console.error("No file selected");
+      return;
+    }
+
+    const photo = fileInput.files[0];
+
+    console.log(email, password, photo);
 
     if (auth) {
       const { createUser } = auth;
