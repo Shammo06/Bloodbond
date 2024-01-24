@@ -10,6 +10,7 @@ const validationSchema = Yup.object({
     .email("Invalid email address")
     .required("Email is required"),
   name: Yup.string().required("Name is required"),
+  photo: Yup.mixed().required("Photo is required"),
   password: Yup.string()
     .required("Password is required")
     .matches(
@@ -24,6 +25,7 @@ const validationSchema = Yup.object({
 const initialValues = {
   email: "",
   name: "",
+  photo: "",
   password: "",
   confirmPassword: "",
 };
@@ -34,7 +36,8 @@ const Registration: React.FC = () => {
   const handleSubmit = (values: typeof initialValues) => {
     const email = values.email;
     const password = values.password;
-    console.log(email, password);
+    const photo = values.photo;
+    console.log(email, password, photo, values);
 
     if (auth) {
       const { createUser } = auth;
@@ -100,6 +103,23 @@ const Registration: React.FC = () => {
                 <ErrorMessage
                   className="text-red-500 mt-1 font-semibold"
                   name="name"
+                  component="div"
+                />
+              </div>
+              <div className="form-control font-semibold">
+                <label className="label">
+                  <span>Photo</span>
+                </label>
+                <Field
+                  className=""
+                  type="file"
+                  id="photo"
+                  name="photo"
+                  placeholder="Photo"
+                />
+                <ErrorMessage
+                  className="text-red-500 mt-1 font-semibold"
+                  name="photo"
                   component="div"
                 />
               </div>
