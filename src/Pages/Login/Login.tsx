@@ -2,6 +2,9 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./Login.css";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { FirebaseError } from "firebase/app";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -16,8 +19,31 @@ const initialValues = {
 };
 
 const Login: React.FC = () => {
+  const auth = useAuth();
+
   const handleSubmit = (values: typeof initialValues) => {
-    console.log("Form values:", values);
+    const email = values.email;
+    const password = values.password;
+    console.log(email, password);
+
+    if (auth) {
+      const { userLogin } = auth;
+
+      userLogin(email, password)
+        .then(() => {
+          Swal.fire({
+            title: "Login Successful",
+            icon: "success",
+          });
+        })
+        .catch((error: FirebaseError) => {
+          console.log(error);
+          Swal.fire({
+            title: "Incorrect Email or Password",
+            icon: "error",
+          });
+        });
+    }
   };
 
   return (

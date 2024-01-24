@@ -1,7 +1,11 @@
 import PropTypes from "prop-types";
 import React, { ReactNode, createContext, useState } from "react";
 import app from "../firebase/firebase.config";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -11,6 +15,7 @@ export interface AuthContextProps {
   user: User | null;
   loading: boolean;
   createUser: (email: string, password: string) => Promise<void>;
+  userLogin: (email: string, password: string) => Promise<void>;
 }
 
 interface User {
@@ -43,7 +48,19 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  const authInfo: AuthContextProps = { createUser, user, loading };
+  const userLogin = async (email: string, password: string): Promise<void> => {
+    setLoading(true);
+
+    try {
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      console.log(result.user);
+    } catch (error) {
+      console.log("Error creating user:", error);
+      throw error;
+    }
+  };
+
+  const authInfo: AuthContextProps = { createUser, user, loading, userLogin };
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
