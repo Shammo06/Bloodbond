@@ -29,7 +29,18 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const createUser = async (email: string, password: string): Promise<void> => {
     setLoading(true);
-    await createUserWithEmailAndPassword(auth, email, password);
+
+    try {
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log(result);
+    } catch (error) {
+      console.log("Error creating user:", error);
+      throw error;
+    }
   };
 
   const authInfo: AuthContextProps = { createUser, user, loading };

@@ -1,6 +1,9 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { FirebaseError } from "firebase/app";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -26,8 +29,27 @@ const initialValues = {
 };
 
 const Registration: React.FC = () => {
+  const { createUser } = useAuth();
+
   const handleSubmit = (values: typeof initialValues) => {
-    console.log("Form values:", values);
+    const email = values.email;
+    const password = values.password;
+    console.log(email, password);
+
+    createUser(email, password)
+      .then(() => {
+        Swal.fire({
+          title: "Registration Successful",
+          icon: "success",
+        });
+      })
+      .catch((error: FirebaseError) => {
+        console.log(error);
+        Swal.fire({
+          title: error.message,
+          icon: "error",
+        });
+      });
   };
 
   return (
