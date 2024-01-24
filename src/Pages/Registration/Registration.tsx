@@ -29,27 +29,31 @@ const initialValues = {
 };
 
 const Registration: React.FC = () => {
-  const { createUser } = useAuth();
+  const auth = useAuth();
 
   const handleSubmit = (values: typeof initialValues) => {
     const email = values.email;
     const password = values.password;
     console.log(email, password);
 
-    createUser(email, password)
-      .then(() => {
-        Swal.fire({
-          title: "Registration Successful",
-          icon: "success",
+    if (auth) {
+      const { createUser } = auth;
+
+      createUser(email, password)
+        .then(() => {
+          Swal.fire({
+            title: "Registration Successful",
+            icon: "success",
+          });
+        })
+        .catch((error: FirebaseError) => {
+          console.log(error);
+          Swal.fire({
+            title: error.message,
+            icon: "error",
+          });
         });
-      })
-      .catch((error: FirebaseError) => {
-        console.log(error);
-        Swal.fire({
-          title: error.message,
-          icon: "error",
-        });
-      });
+    }
   };
 
   return (

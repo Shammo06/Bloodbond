@@ -36,7 +36,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         email,
         password
       );
-      console.log(result);
+      console.log(result.user);
     } catch (error) {
       console.log("Error creating user:", error);
       throw error;
