@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { FirebaseError } from "firebase/app";
+import axios from "axios";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -33,14 +34,19 @@ const initialValues = {
 const Registration: React.FC = () => {
   const auth = useAuth();
 
-  const handleSubmit = (values: typeof initialValues) => {
+  const handleSubmit = async (values: typeof initialValues) => {
     const email = values.email;
     const password = values.password;
 
     const fileInput = document.getElementById("photo") as HTMLInputElement;
 
     if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
-      console.error("No file selected");
+      // console.error("No Photo Selected");
+
+      Swal.fire({
+        title: "No Photo Selected",
+        icon: "error",
+      });
       return;
     }
 
@@ -48,23 +54,40 @@ const Registration: React.FC = () => {
 
     console.log(email, password, photo);
 
-    if (auth) {
-      const { createUser } = auth;
+    const img = new FormData();
+    img.append("image", photo);
 
-      createUser(email, password)
-        .then(() => {
-          Swal.fire({
-            title: "Registration Successful",
-            icon: "success",
+    const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+    const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
+    try {
+      const imgUploadResponse = await axios.post(image_hosting_api, img);
+
+      const imageUrl = imgUploadResponse.data.data.url;
+      console.log(imageUrl);
+
+      if (auth) {
+        const { createUser } = auth;
+
+        createUser(email, password)
+          .then(() => {
+            Swal.fire({
+              title: "Registration Successful",
+              icon: "success",
+            });
+          })
+          .catch((error: FirebaseError) => {
+            Swal.fire({
+              title: error.message,
+              icon: "error",
+            });
           });
-        })
-        .catch((error: FirebaseError) => {
-          console.log(error);
-          Swal.fire({
-            title: error.message,
-            icon: "error",
-          });
-        });
+      }
+    } catch (error) {
+      Swal.fire({
+        title: "Error uploading photo to ImgBB",
+        icon: "error",
+      });
     }
   };
 
