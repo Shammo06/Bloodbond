@@ -67,11 +67,10 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     if (currentUser) {
       try {
-        const update = await updateProfile(auth.currentUser, {
+        await updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: img,
         });
-        console.log(update);
       } catch (error) {
         console.log("Error updating user info:", error);
         throw error;

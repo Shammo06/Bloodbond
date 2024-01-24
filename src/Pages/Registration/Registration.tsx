@@ -1,5 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
@@ -33,6 +33,7 @@ const initialValues = {
 
 const Registration: React.FC = () => {
   const auth = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (values: typeof initialValues) => {
     const name = values.name;
@@ -77,6 +78,7 @@ const Registration: React.FC = () => {
               title: "Registration Successful",
               icon: "success",
             });
+            navigate("/");
           })
           .catch((error: FirebaseError) => {
             Swal.fire({
