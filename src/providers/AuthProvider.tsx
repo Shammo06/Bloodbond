@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
-import React, { ReactNode, createContext, useState } from "react";
+import React, { ReactNode, createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
@@ -65,6 +66,8 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const updateUserInfo = async (name: string, img: string) => {
+    setLoading(true);
+
     const currentUser = auth.currentUser;
 
     if (currentUser) {
@@ -81,8 +84,20 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   const logOut = () => {
+    setLoading(true);
     return signOut(auth);
   };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log(currentUser);
+      setUser(currentUser);
+      setLoading(false);
+    });
+    return () => {
+      return unsubscribe();
+    };
+  }, []);
 
   const authInfo: AuthContextProps = {
     createUser,
