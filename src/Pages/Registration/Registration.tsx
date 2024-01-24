@@ -35,6 +35,7 @@ const Registration: React.FC = () => {
   const auth = useAuth();
 
   const handleSubmit = async (values: typeof initialValues) => {
+    const name = values.name;
     const email = values.email;
     const password = values.password;
 
@@ -64,13 +65,14 @@ const Registration: React.FC = () => {
       const imgUploadResponse = await axios.post(image_hosting_api, img);
 
       const imageUrl = imgUploadResponse.data.data.url;
-      console.log(imageUrl);
 
       if (auth) {
-        const { createUser } = auth;
+        const { createUser, updateUserInfo } = auth;
 
         createUser(email, password)
           .then(() => {
+            updateUserInfo(name, imageUrl);
+
             Swal.fire({
               title: "Registration Successful",
               icon: "success",

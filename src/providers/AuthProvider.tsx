@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 
 interface AuthProviderProps {
@@ -16,6 +17,7 @@ export interface AuthContextProps {
   loading: boolean;
   createUser: (email: string, password: string) => Promise<void>;
   userLogin: (email: string, password: string) => Promise<void>;
+  updateUserInfo: (name: string, img: string) => Promise<void>;
 }
 
 interface User {
@@ -60,7 +62,30 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  const authInfo: AuthContextProps = { createUser, user, loading, userLogin };
+  const updateUserInfo = async (name: string, img: string) => {
+    const currentUser = auth.currentUser;
+
+    if (currentUser) {
+      try {
+        const update = await updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: img,
+        });
+        console.log(update);
+      } catch (error) {
+        console.log("Error updating user info:", error);
+        throw error;
+      }
+    }
+  };
+
+  const authInfo: AuthContextProps = {
+    createUser,
+    user,
+    loading,
+    userLogin,
+    updateUserInfo,
+  };
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
