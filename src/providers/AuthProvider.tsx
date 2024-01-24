@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
+  signOut,
   updateProfile,
 } from "firebase/auth";
 
@@ -18,6 +19,7 @@ export interface AuthContextProps {
   createUser: (email: string, password: string) => Promise<void>;
   userLogin: (email: string, password: string) => Promise<void>;
   updateUserInfo: (name: string, img: string) => Promise<void>;
+  logOut: () => Promise<void>;
 }
 
 interface User {
@@ -78,12 +80,17 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  const logOut = () => {
+    return signOut(auth);
+  };
+
   const authInfo: AuthContextProps = {
     createUser,
     user,
     loading,
     userLogin,
     updateUserInfo,
+    logOut,
   };
 
   return (
