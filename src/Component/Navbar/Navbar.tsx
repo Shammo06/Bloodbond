@@ -1,6 +1,46 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  if (!auth) {
+    return;
+  }
+
+  const { user, logOut } = auth;
+
+  const handleLogOut = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to Log Out!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Log Out",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        logOut()
+          .then(() => {
+            Swal.fire({
+              title: "Log Out Successful",
+              icon: "success",
+            });
+            navigate("/");
+          })
+          .catch(() => {
+            Swal.fire({
+              title: "Something went wrong, try again later.",
+              icon: "error",
+            });
+          });
+      }
+    });
+  };
+
   const links = (
     <>
       <li>
@@ -12,6 +52,12 @@ const Navbar = () => {
       <li>
         <NavLink to="/mission">Mission</NavLink>
       </li>
+
+      {user && (
+        <li>
+          <button onClick={handleLogOut}>Log Out</button>
+        </li>
+      )}
     </>
   );
   return (
@@ -49,7 +95,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-outline">Join</button>
+        <NavLink to="/login" className="btn btn-outline">
+          Join
+        </NavLink>
       </div>
     </div>
   );
