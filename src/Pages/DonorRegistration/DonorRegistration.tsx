@@ -1,36 +1,55 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 
+interface District {
+    id: string;
+    division_id: string;
+    name: string;
+    bn_name: string;
+    lat: string;
+    lon: string;
+    url: string;
+}
 
+interface Upazila {
+    id: string;
+    district_id: string;
+    name: string;
+    bn_name: string;
+    url: string;
+}
+interface FinalUpazila {
+    id: string;
+    district_id: string;
+    name: string;
+    bn_name: string;
+    url: string;
+}
 
 const DonorRegistration = () => {
 
-    const [dist, setDist] = useState<any[]>([]);
-    const [upazilas, setUpazilas] = useState<any[]>([]);
+    const [dist, setDist] = useState<District[]>([]);
+    const [totalUpa, setTotalUpa] = useState<Upazila[]>([]);
+    const [upazilas, setUpazilas] = useState<FinalUpazila[]>([]);
+    const [error, setError] = useState('');
 
-    fetch('/District.json')
-        .then(res => {
-            if (!res.ok) {
-                throw new Error(`Failed to fetch District data. Status: ${res.status}`);
-            }
-            return res.json();
-        })
+    useEffect(() => {
+        fetch('/District.json')
+        .then(res => res.json())
         .then(data => setDist(data))
         .catch(error => console.error('Error fetching District data:', error));
 
-    fetch('/Upazila.json')
-        .then(res => {
-            if (!res.ok) {
-                throw new Error(`Failed to fetch Upazila data. Status: ${res.status}`);
-            }
-            return res.json();
-        })
-        .then(data => setUpazilas(data))
+    },[])
+    
+    useEffect(() =>{
+        fetch('/Upazila.json')
+        .then(res => res.json())
+        .then(data => setTotalUpa(data))
         .catch(error => console.error('Error fetching Upazila data:', error));
-    0
 
-    const [error, setError] = useState('');
+    },[])
 
 
     const {
@@ -57,8 +76,8 @@ const DonorRegistration = () => {
             })
                 .then(res => {
                     const imgUrl = res.data.data.image.url
-                    console.log(name, imgUrl, email, password, phone, upazila, district, conPassword, blood)
 
+                    console.log(name, imgUrl, email, password, phone, upazila, district, conPassword, blood)
 
                     // TODO: set backend here.......................
 
@@ -67,6 +86,15 @@ const DonorRegistration = () => {
                 })
                 .catch(error => console.error(error))
         }
+    }
+
+    const handleDistrict = (e: any) => {
+        const disName = e.target.value;
+        const disId: any = dist.find(dis => dis.name === disName)
+        const getUpa = totalUpa.filter(upa => upa.district_id === disId.id)
+        setUpazilas(getUpa)
+
+
     }
 
     return (
@@ -104,7 +132,6 @@ const DonorRegistration = () => {
                         </label>
                         <input type="email" className="input input-bordered"
                             {...register("email", { required: true })}
-
                         />
                         {errors.firstName?.type === "required" && (
                             <p className="text-red-600 font-bold text-center mt-1" role="alert">* Email is required</p>
@@ -126,7 +153,7 @@ const DonorRegistration = () => {
                         <label className="label">
                             <span className="label-text text-black">Blood Group</span>
                         </label>
-                        <select className="input input-bordered"
+                        <select className="select select-bordered  text-lg text-black "
                             {...register("blood", { required: true })}
                         >
                             <option value=""></option>
@@ -147,8 +174,9 @@ const DonorRegistration = () => {
                         <label className="label">
                             <span className="label-text text-black">Your District</span>
                         </label>
-                        <select className="input input-bordered"
+                        <select className="select select-bordered text-lg text-black "
                             {...register("district", { required: true })}
+                            onChange={handleDistrict}
                         >
                             <option value=""></option>
                             {
@@ -163,7 +191,7 @@ const DonorRegistration = () => {
                         <label className="label">
                             <span className="label-text text-black">Your Upazila</span>
                         </label>
-                        <select className="input input-bordered"
+                        <select className="select select-bordered text-lg text-black "
                             {...register("upazila", { required: true })}
                         >
                             <option value=""></option>

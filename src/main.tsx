@@ -8,6 +8,7 @@ import Mission from "./Pages/Mission";
 import Layout from "./Pages/Layout/Layout";
 import Home from "./Pages/Home/Home";
 import DonorRegistration from "./Pages/DonorRegistration/DonorRegistration";
+import DonorSearch from "./Pages/DonorSearch/DonorSearch";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/donorRegistration",
         element: <DonorRegistration></DonorRegistration>
+      },
+      {
+        path: '/donorSearch',
+        element: <DonorSearch></DonorSearch>
       }
     ],
   },
