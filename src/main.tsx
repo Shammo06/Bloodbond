@@ -2,13 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import About from "./Pages/About/About";
 import Mission from "./Pages/Mission";
 import Layout from "./Pages/Layout/Layout";
 import Home from "./Pages/Home/Home";
 import DonorRegistration from "./Pages/DonorRegistration/DonorRegistration";
 import DonorSearch from "./Pages/DonorSearch/DonorSearch";
+import Login from "./Pages/Login/Login";
+import Registration from "./Pages/Registration/Registration";
+import AuthProvider from "./providers/AuthProvider";
 
 const router = createBrowserRouter([
   {
@@ -34,13 +36,23 @@ const router = createBrowserRouter([
       {
         path: '/donorSearch',
         element: <DonorSearch></DonorSearch>
-      }
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Registration></Registration>,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
