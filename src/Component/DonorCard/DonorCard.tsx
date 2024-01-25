@@ -1,9 +1,21 @@
 import { FaFacebookMessenger } from "react-icons/fa";
 
+interface Donor {
+    name: string;
+    photo: string;
+    phone: string;
+    district: string;
+    bloodGroup: string;
+    upazila: string;
+}
 
-const DonorCard = ({ donor }) => {
+interface DonorCardProps {
+    donor: Donor;
+}
 
-    const {name, photo, phone, district, bloodGroup, upazila} = donor;
+const DonorCard: React.FC<DonorCardProps> = ({ donor }) => {
+    const { name, photo, phone, district, bloodGroup, upazila } = donor;
+
     return (
         <div>
             <div className="card bg-[#EB2C2926] shadow-xl text-black">
@@ -16,7 +28,7 @@ const DonorCard = ({ donor }) => {
                     <p>Upazila: {upazila}</p>
 
                     <div className="card-actions justify-end">
-                        <button className="btn bg-[#EB2C29] text-white"><FaFacebookMessenger></FaFacebookMessenger> Chat Now</button>
+                        <button className="btn bg-[#EB2C29] text-white"><FaFacebookMessenger /> Chat Now</button>
                     </div>
                 </div>
             </div>

@@ -49,7 +49,7 @@ const DonorSearch = () => {
 
 
     return (
-        <div className=" ">
+        <div className="mx-auto container">
             <h1 className="text-3xl md:text-4xl font-bold text-center my-5 bg-[#EB2C29] text-white py-3">Search Donor</h1>
             <form className=' w-full' onSubmit={handleSubmit}>
                 <div className='grid gird-cols-1 md:grid-cols-4 gap-3 px-5'>
