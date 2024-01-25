@@ -4,7 +4,7 @@ import { HiBuildingOffice, HiMiniUserGroup } from "react-icons/hi2";
 
 const Statistics = () => {
   return (
-    <div className="bg-[#F9FBFC] py-36">
+    <div className="bg-[#F9E1DE] py-36">
       <div className="container mx-auto">
         <h3 className="font-bold text-center text-3xl mb-14">Statistics</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-5 lg:px-0">
