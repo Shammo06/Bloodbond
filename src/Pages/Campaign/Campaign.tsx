@@ -10,7 +10,7 @@ const Campaign = () => {
             <div className="relative bg-no-repeat bg-center	bg-cover py-4" style={{ backgroundImage: `url("${campaignbg}")` }}>
                 <div className="absolute top-0 left-0 h-full w-full  bg-black bg-opacity-60 "></div>
                 <div className="relative flex justify-evenly items-center">
-                    <div className="space-y-3 text-white max-w-2xl">
+                    <div className="space-y-3 text-white max-w-2xl px-4">
                         <h5 className="font-medium text-lg">One Donation Can Save Three Lives</h5>
                         <h1 className="text-6xl font-bold ">Give <span className="text-[#ea062b]">Blood</span> Save Life</h1>
                         <p>Join us in making a difference! Your blood donation can be the lifeline someone desperately needs. Be a hero, donate blood, and help us reach our goal.</p>
