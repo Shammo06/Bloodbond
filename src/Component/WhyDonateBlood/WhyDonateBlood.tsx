@@ -1,7 +1,7 @@
 const WhyDonateBlood = () => {
   return (
     <div>
-      <div className="container mx-auto pt-32">
+      <div className="container mx-auto pt-32 mb-12 lg:mb-0">
         <div className="mb-14">
           <h3 className="text-center text-3xl font-bold mb-4">
             Why Donate Blood
@@ -13,7 +13,7 @@ const WhyDonateBlood = () => {
             today.
           </p>
         </div>
-        <div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* div for img */}
           <div>
             <img
@@ -22,7 +22,58 @@ const WhyDonateBlood = () => {
             />
           </div>
           {/* div for texts */}
-          <div></div>
+          <div className="pr-0 lg:pr-5 xl:pr-14 space-y-6 flex flex-col justify-center ">
+            <div className="flex">
+              <div
+                style={{ width: "180px", height: "100px" }}
+                className="bg-[#F9E1DE] mr-5 p-5 rounded-full flex justify-center items-center"
+              >
+                <img
+                  className="rounded-full block"
+                  src={
+                    "https://i.ibb.co/Yj6sSrD/icon-droplet-png-lang-en-US-ext.png"
+                  }
+                  alt=""
+                />
+              </div>
+              <div className="">
+                <h6 className="text-2xl font-semibold mb-4">
+                  Impact of Blood Donation
+                </h6>
+                <p>
+                  Donating blood not only saves lives but also improves the
+                  donor's cardiovascular health by maintaining iron balance,
+                  fostering a sense of community, and contributing to a
+                  healthier society overall.
+                </p>
+              </div>
+            </div>
+            <div className="flex">
+              <div
+                style={{ width: "180px", height: "100px" }}
+                className="bg-[#F9E1DE] mr-5 p-5 rounded-full flex justify-center items-center"
+              >
+                <img
+                  className="rounded-full"
+                  src={
+                    "https://i.ibb.co/BTt8bR1/icon-group-png-lang-en-US-ext.png"
+                  }
+                  alt=""
+                />
+              </div>
+              <div className="">
+                <h6 className="text-2xl font-semibold mb-4">
+                  Advantage of Blood Donation
+                </h6>
+                <p>
+                  Donating blood not only saves lives but also improves the
+                  donor's cardiovascular health by maintaining iron balance,
+                  fostering a sense of community, and contributing to a
+                  healthier society overall.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
