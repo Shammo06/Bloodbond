@@ -1,20 +1,23 @@
-import { useEffect, useRef, useState } from "react";
 import ModalForPayment from "./ModalForPayment";
-import fakeData from "../../../public/campaignFakeData.json"
+import fakeData from "../../../public/campaignFakeData.json";
 
 export default function Modal() {
-  const amount = useRef<HTMLInputElement>(null);
-
-
-
   return (
     <>
       <button
         className="btn"
-        onClick={() => document?.getElementById("my_modal_1")?.showModal()}
+        onClick={() => {
+          const modal = document.getElementById(
+            "my_modal_1"
+          ) as HTMLDialogElement | null;
+          if (modal) {
+            modal.showModal();
+          }
+        }}
       >
         Donate for campaign
       </button>
+
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Campaign list</h3>
@@ -30,16 +33,14 @@ export default function Modal() {
                 </tr>
               </thead>
               <tbody>
-
                 {fakeData.map((campaign, index) => (
-                <tr key={index}>
-                  <td>{campaign.title}</td>
-                  <td>
-                    <ModalForPayment name= {campaign.title} />
-                  </td>
-                </tr>
-              ))}
-              
+                  <tr key={index}>
+                    <td>{campaign.title}</td>
+                    <td>
+                      <ModalForPayment name={campaign.title} />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
