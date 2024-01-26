@@ -1,21 +1,25 @@
-// CheckoutForm.js
+// CheckoutForm.tsx (assuming you are using TypeScript)
 
-import { useState } from "react";
+import { useState, ChangeEvent, FormEvent } from "react"; // Import ChangeEvent and FormEvent from "react"
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const CheckoutForm = ({ name }) => {
+interface CheckoutFormProps {
+  name: string;
+}
+
+const CheckoutForm: React.FC<CheckoutFormProps> = ({ name }) => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const [inputAmount, setInputAmount] = useState("");
+  const [inputAmount, setInputAmount] = useState<string>(""); // Explicitly specify the type of inputAmount as string
 
-  const handleAmountChange = (event) => {
+  const handleAmountChange = (event: ChangeEvent<HTMLInputElement>) => { // Use ChangeEvent<HTMLInputElement> for event type
     setInputAmount(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => { // Use FormEvent<HTMLFormElement> for event type
     event.preventDefault();
 
     if (!stripe || !elements) {
@@ -38,12 +42,12 @@ const CheckoutForm = ({ name }) => {
           amount: inputAmount,
           name: name,
         })
-        .then((data) =>
+        .then(() =>
           Swal.fire({
             icon: "success",
             title: "Payment Successful",
             position: "top-end",
-            timer:1500
+            timer: 1500,
           })
         );
     }
