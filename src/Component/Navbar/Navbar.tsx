@@ -59,10 +59,7 @@ const Navbar = () => {
         <NavLink to="/bloodRequest">Request Blood</NavLink>
       </li>
       <li>
-        <NavLink to="/donorSearch">Search Donor</NavLink>
-      </li>
-      <li>
-        <NavLink to="/donorRegistration">Register as Donor</NavLink>
+        <NavLink to="/donate">Donate Us</NavLink>
       </li>
     </>
   );
