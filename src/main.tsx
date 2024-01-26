@@ -12,6 +12,8 @@ import Login from "./Pages/Login/Login";
 import Registration from "./Pages/Registration/Registration";
 import AuthProvider from "./providers/AuthProvider";
 import BloodRequest from "./Pages/BloodRequest/BloodRequest";
+import Campaign from "./Pages/Campaign/Campaign";
+import Donate from "./Pages/Donate/Donate";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +51,14 @@ const router = createBrowserRouter([
       {
         path: "/bloodRequest",
         element: <BloodRequest></BloodRequest>,
+      },
+      {
+        path: "/campaign",
+        element: <Campaign></Campaign>
+      },
+      {
+        path: "/donate",
+        element: <Donate />,
       },
     ],
   },

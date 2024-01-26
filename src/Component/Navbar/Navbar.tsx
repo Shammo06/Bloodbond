@@ -53,16 +53,13 @@ const Navbar = () => {
         <NavLink to="/mission">Mission</NavLink>
       </li>
       <li>
-        <NavLink to="/campaign">Create Campaign</NavLink>
+        <NavLink to="/campaign">Campaign</NavLink>
       </li>
       <li>
         <NavLink to="/bloodRequest">Request Blood</NavLink>
       </li>
       <li>
-        <NavLink to="/donorSearch">Search Donor</NavLink>
-      </li>
-      <li>
-        <NavLink to="/donorRegistration">Register as Donor</NavLink>
+        <NavLink to="/donate">Donate Us</NavLink>
       </li>
     </>
   );
