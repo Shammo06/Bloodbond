@@ -23,7 +23,7 @@ const RequestBlood = () => {
     }, [])
     return (
         <div>
-            <div className="px-20 py-5">
+            <div className="px-20 py-5 bg-[#F9E1DE]">
                 <p className='text-4xl text-center py-5'>Donate Your Blood</p>
             <div className="grid grid-cols-2 gap-5">
                 {
@@ -37,7 +37,7 @@ const RequestBlood = () => {
                         <p>Location: {data.location}</p>
                         <p>Contact: {data.phone}</p>
                         <div className="card-actions justify-end">
-                        <button className="btn btn-primary">Donate Blood</button>
+                        <button className="btn btn-outline">Donate Blood</button>
                         </div>
                     </div>
                     </div>)
