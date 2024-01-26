@@ -5,11 +5,11 @@ import WhyDonateBlood from "../../Component/WhyDonateBlood/WhyDonateBlood";
 
 const Home = () => {
   return (
-    <div className="space-y-5 md:mt-5">
+    <div>
       <Banner></Banner>
+      <RequestBlood></RequestBlood>
       <WhyDonateBlood></WhyDonateBlood>
       <Statistics></Statistics>
-      <RequestBlood></RequestBlood>
     </div>
   );
 };

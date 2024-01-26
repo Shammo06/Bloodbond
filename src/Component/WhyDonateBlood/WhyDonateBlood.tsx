@@ -1,7 +1,7 @@
 const WhyDonateBlood = () => {
   return (
     <div>
-      <div className="container mx-auto py-32">
+      <div className="container mx-auto pt-32">
         <div className="mb-14">
           <h3 className="text-center text-3xl font-bold mb-4">
             Why Donate Blood
