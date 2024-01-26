@@ -32,15 +32,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/donorRegistration",
-        element: <DonorRegistration></DonorRegistration>
+        element: <DonorRegistration></DonorRegistration>,
       },
       {
-        path: '/donorSearch',
-        element: <DonorSearch></DonorSearch>
+        path: "/donorSearch",
+        element: <DonorSearch></DonorSearch>,
       },
       {
         path: "/login",
-        element: <Login></Login>
+        element: <Login></Login>,
       },
       {
         path: "/register",

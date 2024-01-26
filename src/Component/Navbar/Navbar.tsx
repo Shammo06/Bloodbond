@@ -52,16 +52,22 @@ const Navbar = () => {
       <li>
         <NavLink to="/mission">Mission</NavLink>
       </li>
-
-      {user && (
-        <li>
-          <button onClick={handleLogOut}>Log Out</button>
-        </li>
-      )}
+      <li>
+        <NavLink to="/campaign">Create Campaign</NavLink>
+      </li>
+      <li>
+        <NavLink to="/bloodRequest">Request Blood</NavLink>
+      </li>
+      <li>
+        <NavLink to="/donorSearch">Search Donor</NavLink>
+      </li>
+      <li>
+        <NavLink to="/donorRegistration">Register as Donor</NavLink>
+      </li>
     </>
   );
   return (
-    <div className="container mx-auto navbar bg-base-100">
+    <div className=" navbar bg-[#EB2C29] text-white font-semibold">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -87,17 +93,21 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <p className=" text-xl font-bold text-red-500">
-          Blood<span className="text-black">Bond</span>
-        </p>
+        <p className=" text-xl font-bold text-white">BloodBond</p>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <NavLink to="/login" className="btn btn-outline">
-          Join
-        </NavLink>
+        {user ? (
+          <li>
+            <button onClick={handleLogOut}>Log Out</button>
+          </li>
+        ) : (
+          <NavLink to="/login" className="btn btn-outline text-white">
+            Join
+          </NavLink>
+        )}
       </div>
     </div>
   );
