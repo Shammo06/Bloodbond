@@ -33,12 +33,13 @@ const CheckoutForm = ({ name }) => {
       console.log(token, inputAmount);
 
       axios
-        .post("http://127.0.0.1:5000/stripe", {
+        .post("https://blood-bound.vercel.app/stripe", {
           token: token.id,
           amount: inputAmount,
           name: name,
         })
         .then((data) =>
+        
           Swal.fire({
             icon: "success",
             title: "Payment Successful",
