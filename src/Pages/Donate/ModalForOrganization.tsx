@@ -3,20 +3,24 @@ import ModalForPayment from "./ModalForPayment";
 
 export default function ModalOragnization() {
   const organizationName = useRef<HTMLInputElement>(null);
-  const amount = useRef<HTMLInputElement>(null);
-  const submit = () => {
-    console.log(organizationName.current?.value, amount.current?.value);
-  };
 
   return (
     <>
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
       <button
         className="btn"
-        onClick={() => document?.getElementById("my_modal_3")?.showModal()}
+        onClick={() => {
+          const modal = document.getElementById(
+            "my_modal_3"
+          ) as HTMLDialogElement | null;
+          if (modal) {
+            modal.showModal();
+          }
+        }}
       >
         Donate for organization
       </button>
+
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
           <div className="flex flex-col gap-6">
@@ -27,10 +31,7 @@ export default function ModalOragnization() {
               className="input input-bordered w-full max-w-xs"
             />
 
-
-<ModalForPayment name= {organizationName?.current?.value} />
-
-
+            <ModalForPayment name={organizationName?.current?.value ?? ""} />
 
             <div className="flex w-full justify-between">
               <form method="dialog">

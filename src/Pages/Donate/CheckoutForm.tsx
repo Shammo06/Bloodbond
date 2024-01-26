@@ -5,26 +5,31 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const CheckoutForm = ({ name }) => {
+const CheckoutForm = ({ name }: { name: string }) => {
   const stripe = useStripe();
   const elements = useElements();
 
   const [inputAmount, setInputAmount] = useState("");
 
-  const handleAmountChange = (event) => {
+  const handleAmountChange = (event: any) => {
     setInputAmount(event.target.value);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
 
     if (!stripe || !elements) {
       return;
     }
 
-    const { token, error } = await stripe.createToken(
-      elements.getElement(CardElement)
-    );
+    const cardElement = elements.getElement(CardElement);
+
+    if (!cardElement) {
+      console.error("Card element not found");
+      return;
+    }
+
+    const { token, error } = await stripe.createToken(cardElement);
 
     if (error) {
       console.error(error);
@@ -38,13 +43,12 @@ const CheckoutForm = ({ name }) => {
           amount: inputAmount,
           name: name,
         })
-        .then((data) =>
-        
+        .then(() =>
           Swal.fire({
             icon: "success",
             title: "Payment Successful",
             position: "top-end",
-            timer:1500
+            timer: 1500,
           })
         );
     }
