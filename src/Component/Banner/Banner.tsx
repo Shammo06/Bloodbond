@@ -3,7 +3,7 @@ import bloodDonating from "../../assets/donatingBlood.jpeg";
 
 const Banner = () => {
   return (
-    <div className="md:flex space-x-3 items-center space-y-3">
+    <div className="md:flex space-x-3 items-center space-y-3 pt-5">
       <div className="md:w-1/2">
         <img src={bloodDonating} alt="" />
       </div>
