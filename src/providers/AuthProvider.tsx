@@ -2,13 +2,16 @@ import PropTypes from "prop-types";
 import React, { ReactNode, createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 import {
+  UserCredential,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth/cordova";
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -20,6 +23,7 @@ export interface AuthContextProps {
   createUser: (email: string, password: string) => Promise<void>;
   userLogin: (email: string, password: string) => Promise<void>;
   updateUserInfo: (name: string, img: string) => Promise<void>;
+  googleLogin: () => Promise<UserCredential>;
   logOut: () => Promise<void>;
 }
 
@@ -32,11 +36,13 @@ interface User {
 export const AuthContext = createContext<AuthContextProps | null>(null);
 
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // create user with email and password
   const createUser = async (email: string, password: string): Promise<void> => {
     setLoading(true);
 
@@ -53,6 +59,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  // user login with email and password
   const userLogin = async (email: string, password: string): Promise<void> => {
     setLoading(true);
 
@@ -65,6 +72,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  // update user's info
   const updateUserInfo = async (name: string, img: string) => {
     setLoading(true);
 
@@ -83,11 +91,19 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  // google login
+  const googleLogin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, googleProvider);
+  };
+
+  // user logOut
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
   };
 
+  // check user exist or not
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
@@ -105,6 +121,7 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     loading,
     userLogin,
     updateUserInfo,
+    googleLogin,
     logOut,
   };
 
