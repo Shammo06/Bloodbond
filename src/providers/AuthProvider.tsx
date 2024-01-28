@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { ReactNode, createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 import {
-  UserCredential,
+  GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
@@ -11,7 +11,6 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { GoogleAuthProvider } from "firebase/auth/cordova";
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -23,7 +22,7 @@ export interface AuthContextProps {
   createUser: (email: string, password: string) => Promise<void>;
   userLogin: (email: string, password: string) => Promise<void>;
   updateUserInfo: (name: string, img: string) => Promise<void>;
-  googleLogin: () => Promise<UserCredential>;
+  googleLogin: () => Promise<void>;
   logOut: () => Promise<void>;
 }
 
@@ -92,9 +91,16 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   };
 
   // google login
-  const googleLogin = () => {
+  const googleLogin = async (): Promise<void> => {
     setLoading(true);
-    return signInWithPopup(auth, googleProvider);
+
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      console.log(result.user);
+    } catch (error) {
+      console.log("Error login user:", error);
+      throw error;
+    }
   };
 
   // user logOut
