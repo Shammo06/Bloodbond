@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { FirebaseError } from "firebase/app";
 import axios from "axios";
+import SocialLogin from "../../Component/SocialLogin/SocialLogin";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -214,6 +215,7 @@ const Registration: React.FC = () => {
                   Registration
                 </button>
               </div>
+              <SocialLogin></SocialLogin>
             </Form>
           </Formik>
         </div>
