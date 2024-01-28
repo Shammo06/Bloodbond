@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { FirebaseError } from "firebase/app";
+import SocialLogin from "../../Component/SocialLogin/SocialLogin";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -114,22 +115,7 @@ const Login: React.FC = () => {
                   Login
                 </button>
               </div>
-              <div className="mt-5">
-                <div className="h-[1px] bg-[#a7a8a5] w-full"></div>
-                <div className="flex justify-center items-center">
-                  <button
-                    type="button"
-                    className="flex btn items-center border px-8 py-3 text-xl rounded-lg mt-5 bg-transparent"
-                  >
-                    <img
-                      className="w-6 mr-2"
-                      src="https://i.ibb.co/kyggTTw/Logo-google-icon-PNG.png"
-                      alt=""
-                    />
-                    <span className="font-medium">Login With Google</span>
-                  </button>
-                </div>
-              </div>
+              <SocialLogin></SocialLogin>
             </Form>
           </Formik>
         </div>
