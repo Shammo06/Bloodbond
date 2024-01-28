@@ -33,7 +33,7 @@ interface FinalUpazila {
 
 const DonorRegistration = () => {
 
-    
+
 
     const [dist, setDist] = useState<District[]>([]);
     const [totalUpa, setTotalUpa] = useState<Upazila[]>([]);
@@ -48,9 +48,6 @@ const DonorRegistration = () => {
             .then(data => setDist(data))
             .catch(error => console.error('Error fetching District data:', error));
 
-    }, [])
-
-    useEffect(() => {
         fetch('/Upazila.json')
             .then(res => res.json())
             .then(data => setTotalUpa(data))
@@ -58,7 +55,7 @@ const DonorRegistration = () => {
 
     }, [])
 
-    
+
 
     const {
         register,
@@ -73,30 +70,30 @@ const DonorRegistration = () => {
 
     const { user } = auth;
 
-    const onSubmit = (data: any) => {
-        console.log(data)
-        const { name, email, phone, upazila, district, bloodGroup, address } = data;
+    const onSubmit = (data: any) => { 
+        const { name, email, phone, lastTimeDonate, upazila, district, bloodGroup, address } = data;
         const photo = user?.photoURL
 
         const donorInfo = {
-            name,
+            userName: name,
             email,
-            photo,
             phone,
-            upazila,
-            district,
+            lastTimeDonate,
             bloodGroup,
+            photo,
+            district,
+            subDistrict: upazila,
             address
-        }
-        console.log(donorInfo)
-        axios.post('/donorcreate', donorInfo)
-            .then(() => {
-
-                Swal.fire({
-                    title: "Registration Successful",
-                    icon: "success",
-                });
-                navigate("/");
+        } 
+        axios.post('https://blood-bound.vercel.app/donorcreate', donorInfo)
+            .then((res) => { 
+                if(res.status == 201 ){
+                    Swal.fire({
+                        title: "Registration Successful",
+                        icon: "success",
+                    });
+                    navigate("/");
+                }
             })
             .catch((error) => {
                 console.log(error)
@@ -119,7 +116,7 @@ const DonorRegistration = () => {
     }
 
     return (
-        <div className="mx-auto container">
+        <div className="mx-auto container px-4">
             <form onSubmit={handleSubmit(onSubmit)} className="bg-red-400 w-full mx-auto lg:w-3/4 p-5 my-10 rounded-lg">
                 <h2 className="text-3xl font-bold text-black text-center">Donor Registration</h2>
                 <div className="grid md:grid-cols-2 gap-5">
@@ -163,7 +160,7 @@ const DonorRegistration = () => {
                             <span className="label-text text-black">Blood Group</span>
                         </label>
                         <select className="select select-bordered  text-lg text-black "
-                            {...register("blood", { required: true })}
+                            {...register("bloodGroup", { required: true })}
                         >
                             <option value=""></option>
                             <option value="A+">A+</option>
@@ -175,7 +172,7 @@ const DonorRegistration = () => {
                             <option value="O+">O+</option>
                             <option value="O-">O-</option>
                         </select>
-                        {errors.blood?.type === "required" && (
+                        {errors.bloodGroup?.type === "required" && (
                             <p className="text-red-600 font-bold text-center mt-1" role="alert">* Blood Group is required</p>
                         )}
                     </div>
@@ -212,7 +209,6 @@ const DonorRegistration = () => {
                             <p className="text-red-600 font-bold text-center mt-1" role="alert">* Upazila is required</p>
                         )}
                     </div>
-                </div>
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text text-black">Your Address</span>
@@ -224,6 +220,16 @@ const DonorRegistration = () => {
                     {errors.address?.type === "required" && (
                         <p className="text-red-600 font-bold text-center mt-1" role="alert">* Address is required</p>
                     )}
+                </div>
+                <div className="form-control">
+                        <label className="label">
+                            <span className="label-text text-black">Last Donation Date</span>
+                        </label>
+                        <input type="date" className="input input-bordered"
+                            {...register("lastTimeDonate")}
+
+                        />
+                    </div>
                 </div>
                 <input className="btn w-full mt-4 btn-primary" type="submit" value="REGISTER" />
             </form>

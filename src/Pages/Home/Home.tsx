@@ -1,11 +1,13 @@
 import Banner from "../../Component/Banner/Banner";
+import RequestBlood from "../../Component/RequestBlood/RequestBlood";
 import Statistics from "../../Component/Statistics/Statistics";
 import WhyDonateBlood from "../../Component/WhyDonateBlood/WhyDonateBlood";
 
 const Home = () => {
   return (
-    <div className="space-y-5 md:mt-5">
+    <div>
       <Banner></Banner>
+      <RequestBlood></RequestBlood>
       <WhyDonateBlood></WhyDonateBlood>
       <Statistics></Statistics>
     </div>

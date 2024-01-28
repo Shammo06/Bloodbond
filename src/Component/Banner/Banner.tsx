@@ -1,17 +1,33 @@
+import { Link } from "react-router-dom";
+import bloodDonating from "../../assets/donatingBlood.jpeg";
+
 const Banner = () => {
   return (
-    <div>
-      <div className="max-w-lg mx-auto space-y-5">
-        <h2 className=" text-2xl md:text-5xl font-bold ">
-          Donate Blood, Save Lives Today!
+    <div className="md:flex space-x-3 items-center space-y-3 pt-5">
+      <div className="md:w-1/2">
+        <img src={bloodDonating} alt="" />
+      </div>
+      <div className="space-y-5 md:w-1/2">
+        <h2 className=" text-3xl lg:text-5xl font-bold ">
+          Donate <span className="text-red-500">Blood</span>, Save{" "}
+          <span className="text-green-500">Lives</span> Today!
         </h2>
-        <p>
+        <p className="md:text-lg font-semibold">
           Welcome to our blood donation website. Join us in making a difference
           by donating blood and helping those in need.
         </p>
         <div className="space-x-3">
-          <button className="btn btn-outline">Register as Donor</button>
-          <button className="btn btn-outline">Find Donor</button>
+          <Link to="/donorRegistration">
+            <button className="btn btn-outline">
+              Register as{" "}
+              <span className="text-red-500 font-semibold">Donor</span>
+            </button>
+          </Link>
+          <Link to="/donorSearch">
+            <button className="btn btn-outline">
+              Search <span className="text-red-500 font-semibold">Donor</span>
+            </button>
+          </Link>
         </div>
       </div>
     </div>
