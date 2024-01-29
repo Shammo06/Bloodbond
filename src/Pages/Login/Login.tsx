@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { FirebaseError } from "firebase/app";
+import SocialLogin from "../../Component/SocialLogin/SocialLogin";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -114,6 +115,7 @@ const Login: React.FC = () => {
                   Login
                 </button>
               </div>
+              <SocialLogin></SocialLogin>
             </Form>
           </Formik>
         </div>
