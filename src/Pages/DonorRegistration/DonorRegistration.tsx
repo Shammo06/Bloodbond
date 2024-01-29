@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 interface District {
     id: string;
@@ -30,26 +33,28 @@ interface FinalUpazila {
 
 const DonorRegistration = () => {
 
+
+
     const [dist, setDist] = useState<District[]>([]);
     const [totalUpa, setTotalUpa] = useState<Upazila[]>([]);
     const [upazilas, setUpazilas] = useState<FinalUpazila[]>([]);
-    const [error, setError] = useState('');
+    const navigate = useNavigate();
+
+
 
     useEffect(() => {
         fetch('/District.json')
-        .then(res => res.json())
-        .then(data => setDist(data))
-        .catch(error => console.error('Error fetching District data:', error));
+            .then(res => res.json())
+            .then(data => setDist(data))
+            .catch(error => console.error('Error fetching District data:', error));
 
-    },[])
-    
-    useEffect(() =>{
         fetch('/Upazila.json')
-        .then(res => res.json())
-        .then(data => setTotalUpa(data))
-        .catch(error => console.error('Error fetching Upazila data:', error));
+            .then(res => res.json())
+            .then(data => setTotalUpa(data))
+            .catch(error => console.error('Error fetching Upazila data:', error));
 
-    },[])
+    }, [])
+
 
 
     const {
@@ -58,34 +63,47 @@ const DonorRegistration = () => {
         handleSubmit
     } = useForm();
 
-    // const hosting_key = import.meta.env.VITE_IMG_KEY 
-    const hosting_api = `https://api.imgbb.com/1/upload?key=facfae059fe84bd1276342cabb1b01ed`
+    const auth = useAuth();
+    if (!auth) {
+        return;
+    }
 
-    const onSubmit = (data: any) => {
-        const { name, photo, email, password, phone, upazila, district, conPassword, blood } = data;
-        if (password !== conPassword) {
-            setError("* Password not matched")
-        }
-        else {
-            setError('')
-            const imageFile = { image: photo[0] }
-            axios.post(hosting_api, imageFile, {
-                headers: {
-                    'content-type': 'multipart/form-data'
+    const { user } = auth;
+
+    const onSubmit = (data: any) => { 
+        const { name, email, phone, lastTimeDonate, upazila, district, bloodGroup, address } = data;
+        const photo = user?.photoURL
+
+        const donorInfo = {
+            userName: name,
+            email,
+            phone,
+            lastTimeDonate,
+            bloodGroup,
+            photo,
+            district,
+            subDistrict: upazila,
+            address
+        } 
+        axios.post('https://blood-bound.vercel.app/donorcreate', donorInfo)
+            .then((res) => { 
+                if(res.status == 201 ){
+                    Swal.fire({
+                        title: "Registration Successful",
+                        icon: "success",
+                    });
+                    navigate("/");
                 }
             })
-                .then(res => {
-                    const imgUrl = res.data.data.image.url
+            .catch((error) => {
+                console.log(error)
+                Swal.fire({
+                    title: 'This is an Error !!!',
+                    icon: "error",
+                });
+            });
 
-                    console.log(name, imgUrl, email, password, phone, upazila, district, conPassword, blood)
 
-                    // TODO: set backend here.......................
-
-
-
-                })
-                .catch(error => console.error(error))
-        }
     }
 
     const handleDistrict = (e: any) => {
@@ -98,7 +116,7 @@ const DonorRegistration = () => {
     }
 
     return (
-        <div className="mx-auto container">
+        <div className="mx-auto container px-4">
             <form onSubmit={handleSubmit(onSubmit)} className="bg-red-400 w-full mx-auto lg:w-3/4 p-5 my-10 rounded-lg">
                 <h2 className="text-3xl font-bold text-black text-center">Donor Registration</h2>
                 <div className="grid md:grid-cols-2 gap-5">
@@ -106,7 +124,7 @@ const DonorRegistration = () => {
                         <label className="label">
                             <span className="label-text text-black">Your Name</span>
                         </label>
-                        <input type="text" className="input input-bordered"
+                        <input defaultValue={user?.displayName || ''} type="text" className="input input-bordered"
                             {...register("name", { required: true })}
 
                         />
@@ -116,21 +134,9 @@ const DonorRegistration = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-black">Profile photo</span>
-                        </label>
-                        <input type="file" className="file-input file-input-bordered w-full"
-                            {...register("photo", { required: true })}
-
-                        />
-                        {errors.photo?.type === "required" && (
-                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Photo is required</p>
-                        )}
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
                             <span className="label-text text-black">Your Email</span>
                         </label>
-                        <input type="email" className="input input-bordered"
+                        <input readOnly defaultValue={user?.email || ''} type="email" className="input input-bordered"
                             {...register("email", { required: true })}
                         />
                         {errors.firstName?.type === "required" && (
@@ -154,7 +160,7 @@ const DonorRegistration = () => {
                             <span className="label-text text-black">Blood Group</span>
                         </label>
                         <select className="select select-bordered  text-lg text-black "
-                            {...register("blood", { required: true })}
+                            {...register("bloodGroup", { required: true })}
                         >
                             <option value=""></option>
                             <option value="A+">A+</option>
@@ -166,7 +172,7 @@ const DonorRegistration = () => {
                             <option value="O+">O+</option>
                             <option value="O-">O-</option>
                         </select>
-                        {errors.blood?.type === "required" && (
+                        {errors.bloodGroup?.type === "required" && (
                             <p className="text-red-600 font-bold text-center mt-1" role="alert">* Blood Group is required</p>
                         )}
                     </div>
@@ -203,48 +209,29 @@ const DonorRegistration = () => {
                             <p className="text-red-600 font-bold text-center mt-1" role="alert">* Upazila is required</p>
                         )}
                     </div>
-                    <div className="form-control">
+                <div className="form-control">
+                    <label className="label">
+                        <span className="label-text text-black">Your Address</span>
+                    </label>
+                    <input type="text" className="input input-bordered"
+                        {...register("address", { required: true })}
+
+                    />
+                    {errors.address?.type === "required" && (
+                        <p className="text-red-600 font-bold text-center mt-1" role="alert">* Address is required</p>
+                    )}
+                </div>
+                <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-black">Your Address</span>
+                            <span className="label-text text-black">Last Donation Date</span>
                         </label>
-                        <input type="text" className="input input-bordered"
-                            {...register("address", { required: true })}
+                        <input type="date" className="input input-bordered"
+                            {...register("lastTimeDonate")}
 
                         />
-                        {errors.address?.type === "required" && (
-                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Address is required</p>
-                        )}
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-black">Password</span>
-                        </label>
-                        <input type="text" className="input input-bordered"
-                            {...register("password", { required: true, pattern: /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{6,15}$/ })}
-
-                        />
-                        {errors.password?.type === "required" && (
-                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Password is required</p>
-                        )}
-                        {errors.password?.type === 'pattern' && (<ul className="text-red-600 list-disc text-sm font-semibold mt-1 ml-4">
-                            <li>Ensure the length is minimum 6 characters.</li>
-                            <li>At least one upper case letter.</li>
-                            <li>At least one digit.</li>
-                            <li>At least one special character.</li>
-                        </ul>)}
-                    </div>
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-black">Confirm Password</span>
-                        </label>
-                        <input type="text" className="input input-bordered"
-                            {...register("conPassword", { required: true })}
-
-                        />
-                        {error ? <p className="text-red-600 font-bold text-center mt-1">{error}</p> : ''}
                     </div>
                 </div>
-                <input className="btn btn-primary w-full mt-4" type="submit" value="REGISTER" />
+                <input className="btn w-full mt-4 btn-primary" type="submit" value="REGISTER" />
             </form>
         </div>
     );
