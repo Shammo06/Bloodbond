@@ -1,14 +1,16 @@
 import Banner from "../../Component/Banner/Banner";
+import BloodDonation from "../../Component/BloodDonation/BloodDonation";
 import RequestBlood from "../../Component/RequestBlood/RequestBlood";
 import Statistics from "../../Component/Statistics/Statistics";
 import WhyDonateBlood from "../../Component/WhyDonateBlood/WhyDonateBlood";
 
 const Home = () => {
   return (
-    <div>
+    <div className="space-y-8">
       <Banner></Banner>
-      <RequestBlood></RequestBlood>
       <WhyDonateBlood></WhyDonateBlood>
+      <RequestBlood></RequestBlood>
+      <BloodDonation></BloodDonation>
       <Statistics></Statistics>
     </div>
   );

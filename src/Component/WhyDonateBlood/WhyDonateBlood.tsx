@@ -4,7 +4,7 @@ const WhyDonateBlood = () => {
       <div className="container mx-auto pt-32 mb-12 lg:mb-0">
         <div className="mb-14">
           <h3 className="text-center text-3xl font-bold mb-4">
-            Why Donate Blood
+            Why Donate <span className="text-red-600">Blood</span>
           </h3>
           <p className="text-center  max-w-[700px] mx-auto text-lg px-5 lg:px-0">
             Be a hero in someone's life – donate blood. Your simple act of
@@ -26,7 +26,7 @@ const WhyDonateBlood = () => {
             <div className="flex">
               <div
                 style={{ width: "180px", height: "100px" }}
-                className="bg-[#F9E1DE] mr-5 p-5 rounded-full flex justify-center items-center"
+                className="bg-[#e54a4a]  mr-5 p-5 rounded-full flex justify-center items-center"
               >
                 <img
                   className="rounded-full block"
@@ -51,7 +51,7 @@ const WhyDonateBlood = () => {
             <div className="flex">
               <div
                 style={{ width: "180px", height: "100px" }}
-                className="bg-[#F9E1DE] mr-5 p-5 rounded-full flex justify-center items-center"
+                className="bg-[#e54a4a] mr-5 p-5 rounded-full flex justify-center items-center"
               >
                 <img
                   className="rounded-full"
