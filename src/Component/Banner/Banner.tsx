@@ -16,16 +16,15 @@ const Banner = () => {
           Welcome to our blood donation website. Join us in making a difference
           by donating blood and helping those in need.
         </p>
-        <div className="md:space-x-5  space-x-[1px] text-center">
+        <div className="md:space-x-5 font-medium space-x-[1px] text-center">
           <Link to="/donorRegistration">
-            <button className="btn btn-outline">
-              Register as{" "}
-              <span className="text-red-500 font-semibold">Donor</span>
+            <button className="btn btn-outline px-4 py-2 bg-[#ea062b] text-white">
+              Register as Donor
             </button>
           </Link>
           <Link to="/donorSearch">
-            <button className="btn btn-outline">
-              Search <span className="text-red-500 font-semibold">Donor</span>
+            <button className="btn btn-outline px-4 py-2 bg-[#ea062b] text-white">
+              Search Donor
             </button>
           </Link>
         </div>
