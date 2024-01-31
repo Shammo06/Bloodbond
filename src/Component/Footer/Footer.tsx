@@ -3,9 +3,9 @@ import moment from "moment";
 const Footer = () => {
   return (
     <footer>
-      <div style={{ backgroundColor: "#1A1A1A" }} className="py-24">
+      <div style={{ backgroundColor: "#1A1A1A" }}>
         <div className="container mx-auto">
-          <div className="footer p-10 text-white">
+          <div className="footer p-5 text-white">
             <aside>
               <h6 className="text-4xl font-bold">
                 <span className="text-red-600">Blood</span>Bond
