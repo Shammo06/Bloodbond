@@ -110,7 +110,7 @@ const Login: React.FC = () => {
                     className="register-link text-blue-700 hover:font-bold"
                     to="/register"
                   >
-                    Register
+                    Sign Up
                   </Link>
                 </span>
               </p>

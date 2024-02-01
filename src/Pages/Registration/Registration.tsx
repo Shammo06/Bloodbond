@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import { FirebaseError } from "firebase/app";
 import axios from "axios";
 import SocialLogin from "../../Component/SocialLogin/SocialLogin";
+import loginBg from "../../assets/login-bg.svg";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -76,7 +77,7 @@ const Registration: React.FC = () => {
             updateUserInfo(name, imageUrl);
 
             Swal.fire({
-              title: "Registration Successful",
+              title: "Sign Up Successful",
               icon: "success",
             });
             navigate("/");
@@ -97,17 +98,23 @@ const Registration: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto py-32">
-      <h3 className="text-center text-4xl font-bold mb-16">
-        Please Registration
-      </h3>
-      <div>
+    <div
+      style={{
+        backgroundImage: `url(${loginBg})`,
+      }}
+      className="container mx-auto py-32 bg-cover bg-no-repeat"
+    >
+      <div
+        style={{ boxShadow: "0px 3px 14px 6px rgba(0,0,0,0.28)" }}
+        className="card-body py-16 rounded-lg w-3/4 2xl:w-3/5 mx-auto bg-white"
+      >
+        <h3 className="text-center text-4xl font-bold mb-8">Please Sign Up</h3>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          <Form className="card-body border rounded-lg w-3/4 2xl:w-3/5 mx-auto">
+          <Form>
             <div className="form-control font-semibold">
               <label className="label">
                 <span>Email</span>
@@ -211,7 +218,7 @@ const Registration: React.FC = () => {
                 type="submit"
                 className="btn btn-outline bg-[#EA062B] text-white"
               >
-                Registration
+                Sign Up
               </button>
             </div>
             <SocialLogin></SocialLogin>
