@@ -29,14 +29,14 @@ const SocialLogin = () => {
   };
 
   return (
-    <div className="mt-5">
+    <div className="">
       {/* <div className="h-[1px] bg-[#a7a8a5] w-full"></div> */}
       <div className="divider">or</div>
       <div className="flex justify-center items-center">
         <button
           type="button"
           onClick={handleGoogleLogin}
-          className="flex btn btn-outline w-full bg-[#EA062B] items-center border px-8 py-3 text-xl rounded-lg mt-5 text-white"
+          className="flex btn btn-outline w-full bg-[#EA062B] items-center border px-8 py-3 text-xl rounded-lg text-white"
         >
           <img
             className="w-6 mr-2"
