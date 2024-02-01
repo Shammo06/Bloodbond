@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import bg from "../../assets/b.jpg"
 import doctor from "../../assets/doctor.jpg"
 import call from "../../assets/call.jpg"
@@ -7,7 +7,7 @@ const AboutBanner = () => {
     return (
         <div className="">
             {/* ========== about banner ========== */}
-            <div className="relative py-10  md:py-28 bg-no-repeat bg-center	bg-cover	" style={{ backgroundImage: `url(${bg})` }}>
+            <div className="relative py-10  md:py-28 bg-no-repeat bg-center	bg-cover" style={{ backgroundImage: `url(${bg})` }}>
                 <div className="absolute top-0 left-0 h-full w-full  bg-black bg-opacity-60 "></div>
                 <div className="relative space-y-2">
                     <h2 className="text-3xl md:text-6xl font-semibold text-center z-50 text-white">About Us</h2>
@@ -49,7 +49,9 @@ const AboutBanner = () => {
                         <p className="">Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but occasionally circumstances occur in which toil and pain can procure reat pleasure.</p>
                     </div>
                     <div className="md:w-2/12">
-                    <button className=" px-4 py-2 bg-white font-medium">Explore Now</button>
+                        <NavLink to="/login">
+                            <button className=" px-4 py-2 bg-white font-medium">Explore Now</button>
+                        </NavLink>
                     </div>
                 </div>
             </div>
