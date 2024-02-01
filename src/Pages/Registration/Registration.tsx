@@ -97,128 +97,126 @@ const Registration: React.FC = () => {
   };
 
   return (
-    <div>
-      <div className="container mx-auto py-32">
-        <h3 className="text-center text-4xl font-bold mb-16">
-          Please Registration
-        </h3>
-        <div>
-          <Formik
-            initialValues={initialValues}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          >
-            <Form className="card-body border rounded-lg w-3/4 2xl:w-3/5 mx-auto">
-              <div className="form-control font-semibold">
-                <label className="label">
-                  <span>Email</span>
-                </label>
-                <Field
-                  className="input input-bordered"
-                  type="email"
-                  id="email"
-                  placeholder="Email"
-                  name="email"
-                />
-                <ErrorMessage
-                  className="text-red-500 mt-1 font-semibold"
-                  name="email"
-                  component="div"
-                />
-              </div>
-              <div className="form-control font-semibold">
-                <label className="label">
-                  <span>Name</span>
-                </label>
-                <Field
-                  className="input input-bordered"
-                  type="name"
-                  id="name"
-                  name="name"
-                  placeholder="Name"
-                />
-                <ErrorMessage
-                  className="text-red-500 mt-1 font-semibold"
-                  name="name"
-                  component="div"
-                />
-              </div>
-              <div className="form-control font-semibold">
-                <label className="label">
-                  <span>Photo</span>
-                </label>
-                <Field
-                  className=""
-                  type="file"
-                  id="photo"
-                  name="photo"
-                  placeholder="Photo"
-                />
-                <ErrorMessage
-                  className="text-red-500 mt-1 font-semibold"
-                  name="photo"
-                  component="div"
-                />
-              </div>
-              <div className="form-control font-semibold">
-                <label className="label">
-                  <span>Password</span>
-                </label>
-                <Field
-                  className="input input-bordered"
-                  type="password"
-                  id="password"
-                  name="password"
-                  placeholder="Password"
-                />
-                <ErrorMessage
-                  className="text-red-500 mt-1 font-semibold"
-                  name="password"
-                  component="div"
-                />
-              </div>
-              <div className="form-control font-semibold">
-                <label className="label">
-                  <span>Confirm Password</span>
-                </label>
-                <Field
-                  className="input input-bordered"
-                  type="password"
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  placeholder="Confirm Password"
-                />
-                <ErrorMessage
-                  className="text-red-500 mt-1 font-semibold"
-                  name="confirmPassword"
-                  component="div"
-                />
-              </div>
-              <label className="label font-semibold">
-                <p>
-                  Already have an account?{" "}
-                  <span>
-                    <Link
-                      className="register-link text-blue-700 hover:font-bold"
-                      to="/login"
-                    >
-                      Login
-                    </Link>
-                  </span>
-                </p>
+    <div className="container mx-auto py-32">
+      <h3 className="text-center text-4xl font-bold mb-16">
+        Please Registration
+      </h3>
+      <div>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
+          <Form className="card-body border rounded-lg w-3/4 2xl:w-3/5 mx-auto">
+            <div className="form-control font-semibold">
+              <label className="label">
+                <span>Email</span>
               </label>
-              <div className="form-control mt-6">
-                <button
-                  type="submit"
-                  className="btn btn-outline bg-[#EA062B] text-white"
-                >
-                  Registration
-                </button>
-              </div>
-              <SocialLogin></SocialLogin>
-            </Form>
-          </Formik>
-        </div>
+              <Field
+                className="input input-bordered"
+                type="email"
+                id="email"
+                placeholder="Email"
+                name="email"
+              />
+              <ErrorMessage
+                className="text-red-500 mt-1 font-semibold"
+                name="email"
+                component="div"
+              />
+            </div>
+            <div className="form-control font-semibold">
+              <label className="label">
+                <span>Name</span>
+              </label>
+              <Field
+                className="input input-bordered"
+                type="name"
+                id="name"
+                name="name"
+                placeholder="Name"
+              />
+              <ErrorMessage
+                className="text-red-500 mt-1 font-semibold"
+                name="name"
+                component="div"
+              />
+            </div>
+            <div className="form-control font-semibold">
+              <label className="label">
+                <span>Photo</span>
+              </label>
+              <Field
+                className=""
+                type="file"
+                id="photo"
+                name="photo"
+                placeholder="Photo"
+              />
+              <ErrorMessage
+                className="text-red-500 mt-1 font-semibold"
+                name="photo"
+                component="div"
+              />
+            </div>
+            <div className="form-control font-semibold">
+              <label className="label">
+                <span>Password</span>
+              </label>
+              <Field
+                className="input input-bordered"
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+              />
+              <ErrorMessage
+                className="text-red-500 mt-1 font-semibold"
+                name="password"
+                component="div"
+              />
+            </div>
+            <div className="form-control font-semibold">
+              <label className="label">
+                <span>Confirm Password</span>
+              </label>
+              <Field
+                className="input input-bordered"
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+              />
+              <ErrorMessage
+                className="text-red-500 mt-1 font-semibold"
+                name="confirmPassword"
+                component="div"
+              />
+            </div>
+            <label className="label font-semibold">
+              <p>
+                Already have an account?{" "}
+                <span>
+                  <Link
+                    className="register-link text-blue-700 hover:font-bold"
+                    to="/login"
+                  >
+                    Login
+                  </Link>
+                </span>
+              </p>
+            </label>
+            <div className="form-control mt-6">
+              <button
+                type="submit"
+                className="btn btn-outline bg-[#EA062B] text-white"
+              >
+                Registration
+              </button>
+            </div>
+            <SocialLogin></SocialLogin>
+          </Form>
+        </Formik>
       </div>
     </div>
   );
