@@ -210,7 +210,7 @@ const Registration: React.FC = () => {
               <div className="form-control mt-6">
                 <button
                   type="submit"
-                  className="btn bg-[#EA062B] text-white hover:bg-[#EA062B]"
+                  className="btn btn-outline bg-[#EA062B] text-white"
                 >
                   Registration
                 </button>
