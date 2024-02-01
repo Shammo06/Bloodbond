@@ -106,7 +106,7 @@ const Registration: React.FC = () => {
     >
       <div
         style={{ boxShadow: "0px 3px 14px 6px rgba(0,0,0,0.28)" }}
-        className="card-body py-16 rounded-lg w-3/4 2xl:w-3/5 mx-auto bg-white"
+        className="card-body py-16 rounded-lg w-[95%] sm:w-3/4 2xl:w-3/5 mx-auto bg-white"
       >
         <h3 className="text-center text-4xl font-bold mb-8">Please Sign Up</h3>
         <Formik
