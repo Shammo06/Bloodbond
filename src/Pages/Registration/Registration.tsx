@@ -72,6 +72,8 @@ const Registration: React.FC = () => {
       if (auth) {
         const { createUser, updateUserInfo } = auth;
 
+        
+
         createUser(email, password)
           .then(() => {
             updateUserInfo(name, imageUrl);
