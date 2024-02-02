@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { FirebaseError } from "firebase/app";
 import axios from "axios";
 import SocialLogin from "../../Component/SocialLogin/SocialLogin";
-import loginBg from "../../assets/login-bg.svg";
+import loginBg from "../../assets/login-bg.png";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const validationSchema = Yup.object({

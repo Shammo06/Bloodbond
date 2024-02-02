@@ -6,7 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { FirebaseError } from "firebase/app";
 import SocialLogin from "../../Component/SocialLogin/SocialLogin";
-import loginBg from "../../assets/login-bg.svg";
+import loginBg from "../../assets/login-bg.png";
 
 const validationSchema = Yup.object({
   email: Yup.string()
