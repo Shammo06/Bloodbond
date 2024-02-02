@@ -1,6 +1,6 @@
 import StripeComponent from "./StripeComonent";
 
-export default function ModalForPayment({ name }: { name: string }) {
+export default function ModalForPayment({ campaignId }: { campaignId: string }) {
   return (
     <>
       <button
@@ -19,7 +19,7 @@ export default function ModalForPayment({ name }: { name: string }) {
 
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
-          <StripeComponent name={name} />
+          <StripeComponent campaignId={campaignId} />
 
           <div className="modal-action">
             <form method="dialog">
