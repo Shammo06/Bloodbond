@@ -7,6 +7,7 @@ import { FirebaseError } from "firebase/app";
 import axios from "axios";
 import SocialLogin from "../../Component/SocialLogin/SocialLogin";
 import loginBg from "../../assets/login-bg.svg";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const validationSchema = Yup.object({
   email: Yup.string()
@@ -35,6 +36,7 @@ const initialValues = {
 
 const Registration: React.FC = () => {
   const auth = useAuth();
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
 
   const handleSubmit = async (values: typeof initialValues) => {
@@ -72,17 +74,21 @@ const Registration: React.FC = () => {
       if (auth) {
         const { createUser, updateUserInfo } = auth;
 
-        
+        const user = { name, email, photo: imageUrl };
 
         createUser(email, password)
           .then(() => {
             updateUserInfo(name, imageUrl);
 
-            Swal.fire({
-              title: "Sign Up Successful",
-              icon: "success",
+            axiosPublic.post("/usercreate", user).then((res) => {
+              if (res.data.user._id) {
+                Swal.fire({
+                  title: "Sign Up Successful",
+                  icon: "success",
+                });
+                navigate("/");
+              }
             });
-            navigate("/");
           })
           .catch((error: FirebaseError) => {
             Swal.fire({
