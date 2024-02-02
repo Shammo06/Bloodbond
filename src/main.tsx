@@ -14,6 +14,7 @@ import AuthProvider from "./providers/AuthProvider";
 import BloodRequest from "./Pages/BloodRequest/BloodRequest";
 import Campaign from "./Pages/Campaign/Campaign";
 import Donate from "./Pages/Donate/Donate";
+import AllBloodRequest from "./Pages/AllBloodRequest/AllBloodRequest";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
         path: "/donate",
         element: <Donate />,
       },
+      {
+        path: "/allrequest",
+        element: <AllBloodRequest></AllBloodRequest>
+      }
     ],
   },
 ]);
