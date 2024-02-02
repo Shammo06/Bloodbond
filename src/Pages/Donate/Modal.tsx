@@ -1,7 +1,21 @@
 import ModalForPayment from "./ModalForPayment";
-import fakeData from "../../../public/campaignFakeData.json";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function Modal() {
+  const [campaigns, setCampaigns] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://blood-bound.vercel.app/getallcampaigns")
+      .then((res) => {
+        setCampaigns(res.data.campaigns);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },[]);
+
   return (
     <>
       <button
@@ -33,11 +47,13 @@ export default function Modal() {
                 </tr>
               </thead>
               <tbody>
-                {fakeData.map((campaign, index) => (
+                {campaigns.map((campaign, index) => (
                   <tr key={index}>
-                    <td>{campaign.title}</td>
+                    {/* @ts-ignore */}
+                    <td>{campaign?.title}</td>
                     <td>
-                      <ModalForPayment name={campaign.title} />
+                      {/* @ts-ignore */}
+                      <ModalForPayment  campaignId={campaign?._id} />
                     </td>
                   </tr>
                 ))}
