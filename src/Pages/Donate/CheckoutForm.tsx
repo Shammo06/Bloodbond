@@ -4,8 +4,14 @@ import { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import axios from "axios";
 import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
 
-const CheckoutForm = ({ name }: { name: string }) => {
+const CheckoutForm = ({ campaignId }: { campaignId: string }) => {
+  // this is for geeting user data
+  const auth = useAuth();
+  // @ts-ignore
+  const { user } = auth;
+
   const stripe = useStripe();
   const elements = useElements();
 
@@ -35,13 +41,14 @@ const CheckoutForm = ({ name }: { name: string }) => {
       console.error(error);
     } else {
       // Send the token and amount to your server and handle the payment
-      console.log(token, inputAmount);
+      // console.log(token, inputAmount);
 
       axios
         .post("https://blood-bound.vercel.app/stripe", {
           token: token.id,
           amount: inputAmount,
-          name: name,
+          campaignId: campaignId || "65bcd81af947cd787d3ce15a",
+          email: user.email,
         })
         .then(() =>
           Swal.fire({

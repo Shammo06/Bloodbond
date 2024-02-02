@@ -9,10 +9,10 @@ const stripePromise = loadStripe(
   "pk_test_51OIZw5KzX3rFI0XXyOWKTw6yVEIN9XrTNpA5NemHGiTwe2VYDXjsiAUxjMDnHPTfGJLxT4Eg0uYk7HwF85OP14E300G0huPhsV"
 );
 
-const StripeComponent = ({ name }: { name: string }) => {
+const StripeComponent = ({ campaignId }: { campaignId: string }) => {
   return (
     <Elements stripe={stripePromise}>
-      <CheckoutForm name={name} />
+      <CheckoutForm campaignId={campaignId} />
     </Elements>
   );
 };
