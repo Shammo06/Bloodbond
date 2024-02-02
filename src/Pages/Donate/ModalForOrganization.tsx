@@ -1,8 +1,6 @@
-import { useRef } from "react";
-import ModalForPayment from "./ModalForPayment";
+import StripeComponent from "./StripeComonent";
 
 export default function ModalOragnization() {
-  const organizationName = useRef<HTMLInputElement>(null);
 
   return (
     <>
@@ -24,15 +22,8 @@ export default function ModalOragnization() {
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
           <div className="flex flex-col gap-6">
-            <input
-              type="text"
-              ref={organizationName}
-              placeholder="Organization name"
-              className="input input-bordered w-full max-w-xs"
-            />
-
-            <ModalForPayment name={organizationName?.current?.value ?? ""} />
-
+            {/* @ts-ignore */}
+            <StripeComponent />
             <div className="flex w-full justify-between">
               <form method="dialog">
                 {/* if there is a button in form, it will close the modal */}
