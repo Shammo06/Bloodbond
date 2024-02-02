@@ -4,7 +4,7 @@ import { TbDropletHeart } from "react-icons/tb";
 
 interface BloodRequest {
   _id: string;
-  time: Date;
+  time: string;
   location: string;
   patientName: string;
   bloodGroup: string;
@@ -33,7 +33,7 @@ const AllBloodRequest: React.FC = () => {
                 <div className="bg-red-500 p-4 rounded-full inline-block">
                   <span className="text-7xl text-white"><TbDropletHeart /></span>
                 </div>
-                <p>Date: {request.time.toISOString()}</p>
+                <p>Date: {request.time}</p>
               </div>
               <h3 className="text-xl font-bold">{request.location}</h3>
               <h5 className="text-base font-bold text-gray-600 group-hover:text-gray-200 duration-500">Patient Name: {request.patientName}</h5>
@@ -44,6 +44,11 @@ const AllBloodRequest: React.FC = () => {
                 </div>
               </div>
               <p>Contuct: {request.phone}</p>
+              <div className="card-actions my-2 ">
+                  <button className="btn btn-outline bg-[#ea062b] px-4 py-2 text-white">
+                    Donate Blood
+                  </button>
+                </div>
             </div>
           </div>
         ))}

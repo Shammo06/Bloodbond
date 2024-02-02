@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 interface FormData {
   patientName: string;
   bloodGroup: string;
@@ -40,7 +41,7 @@ const RequestBlood = () => {
                 <p>Donation Time: {data.time}</p>
                 <p>Location: {data.location}</p>
                 <p>Contact: {data.phone}</p>
-                <div className="card-actions my-2">
+                <div className="card-actions my-2 ">
                   <button className="btn btn-outline bg-[#ea062b] px-4 py-2 text-white">
                     Donate Blood
                   </button>
@@ -48,6 +49,13 @@ const RequestBlood = () => {
               </div>
             </div>
           ))}
+        </div>
+        <div className="pt-5 text-center">
+        <Link to="/allrequest">
+            <button className="btn btn-outline px-4 py-2 bg-[#DC0000] text-white">
+              All Donor Request
+            </button>
+        </Link>
         </div>
       </div>
     </div>
