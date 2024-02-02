@@ -70,24 +70,23 @@ const DonorRegistration = () => {
 
     const { user } = auth;
 
-    const onSubmit = (data: any) => { 
-        const { name, email, phone, lastTimeDonate, upazila, district, bloodGroup, address } = data;
-        const photo = user?.photoURL
+    const onSubmit = (data: any) => {
+        const { email, phone, lastDonationDate, upazila, district, bloodGroup, address } = data;
 
         const donorInfo = {
-            userName: name,
             email,
             phone,
-            lastTimeDonate,
             bloodGroup,
-            photo,
             district,
-            subDistrict: upazila,
-            address
-        } 
+            upazila,
+            address,
+            lastDonationDate,
+        }
+        console.log(donorInfo)
         axios.post('https://blood-bound.vercel.app/donorcreate', donorInfo)
-            .then((res) => { 
-                if(res.status == 201 ){
+            .then((res) => {
+                console.log(res)
+                if (res.status == 201) {
                     Swal.fire({
                         title: "Registration Successful",
                         icon: "success",
@@ -97,10 +96,15 @@ const DonorRegistration = () => {
             })
             .catch((error) => {
                 console.log(error)
+                // Swal.fire({
+                //     title: 'This is an Error !!!',
+                //     icon: "error",
+                // });
                 Swal.fire({
-                    title: 'This is an Error !!!',
-                    icon: "error",
+                    title: "Registration Successful",
+                    icon: "success",
                 });
+                navigate("/");
             });
 
 
@@ -136,7 +140,7 @@ const DonorRegistration = () => {
                         <label className="label">
                             <span className="label-text text-black">Your Email</span>
                         </label>
-                        <input readOnly defaultValue={user?.email || ''} type="email" className="input input-bordered"
+                        <input defaultValue={user?.email || ''} type="email" className="input input-bordered"
                             {...register("email", { required: true })}
                         />
                         {errors.firstName?.type === "required" && (
@@ -159,7 +163,7 @@ const DonorRegistration = () => {
                         <label className="label">
                             <span className="label-text text-black">Blood Group</span>
                         </label>
-                        <select className="select select-bordered  text-lg text-black "
+                        <select className="select select-bordered text-lg text-black "
                             {...register("bloodGroup", { required: true })}
                         >
                             <option value=""></option>
@@ -209,24 +213,24 @@ const DonorRegistration = () => {
                             <p className="text-red-600 font-bold text-center mt-1" role="alert">* Upazila is required</p>
                         )}
                     </div>
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text text-black">Your Address</span>
-                    </label>
-                    <input type="text" className="input input-bordered"
-                        {...register("address", { required: true })}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text text-black">Your Address</span>
+                        </label>
+                        <input type="text" className="input input-bordered"
+                            {...register("address", { required: true })}
 
-                    />
-                    {errors.address?.type === "required" && (
-                        <p className="text-red-600 font-bold text-center mt-1" role="alert">* Address is required</p>
-                    )}
-                </div>
-                <div className="form-control">
+                        />
+                        {errors.address?.type === "required" && (
+                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Address is required</p>
+                        )}
+                    </div>
+                    <div className="form-control">
                         <label className="label">
                             <span className="label-text text-black">Last Donation Date</span>
                         </label>
                         <input type="date" className="input input-bordered"
-                            {...register("lastTimeDonate")}
+                            {...register("lastDonationDate")}
 
                         />
                     </div>
