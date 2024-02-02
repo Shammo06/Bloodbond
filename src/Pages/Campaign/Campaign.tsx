@@ -45,9 +45,9 @@ const Campaign = () => {
                 <h5>Feb</h5>
               </div>
             </div>
-            <address>Motijhil, Dhaka</address>
+            <address>Dhanmondi, Dhaka</address>
             <h2 className="text-2xl font-bold text-[#ea062b]">
-              Blood Group Collection
+            LifeSaver Blood Donation Drive
             </h2>
             <p>
               Blood group collection involves determining an individual's blood
@@ -58,13 +58,13 @@ const Campaign = () => {
             <div className="relative">
               <img className="h-[210px] w-full" src={group2} alt="" />
               <div className="absolute top-0 left-0  bg-[#ea062b] py-3 px-4 text-white">
-                <h4 className="text-lg font-bold">05</h4>
-                <h5>Mar</h5>
+                <h4 className="text-lg font-bold">20</h4>
+                <h5>Feb</h5>
               </div>
             </div>
             <address>Motijhil, Dhaka</address>
             <h2 className="text-2xl font-bold text-[#ea062b]">
-              Free Group Checking
+            Unity for Blood: Community Campaign
             </h2>
             <p>
               Blood group collection involves determining an individual's blood
@@ -75,13 +75,13 @@ const Campaign = () => {
             <div className="relative">
               <img className="h-[210px] w-full" src={group3} alt="" />
               <div className="absolute top-0 left-0  bg-[#ea062b] py-3 px-4 text-white">
-                <h4 className="text-lg font-bold">30</h4>
+                <h4 className="text-lg font-bold">1</h4>
                 <h5>Mar</h5>
               </div>
             </div>
-            <address>Motijhil, Dhaka</address>
+            <address>Rajshahi Medical college, Rajshahi</address>
             <h2 className="text-2xl font-bold text-[#ea062b]">
-              Blood Donation Camp
+            Hopeful Hearts Blood Drive
             </h2>
             <p>
               Blood group collection involves determining an individual's blood
@@ -97,9 +97,9 @@ const Campaign = () => {
                 <h5>Mar</h5>
               </div>
             </div>
-            <address>Motijhil, Dhaka</address>
+            <address>Noakhali Medical College, Noakhali</address>
             <h2 className="text-2xl font-bold text-[#ea062b]">
-              Free Group Checking
+            Save a Life: Mega Blood Donation Event
             </h2>
             <p>
               Blood group collection involves determining an individual's blood
@@ -111,12 +111,12 @@ const Campaign = () => {
               <img className="h-[210px] w-full" src={group} alt="" />
               <div className="absolute top-0 left-0  bg-[#ea062b] py-3 px-4 text-white">
                 <h4 className="text-lg font-bold">12</h4>
-                <h5>Feb</h5>
+                <h5>Mar</h5>
               </div>
             </div>
-            <address>Motijhil, Dhaka</address>
+            <address>Pabna Govt. College, Pabna</address>
             <h2 className="text-2xl font-bold text-[#ea062b]">
-              Blood Group Collection
+            Youth for Blood: Student-Led Campaign
             </h2>
             <p>
               Blood group collection involves determining an individual's blood
