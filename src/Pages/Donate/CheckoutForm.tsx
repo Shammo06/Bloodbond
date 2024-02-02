@@ -47,7 +47,7 @@ const CheckoutForm = ({ campaignId }: { campaignId: string }) => {
         .post("https://blood-bound.vercel.app/stripe", {
           token: token.id,
           amount: inputAmount,
-          campaignId: campaignId || "65bcd81af947cd787d3ce15a",
+          campaignId: campaignId || "65bcd81af947cd787d3ce15a", 
           email: user.email,
         })
         .then(() =>
