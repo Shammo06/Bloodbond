@@ -116,7 +116,7 @@ const DonorRegistration = () => {
     }
 
     return (
-        <div className="mx-auto container px-4">
+        <div className="mx-auto container px-4 pt-10">
             <form onSubmit={handleSubmit(onSubmit)} className="bg-red-400 w-full mx-auto lg:w-3/4 p-5 my-10 rounded-lg">
                 <h2 className="text-3xl font-bold text-black text-center">Donor Registration</h2>
                 <div className="grid md:grid-cols-2 gap-5">

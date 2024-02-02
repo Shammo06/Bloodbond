@@ -9,23 +9,22 @@ const Banner = () => {
       </div>
       <div className="space-y-5 md:w-1/2">
         <h2 className=" text-3xl lg:text-5xl font-bold ">
-          Donate <span className="text-red-600">Blood</span>, Save{" "}
+          Donate <span className="text-[#DC0000]">Blood</span>, Save{" "}
           <span className="text-green-600">Lives</span> Today!
         </h2>
         <p className="md:text-lg font-semibold">
           Welcome to our blood donation website. Join us in making a difference
           by donating blood and helping those in need.
         </p>
-        <div className="md:space-x-5  space-x-[1px] text-center">
+        <div className="md:space-x-5 font-medium space-x-[1px] ">
           <Link to="/donorRegistration">
-            <button className="btn btn-outline">
-              Register as{" "}
-              <span className="text-red-500 font-semibold">Donor</span>
+            <button className="btn btn-outline px-4 py-2 bg-[#DC0000] text-white">
+              Register as Donor
             </button>
           </Link>
           <Link to="/donorSearch">
-            <button className="btn btn-outline">
-              Search <span className="text-red-500 font-semibold">Donor</span>
+            <button className="btn btn-outline px-4 py-2 bg-[#DC0000] text-white">
+              Search Donor
             </button>
           </Link>
         </div>

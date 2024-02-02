@@ -3,11 +3,11 @@ import banner from "../../assets/mission bg.jpg"
 
 const Mission = () => {
     return (
-        <div>
+        <div className="pt-16">
             <div className="hero h-[200px] md:h-[350px] bg-fixed" style={{ backgroundImage: `url("${banner}")` }}>
                 <div className="hero-overlay bg-opacity-60"></div>
-                <div className="hero-content text-center text-neutral-content">
-                    <div className="max-w-2xl text-white">
+                <div className="hero-content ">
+                    <div className="max-w-2xl text-center text-white">
                         <h1 className="mb-5 text-3xl md:text-5xl font-bold ">Mission Vision & Values</h1>
                         <p className="mb-5 text-xl md:text-3xl">Donate Blood, Share Life!</p>
                     </div>

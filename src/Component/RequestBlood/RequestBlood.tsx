@@ -41,7 +41,9 @@ const RequestBlood = () => {
                 <p>Location: {data.location}</p>
                 <p>Contact: {data.phone}</p>
                 <div className="card-actions my-2">
-                  <button className="btn btn-outline">Donate Blood</button>
+                  <button className="btn btn-outline bg-[#ea062b] px-4 py-2 text-white">
+                    Donate Blood
+                  </button>
                 </div>
               </div>
             </div>

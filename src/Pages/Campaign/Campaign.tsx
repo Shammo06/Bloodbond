@@ -6,7 +6,7 @@ import group3 from "../../assets/doctor.jpg";
 
 const Campaign = () => {
   return (
-    <div>
+    <div className="pt-16">
       <div
         className="relative bg-no-repeat bg-center	bg-cover py-4"
         style={{ backgroundImage: `url("${campaignBg}")` }}
