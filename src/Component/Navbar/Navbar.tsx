@@ -61,8 +61,12 @@ const Navbar = () => {
       <li>
         <NavLink to="/donate">Donate Us</NavLink>
       </li>
+      <li>
+        <NavLink to="/bioMedical">Bio-Medical</NavLink>
+      </li>
     </>
   );
+
   return (
     <div className=" navbar  z-50 bg-[#DC0000] text-white font-semibold">
       <div className="navbar-start">
@@ -97,7 +101,12 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {user ? (
-          <button className="btn btn-outline text-white rounded-full btn-sm" onClick={handleLogOut}>Log Out</button>
+          <button
+            className="btn btn-outline text-white rounded-full btn-sm"
+            onClick={handleLogOut}
+          >
+            Log Out
+          </button>
         ) : (
           <NavLink to="/login" className="btn btn-outline text-white">
             Join
