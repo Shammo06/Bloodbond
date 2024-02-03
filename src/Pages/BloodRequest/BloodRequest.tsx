@@ -30,8 +30,8 @@ const BloodRequest = () => {
    
 
     return (
-        <div className="mx-auto container">
-            <form onSubmit={handleSubmit(onSubmit)} className="bg-red-400 w-full mx-auto lg:w-3/4 p-5 my-10 rounded-lg">
+        <div className="mx-auto container py-20">
+            <form onSubmit={handleSubmit(onSubmit)} className="bg-red-400 w-full mx-auto lg:w-3/4 p-8  rounded-lg">
                 <h2 className="text-3xl font-bold text-black text-center">Blood Request</h2>
                 <div className="gap-5">
                     <div className="form-control">

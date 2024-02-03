@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import About from "./Pages/About/About";
-import Mission from "./Pages/Mission";
+import Mission from "./Pages/Mission/Mission";
 import Layout from "./Pages/Layout/Layout";
 import Home from "./Pages/Home/Home";
 import DonorRegistration from "./Pages/DonorRegistration/DonorRegistration";
@@ -14,6 +14,7 @@ import AuthProvider from "./providers/AuthProvider";
 import BloodRequest from "./Pages/BloodRequest/BloodRequest";
 import Campaign from "./Pages/Campaign/Campaign";
 import Donate from "./Pages/Donate/Donate";
+import AllBloodRequest from "./Pages/AllBloodRequest/AllBloodRequest";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
         path: "/donate",
         element: <Donate />,
       },
+      {
+        path: "/allrequest",
+        element: <AllBloodRequest></AllBloodRequest>
+      }
     ],
   },
 ]);
