@@ -61,8 +61,12 @@ const Navbar = () => {
       <li>
         <NavLink to="/donate">Donate Us</NavLink>
       </li>
+      <li>
+        <NavLink to="/bioMedical">Bio-Medical</NavLink>
+      </li>
     </>
   );
+
   return (
     <div className=" navbar  z-50 bg-[#DC0000] text-white font-semibold">
       <div className="navbar-start">
