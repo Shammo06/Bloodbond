@@ -15,6 +15,9 @@ import BloodRequest from "./Pages/BloodRequest/BloodRequest";
 import Campaign from "./Pages/Campaign/Campaign";
 import Donate from "./Pages/Donate/Donate";
 import AllBloodRequest from "./Pages/AllBloodRequest/AllBloodRequest";
+import Dashboard from "./Pages/Layout/Dashboard/Dashboard";
+import AdminHome from "./Pages/AdminHome/AdminHome";
+import Appointment from "./Pages/Appointment/Appointment";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +70,20 @@ const router = createBrowserRouter([
       }
     ],
   },
+  {
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
+    children:[
+      {
+        path: "/dashboard/home",
+        element: <AdminHome></AdminHome>
+      },
+      {
+        path: "/dashboard/appointment",
+        element: <Appointment></Appointment>
+      }
+    ]
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
