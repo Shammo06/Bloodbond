@@ -1,9 +1,9 @@
+import Banner from "../../Component/BioMedical/Banner/Banner";
+
 const BioMedical = () => {
   return (
     <div>
-      <div className="container mx-auto">
-        <h3>BioMedical Service</h3>
-      </div>
+      <Banner></Banner>
     </div>
   );
 };
