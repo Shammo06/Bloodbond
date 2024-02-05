@@ -1,0 +1,44 @@
+[
+  {
+    "testName": "Complete Blood Count (CBC)",
+    "testDescription": "Comprehensive analysis of blood components.",
+    "testPrice": "$50",
+    "imageUrl": "https://example.com/cbc_image.jpg"
+  },
+  {
+    "testName": "Basic Metabolic Panel (BMP)",
+    "testDescription": "Assessment of key metabolic markers.",
+    "testPrice": "$75",
+    "imageUrl": "https://example.com/bmp_image.jpg"
+  },
+  {
+    "testName": "Lipid Panel",
+    "testDescription": "Measurement of cholesterol and triglycerides.",
+    "testPrice": "$60",
+    "imageUrl": "https://example.com/lipid_image.jpg"
+  },
+  {
+    "testName": "Thyroid Stimulating Hormone (TSH)",
+    "testDescription": "Evaluation of thyroid function.",
+    "testPrice": "$45",
+    "imageUrl": "https://example.com/tsh_image.jpg"
+  },
+  {
+    "testName": "Liver Function Tests (LFTs)",
+    "testDescription": "Analysis of liver enzyme levels.",
+    "testPrice": "$70",
+    "imageUrl": "https://example.com/lfts_image.jpg"
+  },
+  {
+    "testName": "Blood Glucose Test",
+    "testDescription": "Measurement of blood sugar levels.",
+    "testPrice": "$35",
+    "imageUrl": "https://example.com/blood_glucose_image.jpg"
+  },
+  {
+    "testName": "Iron Panel",
+    "testDescription": "Assessment of iron levels in the blood.",
+    "testPrice": "$55",
+    "imageUrl": "https://example.com/iron_panel_image.jpg"
+  }
+]
