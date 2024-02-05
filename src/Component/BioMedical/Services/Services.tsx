@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ServiceCard from "../ServiceCard/ServiceCard";
 
 interface Service {
   testName: string;
   testDescription: string;
   testPrice: string;
+  imageUrl: string;
 }
 
 const Services: React.FC = () => {
@@ -14,7 +16,7 @@ const Services: React.FC = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get<Service[]>(
-          "/public/campaignFakeData.json"
+          "/public/Bio-MedicalServices.json"
         );
         setServices(response.data);
       } catch (error) {
@@ -25,8 +27,6 @@ const Services: React.FC = () => {
     fetchData();
   }, []);
 
-  console.log(services);
-
   return (
     <div>
       <div className="container mx-auto my-24">
@@ -34,7 +34,11 @@ const Services: React.FC = () => {
           Our Bio-Medical Services
         </h3>
         {/* services */}
-        <div></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, idx) => (
+            <ServiceCard key={idx} service={service}></ServiceCard>
+          ))}
+        </div>
       </div>
     </div>
   );
