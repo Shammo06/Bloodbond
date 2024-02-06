@@ -3,6 +3,8 @@ import { FaArrowLeft } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 import { TiHome } from "react-icons/ti";
 import { MdOutlineApproval } from "react-icons/md";
+import { MdOutlineVolunteerActivism } from "react-icons/md";
+import { TbBrandCampaignmonitor } from "react-icons/tb";
 
 const Dashboard: React.FC = () => {
     const [open, setOpen] = useState(true)
@@ -38,11 +40,30 @@ const Dashboard: React.FC = () => {
                                 <span className="flex items-center gap-2"><span><MdOutlineApproval className="text-3xl"/></span><span className={`${!open && "scale-0"} duration-500`}>Approve Appointment</span></span>
                             </NavLink>
                         </li>
+                        <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                            <NavLink
+                                to="/dashboard/volunteer"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                }
+                            >
+                                <span className="flex items-center gap-2"><span><MdOutlineVolunteerActivism className="text-3xl"/></span><span className={`${!open && "scale-0"} duration-500`}>VolunteerManage</span></span>
+                            </NavLink>
+                        </li>
+                        <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                            <NavLink
+                                to="/dashboard/campaign"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                }
+                            >
+                                <span className="flex items-center gap-2"><span><TbBrandCampaignmonitor className="text-3xl"/></span><span className={`${!open && "scale-0"} duration-500`}>Manage Campaign</span></span>
+                            </NavLink>
+                        </li>
                     </ul>
                 </div>
             </aside>
             <section className="p-8 bg-black bg-opacity-5 w-full">
-
                 <Outlet></Outlet>
             </section>
         </div>
