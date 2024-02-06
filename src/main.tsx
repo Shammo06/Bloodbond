@@ -19,6 +19,8 @@ import BioMedical from "./Pages/BioMedical/BioMedical";
 import Dashboard from "./Pages/Layout/Dashboard/Dashboard";
 import AdminHome from "./Pages/AdminHome/AdminHome";
 import Appointment from "./Pages/Appointment/Appointment";
+import VolunteerManage from "./Pages/VolunteerManage/VolunteerManage";
+import ManageCampaign from "./Pages/ManageCampaign/ManageCampaign";
 
 const router = createBrowserRouter([
   {
@@ -86,6 +88,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/appointment",
         element: <Appointment></Appointment>
+      },
+      {
+        path: "/dashboard/volunteer",
+        element: <VolunteerManage></VolunteerManage>
+      },
+      {
+        path: "/dashboard/campaign",
+        element: <ManageCampaign></ManageCampaign>
       }
     ]
   }

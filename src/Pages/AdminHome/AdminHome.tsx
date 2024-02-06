@@ -45,7 +45,7 @@ const AdminHome: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className="pt-6 flex gap-6">
+            <div className="pt-6 md:flex gap-6">
                 <TopDonor></TopDonor>
                 <AdminProfile></AdminProfile>
             </div>
