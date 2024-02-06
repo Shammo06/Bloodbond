@@ -36,8 +36,8 @@ const Services: React.FC = () => {
         </h3>
         {/* services */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, idx) => (
-            <ServiceCard key={idx} service={service}></ServiceCard>
+          {services.map((service) => (
+            <ServiceCard key={service.testId} service={service}></ServiceCard>
           ))}
         </div>
       </div>

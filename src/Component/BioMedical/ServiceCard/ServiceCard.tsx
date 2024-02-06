@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import ServiceBookModal from "../ServiceBookModal/ServiceBookModal";
 
-interface Service {
+export interface Service {
   testId: string;
   testName: string;
   testDescription: string;

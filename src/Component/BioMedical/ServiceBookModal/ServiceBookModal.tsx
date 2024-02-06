@@ -90,6 +90,19 @@ const ServiceBookModal: React.FC = () => {
             >
               <div className="form-control">
                 <label className="label">
+                  <span className="label-text">Test Name</span>
+                </label>
+                <input
+                  type="text"
+                  name="testName"
+                  placeholder="Test Name"
+                  className="input input-bordered"
+                  required
+                  readOnly
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
                   <span className="label-text">Name</span>
                 </label>
                 <input
