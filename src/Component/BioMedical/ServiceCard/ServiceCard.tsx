@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
+
 interface Service {
+  testId: string;
   testName: string;
   testDescription: string;
   testPrice: string;
@@ -14,7 +17,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
     return;
   }
 
-  const { imageUrl, testName, testDescription, testPrice } = service;
+  const { testId, imageUrl, testName, testDescription, testPrice } = service;
 
   return (
     <div
@@ -34,9 +37,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
           <span className="font-bold text-red-500"> {testPrice}</span>
         </h6>
       </div>
-      <button className="mb-5 mx-5 btn btn-outline bg-[#EA062B] text-white">
+      <Link
+        to={`/services/${testId}`}
+        className="mb-5 mx-5 btn btn-outline bg-[#EA062B] text-white"
+      >
         See Details
-      </button>
+      </Link>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import ServiceCard from "../ServiceCard/ServiceCard";
 
 interface Service {
+  testId: string;
   testName: string;
   testDescription: string;
   testPrice: string;
