@@ -16,6 +16,7 @@ import Campaign from "./Pages/Campaign/Campaign";
 import Donate from "./Pages/Donate/Donate";
 import AllBloodRequest from "./Pages/AllBloodRequest/AllBloodRequest";
 import BioMedical from "./Pages/BioMedical/BioMedical";
+import ServiceDetails from "./Component/BioMedical/ServiceDetails/ServiceDetails";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       {
         path: "/bioMedical",
         element: <BioMedical></BioMedical>,
+      },
+      {
+        path: "/services/:id",
+        element: <ServiceDetails></ServiceDetails>,
       },
     ],
   },
