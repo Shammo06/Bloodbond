@@ -53,7 +53,8 @@ const ServiceBookModal: React.FC = () => {
     const userEmail = formData.get("email") as string;
     const date = formData.get("date") as string;
     const time = formData.get("time") as string;
-    console.log("Form submitted", userName, userEmail, date, time);
+    const phone = formData.get("phone") as string;
+    console.log("Form submitted", userName, userEmail, date, time, phone);
   };
 
   return (
@@ -138,6 +139,18 @@ const ServiceBookModal: React.FC = () => {
                     </option>
                   ))}
                 </select>
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Phone Number</span>
+                </label>
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Your Phone Number(+880-xxxx-xxxx)"
+                  className="input input-bordered"
+                  required
+                />
               </div>
               <button id="submit" type="submit"></button>
             </form>
