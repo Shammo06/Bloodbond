@@ -14,11 +14,29 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
     return;
   }
 
-  const { imageUrl, testName } = service;
+  const { imageUrl, testName, testDescription, testPrice } = service;
 
   return (
-    <div>
-      <img className="w-full h-[200px]" src={imageUrl} alt={`Image for ${testName}`} />
+    <div
+      style={{ boxShadow: "0px 4px 10px 5px rgba(167,167,167,0.3)" }}
+      className="rounded-lg flex flex-col items-start"
+    >
+      <img
+        className="w-full h-[200px] xl:h-[220px] 2xl:h-[280px] rounded-tl-lg rounded-tr-lg"
+        src={imageUrl}
+        alt={`Image for ${testName}`}
+      />
+      <div className="p-5 flex-grow">
+        <h4 className="text-2xl font-bold">{testName}</h4>
+        <h5 className="font-medium text-xl my-3">{testDescription}</h5>
+        <h6 className="font-semibold">
+          Test Price:{" "}
+          <span className="font-bold text-red-500"> {testPrice}</span>
+        </h6>
+      </div>
+      <button className="mb-5 mx-5 btn btn-outline bg-[#EA062B] text-white">
+        See Details
+      </button>
     </div>
   );
 };

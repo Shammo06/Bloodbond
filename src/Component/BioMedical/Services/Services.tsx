@@ -30,7 +30,7 @@ const Services: React.FC = () => {
   return (
     <div>
       <div className="container mx-auto my-24">
-        <h3 className="font-bold text-center text-3xl mb-16">
+        <h3 className="font-bold text-center text-4xl mb-16">
           Our Bio-Medical Services
         </h3>
         {/* services */}
