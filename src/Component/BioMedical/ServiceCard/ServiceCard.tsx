@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import ServiceBookModal from "../ServiceBookModal/ServiceBookModal";
 
 export interface Service {
   testId: string;
@@ -40,12 +39,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
       </div>
       <Link
         to={`/services/${testId}`}
-        className="mb-5 mx-5 btn btn-outline bg-[#EA062B] text-white hidden"
+        className="mb-5 mx-5 btn btn-outline bg-[#EA062B] text-white"
       >
         See Details
       </Link>
-
-      <ServiceBookModal></ServiceBookModal>
     </div>
   );
 };

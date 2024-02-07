@@ -1,7 +1,17 @@
 import useAuth from "../../../hooks/useAuth";
+import { Service } from "../ServiceCard/ServiceCard";
 
-const ServiceBookModal: React.FC = () => {
+interface ServiceCardProps {
+  service: Service;
+}
+
+const ServiceBookModal: React.FC<ServiceCardProps> = ({ service }) => {
   const auth = useAuth();
+  if (!service) {
+    return;
+  }
+
+  const { testName } = service;
 
   if (!auth) {
     return;
@@ -99,6 +109,7 @@ const ServiceBookModal: React.FC = () => {
                   className="input input-bordered"
                   required
                   readOnly
+                  value={testName ?? ""}
                 />
               </div>
               <div className="form-control">
