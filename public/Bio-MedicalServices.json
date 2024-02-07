@@ -1,0 +1,44 @@
+[
+  {
+    "testId": "1",
+    "testName": "Complete Blood Count (CBC)",
+    "testDescription": "Comprehensive analysis of blood components.",
+    "testPrice": "$50",
+    "imageUrl": "https://i.ibb.co/G3cPbJN/Complete-Blood-Count-CBC.jpg"
+  },
+  {
+    "testId": "2",
+    "testName": "Basic Metabolic Panel (BMP)",
+    "testDescription": "Assessment of key metabolic markers.",
+    "testPrice": "$75",
+    "imageUrl": "https://i.ibb.co/yFCFVMg/Basic-Metabolic-Panel-min-1.png"
+  },
+  {
+    "testId": "3",
+    "testName": "Lipid Profile",
+    "testDescription": "Measurement of cholesterol and triglycerides.",
+    "testPrice": "$60",
+    "imageUrl": "https://i.ibb.co/sm9C6yW/Lipid-Panel.jpg"
+  },
+  {
+    "testId": "4",
+    "testName": "Thyroid Stimulating Hormone (TSH)",
+    "testDescription": "Evaluation of thyroid function.",
+    "testPrice": "$45",
+    "imageUrl": "https://i.ibb.co/6m2PxVY/Thyroid-Stimulating-Hormone-TSH.jpg"
+  },
+  {
+    "testId": "5",
+    "testName": "Liver Function Tests (LFTs)",
+    "testDescription": "Analysis of liver enzyme levels.",
+    "testPrice": "$70",
+    "imageUrl": "https://i.ibb.co/25gKwxC/Liver-Function-Tests-LFTs.jpg"
+  },
+  {
+    "testId": "6",
+    "testName": "Blood Glucose Test",
+    "testDescription": "Measurement of blood sugar levels.",
+    "testPrice": "$35",
+    "imageUrl": "https://i.ibb.co/G9cMPxq/Blood-Glucose-Test.webp"
+  }
+]

@@ -1,9 +1,11 @@
+import Banner from "../../Component/BioMedical/Banner/Banner";
+import Services from "../../Component/BioMedical/Services/Services";
+
 const BioMedical = () => {
   return (
     <div>
-      <div className="container mx-auto">
-        <h3>BioMedical Service</h3>
-      </div>
+      <Banner></Banner>
+      <Services></Services>
     </div>
   );
 };
