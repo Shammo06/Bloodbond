@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="footer p-5 text-white">
             <aside>
               <h6 className="text-4xl font-bold">
-                <span className="text-red-600">Blood</span>Bond
+                <span className="text-[#DC0000]">Blood</span>Bond
               </h6>
               <div className="mt-2">
                 <p className="text-left">+6221.2002.2012</p>
@@ -33,7 +33,7 @@ const Footer = () => {
               <header className="footer-title">Social</header>
               <div className="grid grid-flow-col gap-4">
                 <a
-                  className="cursor-pointer bg-[#EF3D32] hover:bg-[#4E4E4E] text-white p-2 rounded-full"
+                  className="cursor-pointer bg-[#DC0000] hover:bg-[#4E4E4E] text-white p-2 rounded-full"
                   href="#"
                 >
                   <svg
@@ -47,7 +47,7 @@ const Footer = () => {
                   </svg>
                 </a>
                 <a
-                  className="cursor-pointer bg-[#EF3D32] hover:bg-[#4E4E4E] text-white p-2 rounded-full"
+                  className="cursor-pointer bg-[#DC0000] hover:bg-[#4E4E4E] text-white p-2 rounded-full"
                   href="#"
                 >
                   <svg
@@ -61,7 +61,7 @@ const Footer = () => {
                   </svg>
                 </a>
                 <a
-                  className="cursor-pointer bg-[#EF3D32] hover:bg-[#4E4E4E] text-white p-2 rounded-full"
+                  className="cursor-pointer bg-[#DC0000] hover:bg-[#4E4E4E] text-white p-2 rounded-full"
                   href="#"
                 >
                   <svg

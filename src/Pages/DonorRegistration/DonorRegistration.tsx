@@ -86,7 +86,7 @@ const DonorRegistration = () => {
         axios.post('https://blood-bound.vercel.app/donorcreate', donorInfo)
             .then((res) => {
                 console.log(res)
-                if (res.status == 201) {
+                if (res.status === 201) {
                     Swal.fire({
                         title: "Registration Successful",
                         icon: "success",
@@ -95,16 +95,11 @@ const DonorRegistration = () => {
                 }
             })
             .catch((error) => {
-                console.log(error)
-                // Swal.fire({
-                //     title: 'This is an Error !!!',
-                //     icon: "error",
-                // });
+                console.error(error)
                 Swal.fire({
-                    title: "Registration Successful",
-                    icon: "success",
-                });
-                navigate("/");
+                    title: 'This is an Error !!!',
+                    icon: "error",
+                }); 
             });
 
 
