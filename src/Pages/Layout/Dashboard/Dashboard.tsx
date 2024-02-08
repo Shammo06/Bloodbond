@@ -5,6 +5,7 @@ import { TiHome } from "react-icons/ti";
 import { MdOutlineApproval } from "react-icons/md";
 import { MdOutlineVolunteerActivism } from "react-icons/md";
 import { TbBrandCampaignmonitor } from "react-icons/tb";
+import { LuTestTubes } from "react-icons/lu";
 
 const Dashboard: React.FC = () => {
     const [open, setOpen] = useState(true)
@@ -58,6 +59,26 @@ const Dashboard: React.FC = () => {
                                 }
                             >
                                 <span className="flex items-center gap-2"><span><TbBrandCampaignmonitor className="text-3xl"/></span><span className={`${!open && "scale-0"} duration-500`}>Manage Campaign</span></span>
+                            </NavLink>
+                        </li>
+                        <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                            <NavLink
+                                to="/dashboard/userhome"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                }
+                            >
+                                <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Home</span></span>
+                            </NavLink>
+                        </li>
+                        <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                            <NavLink
+                                to="/dashboard/userappointment"
+                                className={({ isActive, isPending }) =>
+                                    isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                }
+                            >
+                                <span className="flex items-center gap-2"><span><LuTestTubes className="text-3xl"/></span><span className={`${!open && "scale-0"} duration-500`}>Test Status</span></span>
                             </NavLink>
                         </li>
                     </ul>
