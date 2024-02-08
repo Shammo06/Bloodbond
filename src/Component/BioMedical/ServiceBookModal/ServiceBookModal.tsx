@@ -24,14 +24,14 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
     return;
   }
 
-  const { testName } = service;
+  const { testId, testName } = service;
   console.log(testName);
 
   if (!auth) {
     return;
   }
-
   const { user } = auth;
+
   if (!user) {
     return null;
   }
@@ -73,12 +73,28 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
+
+    const testName = formData.get("testName") as string;
     const userName = formData.get("name") as string;
     const userEmail = formData.get("email") as string;
     const date = formData.get("date") as string;
     const time = formData.get("time") as string;
     const phone = formData.get("phone") as string;
-    console.log("Form submitted", userName, userEmail, date, time, phone);
+    const address = formData.get("address") as string;
+
+    const bookingInfo = {
+      testId,
+      testName,
+      userName,
+      userEmail,
+      date,
+      time,
+      phone,
+      address,
+      status: "pending",
+    };
+
+    console.log("Form submitted", bookingInfo);
   };
 
   return (
@@ -197,6 +213,18 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
                   required
                 />
               </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Address</span>
+                </label>
+                <input
+                  type="text"
+                  name="address"
+                  placeholder="Your Address"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
               <button id="submit" type="submit"></button>
             </form>
           </div>
@@ -205,7 +233,6 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
           <div className="flex justify-end">
             <button
               onClick={handleSubmit}
-              id="submit"
               className="btn btn-outline bg-[#EA062B] text-white"
             >
               Book This Service
