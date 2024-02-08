@@ -18,8 +18,6 @@ import AllBloodRequest from "./Pages/AllBloodRequest/AllBloodRequest";
 import Appointment from "./Pages/Appointment/Appointment";
 import AdminHome from "./Pages/AdminHome/AdminHome";
 import Dashboard from "./Pages/Layout/Dashboard/Dashboard";
-import AdminHome from "./Pages/AdminHome/AdminHome";
-import Appointment from "./Pages/Appointment/Appointment";
 import VolunteerManage from "./Pages/VolunteerManage/VolunteerManage";
 import ManageCampaign from "./Pages/ManageCampaign/ManageCampaign";
 import UserHome from "./Pages/UserHome/UserHome";
