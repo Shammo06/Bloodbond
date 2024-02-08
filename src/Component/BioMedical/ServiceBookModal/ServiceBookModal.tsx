@@ -1,17 +1,31 @@
+import { useEffect, useRef } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { Service } from "../ServiceCard/ServiceCard";
 
 interface ServiceCardProps {
   service: Service;
+  closeModal: () => void;
 }
 
-const ServiceBookModal: React.FC<ServiceCardProps> = ({ service }) => {
+const ServiceBookModal: React.FC<ServiceCardProps> = ({
+  service,
+  closeModal,
+}) => {
+  const modalBtnRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (modalBtnRef.current) {
+      modalBtnRef.current.click();
+    }
+  }, []);
+
   const auth = useAuth();
   if (!service) {
     return;
   }
 
   const { testName } = service;
+  console.log(testName);
 
   if (!auth) {
     return;
@@ -70,7 +84,9 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({ service }) => {
   return (
     <div>
       <button
-        className="mb-5 mx-5 btn btn-outline bg-[#EA062B] text-white"
+        ref={modalBtnRef}
+        id="modalBtn"
+        className="mb-5 mx-5 btn btn-outline bg-[#EA062B] text-white hidden"
         onClick={() => {
           const modal = document.getElementById(
             "my_modal_4"
@@ -87,7 +103,12 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({ service }) => {
           <div className="flex items-center justify-between">
             <h3 className="font-bold text-lg">Service Booking</h3>
             <form method="dialog" className="">
-              <button className="btn btn-sm btn-circle btn-ghost">✕</button>
+              <button
+                onClick={closeModal}
+                className="btn btn-sm btn-circle btn-ghost"
+              >
+                ✕
+              </button>
             </form>
           </div>
           <div className="divider m-0"></div>

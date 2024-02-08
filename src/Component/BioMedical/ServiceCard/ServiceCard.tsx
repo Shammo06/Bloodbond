@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import ServiceBookModal from "../ServiceBookModal/ServiceBookModal";
+import { useState } from "react";
 
 export interface Service {
   testId: string;
@@ -13,6 +15,26 @@ interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // const clickModalOpeningBtn = () => {
+  //   const modalButton = document.getElementById(
+  //     "modalBtn"
+  //   ) as HTMLButtonElement | null;
+  //   if (modalButton) {
+  //     modalButton.click();
+  //   }
+  // };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+    // clickModalOpeningBtn();
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   if (!service) {
     return;
   }
@@ -39,10 +61,22 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
       </div>
       <Link
         to={`/services/${testId}`}
-        className="mb-5 mx-5 btn btn-outline bg-[#EA062B] text-white"
+        className="mb-5 mx-5 btn btn-outline bg-[#EA062B] text-white hidden"
       >
         See Details
       </Link>
+      <button
+        onClick={openModal}
+        className="mb-5 mx-5 btn btn-outline bg-[#EA062B] text-white"
+      >
+        Book Now
+      </button>
+      {isModalOpen && (
+        <ServiceBookModal
+          service={service}
+          closeModal={closeModal}
+        ></ServiceBookModal>
+      )}
     </div>
   );
 };
