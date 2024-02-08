@@ -20,6 +20,7 @@ import ServiceDetails from "./Component/BioMedical/ServiceDetails/ServiceDetails
 import Dashboard from "./Pages/Layout/Dashboard/Dashboard";
 import AdminHome from "./Pages/AdminHome/AdminHome";
 import Appointment from "./Pages/Appointment/Appointment";
+import CampaignDetails from "./Pages/CampaignDetails/CampaignDetails";
 import VolunteerManage from "./Pages/VolunteerManage/VolunteerManage";
 import ManageCampaign from "./Pages/ManageCampaign/ManageCampaign";
 import UserAppointment from "./Pages/UserAppointment/UserAppointment";
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "/campaign",
         element: <Campaign></Campaign>,
+      },
+      {
+        path: "/campaignDetails",
+        element: <CampaignDetails></CampaignDetails>
       },
       {
         path: "/donate",
