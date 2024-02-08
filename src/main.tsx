@@ -16,10 +16,15 @@ import Campaign from "./Pages/Campaign/Campaign";
 import Donate from "./Pages/Donate/Donate";
 import AllBloodRequest from "./Pages/AllBloodRequest/AllBloodRequest";
 import BioMedical from "./Pages/BioMedical/BioMedical";
+import ServiceDetails from "./Component/BioMedical/ServiceDetails/ServiceDetails"; 
 import Dashboard from "./Pages/Layout/Dashboard/Dashboard";
 import AdminHome from "./Pages/AdminHome/AdminHome";
 import Appointment from "./Pages/Appointment/Appointment";
 import CampaignDetails from "./Pages/CampaignDetails/CampaignDetails";
+import VolunteerManage from "./Pages/VolunteerManage/VolunteerManage";
+import ManageCampaign from "./Pages/ManageCampaign/ManageCampaign";
+import UserAppointment from "./Pages/UserAppointment/UserAppointment";
+import UserHome from "./Pages/UserHome/UserHome";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +83,10 @@ const router = createBrowserRouter([
         path: "/bioMedical",
         element: <BioMedical></BioMedical>,
       },
+      {
+        path: "/services/:id",
+        element: <ServiceDetails></ServiceDetails>,
+      },
     ],
   },
   {
@@ -91,6 +100,22 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/appointment",
         element: <Appointment></Appointment>
+      },
+      {
+        path: "/dashboard/volunteer",
+        element: <VolunteerManage></VolunteerManage>
+      },
+      {
+        path: "/dashboard/campaign",
+        element: <ManageCampaign></ManageCampaign>
+      },
+      {
+        path: "/dashboard/userhome",
+        element: <UserHome></UserHome>
+      },
+      {
+        path: "/dashboard/userappointment",
+        element: <UserAppointment></UserAppointment>
       }
     ]
   }
