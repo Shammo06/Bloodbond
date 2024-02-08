@@ -15,6 +15,14 @@ import BloodRequest from "./Pages/BloodRequest/BloodRequest";
 import Campaign from "./Pages/Campaign/Campaign";
 import Donate from "./Pages/Donate/Donate";
 import AllBloodRequest from "./Pages/AllBloodRequest/AllBloodRequest";
+import Appointment from "./Pages/Appointment/Appointment";
+import AdminHome from "./Pages/AdminHome/AdminHome";
+import Dashboard from "./Pages/Layout/Dashboard/Dashboard";
+import VolunteerManage from "./Pages/VolunteerManage/VolunteerManage";
+import ManageCampaign from "./Pages/ManageCampaign/ManageCampaign";
+import UserHome from "./Pages/UserHome/UserHome";
+import UserAppointment from "./Pages/UserAppointment/UserAppointment";
+import Chat from "./Component/Chat/Chat";
 
 const router = createBrowserRouter([
   {
@@ -64,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: "/allrequest",
         element: <AllBloodRequest></AllBloodRequest>,
+      },
+      {
+        path: "chat",
+        element: <Chat></Chat>,
       },
     ],
   },
