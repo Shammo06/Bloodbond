@@ -1,5 +1,5 @@
 
-const UserAppointment = () => {
+const UserAppointment: React.FC = () => {
     return (
         <div className="bg-white p-5 border rounded-lg ">
         <h2 className="text-2xl font-semibold border-l-4 border-red-600 pl-2">All Medical Test</h2>
