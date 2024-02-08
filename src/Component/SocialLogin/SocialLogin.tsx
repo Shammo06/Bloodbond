@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
+
 const SocialLogin = () => {
   const auth = useAuth();
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const SocialLogin = () => {
 
   const handleGoogleLogin = () => {
     googleLogin()
-      .then(() => {
+      .then(() => {        
         Swal.fire({
           icon: "success",
           title: "Login Successful",

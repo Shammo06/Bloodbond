@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import useAuth from "../../hooks/useAuth";
 
 interface FormData {
   patientName: string;
@@ -8,7 +9,7 @@ interface FormData {
   bloodBag: number;
   time: string;
   location: string;
-  phone: number;
+  phone: string;
 }
 
 const BloodRequest = () => {
@@ -19,13 +20,35 @@ const BloodRequest = () => {
     reset,
   } = useForm<FormData>();
 
+  const auth = useAuth();
+    if (!auth) {
+        return;
+    }
+
+    const { user } = auth;
+
   const onSubmit = (data: FormData) => {
+
     console.log(data);
-    axios.post("https://blood-bound.vercel.app/bloodrequest", data).then(() =>
+    const { phone,bloodGroup, location,time,bloodBag,patientName } = data;
+    
+    const request = {
+      email: user?.email,
+      phone,
+      bloodGroup,
+      location,
+      time,
+      bloodBag,
+      patientName,
+  }
+  console.log(request)
+    axios.post("https://blood-bound.vercel.app/createbloodrequest", request)
+    .then(() =>
       Swal.fire({
         title: "Your Blood Request Created Successful",
         icon: "success",
       })
+    .catch(error=>console.log(error.message))
     );
 
     reset();
@@ -68,6 +91,7 @@ const BloodRequest = () => {
               className="select select-bordered  text-lg text-black "
               {...register("bloodGroup", { required: true })}
             >
+              <option value=""></option>
               <option value="A+">A+</option>
               <option value="A-">A-</option>
               <option value="B+">B+</option>
@@ -148,7 +172,7 @@ const BloodRequest = () => {
               <span className="label-text text-black">Contact Number</span>
             </label>
             <input
-              type="number"
+              type="text"
               className="input input-bordered"
               {...register("phone", { required: true })}
             />
