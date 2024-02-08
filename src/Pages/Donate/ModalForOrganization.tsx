@@ -25,9 +25,9 @@ export default function ModalOragnization() {
             {/* @ts-ignore */}
             <StripeComponent />
             <div className="flex w-full justify-between">
-              <form method="dialog">
+              <form method="dialog" className="flex w-full justify-end">
                 {/* if there is a button in form, it will close the modal */}
-                <button className="btn">Close</button>
+                <button className="btn ">Close</button>
               </form>
             </div>
           </div>
