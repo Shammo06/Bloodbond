@@ -15,6 +15,7 @@ import BloodRequest from "./Pages/BloodRequest/BloodRequest";
 import Campaign from "./Pages/Campaign/Campaign";
 import Donate from "./Pages/Donate/Donate";
 import AllBloodRequest from "./Pages/AllBloodRequest/AllBloodRequest";
+import Chat from "./Component/Chat/Chat";
 
 const router = createBrowserRouter([
   {
@@ -55,7 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/campaign",
-        element: <Campaign></Campaign>
+        element: <Campaign></Campaign>,
       },
       {
         path: "/donate",
@@ -63,8 +64,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/allrequest",
-        element: <AllBloodRequest></AllBloodRequest>
-      }
+        element: <AllBloodRequest></AllBloodRequest>,
+      },
+      {
+        path: "chat",
+        element: <Chat></Chat>,
+      },
     ],
   },
 ]);
