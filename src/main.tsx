@@ -21,7 +21,9 @@ import Dashboard from "./Pages/Layout/Dashboard/Dashboard";
 import AdminHome from "./Pages/AdminHome/AdminHome";
 import Appointment from "./Pages/Appointment/Appointment";
 import VolunteerManage from "./Pages/VolunteerManage/VolunteerManage";
-import ManageCampaign from "./Pages/ManageCampaign/ManageCampaign"; 
+import ManageCampaign from "./Pages/ManageCampaign/ManageCampaign";
+import UserAppointment from "./Pages/UserAppointment/UserAppointment";
+import UserHome from "./Pages/UserHome/UserHome";
 
 const router = createBrowserRouter([
   {
@@ -101,6 +103,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/campaign",
         element: <ManageCampaign></ManageCampaign>
+      },
+      {
+        path: "/dashboard/userhome",
+        element: <UserHome></UserHome>
+      },
+      {
+        path: "/dashboard/userappointment",
+        element: <UserAppointment></UserAppointment>
       }
     ]
   }
