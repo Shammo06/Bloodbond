@@ -50,7 +50,10 @@ const Navbar = () => {
         <NavLink to="/about">About Us</NavLink>
       </li>
       <li>
-        <NavLink to="/mission">Mission</NavLink>
+        <NavLink to="/donorSearch">Search Donor</NavLink>
+      </li>
+      <li>
+        <NavLink to="/chat">Chat</NavLink>
       </li>
       <li>
         <NavLink to="/campaign">Campaign</NavLink>
@@ -59,10 +62,17 @@ const Navbar = () => {
         <NavLink to="/bloodRequest">Request Blood</NavLink>
       </li>
       <li>
+        <NavLink to="/allRequest">Blood Request List</NavLink>
+      </li>
+      <li>
         <NavLink to="/donate">Donate Us</NavLink>
+      </li>
+      <li>
+        <NavLink to="/bioMedical">Bio-Medical</NavLink>
       </li>
     </>
   );
+
   return (
     <div className=" navbar  z-50 bg-[#DC0000] text-white font-semibold">
       <div className="navbar-start">
@@ -97,7 +107,12 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {user ? (
-          <button className="btn btn-outline text-white rounded-full btn-sm" onClick={handleLogOut}>Log Out</button>
+          <button
+            className="btn btn-outline text-white rounded-full btn-sm"
+            onClick={handleLogOut}
+          >
+            Log Out
+          </button>
         ) : (
           <NavLink to="/login" className="btn btn-outline text-white">
             Join

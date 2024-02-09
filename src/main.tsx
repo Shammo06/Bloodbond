@@ -15,6 +15,16 @@ import BloodRequest from "./Pages/BloodRequest/BloodRequest";
 import Campaign from "./Pages/Campaign/Campaign";
 import Donate from "./Pages/Donate/Donate";
 import AllBloodRequest from "./Pages/AllBloodRequest/AllBloodRequest";
+import Appointment from "./Pages/Appointment/Appointment";
+import AdminHome from "./Pages/AdminHome/AdminHome";
+import Dashboard from "./Pages/Layout/Dashboard/Dashboard";
+import VolunteerManage from "./Pages/VolunteerManage/VolunteerManage";
+import ManageCampaign from "./Pages/ManageCampaign/ManageCampaign";
+import UserHome from "./Pages/UserHome/UserHome";
+import UserAppointment from "./Pages/UserAppointment/UserAppointment";
+import Chat from "./Component/Chat/Chat";
+import CampaignDetails from "./Pages/CampaignDetails/CampaignDetails";
+import BioMedical from "./Pages/BioMedical/BioMedical";
 
 const router = createBrowserRouter([
   {
@@ -55,7 +65,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/campaign",
-        element: <Campaign></Campaign>
+        element: <Campaign></Campaign>,
+      },
+      {
+        path: "/campaignDetails",
+        element: <CampaignDetails></CampaignDetails>,
       },
       {
         path: "/donate",
@@ -63,8 +77,46 @@ const router = createBrowserRouter([
       },
       {
         path: "/allrequest",
-        element: <AllBloodRequest></AllBloodRequest>
-      }
+        element: <AllBloodRequest></AllBloodRequest>,
+      },
+      {
+        path: "chat",
+        element: <Chat></Chat>,
+      },
+      {
+        path: "bioMedical",
+        element: <BioMedical></BioMedical>,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "/dashboard/home",
+        element: <AdminHome></AdminHome>,
+      },
+      {
+        path: "/dashboard/appointment",
+        element: <Appointment></Appointment>,
+      },
+      {
+        path: "/dashboard/volunteer",
+        element: <VolunteerManage></VolunteerManage>,
+      },
+      {
+        path: "/dashboard/campaign",
+        element: <ManageCampaign></ManageCampaign>,
+      },
+      {
+        path: "/dashboard/userhome",
+        element: <UserHome></UserHome>,
+      },
+      {
+        path: "/dashboard/userappointment",
+        element: <UserAppointment></UserAppointment>,
+      },
     ],
   },
 ]);

@@ -14,7 +14,7 @@ export default function Modal() {
       .catch((err) => {
         console.log(err);
       });
-  },[]);
+  }, []);
 
   return (
     <>
@@ -53,7 +53,7 @@ export default function Modal() {
                     <td>{campaign?.title}</td>
                     <td>
                       {/* @ts-ignore */}
-                      <ModalForPayment  campaignId={campaign?._id} />
+                      <ModalForPayment campaignId={campaign?._id} />
                     </td>
                   </tr>
                 ))}
@@ -63,7 +63,6 @@ export default function Modal() {
 
           <div className="modal-action">
             <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
               <button className="btn">Close</button>
             </form>
           </div>

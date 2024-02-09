@@ -11,6 +11,8 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+// import axios from "axios";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 interface AuthProviderProps {
   children: ReactNode;
@@ -40,6 +42,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
 
   // create user with email and password
   const createUser = async (email: string, password: string): Promise<void> => {
@@ -96,7 +99,10 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     try {
       const result = await signInWithPopup(auth, googleProvider);
-      console.log(result.user);
+      const user = {name:result.user.displayName, photo:result.user.photoURL, email:result.user.email }
+      axiosPublic.post("/usercreate", user)
+      .then()
+      .catch(error => console.log(error.message))      
     } catch (error) {
       console.log("Error login user:", error);
       throw error;
