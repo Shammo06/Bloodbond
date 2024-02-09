@@ -16,7 +16,7 @@ const AllBloodRequest: React.FC = () => {
   const [allRequest, setAllRequest] = useState<BloodRequest[]>([]);
 
   useEffect(() => {
-    axios.get<{ bloodRequests: BloodRequest[] }>('https://blood-bound.vercel.app/getBloodRequests')
+    axios.get<{ bloodRequests: BloodRequest[] }>('https://blood-bound.vercel.app/getbloodrequests')
       .then(res => setAllRequest(res.data.bloodRequests));
   }, []);
 

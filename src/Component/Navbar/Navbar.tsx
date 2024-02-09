@@ -50,13 +50,19 @@ const Navbar = () => {
         <NavLink to="/about">About Us</NavLink>
       </li>
       <li>
-        <NavLink to="/mission">Mission</NavLink>
+        <NavLink to="/donorSearch">Search Donor</NavLink>
+      </li>
+      <li>
+        <NavLink to="/chat">Chat</NavLink>
       </li>
       <li>
         <NavLink to="/campaign">Campaign</NavLink>
       </li>
       <li>
         <NavLink to="/bloodRequest">Request Blood</NavLink>
+      </li>
+      <li>
+        <NavLink to="/allRequest">Blood Request List</NavLink>
       </li>
       <li>
         <NavLink to="/donate">Donate Us</NavLink>
