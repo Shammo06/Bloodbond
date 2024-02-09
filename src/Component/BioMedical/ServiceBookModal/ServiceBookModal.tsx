@@ -49,7 +49,7 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
     return;
   }
 
-  const { testId, testName } = service;
+  const { _id, testName, testPrice, imageUrl } = service;
   console.log(testName);
 
   if (!auth) {
@@ -108,8 +108,10 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
     const address = formData.get("address") as string;
 
     const bookingInfo = {
-      testId,
+      testId: _id,
       testName,
+      testPrice,
+      imageUrl,
       userName,
       userEmail,
       date,
