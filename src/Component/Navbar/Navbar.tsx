@@ -1,10 +1,10 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
   const auth = useAuth();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   if (!auth) {
     return;
@@ -29,7 +29,7 @@ const Navbar = () => {
               title: "Log Out Successful",
               icon: "success",
             });
-            navigate("/");
+            // navigate("/");
           })
           .catch(() => {
             Swal.fire({

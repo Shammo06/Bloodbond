@@ -42,7 +42,7 @@ const DonorSearch = () => {
     useEffect(() => {
         fetch('/District.json')
             .then(res => res.json())
-            .then(data => setDistrict(data.donors))
+            .then(data => setDistrict(data))
             .catch(error => console.error('Error fetching District data:', error));
 
         // axios.get('https://blood-bound.vercel.app/getdonars')

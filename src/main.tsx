@@ -25,6 +25,7 @@ import VolunteerManage from "./Pages/VolunteerManage/VolunteerManage";
 import ManageCampaign from "./Pages/ManageCampaign/ManageCampaign";
 import UserAppointment from "./Pages/UserAppointment/UserAppointment";
 import UserHome from "./Pages/UserHome/UserHome";
+import PrivateRoute from "./Routes/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/donorRegistration",
-        element: <DonorRegistration></DonorRegistration>,
+        element: <PrivateRoute><DonorRegistration></DonorRegistration></PrivateRoute>,
       },
       {
         path: "/donorSearch",
