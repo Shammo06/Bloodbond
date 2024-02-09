@@ -29,8 +29,8 @@ const CampaignDetails: React.FC = () => {
         const modal = document.getElementById('my_modal_2')
 
         if (modal) {
-            // modal.style.display = "none";
-            modal.close()
+            modal.style.display = "none";
+            // modal.close()
         }
         Swal.fire({
             position: "center",
