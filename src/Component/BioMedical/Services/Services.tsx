@@ -1,8 +1,9 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import ServiceCard from "../ServiceCard/ServiceCard";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 interface Service {
+  _id: string;
   testId: string;
   testName: string;
   testDescription: string;
@@ -12,21 +13,22 @@ interface Service {
 
 const Services: React.FC = () => {
   const [services, setServices] = useState<Service[]>([]);
+  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<Service[]>(
-          "/public/Bio-MedicalServices.json"
+        const response = await axiosPublic.get<{ services: Service[] }>(
+          "/getservices"
         );
-        setServices(response.data);
+        setServices(response.data.services);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [axiosPublic]);
 
   return (
     <div>
@@ -37,7 +39,7 @@ const Services: React.FC = () => {
         {/* services */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service) => (
-            <ServiceCard key={service.testId} service={service}></ServiceCard>
+            <ServiceCard key={service._id} service={service}></ServiceCard>
           ))}
         </div>
       </div>
