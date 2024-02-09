@@ -47,14 +47,9 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/about">About Us</NavLink>
+        <NavLink to="/bioMedical">Bio-Medical</NavLink>
       </li>
-      <li>
-        <NavLink to="/donorSearch">Search Donor</NavLink>
-      </li>
-      <li>
-        <NavLink to="/chat">Chat</NavLink>
-      </li>
+
       <li>
         <NavLink to="/campaign">Campaign</NavLink>
       </li>
@@ -62,13 +57,13 @@ const Navbar = () => {
         <NavLink to="/bloodRequest">Request Blood</NavLink>
       </li>
       <li>
-        <NavLink to="/allRequest">Blood Request List</NavLink>
-      </li>
-      <li>
         <NavLink to="/donate">Donate Us</NavLink>
       </li>
       <li>
-        <NavLink to="/bioMedical">Bio-Medical</NavLink>
+        <NavLink to="/chat">Community Chat</NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard">DashBoard</NavLink>{" "}
       </li>
     </>
   );
@@ -95,7 +90,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 text-black shadow bg-base-100 rounded-box w-52"
           >
             {links}
           </ul>
@@ -107,15 +102,19 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {user ? (
-          <button
-            className="btn btn-outline text-white rounded-full btn-sm"
-            onClick={handleLogOut}
-          >
-            Log Out
-          </button>
+          <>
+            <button
+              className="btn btn-outline text-white"
+              onClick={handleLogOut}
+            >
+              LogOut
+            </button>
+          </>
         ) : (
-          <NavLink to="/login" className="btn btn-outline text-white">
-            Join
+          <NavLink to="/login">
+            <button className="btn btn-outline text-white">
+              Login / Register
+            </button>
           </NavLink>
         )}
       </div>
