@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { Service } from "../ServiceCard/ServiceCard";
+import { useNavigate } from "react-router-dom";
 
 interface ServiceCardProps {
   service: Service;
@@ -12,6 +13,17 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
   closeModal,
 }) => {
   const modalBtnRef = useRef<HTMLButtonElement>(null);
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!auth || !auth.user) {
+      // If user is not valid, redirect to login page
+      closeModal(); // Close modal
+      // window.location.href = '/login'; // Redirect to login page
+      navigate("/login");
+    }
+  }, [auth, closeModal, navigate]);
 
   useEffect(() => {
     if (modalBtnRef.current) {
@@ -33,7 +45,6 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
     };
   }, [closeModal]);
 
-  const auth = useAuth();
   if (!service) {
     return;
   }
