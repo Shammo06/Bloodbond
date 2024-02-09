@@ -107,15 +107,28 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         {user ? (
-          <button
-            className="btn btn-outline text-white rounded-full btn-sm"
-            onClick={handleLogOut}
-          >
-            Log Out
-          </button>
+          <>
+            <details className="dropdown">
+              <summary className="m-1 btn">
+                <div className="avatar">
+                  <div className="w-24 rounded-full">
+                    <img src={user?.photoURL} />
+                  </div>
+                </div>
+              </summary>
+              <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                <li>
+                  <NavLink to="/dashboard">DashBoard</NavLink>
+                </li>
+                <li>
+                  <button onClick={handleLogOut}>LogOut</button>
+                </li>
+              </ul>
+            </details>
+          </>
         ) : (
-          <NavLink to="/login" className="btn btn-outline text-white">
-            Join
+          <NavLink to="/login">
+            <button className="btn btn-outline">Login / Register</button>
           </NavLink>
         )}
       </div>

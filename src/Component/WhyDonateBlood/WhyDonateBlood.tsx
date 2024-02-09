@@ -17,7 +17,7 @@ const WhyDonateBlood = () => {
           {/* div for img */}
           <div>
             <img
-              src={"https://i.ibb.co/379Mhqw/donor-purple-circle.png"}
+              src={"https://i.ibb.co/XWJFJxs/why-Choose-Us.png"}
               alt="Img of Blood Donor"
             />
           </div>
