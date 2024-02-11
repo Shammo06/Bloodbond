@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
 import ServiceCard from "../ServiceCard/ServiceCard";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import useBioMedicalServices from "../../../hooks/useBioMedicalServices";
 
 interface Service {
   _id: string;
@@ -12,23 +11,7 @@ interface Service {
 }
 
 const Services: React.FC = () => {
-  const [services, setServices] = useState<Service[]>([]);
-  const axiosPublic = useAxiosPublic();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axiosPublic.get<{ services: Service[] }>(
-          "/getservices"
-        );
-        setServices(response.data.services);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, [axiosPublic]);
+  const [allBioMedicalServices] = useBioMedicalServices();
 
   return (
     <div>
@@ -38,7 +21,7 @@ const Services: React.FC = () => {
         </h3>
         {/* services */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service) => (
+          {allBioMedicalServices.map((service: Service) => (
             <ServiceCard key={service._id} service={service}></ServiceCard>
           ))}
         </div>
