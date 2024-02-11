@@ -13,12 +13,10 @@ interface Service {
 const Services: React.FC = () => {
   const [allBioMedicalServices, isLoading] = useBioMedicalServices();
 
-  console.log(allBioMedicalServices);
-
   return (
     <div>
       <div className="container mx-auto my-24">
-        <h3 className="font-bold text-center text-4xl mb-16">
+        <h3 className="font-bold text-center text-4xl mb-16 mx-4">
           Our Bio-Medical Services
         </h3>
 
@@ -32,7 +30,7 @@ const Services: React.FC = () => {
         ) : (
           <div>
             {allBioMedicalServices.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-4 xl:gap-6 px-2">
                 {allBioMedicalServices?.map((service: Service) => (
                   <ServiceCard
                     key={service._id}
