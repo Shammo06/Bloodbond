@@ -1,10 +1,12 @@
 import axios from "axios";
 import {  useRef } from "react";
 import useAuth from "../../hooks/useAuth";
+import useChat from "../../hooks/useChat";
 
 
 
 const CommunityChat = () => {
+    const [data,refetch] = useChat();
     const auth = useAuth();
     const { user } = auth;
     const message = useRef<HTMLInputElement>(null)
@@ -21,6 +23,7 @@ const CommunityChat = () => {
             .then()
             .catch(error=>console.log(error.message))           
             message.current.value = '';
+            refetch();
         }
                
       };
@@ -32,7 +35,10 @@ const CommunityChat = () => {
             <div className="flex flex-col h-full">
                 <div className="flex-1 overflow-y-auto p-4 bg-gray-200 rounded-md">
                 <ul>
-                
+                    {
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        data.map((item: { message: any; }) =>item.message )
+                    }
                 </ul>
                 </div>
 

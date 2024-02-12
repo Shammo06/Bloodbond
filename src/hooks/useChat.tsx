@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const useData = () => {
+const useChat = () => {
     const { refetch, data: data = [] } = useQuery({
         queryKey: ['data'],
         queryFn: async() => {
@@ -13,4 +13,4 @@ const useData = () => {
     return [data, refetch]
 };
 
-export default useData;
+export default useChat;
