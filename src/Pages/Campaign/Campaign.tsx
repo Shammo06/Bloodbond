@@ -4,8 +4,12 @@ import group from "../../assets/cm1.jpg";
 import group2 from "../../assets/cm2.jpg";
 import group3 from "../../assets/doctor.jpg";
 import CampaignCard from "../../Component/CampaignCard/CampaignCard";
+import useCampaigns from "../../hooks/useCampaigns";
 
 const Campaign = () => {
+  const [allCampaigns] = useCampaigns();
+  console.log(allCampaigns);
+
   return (
     <div className="pt-16">
       <div
@@ -37,9 +41,9 @@ const Campaign = () => {
         <h1 className="text-3xl text-center font-bold pb-6">
           Upcoming Camping
         </h1>
-          
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <CampaignCard></CampaignCard>
+          <CampaignCard></CampaignCard>
           <div className="bg-slate-100 p-4 max-w-[540px] space-y-2 rounded-xl duration-500 border-b-4 border-white  hover:border-[#ea062b]">
             <div className="relative">
               <img className="h-[210px] w-full" src={group2} alt="" />
@@ -50,7 +54,7 @@ const Campaign = () => {
             </div>
             <address>Motijhil, Dhaka</address>
             <h2 className="text-2xl font-bold text-[#ea062b]">
-            Unity for Blood: Community Campaign
+              Unity for Blood: Community Campaign
             </h2>
             <p>
               Blood group collection involves determining an individual's blood
@@ -67,7 +71,7 @@ const Campaign = () => {
             </div>
             <address>Rajshahi Medical college, Rajshahi</address>
             <h2 className="text-2xl font-bold text-[#ea062b]">
-            Hopeful Hearts Blood Drive
+              Hopeful Hearts Blood Drive
             </h2>
             <p>
               Blood group collection involves determining an individual's blood
@@ -85,7 +89,7 @@ const Campaign = () => {
             </div>
             <address>Noakhali Medical College, Noakhali</address>
             <h2 className="text-2xl font-bold text-[#ea062b]">
-            Save a Life: Mega Blood Donation Event
+              Save a Life: Mega Blood Donation Event
             </h2>
             <p>
               Blood group collection involves determining an individual's blood
@@ -102,7 +106,7 @@ const Campaign = () => {
             </div>
             <address>Pabna Govt. College, Pabna</address>
             <h2 className="text-2xl font-bold text-[#ea062b]">
-            Youth for Blood: Student-Led Campaign
+              Youth for Blood: Student-Led Campaign
             </h2>
             <p>
               Blood group collection involves determining an individual's blood
