@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-const useCampaigns = () => {
+const useUpcomingCampaigns = () => {
   const {
     data: allCampaigns = [],
     isLoading,
@@ -17,4 +17,4 @@ const useCampaigns = () => {
   return [allCampaigns, isLoading, refetch];
 };
 
-export default useCampaigns;
+export default useUpcomingCampaigns;
