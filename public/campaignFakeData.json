@@ -1,6 +1,8 @@
 [
   {
-    "title": "LifeSaver Blood Donation Drive",
+    "campaignId": "1",
+    "campaignImgUrl": "imgUrl",
+    "campaignTitle": "LifeSaver Blood Donation Drive",
     "description": "Join us in saving lives through blood donation. Your contribution can make a significant impact on those in need.",
     "startDate": "2024-03-01",
     "endDate": "2024-03-07",
@@ -9,7 +11,9 @@
     "subDistrict": "Mirpur"
   },
   {
-    "title": "Unity for Blood: Community Campaign",
+    "campaignId": "2",
+    "campaignImgUrl": "imgUrl",
+    "campaignTitle": "Unity for Blood: Community Campaign",
     "description": "Let's come together as a community to support our local hospitals. Donate blood and be a part of this unity for a healthier society.",
     "startDate": "2024-02-15",
     "endDate": "2024-02-20",
@@ -18,7 +22,9 @@
     "subDistrict": "Agrabad"
   },
   {
-    "title": "Hopeful Hearts Blood Drive",
+    "campaignId": "3",
+    "campaignImgUrl": "imgUrl",
+    "campaignTitle": "Hopeful Hearts Blood Drive",
     "description": "Spread hope by giving the gift of life. Join our blood donation campaign and be a beacon of light for those in medical need.",
     "startDate": "2024-04-10",
     "endDate": "2024-04-15",
@@ -27,7 +33,9 @@
     "subDistrict": "Boalia"
   },
   {
-    "title": "Save a Life: Mega Blood Donation Event",
+    "campaignId": "4",
+    "campaignImgUrl": "imgUrl",
+    "campaignTitle": "Save a Life: Mega Blood Donation Event",
     "description": "Participate in our mega blood donation event and be a hero. Your generosity can save multiple lives in our community.",
     "startDate": "2024-05-20",
     "endDate": "2024-05-25",
@@ -36,12 +44,25 @@
     "subDistrict": "Sonnadanga"
   },
   {
-    "title": "Youth for Blood: Student-Led Campaign",
+    "campaignId": "5",
+    "campaignImgUrl": "imgUrl",
+    "campaignTitle": "Youth for Blood: Student-Led Campaign",
     "description": "Empower the youth to contribute to the well-being of society. This student-led blood donation campaign aims to create a positive impact.",
     "startDate": "2024-06-15",
     "endDate": "2024-06-20",
     "division": "Sylhet",
     "district": "Sylhet",
     "subDistrict": "Habiganj"
+  },
+  {
+    "campaignId": "6",
+    "campaignImgUrl": "imgUrl",
+    "campaignTitle": "Heartbeat Heroes: Blood Drive Initiative",
+    "description": "Join us in our mission to be the heartbeat heroes of our community. Every drop counts, and your contribution can make a life-saving difference.",
+    "startDate": "2024-07-10",
+    "endDate": "2024-07-15",
+    "division": "Barishal",
+    "district": "Barishal",
+    "subDistrict": "Bakerganj"
   }
 ]
