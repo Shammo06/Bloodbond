@@ -1,11 +1,28 @@
-import { useRef } from "react";
+import axios from "axios";
+import {  useRef } from "react";
+import useAuth from "../../hooks/useAuth";
+
 
 
 const CommunityChat = () => {
+    const auth = useAuth();
+    const { user } = auth;
     const message = useRef<HTMLInputElement>(null)
     const handleSendMessage = () => {
         const chat = message.current?.value;
-        console.log(chat)        
+        const data ={
+            date: '',
+            user: user.displayName,
+            message: chat,
+        }
+        if(chat){
+            console.log(chat)
+            axios.post('https://blood-bound.vercel.app/communityChat',data)
+            .then()
+            .catch(error=>console.log(error.message))           
+            message.current.value = '';
+        }
+               
       };
     return (
         <div>
