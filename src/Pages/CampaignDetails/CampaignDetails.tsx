@@ -45,7 +45,7 @@ const CampaignDetails: React.FC = () => {
         <div>
             <div className="bg-base-100 shadow-lg">
                 <figure className="relative">
-                    <img className="w-full max-h-[450px] mx-auto " src={group} alt="campaign" />
+                    <img className="w-3/4 max-h-[450px] mx-auto " src={group} alt="campaign" />
 
                 </figure>
                 <div className="md:mt-5 mb-10 pb-8">
