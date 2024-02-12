@@ -25,6 +25,7 @@ import UserAppointment from "./Pages/UserAppointment/UserAppointment";
 import Chat from "./Component/Chat/Chat";
 import CampaignDetails from "./Pages/CampaignDetails/CampaignDetails";
 import BioMedical from "./Pages/BioMedical/BioMedical";
+import CommunityChat from "./Component/Chat/CommunityChat";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
       {
         path: "chat",
         element: <Chat></Chat>,
+      },
+      {
+        path: "communityChat",
+        element: <CommunityChat/>,
       },
       {
         path: "bioMedical",

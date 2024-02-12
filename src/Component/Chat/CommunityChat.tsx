@@ -4,7 +4,7 @@ import { useRef } from "react";
 const CommunityChat = () => {
     const message = useRef<HTMLInputElement>(null)
     const handleSendMessage = () => {
-        const chat = message.current.value;
+        const chat = message.current?.value;
         console.log(chat)        
       };
     return (
