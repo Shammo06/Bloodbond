@@ -2,9 +2,12 @@
 import Swal from "sweetalert2";
 import group from "../../assets/cm1.jpg";
 import useAuth from "../../hooks/useAuth";
+import { useParams } from "react-router-dom";
 
 
 const CampaignDetails: React.FC = () => {
+    const { id } = useParams();
+    console.log(id);
 
 
     const auth = useAuth();
