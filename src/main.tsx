@@ -26,6 +26,9 @@ import Chat from "./Component/Chat/Chat";
 import CampaignDetails from "./Pages/CampaignDetails/CampaignDetails";
 import BioMedical from "./Pages/BioMedical/BioMedical";
 import CommunityChat from "./Component/Chat/CommunityChat";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -129,7 +132,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router}/>
+      </QueryClientProvider> 
     </AuthProvider>
   </React.StrictMode>
 );
