@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import "./Login.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { FirebaseError } from "firebase/app";
@@ -23,6 +23,9 @@ const initialValues = {
 const Login: React.FC = () => {
   const auth = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  console.log(location);
 
   const handleSubmit = (values: typeof initialValues) => {
     const email = values.email;
@@ -38,7 +41,9 @@ const Login: React.FC = () => {
             title: "Login Successful",
             icon: "success",
           });
-          navigate("/");
+
+          // navigate after login
+          navigate(location?.state ? location.state : "/");
         })
         .catch((error: FirebaseError) => {
           console.log(error);

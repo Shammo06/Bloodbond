@@ -1,6 +1,6 @@
 // import { Link } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Campaign } from "../../Pages/Campaign/UpcomingCampaigns/UpcomingCampaigns";
+import { Campaign } from "../../../Pages/Campaign/UpcomingCampaigns/UpcomingCampaigns";
 import React from "react";
 
 interface CampaignCardProps {

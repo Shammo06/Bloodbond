@@ -1,4 +1,4 @@
-import CampaignCard from "../../../Component/CampaignCard/CampaignCard";
+import CampaignCard from "../../../Component/Campaign/CampaignCard/CampaignCard";
 import useUpcomingCampaigns from "../../../hooks/useUpcomingCampaigns";
 
 export interface Campaign {
