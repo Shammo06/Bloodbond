@@ -69,7 +69,7 @@ const CampaignDetails: React.FC = () => {
             >
               Register as Volunteer
             </button>
-            <div className="hidden">
+            <div>
               {isModalOpen && (
                 <VolunteerRegisterModal
                   closeModal={closeModal}

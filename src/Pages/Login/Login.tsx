@@ -25,8 +25,6 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location);
-
   const handleSubmit = (values: typeof initialValues) => {
     const email = values.email;
     const password = values.password;
