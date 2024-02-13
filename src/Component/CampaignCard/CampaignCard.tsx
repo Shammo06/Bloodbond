@@ -63,7 +63,7 @@ const CampaignCard: React.FC<CampaignCardProps> = ({ campaign }) => {
       </div>
       <Link
         to={`/campaign/${campaignId}`}
-        className="btn btn-outline bg-[#EA062B] text-white mt-5"
+        className="btn btn-outline bg-[#EA062B] text-white mt-5 px-9"
       >
         See Details
       </Link>
