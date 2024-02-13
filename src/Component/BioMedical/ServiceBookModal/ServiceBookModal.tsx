@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { Service } from "../ServiceCard/ServiceCard";
 import { useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 interface ServiceCardProps {
   service: Service;
@@ -15,6 +17,7 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
   const modalBtnRef = useRef<HTMLButtonElement>(null);
   const auth = useAuth();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
     if (!auth || !auth.user) {
@@ -49,7 +52,7 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
     return;
   }
 
-  const { testId, testName } = service;
+  const { _id, testName, testPrice, imageUrl } = service;
   console.log(testName);
 
   if (!auth) {
@@ -108,8 +111,10 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
     const address = formData.get("address") as string;
 
     const bookingInfo = {
-      testId,
+      testId: _id,
       testName,
+      price: testPrice,
+      imageUrl,
       userName,
       userEmail,
       date,
@@ -120,6 +125,18 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
     };
 
     console.log("Form submitted", bookingInfo);
+
+    // send booking info to the backend
+    axiosPublic.post("/testbooking", bookingInfo).then((res) => {
+      console.log(res);
+      if (res.data.data._id) {
+        Swal.fire({
+          title: "Booking Successful",
+          icon: "success",
+        });
+        closeModal();
+      }
+    });
   };
 
   return (
