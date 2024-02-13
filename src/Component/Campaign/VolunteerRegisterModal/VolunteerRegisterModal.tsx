@@ -55,9 +55,10 @@ const VolunteerRegisterModal: React.FC<CampaignDetailsProps> = ({
     const address = formData.get("address") as string;
     console.log(name, email, phone, address);
 
+    // TODO: HAVE TO SEND VOLUNTEER REQUEST TO THE BACKEND
     Swal.fire({
       icon: "success",
-      title: "Well done on becoming a volunteer!",
+      title: "Your Request Is In Process",
     });
     closeModal();
   };
