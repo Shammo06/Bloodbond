@@ -5,7 +5,7 @@ const useChat = () => {
     const { refetch, data: data = [] } = useQuery({
         queryKey: ['data'],
         queryFn: async() => {
-            const res = await axios.get("https://blood-bound.vercel.app/communityChat");
+            const res = await axios.get("https://blood-bound.vercel.app/getCommunityChat");
             return res.data;
         }
     })
