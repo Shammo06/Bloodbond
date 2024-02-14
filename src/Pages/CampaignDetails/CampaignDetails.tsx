@@ -108,8 +108,9 @@ const CampaignDetails: React.FC = () => {
                 Register as Volunteer
               </button>
               <div>
-                {isModalOpen && (
+                {isModalOpen && specificCampaign && (
                   <VolunteerRegisterModal
+                    campaign={specificCampaign}
                     closeModal={closeModal}
                   ></VolunteerRegisterModal>
                 )}
