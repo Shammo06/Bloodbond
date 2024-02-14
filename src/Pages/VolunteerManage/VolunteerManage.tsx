@@ -5,7 +5,7 @@ const VolunteerManage = () => {
         <h2 className="text-2xl font-semibold border-l-4 border-red-600 pl-2">Volunteer Manage</h2>
         <div className="pt-5">
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table static">
                     {/* head */}
                     <thead className="bg-slate-300">
                         <tr>

@@ -30,7 +30,7 @@ const TopDonor: React.FC = () => {
             <h1 className="text-2xl font-semibold border-l-4 border-red-600 pl-2">Top Donors</h1>
             <div className=" pt-4">
                 <div className="overflow-x-auto">
-                    <table className="table">
+                    <table className="table static">
                         {/* head */}
                         <thead className="bg-slate-300">
                             <tr>
@@ -45,8 +45,8 @@ const TopDonor: React.FC = () => {
                             {
                                 donors.slice(0,10).map(donor =>  <tr key={donor.id}>
                                     <td>
-                                        <div className="avatar">
-                                            <div className="mask mask-squircle w-12 h-12">
+                                        <div className="avatar static">
+                                            <div className="rounded-full w-12 h-12">
                                                 <img src={donor.photo} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
