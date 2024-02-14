@@ -42,8 +42,31 @@ const CampaignDetails: React.FC = () => {
     }
   }, [allCampaigns, id]);
 
-  const { campaignImgUrl, campaignTitle, district, subDistrict, description } =
-    specificCampaign ?? {};
+  const {
+    campaignImgUrl,
+    campaignTitle,
+    district,
+    subDistrict,
+    description,
+    startDate,
+  } = specificCampaign ?? {};
+
+  const [year, month, date] = startDate?.split("-") ?? [];
+
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-14">
@@ -68,7 +91,9 @@ const CampaignDetails: React.FC = () => {
               </div>
               <div className="bg-[#DC0000] text-white px-5 md:py-2 xl:mr-6 md:mr-4">
                 {/* TODO: DYNAMIC DATE */}
-                <h4 className="text-lg font-bold">12-Feb-2024</h4>
+                <h4 className="text-lg font-bold">
+                  {date}-{months[parseInt(month) - 1]}-{year}
+                </h4>
               </div>
             </div>
             <p className="px-2 md:px-6 xl:px-8 mt-6 text-lg font-medium mb-5">
