@@ -1,27 +1,40 @@
 import banner from "../../assets/mission bg.jpg"
-
+import img1 from '../../assets/img1111.png'
+import img2 from '../../assets/img2.png'
 
 const Mission = () => {
     return (
-        <div className="pt-16">
+        <div className=" ">
             <div className="hero h-[200px] md:h-[350px] bg-fixed" style={{ backgroundImage: `url("${banner}")` }}>
-                <div className="hero-overlay bg-opacity-60"></div>
+                <div className="hero-overlay bg-opacity-60 bg-black"></div>
                 <div className="hero-content ">
-                    <div className="max-w-2xl text-center text-white">
-                        <h1 className="mb-5 text-3xl md:text-5xl font-bold ">Mission Vision & Values</h1>
-                        <p className="mb-5 text-xl md:text-3xl">Donate Blood, Share Life!</p>
+                    <div className="max-w-2xl text-center ">
+                        <h1 className="mb-5 text-3xl md:text-5xl font-bold text-white">Mission Vision & Values</h1>
+                        <p className="mb-5 text-xl md:text-3xl text-white">Donate Blood, Share Life!</p>
                     </div>
                 </div>
+
             </div>
 
-            <div className="text-center max-w-6xl mx-auto text-xl text-black my-10 p-8 pt-0">
+
+            <div className="text-center text-xl text-black my-10 p-8 pt-0">
                 {/* our mission */}
-                <h1 className="text-3xl md:text-4xl font-bold my-5 underline">Our Mission</h1>
-                <p className="text-lg">To enhance the well being of patients in our service area by assuring a reliable and economical supply of the safest possible blood, by providing innovative hemotherapy services, and by promoting research and education programs in transfusion medicine.</p> 
+                <div className="flex justify-between  flex-col lg:flex-row-reverse text-center lg:text-left gap-10">
+                    <div>
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold my-5 lg:my-10">Our Mission</h1>
+                        <p className="text-sm md:text-lg lg:max-w-lg">To enhance the well being of patients in our service area by assuring a reliable and economical supply of the safest possible blood, by providing innovative hemotherapy services, and by promoting research and education programs in transfusion medicine.</p>
+                    </div>
+                    <img className="rounded-xl shadow-xl" src={img2} alt="" />
+                </div>
 
                 {/* our vision */}
-                <h1 className="text-3xl md:text-4xl font-bold my-5 underline">Our Vision</h1>
-                <p className="text-lg">We envision a world where no one faces a health crisis alone. Through the generosity of donors like you, we aspire to create a ripple effect of positive change, where the simple act of donating blood becomes a catalyst for greater community well-being.</p> 
+                <div className="flex justify-between  flex-col lg:flex-row text-center lg:text-left gap-10 my-10">
+                    <div className="lg:max-w-lg">
+                        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 lg:my-10">Our Vision</h1>
+                        <p className="text-sm md:text-lg">We envision a world where no one faces a health crisis alone. Through the generosity of donors like you, we aspire to create a ripple effect of positive change, where the simple act of donating blood becomes a catalyst for greater community well-being.</p>
+                    </div>
+                    <img className="rounded-xl shadow-xl" src={img1} alt="" />
+                </div>
 
                 {/* what we value */}
                 <h1 className="text-3xl md:text-4xl font-bold my-5 underline">What We Value</h1>

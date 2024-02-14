@@ -3,7 +3,7 @@ import ServiceBookModal from "../ServiceBookModal/ServiceBookModal";
 import { useState } from "react";
 
 export interface Service {
-  testId: string;
+  _id: string;
   testName: string;
   testDescription: string;
   testPrice: string;
@@ -17,18 +17,8 @@ interface ServiceCardProps {
 const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const clickModalOpeningBtn = () => {
-  //   const modalButton = document.getElementById(
-  //     "modalBtn"
-  //   ) as HTMLButtonElement | null;
-  //   if (modalButton) {
-  //     modalButton.click();
-  //   }
-  // };
-
   const openModal = () => {
     setIsModalOpen(true);
-    // clickModalOpeningBtn();
   };
 
   const closeModal = () => {
@@ -39,7 +29,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
     return;
   }
 
-  const { testId, imageUrl, testName, testDescription, testPrice } = service;
+  const { _id, imageUrl, testName, testDescription, testPrice } = service;
 
   return (
     <div
@@ -60,7 +50,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         </h6>
       </div>
       <Link
-        to={`/services/${testId}`}
+        to={`/services/${_id}`}
         className="mb-5 mx-5 btn btn-outline bg-[#EA062B] text-white hidden"
       >
         See Details

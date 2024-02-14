@@ -1,6 +1,9 @@
 import { useEffect, useRef } from "react";
 import useAuth from "../../../hooks/useAuth";
 import { Service } from "../ServiceCard/ServiceCard";
+import { useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
+import Swal from "sweetalert2";
 
 interface ServiceCardProps {
   service: Service;
@@ -12,6 +15,18 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
   closeModal,
 }) => {
   const modalBtnRef = useRef<HTMLButtonElement>(null);
+  const auth = useAuth();
+  const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
+
+  useEffect(() => {
+    if (!auth || !auth.user) {
+      // If user is not valid, redirect to login page
+      closeModal(); // Close modal
+      // window.location.href = '/login'; // Redirect to login page
+      navigate("/login");
+    }
+  }, [auth, closeModal, navigate]);
 
   useEffect(() => {
     if (modalBtnRef.current) {
@@ -19,19 +34,32 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
     }
   }, []);
 
-  const auth = useAuth();
+  useEffect(() => {
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEsc);
+
+    return () => {
+      document.removeEventListener("keydown", handleEsc);
+    };
+  }, [closeModal]);
+
   if (!service) {
     return;
   }
 
-  const { testName } = service;
+  const { _id, testName, testPrice, imageUrl } = service;
   console.log(testName);
 
   if (!auth) {
     return;
   }
-
   const { user } = auth;
+
   if (!user) {
     return null;
   }
@@ -73,12 +101,42 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
     e.preventDefault();
 
     const formData = new FormData(e.currentTarget);
+
+    const testName = formData.get("testName") as string;
     const userName = formData.get("name") as string;
     const userEmail = formData.get("email") as string;
     const date = formData.get("date") as string;
     const time = formData.get("time") as string;
     const phone = formData.get("phone") as string;
-    console.log("Form submitted", userName, userEmail, date, time, phone);
+    const address = formData.get("address") as string;
+
+    const bookingInfo = {
+      testId: _id,
+      testName,
+      price: testPrice,
+      imageUrl,
+      userName,
+      userEmail,
+      date,
+      time,
+      phone,
+      address,
+      status: "pending",
+    };
+
+    console.log("Form submitted", bookingInfo);
+
+    // send booking info to the backend
+    axiosPublic.post("/testbooking", bookingInfo).then((res) => {
+      console.log(res);
+      if (res.data.data._id) {
+        Swal.fire({
+          title: "Booking Successful",
+          icon: "success",
+        });
+        closeModal();
+      }
+    });
   };
 
   return (
@@ -197,6 +255,18 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
                   required
                 />
               </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Address</span>
+                </label>
+                <input
+                  type="text"
+                  name="address"
+                  placeholder="Your Address"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
               <button id="submit" type="submit"></button>
             </form>
           </div>
@@ -205,7 +275,6 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
           <div className="flex justify-end">
             <button
               onClick={handleSubmit}
-              id="submit"
               className="btn btn-outline bg-[#EA062B] text-white"
             >
               Book This Service

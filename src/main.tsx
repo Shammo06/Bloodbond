@@ -15,15 +15,19 @@ import BloodRequest from "./Pages/BloodRequest/BloodRequest";
 import Campaign from "./Pages/Campaign/Campaign";
 import Donate from "./Pages/Donate/Donate";
 import AllBloodRequest from "./Pages/AllBloodRequest/AllBloodRequest";
-import BioMedical from "./Pages/BioMedical/BioMedical";
-import ServiceDetails from "./Component/BioMedical/ServiceDetails/ServiceDetails"; 
-import Dashboard from "./Pages/Layout/Dashboard/Dashboard";
-import AdminHome from "./Pages/AdminHome/AdminHome";
 import Appointment from "./Pages/Appointment/Appointment";
+import AdminHome from "./Pages/AdminHome/AdminHome";
+import Dashboard from "./Pages/Layout/Dashboard/Dashboard";
 import VolunteerManage from "./Pages/VolunteerManage/VolunteerManage";
 import ManageCampaign from "./Pages/ManageCampaign/ManageCampaign";
-import UserAppointment from "./Pages/UserAppointment/UserAppointment";
 import UserHome from "./Pages/UserHome/UserHome";
+import UserAppointment from "./Pages/UserAppointment/UserAppointment";
+import Chat from "./Component/Chat/Chat";
+import CampaignDetails from "./Pages/CampaignDetails/CampaignDetails";
+import BioMedical from "./Pages/BioMedical/BioMedical";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -67,6 +71,10 @@ const router = createBrowserRouter([
         element: <Campaign></Campaign>,
       },
       {
+        path: "/campaign/:id",
+        element: <CampaignDetails></CampaignDetails>,
+      },
+      {
         path: "/donate",
         element: <Donate />,
       },
@@ -75,51 +83,53 @@ const router = createBrowserRouter([
         element: <AllBloodRequest></AllBloodRequest>,
       },
       {
-        path: "/bioMedical",
-        element: <BioMedical></BioMedical>,
+        path: "chat",
+        element: <Chat></Chat>,
       },
       {
-        path: "/services/:id",
-        element: <ServiceDetails></ServiceDetails>,
+        path: "bioMedical",
+        element: <BioMedical></BioMedical>,
       },
     ],
   },
   {
     path: "/dashboard",
     element: <Dashboard></Dashboard>,
-    children:[
+    children: [
       {
         path: "/dashboard/home",
-        element: <AdminHome></AdminHome>
+        element: <AdminHome></AdminHome>,
       },
       {
         path: "/dashboard/appointment",
-        element: <Appointment></Appointment>
+        element: <Appointment></Appointment>,
       },
       {
         path: "/dashboard/volunteer",
-        element: <VolunteerManage></VolunteerManage>
+        element: <VolunteerManage></VolunteerManage>,
       },
       {
         path: "/dashboard/campaign",
-        element: <ManageCampaign></ManageCampaign>
+        element: <ManageCampaign></ManageCampaign>,
       },
       {
         path: "/dashboard/userhome",
-        element: <UserHome></UserHome>
+        element: <UserHome></UserHome>,
       },
       {
         path: "/dashboard/userappointment",
-        element: <UserAppointment></UserAppointment>
-      }
-    ]
-  }
+        element: <UserAppointment></UserAppointment>,
+      },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-    </AuthProvider>
-  </React.StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <React.StrictMode>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </React.StrictMode>
+  </QueryClientProvider>
 );

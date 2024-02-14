@@ -12,7 +12,7 @@ const Contact: React.FC = () => {
 
   if (!auth) {
     return null;
-  }
+  } 
 
 
   const sendEmail = (e: FormEvent) => {
@@ -51,14 +51,14 @@ const Contact: React.FC = () => {
         <input
           name="name"
           required
-          defaultValue=''
+          defaultValue={auth?.user?.displayName || ''}
           type="text"
           placeholder="👤 Your Name"
           className="input  border border-gray-400 w-full rounded-2xl bg-base-200 shadow-xl"
         />
         <input
           required
-          defaultValue=''
+          defaultValue={auth?.user?.email || ''}
           type="email"
           name="email"
           placeholder="✉ Your Email"
