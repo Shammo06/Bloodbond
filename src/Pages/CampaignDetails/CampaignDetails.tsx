@@ -69,9 +69,9 @@ const CampaignDetails: React.FC = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-14">
-      <div className="lg:col-span-3 p-5">
-        <div className="bg-[#F1F5F9] shadow-lg rounded-xl mt-14">
+    <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 py-14">
+      <div className="lg:col-span-3 px-5 lg:px-0 lg:pl-5">
+        <div className="bg-[#F1F5F9] shadow-lg rounded-xl">
           <figure className="relative">
             <img
               className="w-full h-auto mx-auto rounded-tl-xl rounded-tr-xl"
@@ -123,8 +123,8 @@ const CampaignDetails: React.FC = () => {
       </div>
 
       {/* other campaigns */}
-      <div className="lg:col-span-2 p-5">
-        <h3 className="text-center text-2xl font-bold my-14">
+      <div className="lg:col-span-2 px-5 lg:pl-0">
+        <h3 className="text-center text-2xl font-bold mb-14">
           Other Upcoming Campaigns
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
