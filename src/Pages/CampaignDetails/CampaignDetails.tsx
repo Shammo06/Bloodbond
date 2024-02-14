@@ -46,12 +46,12 @@ const CampaignDetails: React.FC = () => {
     specificCampaign ?? {};
 
   return (
-    <div className="grid grid-cols-5 gap-6">
-      <div className="col-span-3">
+    <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-14">
+      <div className="lg:col-span-3 p-5">
         <div className="bg-[#F1F5F9] shadow-lg rounded-xl mt-14">
           <figure className="relative">
             <img
-              className="w-full h-[450px] mx-auto rounded-tl-xl rounded-tr-xl"
+              className="w-full h-auto mx-auto rounded-tl-xl rounded-tr-xl"
               src={campaignImgUrl}
               alt="campaign"
             />
@@ -78,7 +78,7 @@ const CampaignDetails: React.FC = () => {
             <div className="flex flex-col md:flex-row gap-5 px-2 md:px-6 xl:px-8">
               <button
                 onClick={openModal}
-                className="btn btn-outline bg-[#DC0000] text-white hover:text-[#DC0000] hover:bg-white hover:border-[#DC0000] rounded-full"
+                className="btn btn-outline bg-[#DC0000] text-white hover:text-[#DC0000] hover:bg-white hover:border-[#DC0000] px-9"
               >
                 Register as Volunteer
               </button>
@@ -89,7 +89,7 @@ const CampaignDetails: React.FC = () => {
                   ></VolunteerRegisterModal>
                 )}
               </div>
-              <button className="btn btn-outline bg-[#DC0000] text-white hover:text-[#DC0000] hover:bg-white hover:border-[#DC0000] rounded-full">
+              <button className="btn btn-outline bg-[#DC0000] text-white hover:text-[#DC0000] hover:bg-white hover:border-[#DC0000] px-9">
                 Donate for this Camping!
               </button>
             </div>
@@ -98,11 +98,11 @@ const CampaignDetails: React.FC = () => {
       </div>
 
       {/* other campaigns */}
-      <div className="col-span-2 p-5">
+      <div className="lg:col-span-2 p-5">
         <h3 className="text-center text-2xl font-bold my-14">
           Other Upcoming Campaigns
         </h3>
-        <div className="grid gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
           {otherCampaigns ? (
             otherCampaigns?.map((campaign: Campaign) => (
               <CampaignCard
