@@ -22,9 +22,10 @@ interface DonorCardProps {
 
 const DonorCard: React.FC<DonorCardProps> = ({ data }) => {
     const {
-        name, 
+        name,
         donor,
-        photo     
+        photo,
+        email   
 
     } = data;
 

@@ -39,8 +39,10 @@ const Login: React.FC = () => {
           Swal.fire({
             title: "Login Successful",
             icon: "success",
-          });
-          navigate(location.state ? location.state : "/");
+          }); 
+
+          // navigate after login
+          navigate(location?.state ? location.state : "/");
         })
         .catch((error: FirebaseError) => {
           console.log(error);

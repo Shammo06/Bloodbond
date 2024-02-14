@@ -48,7 +48,7 @@ const DonorSearch = () => {
 
         axios.get('https://blood-bound.vercel.app/getdonars')
             .then(res => {
-                console.log(res.data.donors)
+                console.log(res.data)
                 setTotalDonors(res.data.donors)
                 setDonors(res.data.donors)
                 
@@ -57,9 +57,7 @@ const DonorSearch = () => {
                 console.error(error)
                 
             })
-
-        
-    }, [])
+        }, [])
 
 
     return (
