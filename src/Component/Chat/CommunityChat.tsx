@@ -36,14 +36,15 @@ const CommunityChat = () => {
 
         if (chat) {
             console.log(data);
-            axios.post('http://localhost:5173/createCommunityChat', data)
-                .then()
+            axios.post('http://localhost:5000/createCommunityChat', data)
+                .then((res)=> refetch())
                 .catch(error => console.log(error.message));
             if (message.current) {
                 message.current.value = '';
             }
-            refetch();
+           
         }
+        
     };
 
     return (

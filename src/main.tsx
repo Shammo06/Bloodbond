@@ -88,7 +88,7 @@ const router = createBrowserRouter([
         element: <Chat></Chat>,
       },
       {
-        path: "communityChat",
+        path: "/communityChat",
         element: <CommunityChat/>,
       },
       {
