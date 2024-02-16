@@ -16,7 +16,7 @@ const SocialLogin = () => {
 
   const handleGoogleLogin = () => {
     googleLogin()
-      .then(() => {        
+      .then(() => {      
         Swal.fire({
           icon: "success",
           title: "Login Successful",
