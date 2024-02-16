@@ -17,18 +17,8 @@ interface ServiceCardProps {
 const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // const clickModalOpeningBtn = () => {
-  //   const modalButton = document.getElementById(
-  //     "modalBtn"
-  //   ) as HTMLButtonElement | null;
-  //   if (modalButton) {
-  //     modalButton.click();
-  //   }
-  // };
-
   const openModal = () => {
     setIsModalOpen(true);
-    // clickModalOpeningBtn();
   };
 
   const closeModal = () => {

@@ -49,7 +49,7 @@ const UserHome: React.FC = () => {
                     <h1 className="text-2xl font-semibold border-l-4 border-red-600 pl-2">Who resived blood</h1>
                     <div className=" pt-4">
                         <div className="overflow-x-auto">
-                            <table className="table">
+                            <table className="table static">
                                 {/* head */}
                                 <thead className=" bg-slate-300 ">
                                     <tr>
