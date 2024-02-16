@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "./useAxiosPublic";
+// import useAxiosPublic from "./useAxiosPublic";
+import axios from "axios";
 
 const useBioMedicalServices = () => {
-  const axiosPublic = useAxiosPublic();
+  // const axiosPublic = useAxiosPublic();
 
   const {
     data: allBioMedicalServices = [],
@@ -11,8 +12,11 @@ const useBioMedicalServices = () => {
   } = useQuery({
     queryKey: ["bioMedicalServices"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/getservices`);
-      return res.data.services;
+      const res = await axios.get(
+        `https://blood-server-2.vercel.app/getBiomedical`
+      );
+
+      return res.data;
     },
   });
 

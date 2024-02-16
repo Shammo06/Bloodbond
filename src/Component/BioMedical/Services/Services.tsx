@@ -1,7 +1,4 @@
-import { useEffect, useState } from "react";
 import ServiceCard from "../ServiceCard/ServiceCard";
-
-import axios from "axios";
 import useBioMedicalServices from "../../../hooks/useBioMedicalServices";
 
 interface Service {
@@ -15,31 +12,6 @@ interface Service {
 
 const Services: React.FC = () => {
   const [allBioMedicalServices, isLoading] = useBioMedicalServices();
-  const [services, setServices] = useState<Service[]>([]);
-  
-
-  useEffect(() => {
-    // const fetchData = async () => {
-    //   try {
-    //     const response = await axiosPublic.get<{ services: Service[] }>(
-    //       "/getservices"
-    //     );
-    //     setServices(response.data.services);
-    //   } catch (error) {
-    //     console.error("Error fetching data:", error);
-    //   }
-    // };
-
-    // fetchData();
-    axios.get("https://blood-server-2.vercel.app/getBiomedical")
-      .then((res)=> {
-        const data = res.data;
-        console.log(data)
-        setServices(data)
-        console.log(services)       
-      })
-      .catch(error => console.log(error.message));
-  });
 
   return (
     <div>
