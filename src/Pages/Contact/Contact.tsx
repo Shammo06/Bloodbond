@@ -49,7 +49,7 @@ const Contact: React.FC = () => {
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <input
-          name="name"
+          name="name" 
           required
           defaultValue={auth?.user?.displayName || ''}
           type="text"

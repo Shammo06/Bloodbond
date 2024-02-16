@@ -1,9 +1,5 @@
-import campaignBg from "../../assets/campaign bg.jpg";
-import img from "../../assets/donation img 3.png";
-import group from "../../assets/cm1.jpg";
-import group2 from "../../assets/cm2.jpg";
-import group3 from "../../assets/doctor.jpg";
-import CampaignCard from "../../Component/CampaignCard/CampaignCard";
+import CampaignBanner from "./CampaignBanner/CampaignBanner";
+import UpcomingCampaigns from "./UpcomingCampaigns/UpcomingCampaigns";
 
 const Campaign = () => {
   return (
@@ -128,6 +124,8 @@ const Campaign = () => {
           </div>
         </div>
       </div>
+      <CampaignBanner></CampaignBanner>
+      <UpcomingCampaigns></UpcomingCampaigns>
     </div>
   );
 };

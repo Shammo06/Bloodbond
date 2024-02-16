@@ -43,12 +43,12 @@ const DonorSearch = () => {
     useEffect(() => {
         fetch('/District.json')
             .then(res => res.json())
-            .then(data => setDistrict(data.donors))
+            .then(data => setDistrict(data))
             .catch(error => console.error('Error fetching District data:', error));
 
         axios.get('https://blood-bound.vercel.app/getdonars')
             .then(res => {
-                console.log(res.data.donors)
+                console.log(res.data)
                 setTotalDonors(res.data.donors)
                 setDonors(res.data.donors)
                 
@@ -57,9 +57,7 @@ const DonorSearch = () => {
                 console.error(error)
                 
             })
-
-        
-    }, [])
+        }, [])
 
 
     return (
@@ -127,7 +125,7 @@ const DonorSearch = () => {
                         <h2 className="text-xl md:text-2xl font-bold mb-4 bg-[#EB2C2926] text-black p-4">Total donors found: {donors.length}</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 ">
                             {
-                                donors.map(donor => <DonorCard key={donor.id} data={donor}></DonorCard>)
+                                donors.map(donor => <DonorCard key={donor._id} data={donor}></DonorCard>)
                             }
                         </div>
                     </div> : <div>

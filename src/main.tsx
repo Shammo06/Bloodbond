@@ -21,12 +21,14 @@ import Dashboard from "./Pages/Layout/Dashboard/Dashboard";
 import VolunteerManage from "./Pages/VolunteerManage/VolunteerManage";
 import ManageCampaign from "./Pages/ManageCampaign/ManageCampaign";
 import UserHome from "./Pages/UserHome/UserHome";
+import PrivateRoute from "./Routes/PrivateRoute";
 import UserAppointment from "./Pages/UserAppointment/UserAppointment";
 
 import CampaignDetails from "./Pages/CampaignDetails/CampaignDetails";
 import BioMedical from "./Pages/BioMedical/BioMedical";
 import CommunityChat from "./Component/Chat/CommunityChat";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +36,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -49,7 +52,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/donorRegistration",
-        element: <DonorRegistration></DonorRegistration>,
+        element: <PrivateRoute><DonorRegistration></DonorRegistration></PrivateRoute>,
       },
       {
         path: "/donorSearch",
@@ -72,7 +75,7 @@ const router = createBrowserRouter([
         element: <Campaign></Campaign>,
       },
       {
-        path: "/campaignDetails",
+        path: "/campaign/:id",
         element: <CampaignDetails></CampaignDetails>,
       },
       {
@@ -85,8 +88,8 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "communityChat",
-        element: <CommunityChat />,
+        path: "/communityChat",
+        element: <CommunityChat/>,
       },
       {
         path: "bioMedical",
