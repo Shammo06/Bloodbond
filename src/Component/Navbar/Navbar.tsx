@@ -62,7 +62,7 @@ const Navbar = () => {
         <NavLink to="/donate">Donate Us</NavLink>
       </li>
       <li>
-        <NavLink to="/chat">Community Chat</NavLink>
+        <NavLink to="/communityChat">Community Chat</NavLink>
       </li>
       <li>
         <NavLink to="/dashboard">DashBoard</NavLink>{" "}
