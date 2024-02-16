@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ServiceCard from "../ServiceCard/ServiceCard";
-import useAxiosPublic from "../../../hooks/useAxiosPublic";
+
+import axios from "axios";
 
 interface Service {
   _id: string;
@@ -13,22 +14,30 @@ interface Service {
 
 const Services: React.FC = () => {
   const [services, setServices] = useState<Service[]>([]);
-  const axiosPublic = useAxiosPublic();
+  
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axiosPublic.get<{ services: Service[] }>(
-          "/getservices"
-        );
-        setServices(response.data.services);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+    // const fetchData = async () => {
+    //   try {
+    //     const response = await axiosPublic.get<{ services: Service[] }>(
+    //       "/getservices"
+    //     );
+    //     setServices(response.data.services);
+    //   } catch (error) {
+    //     console.error("Error fetching data:", error);
+    //   }
+    // };
 
-    fetchData();
-  }, [axiosPublic]);
+    // fetchData();
+    axios.get("http://localhost:5000/getBiomedical")
+      .then((res)=> {
+        const data = res.data;
+        console.log(data)
+        setServices(data)
+        console.log(services)       
+      })
+      .catch(error => console.log(error.message));
+  });
 
   return (
     <div>

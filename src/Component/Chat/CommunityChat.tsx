@@ -47,6 +47,7 @@ const CommunityChat = () => {
         }
         
     };
+    refetch()
 
     return (
         <div>
