@@ -31,7 +31,7 @@ const Services: React.FC = () => {
     // };
 
     // fetchData();
-    axios.get("http://localhost:5000/getBiomedical")
+    axios.get("https://blood-server-2.vercel.app/getBiomedical")
       .then((res)=> {
         const data = res.data;
         console.log(data)

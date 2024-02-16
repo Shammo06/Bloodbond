@@ -31,8 +31,11 @@ const CommunityChat = () => {
     if (chat) {
       console.log(data);
       axios
-        .post("https://blood-bound.vercel.app/createCommunityChat", data)
-        .then()
+        .post("http://localhost:5000/createCommunityChat", data)
+        .then((res) => {
+          console.log(res);
+          refetch();
+        })
         .catch((error) => console.log(error.message));
       if (message.current) {
         message.current.value = "";
