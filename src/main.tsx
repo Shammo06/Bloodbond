@@ -25,10 +25,13 @@ import UserAppointment from "./Pages/UserAppointment/UserAppointment";
 import Chat from "./Component/Chat/Chat";
 import CampaignDetails from "./Pages/CampaignDetails/CampaignDetails";
 import BioMedical from "./Pages/BioMedical/BioMedical";
-
+import CommunityChat from "./Component/Chat/CommunityChat";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CreateCampaign from "./Pages/CreateCampaign/CreateCampaign";
+import Profile from "./Pages/Profile/Profile";
+
 const queryClient = new QueryClient();
+
 
 const router = createBrowserRouter([
   {
@@ -88,6 +91,10 @@ const router = createBrowserRouter([
         element: <Chat></Chat>,
       },
       {
+        path: "/communityChat",
+        element: <CommunityChat/>,
+      },
+      {
         path: "bioMedical",
         element: <BioMedical></BioMedical>,
       },
@@ -124,17 +131,21 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/createCampaign",
         element: <CreateCampaign></CreateCampaign>
+      },
+      {
+        path: "/dashboard/profile",
+        element: <Profile></Profile>
       }
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <QueryClientProvider client={queryClient}>
-    <React.StrictMode>
-      <AuthProvider>
-        <RouterProvider router={router} />
-      </AuthProvider>
-    </React.StrictMode>
-  </QueryClientProvider>
+  <React.StrictMode>
+    <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router}/>
+      </QueryClientProvider> 
+    </AuthProvider>
+  </React.StrictMode>
 );

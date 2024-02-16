@@ -7,6 +7,7 @@ import { MdOutlineVolunteerActivism } from "react-icons/md";
 import { TbBrandCampaignmonitor } from "react-icons/tb";
 import { LuTestTubes } from "react-icons/lu";
 import { IoMenu } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
 
 const Dashboard: React.FC = () => {
     const [open, setOpen] = useState(true)
@@ -34,7 +35,7 @@ const Dashboard: React.FC = () => {
                                         isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
                                     }
                                 >
-                                    <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Home</span></span>
+                                    <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Overview</span></span>
                                 </NavLink>
                             </li>
                             <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
@@ -74,7 +75,7 @@ const Dashboard: React.FC = () => {
                                         isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
                                     }
                                 >
-                                    <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Home</span></span>
+                                    <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Overview</span></span>
                                 </NavLink>
                             </li>
                             <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
@@ -87,6 +88,16 @@ const Dashboard: React.FC = () => {
                                     <span className="flex items-center gap-2"><span><LuTestTubes className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Test Status</span></span>
                                 </NavLink>
                             </li>
+                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                <NavLink
+                                    to="/dashboard/profile"
+                                    className={({ isActive, isPending }) =>
+                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                    }
+                                >
+                                    <span className="flex items-center gap-2"><span><CgProfile className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Profile</span></span>
+                                </NavLink>
+                            </li>
                         </ul>
                     </div>
                 </aside>
@@ -97,7 +108,7 @@ const Dashboard: React.FC = () => {
                             {/* Page content here */}
                             <label htmlFor="my-drawer" className="btn md:hidden drawer-button"><IoMenu className="text-2xl" /></label>
                             <div className="hidden md:block">
-                                <h2 className="text-2xl font-semibold">Dashboard</h2>
+                                <h2 className="text-2xl font-semibold">Overview</h2>
                             </div>
                             <div className="">
                                 <div className="dropdown dropdown-end">
@@ -108,12 +119,10 @@ const Dashboard: React.FC = () => {
                                     </div>
                                     <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                         <li>
-                                            <a className="justify-between">
+                                            <Link to="/dashboard/profile" className="justify-between">
                                                 Profile
-                                                <span className="badge">New</span>
-                                            </a>
+                                            </Link>
                                         </li>
-                                        <li><a>Settings</a></li>
                                         <li><a>Logout</a></li>
                                     </ul>
                                 </div>
@@ -148,7 +157,7 @@ const Dashboard: React.FC = () => {
                                                 isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
                                             }
                                         >
-                                            <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={` duration-500`}>Home</span></span>
+                                            <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={` duration-500`}>Overview</span></span>
                                         </NavLink>
                                     </li>
                                     <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
@@ -188,7 +197,7 @@ const Dashboard: React.FC = () => {
                                                 isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
                                             }
                                         >
-                                            <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={` duration-500`}>Home</span></span>
+                                            <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={` duration-500`}>Overview</span></span>
                                         </NavLink>
                                     </li>
                                     <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
@@ -199,6 +208,16 @@ const Dashboard: React.FC = () => {
                                             }
                                         >
                                             <span className="flex items-center gap-2"><span><LuTestTubes className="text-3xl" /></span><span className={` duration-500`}>Test Status</span></span>
+                                        </NavLink>
+                                    </li>
+                                    <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                        <NavLink
+                                            to="/dashboard/profile"
+                                            className={({ isActive, isPending }) =>
+                                                isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                            }
+                                        >
+                                            <span className="flex items-center gap-2"><span><CgProfile className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Profile</span></span>
                                         </NavLink>
                                     </li>
                                 </ul>

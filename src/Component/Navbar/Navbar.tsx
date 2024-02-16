@@ -47,14 +47,9 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/about">About Us</NavLink>
+        <NavLink to="/bioMedical">Bio-Medical</NavLink>
       </li>
-      <li>
-        <NavLink to="/donorSearch">Search Donor</NavLink>
-      </li>
-      <li>
-        <NavLink to="/chat">Chat</NavLink>
-      </li>
+
       <li>
         <NavLink to="/campaign">Campaign</NavLink>
       </li>
@@ -62,19 +57,19 @@ const Navbar = () => {
         <NavLink to="/bloodRequest">Request Blood</NavLink>
       </li>
       <li>
-        <NavLink to="/allRequest">Blood Request List</NavLink>
-      </li>
-      <li>
         <NavLink to="/donate">Donate Us</NavLink>
       </li>
       <li>
-        <NavLink to="/bioMedical">Bio-Medical</NavLink>
+        <NavLink to="/chat">Community Chat</NavLink>
+      </li>
+      <li>
+        <NavLink to="/dashboard">DashBoard</NavLink>{" "}
       </li>
     </>
   );
 
   return (
-    <div className=" navbar  z-50 bg-[#DC0000] text-white font-semibold">
+    <div className=" navbar z-50 bg-[#DC0000] text-white font-semibold">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -95,7 +90,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 text-black shadow bg-base-100 rounded-box w-52"
           >
             {links}
           </ul>
@@ -108,27 +103,18 @@ const Navbar = () => {
       <div className="navbar-end">
         {user ? (
           <>
-            <details className="dropdown">
-              <summary className="m-1 btn">
-                <div className="avatar">
-                  <div className="w-24 rounded-full">
-                    <img src={user?.photoURL} />
-                  </div>
-                </div>
-              </summary>
-              <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                <li>
-                  <NavLink to="/dashboard">DashBoard</NavLink>
-                </li>
-                <li>
-                  <button onClick={handleLogOut}>LogOut</button>
-                </li>
-              </ul>
-            </details>
+            <button
+              className="btn btn-outline text-white"
+              onClick={handleLogOut}
+            >
+              LogOut
+            </button>
           </>
         ) : (
           <NavLink to="/login">
-            <button className="btn btn-outline">Login / Register</button>
+            <button className="btn btn-outline text-white">
+              Login / Register
+            </button>
           </NavLink>
         )}
       </div>

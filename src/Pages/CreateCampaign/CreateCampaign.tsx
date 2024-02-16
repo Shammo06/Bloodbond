@@ -52,7 +52,7 @@ const CreateCampaign: React.FC = () => {
         axiosPublic.post("/campaigncreate",campaign)
         .then(res => {
             console.log(res.data);
-            
+            // formik.resetForm();
         })
 
 
