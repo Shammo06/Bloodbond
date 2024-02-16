@@ -15,7 +15,7 @@ const Dashboard: React.FC = () => {
 
             <div className="flex">
                 {/* #FF464E */}
-                <aside className={` ${open ? "md:w-72" : "w-20"} hidden md:block duration-500 h-screen  bg-[#FF464E]`}>
+                <aside className={` ${open ? "md:w-72" : "w-20"} hidden md:block duration-500 min-h-screen  bg-[#FF464E]`}>
                     <div className="relative p-5">
                         <FaArrowLeft onClick={() => setOpen(!open)} className={`bg-white cursor-pointer text-black text-2xl rounded-full border border-black p-1 absolute top-12 -right-3 ${!open && "rotate-180"}`} />
                         <Link to="/">
@@ -91,24 +91,55 @@ const Dashboard: React.FC = () => {
                     </div>
                 </aside>
                 <section className="p-8 bg-black bg-opacity-5 w-full">
-                    <div className="drawer md:hidden">
+                    <div className="drawer  pb-5 md:pb-0">
                         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-                        <div className="drawer-content bg-white p-5 gap-6 rounded-lg border">
+                        <div className="drawer-content flex justify-between items-center bg-white p-3 gap-6 rounded-lg border mb-3">
                             {/* Page content here */}
-                            <label htmlFor="my-drawer" className="btn  drawer-button"><IoMenu className="text-2xl" /></label>
+                            <label htmlFor="my-drawer" className="btn md:hidden drawer-button"><IoMenu className="text-2xl" /></label>
+                            <div className="hidden md:block">
+                                <h2 className="text-2xl font-semibold">Dashboard</h2>
+                            </div>
+                            <div className="">
+                                <div className="dropdown dropdown-end">
+                                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                        <div className="w-10 rounded-full">
+                                            <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                        </div>
+                                    </div>
+                                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                        <li>
+                                            <a className="justify-between">
+                                                Profile
+                                                <span className="badge">New</span>
+                                            </a>
+                                        </li>
+                                        <li><a>Settings</a></li>
+                                        <li><a>Logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                         <div className="drawer-side">
-                            <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
+                            <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay">
+
+                            </label>
                             {/* <ul className="menu w-70 min-h-full bg-base-200 text-base-content">
                             </ul> */}
 
                             <div className="pl-3 w-64 bg-[#FF464E] h-screen">
-                                <Link to="/">
-                                    <div className="flex items-center">
-                                        <img className="w-20" src="https://i.ibb.co/RpwQSwM/Blood-Bondbb.png" alt="" />
-                                        <h2 className={`text-xl font-bold text-white ${!open && "scale-0"} duration-500 `}>BloodBond</h2>
-                                    </div>
-                                </Link>
+
+                                <div className="flex justify-around">
+
+                                    <Link to="/">
+                                        <div className="flex items-center">
+                                            <img className="w-20" src="https://i.ibb.co/RpwQSwM/Blood-Bondbb.png" alt="" />
+                                            <h2 className={`text-xl font-bold text-white ${!open && "scale-0"} duration-500 `}>BloodBond</h2>
+                                        </div>
+                                    </Link>
+                                    <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay mt-3 btn btn-sm rounded-full bg-red-400 border-none">
+                                        X
+                                    </label>
+                                </div>
                                 <ul className="space-y-1">
                                     <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
                                         <NavLink

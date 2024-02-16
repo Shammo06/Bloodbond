@@ -27,6 +27,7 @@ import CampaignDetails from "./Pages/CampaignDetails/CampaignDetails";
 import BioMedical from "./Pages/BioMedical/BioMedical";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import CreateCampaign from "./Pages/CreateCampaign/CreateCampaign";
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
@@ -120,6 +121,10 @@ const router = createBrowserRouter([
         path: "/dashboard/userappointment",
         element: <UserAppointment></UserAppointment>,
       },
+      {
+        path: "/dashboard/createCampaign",
+        element: <CreateCampaign></CreateCampaign>
+      }
     ],
   },
 ]);

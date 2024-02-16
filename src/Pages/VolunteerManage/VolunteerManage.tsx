@@ -12,8 +12,8 @@ const VolunteerManage = () => {
                             <th>Campign Name</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>District</th>
-                            <th>Contuct</th>
+                            <th>Address</th>
+                            <th>Contact</th>
                         </tr>
                     </thead>
                     <tbody>
