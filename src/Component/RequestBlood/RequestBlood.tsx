@@ -31,7 +31,7 @@ const RequestBlood: React.FC = () => {
         </p>
         <div className="grid md:grid-cols-2 gap-5">
           {requests.map((bloodGroupRequests, index) =>
-            bloodGroupRequests.map((data) => (
+            bloodGroupRequests.splice(0, 2).map((data) => (
               <div
                 key={index}
                 className="bg-white p-6 rounded-md border border-gray-300 shadow-md"
