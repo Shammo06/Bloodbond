@@ -21,17 +21,16 @@ const BloodRequest = () => {
   } = useForm<FormData>();
 
   const auth = useAuth();
-    if (!auth) {
-        return;
-    }
+  if (!auth) {
+    return;
+  }
 
-    const { user } = auth;
+  const { user } = auth;
 
   const onSubmit = (data: FormData) => {
-
     console.log(data);
-    const { phone,bloodGroup, location,time,bloodBag,patientName } = data;
-    
+    const { phone, bloodGroup, location, time, bloodBag, patientName } = data;
+
     const request = {
       email: user?.email,
       phone,
@@ -40,33 +39,33 @@ const BloodRequest = () => {
       time,
       bloodBag,
       patientName,
-  }
-  console.log(request)
-    axios.post("https://blood-bound.vercel.app/createbloodrequest", request)
-    .then(() =>
-      Swal.fire({
-        title: "Your Blood Request Created Successful",
-        icon: "success",
-      })
-    .catch(error=>console.log(error.message))
-    );
+    };
+    console.log(request);
+    axios
+      .post("https://blood-bound.vercel.app/createbloodrequest", request)
+      .then(() =>
+        Swal.fire({
+          title: "Your Blood Request Created Successful",
+          icon: "success",
+        }).catch((error) => console.log(error.message))
+      );
 
     reset();
   };
 
   return (
-    <div className="mx-auto container py-20">
+    <div className="mx-auto container   py-20">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full mx-auto lg:w-3/4 p-8  rounded-lg"
+        className="w-full mx-auto lg:w-3/4 p-8  font-medium rounded-lg"
       >
-        <h2 className="text-3xl font-bold text-black text-center">
+        <h2 className="text-3xl font-bold text-white  text-center">
           Blood Request
         </h2>
         <div className="gap-5">
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-black">Patient Name</span>
+              <span className="label-text text-white ">Patient Name</span>
             </label>
             <input
               type="text"
@@ -85,7 +84,7 @@ const BloodRequest = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-black">Blood Need</span>
+              <span className="label-text text-white ">Blood Need</span>
             </label>
             <select
               className="select select-bordered  text-lg text-black "
@@ -112,7 +111,7 @@ const BloodRequest = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-black">Number Blood Bags</span>
+              <span className="label-text text-white">Number Blood Bags</span>
             </label>
             <input
               type="number"
@@ -130,7 +129,7 @@ const BloodRequest = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-black">Blood Need Time</span>
+              <span className="label-text text-white">Blood Need Time</span>
             </label>
             <input
               type="date"
@@ -149,7 +148,7 @@ const BloodRequest = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-black">
+              <span className="label-text text-white">
                 Blood Donate Location
               </span>
             </label>
@@ -169,7 +168,7 @@ const BloodRequest = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-black">Contact Number</span>
+              <span className="label-text text-white">Contact Number</span>
             </label>
             <input
               type="text"
@@ -187,7 +186,7 @@ const BloodRequest = () => {
           </div>
         </div>
         <input
-          className="btn btn-outline px-4 py-2 bg-[#DC0000] text-white w-full mt-4"
+          className="btn bg-yellow-400 px-4 py-2 text-black w-full mt-4"
           type="submit"
           value="Submit"
         />

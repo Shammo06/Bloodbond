@@ -41,7 +41,7 @@ const Banner = () => {
           </p>
           <div className="space-x-5">
             <Link to="/donorRegistration">
-              <button className="btn  bg-yellow-400 hover:bg-[#fe5d5d] ">
+              <button className="btn  bg-yellow-400  ">
                 Register as Donor
               </button>
             </Link>

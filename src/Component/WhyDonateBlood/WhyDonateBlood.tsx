@@ -1,16 +1,16 @@
 const WhyDonateBlood = () => {
   return (
-    <div className="bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="py-12 px-4 sm:px-6 lg:px-8 border">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+        <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
           Why Donate Blood?
         </h2>
-        <p className="mt-4 text-lg text-gray-600">
+        <p className="mt-4 text-lg font-medium text-white">
           Blood donation is a crucial part of healthcare. Here are some reasons
           why donating blood is important:
         </p>
         <div className="mt-10 flex flex-wrap justify-center">
-          <div className="max-w-xs mx-auto bg-white shadow-lg rounded-lg overflow-hidden m-4">
+          <div className="max-w-xs mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4">
             <div className="px-4 py-6">
               <svg
                 className="w-12 h-12 text-red-500 mx-auto"
@@ -35,7 +35,7 @@ const WhyDonateBlood = () => {
               </p>
             </div>
           </div>
-          <div className="max-w-xs mx-auto bg-white shadow-lg rounded-lg overflow-hidden m-4">
+          <div className="max-w-xs mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4">
             <div className="px-4 py-6">
               <svg
                 className="w-12 h-12 text-green-500 mx-auto"
@@ -59,7 +59,7 @@ const WhyDonateBlood = () => {
               </p>
             </div>
           </div>
-          <div className="max-w-xs mx-auto bg-white shadow-lg rounded-lg overflow-hidden m-4">
+          <div className="max-w-xs mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4">
             <div className="px-4 py-6">
               <svg
                 className="w-12 h-12 text-blue-500 mx-auto"
