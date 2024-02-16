@@ -69,7 +69,7 @@ const CampaignDetails: React.FC = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 py-14">
+    <div className="container mx-auto grid grid-cols-1 lg:grid-cols-5 gap-6 py-14">
       <div className="lg:col-span-3 px-5 lg:px-0 lg:pl-5">
         <div className="bg-[#F1F5F9] shadow-lg rounded-xl">
           <figure className="relative">
