@@ -1,5 +1,5 @@
-import ServiceCard from "../ServiceCard/ServiceCard";
-import useBioMedicalServices from "../../../hooks/useBioMedicalServices";
+import ServiceCard from "../ServiceCard/ServiceCard"; 
+import useBioMedicalServices from "../../../hooks/useBioMedicalServices";  
 
 interface Service {
   _id: string;
@@ -10,8 +10,9 @@ interface Service {
   imageUrl: string;
 }
 
-const Services: React.FC = () => {
+const Services: React.FC = () => { 
   const [allBioMedicalServices, isLoading] = useBioMedicalServices();
+ 
 
   return (
     <div>
