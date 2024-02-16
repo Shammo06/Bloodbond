@@ -4,9 +4,9 @@ import Footer from "../../Component/Footer/Footer";
 
 const Layout = () => {
   return (
-    <div className="bg-[#FFF7EE]">
+    <div>
       <Navbar></Navbar>
-      <div className="container mx-auto font-serif">
+      <div>
         <Outlet></Outlet>
       </div>
       <Footer></Footer>

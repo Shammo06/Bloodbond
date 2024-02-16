@@ -23,7 +23,7 @@ import ManageCampaign from "./Pages/ManageCampaign/ManageCampaign";
 import UserHome from "./Pages/UserHome/UserHome";
 import PrivateRoute from "./Routes/PrivateRoute";
 import UserAppointment from "./Pages/UserAppointment/UserAppointment";
-import Chat from "./Component/Chat/Chat";
+
 import CampaignDetails from "./Pages/CampaignDetails/CampaignDetails";
 import BioMedical from "./Pages/BioMedical/BioMedical";
 import CommunityChat from "./Component/Chat/CommunityChat";
@@ -86,10 +86,7 @@ const router = createBrowserRouter([
         path: "/allrequest",
         element: <AllBloodRequest></AllBloodRequest>,
       },
-      {
-        path: "chat",
-        element: <Chat></Chat>,
-      },
+
       {
         path: "/communityChat",
         element: <CommunityChat/>,
@@ -133,11 +130,13 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <AuthProvider>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router}/>
-      </QueryClientProvider> 
-    </AuthProvider>
-  </React.StrictMode>
+  <div className="bg-gradient-to-r from-[#5D0709] to-[#BF2012] font-serif ">
+    <React.StrictMode>
+      <AuthProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </AuthProvider>
+    </React.StrictMode>
+  </div>
 );

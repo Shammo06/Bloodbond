@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import logo from "../../assets/icon.png";
 import { LuLogOut } from "react-icons/lu";
 
 const Navbar = () => {
@@ -70,7 +71,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className=" navbar z-50 bg-[#DC0000] text-white font-semibold">
+    <div className=" navbar  text-white font-semibold">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -96,7 +97,8 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <p className=" text-xl font-bold text-white">BloodBond</p>
+        <img src={logo} alt="" />
+        <p className="font-bold">BloodBond</p>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -113,9 +115,7 @@ const Navbar = () => {
           </>
         ) : (
           <NavLink to="/login">
-            <button className="btn btn-outline text-white">
-              Login / Register
-            </button>
+            <button className="btn btn-outline text-white">Login</button>
           </NavLink>
         )} */}
 
