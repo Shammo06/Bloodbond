@@ -157,11 +157,6 @@ const Navbar = () => {
                     <button className="btn lg:btn-sm btn-xs btn-outline text-white mt-2">View Profile</button>
                   </Link>
                 </div>
-                <li><NavLink className="font-bold" to='/dashboard/home'>Dashboard</NavLink></li>
-
-                {/* {
-                                        user && !isAdmin && <li><NavLink className="font-bold" to='/dashboard/userProfile'>Dashboard</NavLink></li>
-                                    } */}
 
                 <li><button className='font-bold text-md' onClick={handleLogOut}>Logout <LuLogOut className='text-xl'></LuLogOut></button></li>
               </ul>
