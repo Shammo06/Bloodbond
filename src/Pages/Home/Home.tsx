@@ -8,7 +8,7 @@ import Contact from "../Contact/Contact";
 
 const Home = () => {
   return (
-    <div className="space-y-8 pt-16">
+    <div className="">
       <Banner></Banner>
       <WhyDonateBlood></WhyDonateBlood>
       <RequestBlood></RequestBlood>

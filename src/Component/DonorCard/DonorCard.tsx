@@ -29,7 +29,7 @@ const DonorCard: React.FC<DonorCardProps> = ({ data }) => {
 
     } = data;
 
-    console.log(photo)
+    console.log(data)
     return (
         <div>
             <div className="card bg-[#EB2C2926] shadow-xl text-black">
