@@ -1,7 +1,6 @@
 import StripeComponent from "./StripeComonent";
 
 export default function ModalOragnization() {
-
   return (
     <>
       {/* You can open the modal using document.getElementById('ID').showModal() method */}

@@ -90,7 +90,6 @@ const CampaignDetails: React.FC = () => {
                 </address>
               </div>
               <div className="bg-[#DC0000] text-white px-5 md:py-2 xl:mr-6 md:mr-4 flex-shrink-0">
-                {/* TODO: DYNAMIC DATE */}
                 <h4 className="text-lg font-bold text-center">
                   {date}-{months[parseInt(month) - 1]}-{year}
                 </h4>
