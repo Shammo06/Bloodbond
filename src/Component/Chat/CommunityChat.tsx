@@ -11,8 +11,6 @@ interface ChatItem {
     message: string;
 }
 
-
-
 const CommunityChat = () => {
     const message = useRef<HTMLInputElement>(null);
     const [data, refetch] = useChat();
@@ -37,7 +35,10 @@ const CommunityChat = () => {
         if (chat) {
             console.log(data);
             axios.post('http://localhost:5000/createCommunityChat', data)
-                .then((res)=> refetch())
+                .then((res)=> {
+                    console.log(res)
+                    refetch()
+                })
                 .catch(error => console.log(error.message));
             if (message.current) {
                 message.current.value = '';
@@ -46,6 +47,7 @@ const CommunityChat = () => {
         }
         
     };
+    refetch()
 
     return (
         <div>
