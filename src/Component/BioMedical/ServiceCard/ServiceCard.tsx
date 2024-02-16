@@ -34,7 +34,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
   return (
     <div
       style={{ boxShadow: "0px 4px 10px 5px rgba(167,167,167,0.3)" }}
-      className="rounded-lg flex flex-col items-start"
+      className="rounded-lg flex flex-col items-start text-white"
     >
       <img
         className="w-full h-[200px] xl:h-[220px] 2xl:h-[280px] rounded-tl-lg rounded-tr-lg"
@@ -46,7 +46,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         <h5 className="font-medium text-xl my-3">{testDescription}</h5>
         <h6 className="font-semibold">
           Test Price:{" "}
-          <span className="font-bold text-red-500"> {testPrice}</span>
+          <span className="font-bold text-slate-100"> {testPrice}</span>
         </h6>
       </div>
       <Link

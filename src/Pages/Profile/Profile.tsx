@@ -2,6 +2,12 @@
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import useAuth from "../../hooks/useAuth";
 import { useEffect } from "react";
+// interface UserData {
+//     // Define the shape of your user data
+//     // For example, assuming there is an 'email' property
+//     email: string;
+//     // Add other properties as needed
+//   }
 
 const Profile: React.FC = () => {
 
@@ -14,11 +20,11 @@ const Profile: React.FC = () => {
             return;
         }
 
-        const { user } = auth;
+        // const { user } = auth;
 
         const fetchData = async () => {
             try {
-                const res = await axiosPublic.get('/users',  {email: user?.email} );
+                const res = await axiosPublic.get('/users' );
                 console.log(res.data);
             } catch (error) {
                 console.error('Error fetching data:', error);

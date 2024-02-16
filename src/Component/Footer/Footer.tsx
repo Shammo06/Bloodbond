@@ -1,15 +1,17 @@
 import moment from "moment";
+import icon from "../../assets/icon.png";
 
 const Footer = () => {
   return (
     <footer>
-      <div style={{ backgroundColor: "#1A1A1A" }}>
+      <div>
         <div className="container mx-auto">
           <div className="footer p-5 text-white">
             <aside>
-              <h6 className="text-4xl font-bold">
-                <span className="text-[#DC0000]">Blood</span>Bond
-              </h6>
+              <div className="flex">
+                <img src={icon} alt="" />
+                <h6 className="text-4xl  font-bold">BloodBond</h6>
+              </div>
               <div className="mt-2">
                 <p className="text-left">+6221.2002.2012</p>
                 <p>support@bloodbond.tld</p>
@@ -24,9 +26,13 @@ const Footer = () => {
             </nav>
             <nav>
               <header className="footer-title">Company</header>
-              <a className="link link-hover">About us</a>
+              <a href="/about" className="link link-hover">
+                About us
+              </a>
               <a className="link link-hover">Contact</a>
-              <a className="link link-hover">Jobs</a>
+              <a href="/mission" className="link link-hover">
+                Mission
+              </a>
               <a className="link link-hover">Press kit</a>
             </nav>
             <div>
@@ -80,7 +86,7 @@ const Footer = () => {
         </div>
       </div>
       <div>
-        <div className="footer footer-center p-4 bg-[#1A1A1A] text-white border border-b-0 border-r-0 border-l-0 border-t-white">
+        <div className="footer footer-center p-4  text-white border border-b-0 border-r-0 border-l-0 border-t-white">
           <aside>
             <p>
               Copyright &copy; {moment().format("YYYY")} - All right reserved by

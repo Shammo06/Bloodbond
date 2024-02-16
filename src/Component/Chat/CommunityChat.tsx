@@ -34,7 +34,7 @@ const CommunityChat = () => {
 
         if (chat) {
             console.log(data);
-            axios.post('http://localhost:5000/createCommunityChat', data)
+            axios.post('https://blood-server-2.vercel.app/createCommunityChat', data)
                 .then((res)=> {
                     console.log(res)
                     refetch()
@@ -52,14 +52,14 @@ const CommunityChat = () => {
     return (
         <div>
             <div className="min-h-screen my-5 ">
-                <h1 className="text-3xl font-bold text-center mb-4">Chat With People</h1>
+                <h1 className="text-3xl font-bold text-center mb-4 text-white">Chat With People</h1>
 
                 <div className="flex flex-col h-full">
                     <div className="flex-1 overflow-y-auto p-4 bg-gray-200 rounded-md">
                         <ul>
                             {data.map((item: ChatItem) => (
                                 <li key={item.time} className="bg-gray-300 p-2 mb-2 rounded-md">
-                                    {item.user} : {item.message}
+                                   <span className="text-blue-700"> {item.user}</span> : {item.message}
                                 </li>
                             ))}
                         </ul>

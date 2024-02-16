@@ -18,7 +18,9 @@ const UpcomingCampaigns: React.FC = () => {
 
   return (
     <div className="py-10 ">
-      <h1 className="text-3xl text-center font-bold pb-6">Upcoming Campaign</h1>
+      <h1 className="text-3xl text-center text-white font-extrabold pb-6">
+        Upcoming Campaign
+      </h1>
       {/* upcoming campaigns */}
 
       {isLoading ? (

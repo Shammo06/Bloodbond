@@ -3,7 +3,7 @@ import UpcomingCampaigns from "./UpcomingCampaigns/UpcomingCampaigns";
 
 const Campaign = () => {
   return (
-    <div className="pt-16">
+    <div className="container mx-auto">
       <CampaignBanner></CampaignBanner>
       <UpcomingCampaigns></UpcomingCampaigns>
     </div>

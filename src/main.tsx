@@ -21,22 +21,23 @@ import Dashboard from "./Pages/Layout/Dashboard/Dashboard";
 import VolunteerManage from "./Pages/VolunteerManage/VolunteerManage";
 import ManageCampaign from "./Pages/ManageCampaign/ManageCampaign";
 import UserHome from "./Pages/UserHome/UserHome";
+import PrivateRoute from "./Routes/PrivateRoute";
 import UserAppointment from "./Pages/UserAppointment/UserAppointment";
-import Chat from "./Component/Chat/Chat";
 import CampaignDetails from "./Pages/CampaignDetails/CampaignDetails";
 import BioMedical from "./Pages/BioMedical/BioMedical";
 import CommunityChat from "./Component/Chat/CommunityChat";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CreateCampaign from "./Pages/CreateCampaign/CreateCampaign";
 import Profile from "./Pages/Profile/Profile";
+import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 const queryClient = new QueryClient();
-
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -52,11 +53,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/donorRegistration",
-        element: <DonorRegistration></DonorRegistration>,
+        element: (
+          <PrivateRoute>
+            <DonorRegistration></DonorRegistration>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/donorSearch",
-        element: <DonorSearch></DonorSearch>,
+        element: (
+          <PrivateRoute>
+            <DonorSearch></DonorSearch>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
@@ -68,7 +77,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/bloodRequest",
-        element: <BloodRequest></BloodRequest>,
+        element: (
+          <PrivateRoute>
+            <BloodRequest></BloodRequest>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/campaign",
@@ -80,19 +93,24 @@ const router = createBrowserRouter([
       },
       {
         path: "/donate",
-        element: <Donate />,
+        element: (
+          <PrivateRoute>
+            <Donate />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/allrequest",
         element: <AllBloodRequest></AllBloodRequest>,
       },
-      {
-        path: "chat",
-        element: <Chat></Chat>,
-      },
+
       {
         path: "/communityChat",
-        element: <CommunityChat/>,
+        element: (
+          <PrivateRoute>
+            <CommunityChat />
+          </PrivateRoute>
+        ),
       },
       {
         path: "bioMedical",
@@ -102,7 +120,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard/home",
@@ -141,6 +163,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
+  <div className="bg-gradient-to-r from-[#5D0709] to-[#BF2012] font-serif ">
   <React.StrictMode>
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
@@ -148,4 +171,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       </QueryClientProvider> 
     </AuthProvider>
   </React.StrictMode>
+  </div>
 );
