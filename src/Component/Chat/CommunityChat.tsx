@@ -34,7 +34,7 @@ const CommunityChat = () => {
 
         if (chat) {
             console.log(data);
-            axios.post('http://localhost:5000/createCommunityChat', data)
+            axios.post('https://blood-server-2.vercel.app/createCommunityChat', data)
                 .then((res)=> {
                     console.log(res)
                     refetch()
