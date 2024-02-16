@@ -28,16 +28,16 @@ const DonorCard: React.FC<DonorCardProps> = ({ data }) => {
         email   
 
     } = data;
-
-    console.log(photo)
+ 
     return (
         <div>
             <div className="card bg-[#EB2C2926] shadow-xl text-black">
                 <figure><img className="w-32 h-32 rounded-full mt-4" src={photo} alt="Donor" /></figure>
-                <div className="card-body">
-                    <h2 className="card-title">Name: {name}</h2>
+                <div className="px-4 py-4">
+                    <h2 className="text-lg font-semibold">Name: {name}</h2>
                     <p>Blood Group: {donor.bloodGroup}</p>
                     <p>Phone: {donor.phone}</p>
+                    <p>Email: {email}</p>
                     <p>District: {donor.district}</p>
                     <p>Upazila: {donor.upazila}</p>
 

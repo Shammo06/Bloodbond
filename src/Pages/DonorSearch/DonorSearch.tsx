@@ -20,22 +20,22 @@ const DonorSearch = () => {
         // const donationDate = form.date.value;
         const donorType = form.type.value;
         
-        const filterDonor = totalDonors.filter(donor => {
+        const filterDonor = totalDonors.filter(user => {
             if(district == 'all' ){
-                return donor.district !== district
+                return user.donor.district !== district
             }
-            return donor.district === district
+            return user.donor.district === district
         })
         
-        const filterBlGroup = filterDonor.filter(donor => donor.bloodGroup === bloodGroup)
+        const filterBlGroup = filterDonor.filter(user => user.donor.bloodGroup === bloodGroup)
 
-        const filterIsEligible =  filterBlGroup.filter(donor => {
+        const filterIsEligible =  filterBlGroup.filter(user => {
             if(donorType === 'all'){
-                return donor.isDonatable !== 'all'
+                return user.donor.isDonatable !== 'all'
             }
-            return donor.isDonatable === true;
+            return user.donor.isDonatable === true;
         })
-        console.log(filterIsEligible)
+        
         setDonors(filterIsEligible)
 
     }
