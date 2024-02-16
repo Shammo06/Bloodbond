@@ -1,15 +1,17 @@
 import moment from "moment";
+import icon from "../../assets/icon.png";
 
 const Footer = () => {
   return (
     <footer>
-      <div className="text-black">
+      <div>
         <div className="container mx-auto">
           <div className="footer p-5 text-white">
             <aside>
-              <h6 className="text-4xl font-bold">
-                <span className="text-[#DC0000]">Blood</span>Bond
-              </h6>
+              <div className="flex">
+                <img src={icon} alt="" />
+                <h6 className="text-4xl  font-bold">BloodBond</h6>
+              </div>
               <div className="mt-2">
                 <p className="text-left">+6221.2002.2012</p>
                 <p>support@bloodbond.tld</p>

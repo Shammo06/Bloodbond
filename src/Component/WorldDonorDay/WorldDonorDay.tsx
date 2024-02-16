@@ -1,6 +1,6 @@
 const WorldDonorDay = () => {
   return (
-    <div className="flex justify-center items-center text-white mt-5 border h-[300px] bg-[#8A0C10]">
+    <div className="flex justify-center items-center text-white mt-5 border h-[300px]">
       <div>
         <h1 className="text-5xl font-bold hover:text-yellow-300">
           World <br /> Blood Donor Day |

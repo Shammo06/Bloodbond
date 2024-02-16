@@ -64,9 +64,6 @@ const Navbar = () => {
       <li>
         <NavLink to="/communityChat">Community Chat</NavLink>
       </li>
-      <li>
-        <NavLink to="/dashboard">DashBoard</NavLink>{" "}
-      </li>
     </>
   );
 
@@ -119,40 +116,53 @@ const Navbar = () => {
           </NavLink>
         )} */}
 
-
-        {
-          user ? <div className='flex items-center text-white'>
+        {user ? (
+          <div className="flex items-center text-white">
             <div className="dropdown dropdown-hover dropdown-end dropdown-bg-[#DC0000]">
-            <label tabIndex={0} className="md:mx-2 btn btn-sm md:btn-md btn-ghost btn-circle avatar">
+              <label
+                tabIndex={0}
+                className="md:mx-2 btn btn-sm md:btn-md btn-ghost btn-circle avatar"
+              >
                 <div className="w-10 rounded-full">
-                  <img title={user.displayName || ''} src={user.photoURL || ''} alt='userImg' />
-
+                  <img
+                    title={user.displayName || ""}
+                    src={user.photoURL || ""}
+                    alt="userImg"
+                  />
                 </div>
               </label>
-              <ul tabIndex={0} className="dropdown-content z-[10] menu px-5 mt-3 shadow bg-[#DC0000] rounded-box py-5 w-56">
-                <div className='flex flex-col justify-center items-center mb-4'>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[10] menu px-5 mt-3 shadow bg-[#DC0000] rounded-box py-5 w-56"
+              >
+                <div className="flex flex-col justify-center items-center mb-4">
                   <label tabIndex={0} className="btn btn-circle avatar">
                     <div className="w-16 rounded-full">
-                      <img src={user.photoURL || ''} alt='userImg' />
-
+                      <img src={user.photoURL || ""} alt="userImg" />
                     </div>
                   </label>
-                  <h2 className='text-lg font-bold'>{user.displayName}</h2>
+                  <h2 className="text-lg font-bold">{user.displayName}</h2>
                   <h2>{user.email}</h2>
-                  <Link to='/dashboard/userHome'>
-                    <button className="btn lg:btn-sm btn-xs btn-outline text-white mt-2">View Profile</button>
+                  <Link to="/dashboard/userHome">
+                    <button className="btn lg:btn-sm btn-xs btn-outline text-white mt-2">
+                      View Profile
+                    </button>
                   </Link>
                 </div>
 
-                <li><button className='font-bold text-md' onClick={handleLogOut}>Logout <LuLogOut className='text-xl'></LuLogOut></button></li>
+                <li>
+                  <button className="font-bold text-md" onClick={handleLogOut}>
+                    Logout <LuLogOut className="text-xl"></LuLogOut>
+                  </button>
+                </li>
               </ul>
             </div>
-
-          </div> :
-            <Link to='/login'>
-              <button className="btn btn-outline text-white">Login</button>
-            </Link>
-        }
+          </div>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-outline text-white">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );

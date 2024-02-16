@@ -52,11 +52,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/donorRegistration",
-        element: <PrivateRoute><DonorRegistration></DonorRegistration></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <DonorRegistration></DonorRegistration>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/donorSearch",
-        element: <DonorSearch></DonorSearch>,
+        element: (
+          <PrivateRoute>
+            <DonorSearch></DonorSearch>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",
@@ -68,7 +76,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/bloodRequest",
-        element: <BloodRequest></BloodRequest>,
+        element: (
+          <PrivateRoute>
+            <BloodRequest></BloodRequest>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/campaign",
@@ -80,7 +92,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/donate",
-        element: <Donate />,
+        element: (
+          <PrivateRoute>
+            <Donate />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/allrequest",
@@ -89,7 +105,11 @@ const router = createBrowserRouter([
 
       {
         path: "/communityChat",
-        element: <CommunityChat/>,
+        element: (
+          <PrivateRoute>
+            <CommunityChat />
+          </PrivateRoute>
+        ),
       },
       {
         path: "bioMedical",
@@ -99,7 +119,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/dashboard/home",
@@ -130,7 +154,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <div className="bg-gradient-to-r from-[#5D0709] to-[#BF2012] font-serif ">
+  <div className="container mx-auto bg-gradient-to-r to-[#5D0709] from-[#BF2012] font-serif ">
     <React.StrictMode>
       <AuthProvider>
         <QueryClientProvider client={queryClient}>
