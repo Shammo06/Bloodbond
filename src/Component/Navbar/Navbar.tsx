@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import logo from "../../assets/icon.png";
 
 const Navbar = () => {
   const auth = useAuth();
@@ -69,7 +70,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className=" navbar z-50 bg-[#DC0000] text-white font-semibold">
+    <div className=" navbar  text-white font-semibold">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -90,12 +91,13 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 text-black shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 text-white shadow bg-gradient-to-r from-[#5D0709] to-[#BF2012] rounded-box w-52"
           >
             {links}
           </ul>
         </div>
-        <p className=" text-xl font-bold text-white">BloodBond</p>
+        <img src={logo} alt="" />
+        <p className="font-bold">BloodBond</p>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -112,9 +114,7 @@ const Navbar = () => {
           </>
         ) : (
           <NavLink to="/login">
-            <button className="btn btn-outline text-white">
-              Login / Register
-            </button>
+            <button className="btn btn-outline text-white">Login</button>
           </NavLink>
         )}
       </div>
