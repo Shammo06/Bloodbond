@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import ServiceCard from "../ServiceCard/ServiceCard";
 
 import axios from "axios";
+import useBioMedicalServices from "../../../hooks/useBioMedicalServices";
 
 interface Service {
   _id: string;
