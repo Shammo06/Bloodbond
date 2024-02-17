@@ -23,11 +23,12 @@ import ManageCampaign from "./Pages/ManageCampaign/ManageCampaign";
 import UserHome from "./Pages/UserHome/UserHome";
 import PrivateRoute from "./Routes/PrivateRoute";
 import UserAppointment from "./Pages/UserAppointment/UserAppointment";
-
 import CampaignDetails from "./Pages/CampaignDetails/CampaignDetails";
 import BioMedical from "./Pages/BioMedical/BioMedical";
 import CommunityChat from "./Component/Chat/CommunityChat";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import CreateCampaign from "./Pages/CreateCampaign/CreateCampaign";
+import Profile from "./Pages/Profile/Profile";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 
 const queryClient = new QueryClient();
@@ -149,18 +150,26 @@ const router = createBrowserRouter([
         path: "/dashboard/userappointment",
         element: <UserAppointment></UserAppointment>,
       },
+      {
+        path: "/dashboard/createCampaign",
+        element: <CreateCampaign></CreateCampaign>
+      },
+      {
+        path: "/dashboard/profile",
+        element: <Profile></Profile>
+      }
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <div className="container mx-auto bg-gradient-to-r to-[#5D0709] from-[#BF2012] font-serif ">
-    <React.StrictMode>
-      <AuthProvider>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-        </QueryClientProvider>
-      </AuthProvider>
-    </React.StrictMode>
+  <div className="bg-gradient-to-r from-[#5D0709] to-[#BF2012] font-serif ">
+  <React.StrictMode>
+    <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router}/>
+      </QueryClientProvider> 
+    </AuthProvider>
+  </React.StrictMode>
   </div>
 );
