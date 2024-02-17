@@ -1,7 +1,5 @@
-// import { Link } from "react-router-dom";
 import { Link, useLocation } from "react-router-dom";
 import { Campaign } from "../../../Pages/Campaign/UpcomingCampaigns/UpcomingCampaigns";
-import React from "react";
 
 interface CampaignCardProps {
   campaign: Campaign;
@@ -57,7 +55,7 @@ const CampaignCard: React.FC<CampaignCardProps> = ({ campaign }) => {
           />
           <div className="absolute top-0 left-0  bg-[#ea062b] py-3 px-4 text-white">
             <h4 className="text-lg font-bold">{date}</h4>
-            <h5>{months[parseInt(month) - 1]}</h5>
+            <h5>{month && months[parseInt(month) - 1]}</h5>
           </div>
         </div>
         <address>
