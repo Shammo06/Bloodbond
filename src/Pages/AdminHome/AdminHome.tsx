@@ -7,7 +7,7 @@ import AdminProfile from "../../Component/AdminProfile/AdminProfile";
 const AdminHome: React.FC = () => {
     return (
         <div>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-4  gap-4">
                 <div className="flex items-center bg-white p-5 gap-6 rounded-lg border">
                     <div className=" p-4 bg-purple-100 rounded-full">
                         <FaUsers className="text-3xl" />

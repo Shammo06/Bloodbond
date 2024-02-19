@@ -4,17 +4,7 @@ import bgPng from "../../assets/login-bg.png";
 export default function Donate() {
   return (
     <>
-      {/* <div className="w-full h-screen flex flex-col gap-3 pt-[5rem]" 
-      style={{ backgroundImage: `url(${bgPng})`, backgroundPosition: "center", backgroundSize: "cover", backgroundRepeat: "no-repeat", }}
-      >
-
-<h1 className="text-center font-bold text-[2rem] text-black">Support Us And Make a Difference Today!</h1>
-
-
-
-        <Modal />
-        <ModalOragnization />
-      </div> */}
+      {/* TODO: update the design of donate us page */}
 
       <div
         style={{

@@ -1,20 +1,18 @@
 import Banner from "../../Component/Banner/Banner";
-import BloodDonation from "../../Component/BloodDonation/BloodDonation";
-import Mission from "../../Component/Mission/Mission";
 import RequestBlood from "../../Component/RequestBlood/RequestBlood";
 import Statistics from "../../Component/Statistics/Statistics";
 import WhyDonateBlood from "../../Component/WhyDonateBlood/WhyDonateBlood";
+import WorldDonorDay from "../../Component/WorldDonorDay/WorldDonorDay";
 import Contact from "../Contact/Contact";
 
 const Home = () => {
   return (
-    <div className="space-y-8 pt-16">
+    <div className="">
       <Banner></Banner>
       <WhyDonateBlood></WhyDonateBlood>
       <RequestBlood></RequestBlood>
-      <BloodDonation></BloodDonation>
+      <WorldDonorDay></WorldDonorDay>
       <Statistics></Statistics>
-      <Mission></Mission>
       <Contact></Contact>
     </div>
   );
