@@ -4,12 +4,12 @@ import { HiBuildingOffice, HiMiniUserGroup } from "react-icons/hi2";
 
 const Statistics = () => {
   return (
-    <div>
+    <div className="my-5">
       <div className="container  mx-auto">
-        <h3 className="font-bold bg-[#850000] text-center text-white py-5 text-3xl mb-5">
+        <h3 className="font-bold bg-[#850000] border text-center text-white py-5 text-3xl mb-5">
           Statistics
         </h3>
-        <div className="grid  md:grid-cols-4 lg:px-0">
+        <div className="grid border text-white  md:grid-cols-4 lg:px-0">
           <div className="flex flex-col justify-center items-center  py-16 rounded-xl gap-3">
             <FaHeartPulse className="text-4xl"></FaHeartPulse>
             <h5 className="text-[#FE3942] text-4xl font-semibold">75</h5>

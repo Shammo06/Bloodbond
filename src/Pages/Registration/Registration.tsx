@@ -43,7 +43,8 @@ const Registration: React.FC = () => {
     const name = values.name;
     const email = values.email;
     const password = values.password;
-   
+
+    
     const fileInput = document.getElementById("photo") as HTMLInputElement;
 
     if (!fileInput || !fileInput.files || fileInput.files.length === 0) {

@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import logo from "../../assets/icon.png";
 import { LuLogOut } from "react-icons/lu";
 
 const Navbar = () => {
@@ -48,14 +49,9 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/about">About Us</NavLink>
+        <NavLink to="/bioMedical">Bio-Medical</NavLink>
       </li>
-      <li>
-        <NavLink to="/donorSearch">Search Donor</NavLink>
-      </li>
-      <li>
-        <NavLink to="/chat">Chat</NavLink>
-      </li>
+
       <li>
         <NavLink to="/campaign">Campaign</NavLink>
       </li>
@@ -63,19 +59,16 @@ const Navbar = () => {
         <NavLink to="/bloodRequest">Request Blood</NavLink>
       </li>
       <li>
-        <NavLink to="/allRequest">Blood Request List</NavLink>
-      </li>
-      <li>
         <NavLink to="/donate">Donate Us</NavLink>
       </li>
       <li>
-        <NavLink to="/bioMedical">Bio-Medical</NavLink>
+        <NavLink to="/communityChat">Community Chat</NavLink>
       </li>
     </>
   );
 
   return (
-    <div className=" navbar  z-50 bg-[#DC0000] text-white font-semibold">
+    <div className=" navbar  text-white font-semibold">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -101,7 +94,8 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <p className=" text-xl font-bold text-white">BloodBond</p>
+        <img src={logo} alt="" />
+        <p className="font-bold">BloodBond</p>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -109,64 +103,66 @@ const Navbar = () => {
       <div className="navbar-end">
         {/* {user ? (
           <>
-            <details className="dropdown">
-              <summary className="m-1 btn">
-                <div className="avatar">
-                  <div className="w-24 rounded-full">
-                    <img src={user?.photoURL || ''} />
-                  </div>
-                </div>
-              </summary>
-              <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                <li>
-                  <NavLink to="/dashboard">DashBoard</NavLink>
-                </li>
-                <li>
-                  <button onClick={handleLogOut}>LogOut</button>
-                </li>
-              </ul>
-            </details>
+            <button
+              className="btn btn-outline text-white"
+              onClick={handleLogOut}
+            >
+              LogOut
+            </button>
           </>
         ) : (
           <NavLink to="/login">
-            <button className="btn btn-outline">Login / Register</button>
+            <button className="btn btn-outline text-white">Login</button>
           </NavLink>
         )} */}
 
-
-        {
-          user ? <div className='flex items-center text-white'>
+        {user ? (
+          <div className="flex items-center text-white">
             <div className="dropdown dropdown-hover dropdown-end dropdown-bg-[#DC0000]">
-            <label tabIndex={0} className="md:mx-2 btn btn-sm md:btn-md btn-ghost btn-circle avatar">
+              <label
+                tabIndex={0}
+                className="md:mx-2 btn btn-sm md:btn-md btn-ghost btn-circle avatar"
+              >
                 <div className="w-10 rounded-full">
-                  <img title={user.displayName || ''} src={user.photoURL || ''} alt='userImg' />
-
+                  <img
+                    title={user.displayName || ""}
+                    src={user.photoURL || ""}
+                    alt="userImg"
+                  />
                 </div>
               </label>
-              <ul tabIndex={0} className="dropdown-content z-[10] menu px-5 mt-3 shadow bg-[#DC0000] rounded-box py-5 w-56">
-                <div className='flex flex-col justify-center items-center mb-4'>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[10] menu px-5 mt-3 shadow bg-[#DC0000] rounded-box py-5 w-56"
+              >
+                <div className="flex flex-col justify-center items-center mb-4">
                   <label tabIndex={0} className="btn btn-circle avatar">
                     <div className="w-16 rounded-full">
-                      <img src={user.photoURL || ''} alt='userImg' />
-
+                      <img src={user.photoURL || ""} alt="userImg" />
                     </div>
                   </label>
-                  <h2 className='text-lg font-bold'>{user.displayName}</h2>
+                  <h2 className="text-lg font-bold">{user.displayName}</h2>
                   <h2>{user.email}</h2>
-                  <Link to='/dashboard/userHome'>
-                    <button className="btn lg:btn-sm btn-xs btn-outline text-white mt-2">View Profile</button>
+                  <Link to="/dashboard/userHome">
+                    <button className="btn lg:btn-sm btn-xs btn-outline text-white mt-2">
+                      View Profile
+                    </button>
                   </Link>
                 </div>
 
-                <li><button className='font-bold text-md' onClick={handleLogOut}>Logout <LuLogOut className='text-xl'></LuLogOut></button></li>
+                <li>
+                  <button className="font-bold text-md" onClick={handleLogOut}>
+                    Logout <LuLogOut className="text-xl"></LuLogOut>
+                  </button>
+                </li>
               </ul>
             </div>
-
-          </div> :
-            <Link to='/login'>
-              <button className="btn btn-outline text-white">Login</button>
-            </Link>
-        }
+          </div>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-outline text-white">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );

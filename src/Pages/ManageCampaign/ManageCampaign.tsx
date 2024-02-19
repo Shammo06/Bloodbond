@@ -1,8 +1,13 @@
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { Link } from "react-router-dom";
+
 const ManageCampaign: React.FC = () => {
     return (
         <div className="bg-white p-5 border rounded-lg ">
-            <h2 className="text-2xl font-semibold border-l-4 border-red-600 pl-2">Manage Campaign</h2>
+            <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-semibold border-l-4 border-red-600 pl-2">Manage Campaign</h2>
+                <Link to="/dashboard/createCampaign" className="btn bg-red-600 hover:bg-white hover:text-red-600 hover:border-red-600 text-white">New Campaign</Link>
+            </div>
             <div className="pt-5">
                 <div className="overflow-x-auto">
                     <table className="table static">

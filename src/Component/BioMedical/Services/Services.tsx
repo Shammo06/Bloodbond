@@ -16,7 +16,7 @@ const Services: React.FC = () => {
   return (
     <div>
       <div className="container mx-auto my-24">
-        <h3 className="font-bold text-center text-4xl mb-16 mx-4">
+        <h3 className="font-bold text-center text-4xl mb-16 mx-4 text-white">
           Our Bio-Medical Services
         </h3>
 
