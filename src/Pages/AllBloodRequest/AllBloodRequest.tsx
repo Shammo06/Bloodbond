@@ -14,13 +14,16 @@ interface BloodRequest {
 
 const AllBloodRequest: React.FC = () => {
   const [allRequest, setAllRequest] = useState<BloodRequest[]>([]);
-
+  
   useEffect(() => {
     axios.get<{ bloodRequests: BloodRequest[] }>('https://blood-bound.vercel.app/getbloodrequests')
-      .then(res => setAllRequest(res.data.bloodRequests));
+      .then(res => {
+        const flatArray = res.data.bloodRequests.flat();
+        setAllRequest(flatArray) 
+      });
   }, []);
 
-  console.log(allRequest);
+  
 
   return (
     <div className="py-10">
@@ -33,7 +36,7 @@ const AllBloodRequest: React.FC = () => {
                 <div className="bg-red-500 p-4 rounded-full inline-block">
                   <span className="text-7xl text-white"><TbDropletHeart /></span>
                 </div>
-                <p>Date: {request.time}</p>
+                <p>Date: {request.time.slice(0, 10)}</p>
               </div>
               <h3 className="text-xl font-bold">{request.location}</h3>
               <h5 className="text-base font-bold text-gray-600 group-hover:text-gray-200 duration-500">Patient Name: {request.patientName}</h5>
