@@ -125,7 +125,7 @@ const CampaignDetails: React.FC = () => {
 
       {/* other campaigns */}
       <div className="lg:col-span-2 px-5 lg:pl-0">
-        <h3 className="text-center text-2xl font-bold mb-14">
+        <h3 className="text-center text-2xl font-bold mb-14 text-white">
           Other Upcoming Campaigns
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
