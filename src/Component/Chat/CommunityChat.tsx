@@ -19,8 +19,7 @@ const CommunityChat = () => {
     if (!auth) {
       return;
     }
-    const { user } = auth;
-  
+    const { user } = auth; 
    
   
 
@@ -34,7 +33,7 @@ const CommunityChat = () => {
 
         if (chat) {
             console.log(data);
-            axios.post('https://blood-server-2.vercel.app/createCommunityChat', data)
+            axios.post('https://blood-bound.vercel.app/createCommunityChat', data)
                 .then((res)=> {
                     console.log(res)
                     refetch()
