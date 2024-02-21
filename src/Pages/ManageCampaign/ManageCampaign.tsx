@@ -2,6 +2,8 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 const ManageCampaign: React.FC = () => {
+
+    
     return (
         <div className="bg-white p-5 border rounded-lg ">
             <div className="flex justify-between items-center">

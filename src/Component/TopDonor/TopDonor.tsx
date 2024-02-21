@@ -26,7 +26,7 @@ const TopDonor: React.FC = () => {
     console.log(donors);
 
     return (
-        <div className="md:w-3/5 bg-white p-5 border rounded-lg ">
+        <div className=" bg-white p-5 border rounded-lg ">
             <h1 className="text-2xl font-semibold border-l-4 border-red-600 pl-2">Top Donors</h1>
             <div className=" pt-4">
                 <div className="overflow-x-auto">
