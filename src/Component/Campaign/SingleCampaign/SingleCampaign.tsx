@@ -9,8 +9,7 @@ const SingleCampaign: React.FC<SingleCampaignCardProps> = ({ campaign }) => {
   const location = useLocation();
   const { pathname } = location;
 
-  const { _id, photo, title, district, subDistrict, description, startDate } =
-    campaign;
+  const { _id, photo, title, address, description, startDate } = campaign;
 
   const wordsPerDescription = 18;
   const slicedDescription = description
@@ -51,9 +50,7 @@ const SingleCampaign: React.FC<SingleCampaignCardProps> = ({ campaign }) => {
             <h5>{month && months[parseInt(month) - 1]}</h5>
           </div>
         </div>
-        <address>
-          {district}, {subDistrict}
-        </address>
+        <address>{address}</address>
         <h2 className="text-2xl font-bold text-[#ea062b]">{title}</h2>
         <p>
           {description.length > wordsPerDescription
