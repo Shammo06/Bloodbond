@@ -1,11 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import { Campaign } from "../../../Pages/Campaign/UpcomingCampaigns/UpcomingCampaigns";
 
-interface CampaignCardProps {
+interface SingleCampaignCardProps {
   campaign: Campaign;
 }
 
-const CampaignCard: React.FC<CampaignCardProps> = ({ campaign }) => {
+const SingleCampaign: React.FC<SingleCampaignCardProps> = ({ campaign }) => {
   const location = useLocation();
   const { pathname } = location;
 
@@ -71,4 +71,4 @@ const CampaignCard: React.FC<CampaignCardProps> = ({ campaign }) => {
   );
 };
 
-export default CampaignCard;
+export default SingleCampaign;

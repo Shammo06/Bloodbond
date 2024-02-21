@@ -2,9 +2,9 @@ import { useParams } from "react-router-dom";
 import { Campaign } from "../Campaign/UpcomingCampaigns/UpcomingCampaigns";
 import { useState } from "react";
 import VolunteerRegisterModal from "../../Component/Campaign/VolunteerRegisterModal/VolunteerRegisterModal";
-import CampaignCard from "../../Component/Campaign/CampaignCard/CampaignCard";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import SingleCampaign from "../../Component/Campaign/SingleCampaign/SingleCampaign";
 
 const CampaignDetails: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -131,10 +131,10 @@ const CampaignDetails: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
               {otherCampaigns && otherCampaigns.length > 0 ? (
                 otherCampaigns?.map((campaign: Campaign) => (
-                  <CampaignCard
+                  <SingleCampaign
                     key={campaign._id}
                     campaign={campaign}
-                  ></CampaignCard>
+                  ></SingleCampaign>
                 ))
               ) : (
                 <h6 className="text-center text-white">
