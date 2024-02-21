@@ -8,9 +8,7 @@ export interface Campaign {
   description: string;
   startDate: string;
   endDate: string;
-  division: string;
-  district: string;
-  subDistrict: string;
+  address: string;
 }
 
 const UpcomingCampaigns: React.FC = () => {
