@@ -40,7 +40,7 @@ const Services: React.FC = () => {
               </div>
             ) : (
               <div>
-                <h2 className="text-center font-semibold">
+                <h2 className="text-center font-semibold text-white">
                   No Services Available
                 </h2>
               </div>

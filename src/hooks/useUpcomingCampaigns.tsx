@@ -1,7 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import useAxiosPublic from "./useAxiosPublic";
 
 const useUpcomingCampaigns = () => {
+  const axiosPublic = useAxiosPublic();
+
   const {
     data: allCampaigns = [],
     isLoading,
@@ -9,8 +11,9 @@ const useUpcomingCampaigns = () => {
   } = useQuery({
     queryKey: ["allCampaigns"],
     queryFn: async () => {
-      const res = await axios.get(`/public/campaignFakeData.json`);
-      return res.data;
+      const res = await axiosPublic.get(`/getallcampaigns`);
+
+      return res.data.campaigns;
     },
   });
 
