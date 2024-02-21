@@ -1,9 +1,39 @@
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import useUpcomingCampaigns from "../../hooks/useUpcomingCampaigns";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
+export interface Campaign {
+    _id: string;
+    photo: string;
+    title: string;
+    description: string;
+    startDate: string;
+    endDate: string;
+    division: string;
+    district: string;
+    subDistrict: string;
+    volunteer: []
+    donationAmount: []
+}
 const ManageCampaign: React.FC = () => {
+    const axiosPublic = useAxiosPublic();
 
-    
+    const [allCampaigns, isLoading] = useUpcomingCampaigns();
+    console.log(allCampaigns);
+
+
+    const hendelCampaignDelete = (id: string) => {
+
+        // console.log(id);
+        axiosPublic.delete(`/campaigndelete/${id}`)
+            .then(res => {
+                console.log(res.data);
+        })
+
+
+    }
+
     return (
         <div className="bg-white p-5 border rounded-lg ">
             <div className="flex justify-between items-center">
@@ -25,24 +55,29 @@ const ManageCampaign: React.FC = () => {
                         </thead>
                         <tbody>
                             {/* row 1 */}
+                            {
+                                allCampaigns.map((campaign: Campaign) => (
+                                    <tr>
+                                        <td className="text-lg font-semibold">
+                                            {campaign?.title}
+                                        </td>
+                                        <td>
+                                            {campaign?.startDate}
+                                        </td>
+                                        <td>
+                                            {campaign?.volunteer?.length}
+                                        </td>
+                                        <td>
+                                            {campaign?.donationAmount?.length}
+                                        </td>
+                                        <td>
+                                            <button onClick={() => hendelCampaignDelete(campaign._id)} className="btn bg-red-600 hover:bg-white hover:text-red-600 hover:border-red-600 text-white"><RiDeleteBin6Line className="text-xl" /> Delete</button>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
 
-                            <tr>
-                                <td className="text-lg font-semibold">
-                                    LifeSaver Blood Donation Drive
-                                </td>
-                                <td>
-                                    09-2-2024
-                                </td>
-                                <td>
-                                    08
-                                </td>
-                                <td>
-                                    $150
-                                </td>
-                                <td>
-                                    <button className="btn bg-red-600 hover:bg-white hover:text-red-600 hover:border-red-600 text-white"><RiDeleteBin6Line className="text-xl" /> Delete</button>
-                                </td>
-                            </tr>
+
 
 
                         </tbody>
