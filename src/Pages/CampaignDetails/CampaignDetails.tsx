@@ -1,18 +1,15 @@
 import { useParams } from "react-router-dom";
-import useUpcomingCampaigns from "../../hooks/useUpcomingCampaigns";
 import { Campaign } from "../Campaign/UpcomingCampaigns/UpcomingCampaigns";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import VolunteerRegisterModal from "../../Component/Campaign/VolunteerRegisterModal/VolunteerRegisterModal";
 import CampaignCard from "../../Component/Campaign/CampaignCard/CampaignCard";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const CampaignDetails: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { id } = useParams();
-  const [allCampaigns] = useUpcomingCampaigns();
-  const [specificCampaign, setSpecificCampaign] = useState<Campaign | null>(
-    null
-  );
-  const [otherCampaigns, setOtherCampaigns] = useState<Campaign[]>([]);
+  const axiosPublic = useAxiosPublic();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -22,22 +19,23 @@ const CampaignDetails: React.FC = () => {
     setIsModalOpen(false);
   };
 
-  useEffect(() => {
-    if (allCampaigns) {
-      const foundCampaign = allCampaigns.find(
-        (campaign: Campaign) => campaign._id === id
-      );
-      if (foundCampaign) {
-        setSpecificCampaign(foundCampaign);
-      }
-      const otherCampaigns = allCampaigns.filter(
-        (campaign: Campaign) => campaign._id !== id
-      );
-      if (otherCampaigns.length > 0) {
-        setOtherCampaigns(otherCampaigns);
-      }
-    }
-  }, [allCampaigns, id]);
+  const { data: specificCampaignAndOthers = {} } = useQuery({
+    queryKey: ["specificCampaignAndOthers", id],
+    queryFn: async () => {
+      const res = await axiosPublic.post("/getspecificcampaignandothers", {
+        campaginId: id,
+      });
+
+      return res.data;
+    },
+  });
+
+  if (!specificCampaignAndOthers) {
+    return;
+  }
+
+  const specificCampaign = specificCampaignAndOthers.campaign;
+  const otherCampaigns = specificCampaignAndOthers.others;
 
   const { photo, title, district, subDistrict, description, startDate } =
     specificCampaign ?? {};
@@ -123,7 +121,7 @@ const CampaignDetails: React.FC = () => {
           Other Upcoming Campaigns
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
-          {otherCampaigns.length > 0 ? (
+          {otherCampaigns && otherCampaigns.length > 0 ? (
             otherCampaigns?.map((campaign: Campaign) => (
               <CampaignCard
                 key={campaign._id}
@@ -131,7 +129,9 @@ const CampaignDetails: React.FC = () => {
               ></CampaignCard>
             ))
           ) : (
-            <h6>No other campaigns are available.</h6>
+            <h6 className="text-center text-white">
+              No other campaigns are available.
+            </h6>
           )}
         </div>
       </div>
