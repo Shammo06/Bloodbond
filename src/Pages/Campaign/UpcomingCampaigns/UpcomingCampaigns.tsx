@@ -26,7 +26,7 @@ const UpcomingCampaigns: React.FC = () => {
       {isLoading ? (
         <div className="container mx-auto py-8">
           <div className="flex justify-center items-center">
-            <span className="loading loading-spinner loading-lg"></span>
+            <span className="loading loading-spinner loading-lg text-white"></span>
           </div>
         </div>
       ) : (
