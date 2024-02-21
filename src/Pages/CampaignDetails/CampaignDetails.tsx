@@ -37,7 +37,7 @@ const CampaignDetails: React.FC = () => {
   const specificCampaign = specificCampaignAndOthers.campaign;
   const otherCampaigns = specificCampaignAndOthers.others;
 
-  const { photo, title, district, subDistrict, description, startDate } =
+  const { photo, title, address, description, startDate } =
     specificCampaign ?? {};
 
   const [year, month, date] = startDate?.split("-") ?? [];
@@ -84,9 +84,7 @@ const CampaignDetails: React.FC = () => {
                         <h2 className="text-2xl font-bold text-[#DC0000]">
                           {title}
                         </h2>
-                        <address>
-                          {district}, {subDistrict}
-                        </address>
+                        <address>{address}</address>
                       </div>
                       <div className="bg-[#DC0000] text-white px-5 md:py-2 xl:mr-6 md:mr-4 flex-shrink-0">
                         <h4 className="text-lg font-bold text-center">
