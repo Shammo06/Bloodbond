@@ -1,4 +1,4 @@
-import CampaignCard from "../../../Component/Campaign/CampaignCard/CampaignCard";
+import SingleCampaign from "../../../Component/Campaign/SingleCampaign/SingleCampaign";
 import useUpcomingCampaigns from "../../../hooks/useUpcomingCampaigns";
 
 export interface Campaign {
@@ -31,14 +31,14 @@ const UpcomingCampaigns: React.FC = () => {
         </div>
       ) : (
         <div>
-          {allCampaigns.length > 0 ? (
+          {allCampaigns && allCampaigns.length > 0 ? (
             <div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-4 xl:gap-6 px-2">
                 {allCampaigns?.map((campaign: Campaign) => (
-                  <CampaignCard
+                  <SingleCampaign
                     key={campaign._id}
                     campaign={campaign}
-                  ></CampaignCard>
+                  ></SingleCampaign>
                 ))}
               </div>
             </div>
