@@ -25,13 +25,13 @@ const CampaignDetails: React.FC = () => {
   useEffect(() => {
     if (allCampaigns) {
       const foundCampaign = allCampaigns.find(
-        (campaign: Campaign) => campaign.campaignId === id
+        (campaign: Campaign) => campaign._id === id
       );
       if (foundCampaign) {
         setSpecificCampaign(foundCampaign);
       }
       const otherCampaigns = allCampaigns.filter(
-        (campaign: Campaign) => campaign.campaignId !== id
+        (campaign: Campaign) => campaign._id !== id
       );
       if (otherCampaigns.length > 0) {
         setOtherCampaigns(otherCampaigns);
@@ -39,14 +39,8 @@ const CampaignDetails: React.FC = () => {
     }
   }, [allCampaigns, id]);
 
-  const {
-    campaignImgUrl,
-    campaignTitle,
-    district,
-    subDistrict,
-    description,
-    startDate,
-  } = specificCampaign ?? {};
+  const { photo, title, district, subDistrict, description, startDate } =
+    specificCampaign ?? {};
 
   const [year, month, date] = startDate?.split("-") ?? [];
 
@@ -74,7 +68,7 @@ const CampaignDetails: React.FC = () => {
               <figure className="relative">
                 <img
                   className="w-full h-auto mx-auto rounded-tl-xl rounded-tr-xl"
-                  src={campaignImgUrl}
+                  src={photo}
                   alt="campaign"
                 />
               </figure>
@@ -82,7 +76,7 @@ const CampaignDetails: React.FC = () => {
                 <div className="flex flex-col-reverse md:flex-row justify-between md:items-start">
                   <div className="mt-3 md:mt-0 px-2 md:px-6 xl:px-8">
                     <h2 className="text-2xl font-bold text-[#DC0000]">
-                      {campaignTitle}
+                      {title}
                     </h2>
                     <address>
                       {district}, {subDistrict}
@@ -132,7 +126,7 @@ const CampaignDetails: React.FC = () => {
           {otherCampaigns.length > 0 ? (
             otherCampaigns?.map((campaign: Campaign) => (
               <CampaignCard
-                key={campaign.campaignId}
+                key={campaign._id}
                 campaign={campaign}
               ></CampaignCard>
             ))

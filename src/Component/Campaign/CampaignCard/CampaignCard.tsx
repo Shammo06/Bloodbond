@@ -9,15 +9,8 @@ const CampaignCard: React.FC<CampaignCardProps> = ({ campaign }) => {
   const location = useLocation();
   const { pathname } = location;
 
-  const {
-    campaignId,
-    campaignImgUrl,
-    campaignTitle,
-    district,
-    subDistrict,
-    description,
-    startDate,
-  } = campaign;
+  const { _id, photo, title, district, subDistrict, description, startDate } =
+    campaign;
 
   const wordsPerDescription = 18;
   const slicedDescription = description
@@ -50,7 +43,7 @@ const CampaignCard: React.FC<CampaignCardProps> = ({ campaign }) => {
             className={`h-[210px] sm:h-[300px] md:h-[210px] 2xl:h-[300px] object-cover w-full ${
               pathname.match(/^\/campaign\/\S+$/) && `xl:h-[250px]`
             }`}
-            src={campaignImgUrl}
+            src={photo}
             alt=""
           />
           <div className="absolute top-0 left-0  bg-[#ea062b] py-3 px-4 text-white">
@@ -61,7 +54,7 @@ const CampaignCard: React.FC<CampaignCardProps> = ({ campaign }) => {
         <address>
           {district}, {subDistrict}
         </address>
-        <h2 className="text-2xl font-bold text-[#ea062b]">{campaignTitle}</h2>
+        <h2 className="text-2xl font-bold text-[#ea062b]">{title}</h2>
         <p>
           {description.length > wordsPerDescription
             ? slicedDescription
@@ -69,7 +62,7 @@ const CampaignCard: React.FC<CampaignCardProps> = ({ campaign }) => {
         </p>
       </div>
       <Link
-        to={`/campaign/${campaignId}`}
+        to={`/campaign/${_id}`}
         className="btn btn-outline bg-[#EA062B] text-white mt-5 px-9"
       >
         See Details
