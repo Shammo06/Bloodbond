@@ -1,15 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import { IoSearchSharp } from "react-icons/io5";
-import DonorCard from "../../Component/DonorCard/DonorCard";
 import axios from "axios";
-// import axios from "axios";
+import DonorCard from "../../Component/DonorCard/DonorCard";
+
+
 
 const DonorSearch = () => {
   const [districts, setDistrict] = useState<any[]>([]);
   const [totalDonors, setTotalDonors] = useState<any[]>([]);
   const [donors, setDonors] = useState<any[]>([]);
 
+  
+  
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const form = e.target;
@@ -18,24 +21,25 @@ const DonorSearch = () => {
     // const donationDate = form.date.value;
     const donorType = form.type.value;
 
-    const filterDonor = totalDonors.filter((donor) => {
+    const filterDonor = totalDonors.filter((user) => {
       if (district == "all") {
-        return donor.district !== district;
+        return user.donor.district !== district;
       }
-      return donor.district === district;
+      return user.donor.district === district;
     });
 
     const filterBlGroup = filterDonor.filter(
-      (donor) => donor.bloodGroup === bloodGroup
+      (user) => user.donor.bloodGroup === bloodGroup
     );
 
-    const filterIsEligible = filterBlGroup.filter((donor) => {
+    const filterIsEligible = filterBlGroup.filter((user) => {
       if (donorType === "all") {
-        return donor.isDonatable !== "all";
+        return user.donor.isDonatable !== "all";
       }
-      return donor.isDonatable === true;
+      // return user.donor.isDonatable === true;
+      return user.donor.isDonatable !== "all";
     });
-    console.log(filterIsEligible);
+    // console.log(filterIsEligible);
     setDonors(filterIsEligible);
   };
 
@@ -157,7 +161,7 @@ const DonorSearch = () => {
               src="https://i.ibb.co/f89c3vr/not-found-2.jpg"
               alt=""
             />
-            <h2 className="text-center text-2xl font-bold">
+            <h2 className="text-center text-2xl font-bold text-white">
               Sorry No Donor Found!!!
             </h2>
           </div>

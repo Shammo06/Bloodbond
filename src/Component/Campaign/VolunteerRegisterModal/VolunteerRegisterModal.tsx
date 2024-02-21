@@ -57,7 +57,10 @@ const VolunteerRegisterModal: React.FC<CampaignDetailsProps> = ({
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
     const address = formData.get("address") as string;
-    console.log(campaignName, name, email, phone, address);
+
+    const volunteerInfo = { campaignName, name, email, phone, address };
+
+    console.log(volunteerInfo);
 
     // TODO: HAVE TO SEND VOLUNTEER REQUEST TO THE BACKEND
     Swal.fire({
@@ -99,7 +102,7 @@ const VolunteerRegisterModal: React.FC<CampaignDetailsProps> = ({
                 name="campaignName"
                 required
                 readOnly
-                defaultValue={campaign?.campaignTitle || ""}
+                defaultValue={campaign?.title || ""}
                 type="text"
                 className="input input-bordered w-full"
               />

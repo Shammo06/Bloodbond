@@ -15,8 +15,8 @@ const Services: React.FC = () => {
 
   return (
     <div>
-      <div className="container mx-auto my-24 text-white">
-        <h3 className="font-bold text-center text-4xl mb-16 mx-4">
+      <div className="container mx-auto my-24">
+        <h3 className="font-bold text-center text-4xl mb-16 mx-4 text-white">
           Our Bio-Medical Services
         </h3>
 
@@ -24,7 +24,7 @@ const Services: React.FC = () => {
         {isLoading ? (
           <div className="container mx-auto py-8">
             <div className="flex justify-center items-center">
-              <span className="loading loading-spinner loading-lg"></span>
+              <span className="loading loading-spinner loading-lg text-white"></span>
             </div>
           </div>
         ) : (
@@ -40,7 +40,7 @@ const Services: React.FC = () => {
               </div>
             ) : (
               <div>
-                <h2 className="text-center font-semibold">
+                <h2 className="text-center font-semibold text-white">
                   No Services Available
                 </h2>
               </div>

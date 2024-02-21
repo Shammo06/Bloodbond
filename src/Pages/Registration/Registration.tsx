@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import { FirebaseError } from "firebase/app";
 import axios from "axios";
 import SocialLogin from "../../Component/SocialLogin/SocialLogin";
-import loginBg from "../../assets/login-bg.png";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const validationSchema = Yup.object({
@@ -44,7 +43,6 @@ const Registration: React.FC = () => {
     const email = values.email;
     const password = values.password;
 
-    
     const fileInput = document.getElementById("photo") as HTMLInputElement;
 
     if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
@@ -107,14 +105,9 @@ const Registration: React.FC = () => {
   };
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${loginBg})`,
-      }}
-      className="container mx-auto bg-cover bg-no-repeat"
-    >
+    <div className="container mx-auto">
       {/* overlay div */}
-      <div className="bg-[rgba(0,0,0,0.4)] py-32">
+      <div className="py-32">
         <div
           style={{ boxShadow: "0px 3px 14px 6px rgba(0,0,0,0.28)" }}
           className="card-body py-16 rounded-lg w-[95%] sm:w-3/4 2xl:w-3/5 mx-auto bg-white"
