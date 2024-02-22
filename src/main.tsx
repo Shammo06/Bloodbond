@@ -152,24 +152,24 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/createCampaign",
-        element: <CreateCampaign></CreateCampaign>
+        element: <CreateCampaign></CreateCampaign>,
       },
       {
         path: "/dashboard/profile",
-        element: <Profile></Profile>
-      }
+        element: <Profile></Profile>,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <div className="bg-gradient-to-r from-[#5D0709] to-[#BF2012] font-serif ">
-  <React.StrictMode>
-    <AuthProvider>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router}/>
-      </QueryClientProvider> 
-    </AuthProvider>
-  </React.StrictMode>
+  <div className="bg-gradient-to-r to-[#5D0709] from-[#BF2012] font-serif container mx-auto ">
+    <React.StrictMode>
+      <AuthProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </AuthProvider>
+    </React.StrictMode>
   </div>
 );
