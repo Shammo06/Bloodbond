@@ -3,7 +3,7 @@ import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { Link } from "react-router-dom";
 
 interface Blog {
-  id: number;
+  _id: string;
   title: string;
   description: string;
   photo: string;
@@ -34,7 +34,7 @@ const BlogPage: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogs.map((blog) => (
           <div
-            key={blog.id}
+            key={blog._id}
             className="bg-white p-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
           >
             <img
@@ -47,7 +47,7 @@ const BlogPage: React.FC = () => {
               {blog.description.slice(0, 50)}
             </p>
             <Link
-              to={`/blog/${blog.id}`}
+              to={`/blog/${blog._id}`}
               className="block text-blue-500 hover:underline text-sm"
             >
               Read More

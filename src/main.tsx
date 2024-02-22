@@ -33,6 +33,7 @@ import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 import ManageUsers from "./Pages/ManageUsers/ManageUsers";
 import CreateBlog from "./Pages/CreateBlog/CreateBlog";
 import BlogPage from "./Pages/Blog/BlogPage";
+import SingleBlog from "./Pages/SingleBlog/SingleBlog";
 
 const queryClient = new QueryClient();
 
@@ -122,6 +123,10 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <BlogPage></BlogPage>,
+      },
+      {
+        path: "/blog/:id",
+        element: <SingleBlog></SingleBlog>,
       },
     ],
   },
