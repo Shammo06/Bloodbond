@@ -66,10 +66,10 @@ const ManageUsers: React.FC = () => {
                                     {user?.email}
                                 </td>
                                 <td>
-                                    {user?.roll || "user"}
+                                            <button className="btn btn-sm bg-red-600 hover:bg-white hover:text-red-600 hover:border-red-600 text-white">Admin</button>
                                 </td>
                                 <td>
-                                    <button className="btn bg-red-600 hover:bg-white hover:text-red-600 hover:border-red-600 text-white"><RiDeleteBin6Line className="text-xl" /> Delete</button>
+                                            <button className="btn btn-sm bg-red-600 hover:bg-white hover:text-red-600 hover:border-red-600 text-white"><RiDeleteBin6Line className="text-xl" /> Delete</button>
                                 </td>
                             </tr>
                             ))
