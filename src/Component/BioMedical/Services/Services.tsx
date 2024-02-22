@@ -24,7 +24,7 @@ const Services: React.FC = () => {
         {isLoading ? (
           <div className="container mx-auto py-8">
             <div className="flex justify-center items-center">
-              <span className="loading loading-spinner loading-lg"></span>
+              <span className="loading loading-spinner loading-lg text-white"></span>
             </div>
           </div>
         ) : (
@@ -40,7 +40,7 @@ const Services: React.FC = () => {
               </div>
             ) : (
               <div>
-                <h2 className="text-center font-semibold">
+                <h2 className="text-center font-semibold text-white">
                   No Services Available
                 </h2>
               </div>

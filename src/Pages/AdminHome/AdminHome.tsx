@@ -3,7 +3,7 @@ import { BiSolidDonateBlood } from "react-icons/bi";
 import { TbCamper } from "react-icons/tb";
 import { FaDonate } from "react-icons/fa";
 import TopDonor from "../../Component/TopDonor/TopDonor";
-import AdminProfile from "../../Component/AdminProfile/AdminProfile";
+// import AdminProfile from "../../Component/AdminProfile/AdminProfile";
 const AdminHome: React.FC = () => {
     return (
         <div>
@@ -13,7 +13,7 @@ const AdminHome: React.FC = () => {
                         <FaUsers className="text-3xl" />
                     </div>
                     <div className="space-y-2">
-                        <h2 className="text-2xl font-bold text-purple-500">1200</h2>
+                        <h2 className="text-2xl font-bold text-purple-500">50</h2>
                         <p className="text-lg">Total Donar</p>
                     </div>
                 </div>
@@ -22,7 +22,7 @@ const AdminHome: React.FC = () => {
                         <BiSolidDonateBlood className="text-3xl text-red-600" />
                     </div>
                     <div className="space-y-2">
-                        <h2 className="text-2xl font-bold text-red-500">850 <span className="text-base font-normal">Bag</span></h2>
+                        <h2 className="text-2xl font-bold text-red-500">2<span className="text-base font-normal">Bag</span></h2>
                         <p className="text-lg">Donated Blood</p>
                     </div>
                 </div>
@@ -31,7 +31,7 @@ const AdminHome: React.FC = () => {
                         <TbCamper className="text-3xl" />
                     </div>
                     <div className="space-y-2">
-                        <h2 className="text-2xl font-bold text-sky-500">120</h2>
+                        <h2 className="text-2xl font-bold text-sky-500">6</h2>
                         <p className="text-lg">Campaign </p>
                     </div>
                 </div>
@@ -40,14 +40,13 @@ const AdminHome: React.FC = () => {
                         <FaDonate className="text-3xl" />
                     </div>
                     <div className="space-y-2">
-                        <h2 className="text-2xl font-bold text-blue-600">$120</h2>
+                        <h2 className="text-2xl font-bold text-blue-600">$00</h2>
                         <p className="text-lg">Donation</p>
                     </div>
                 </div>
             </div>
-            <div className="pt-6 md:flex gap-6">
+            <div className="pt-6">
                 <TopDonor></TopDonor>
-                <AdminProfile></AdminProfile>
             </div>
         </div>
     );

@@ -30,6 +30,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CreateCampaign from "./Pages/CreateCampaign/CreateCampaign";
 import Profile from "./Pages/Profile/Profile";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
+import ManageUsers from "./Pages/ManageUsers/ManageUsers";
+import CreateBlog from "./Pages/CreateBlog/CreateBlog";
 
 const queryClient = new QueryClient();
 
@@ -157,6 +159,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/profile",
         element: <Profile></Profile>,
+      },
+      {
+        path: "/dashboard/manageusers",
+        element: <ManageUsers></ManageUsers>,
+      },
+      {
+        path: "/dashboard/createBlog",
+        element: <CreateBlog></CreateBlog>,
       },
     ],
   },
