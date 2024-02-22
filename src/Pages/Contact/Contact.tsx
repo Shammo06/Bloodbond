@@ -43,7 +43,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <form ref={form} onSubmit={sendEmail} className="pb-10">
+    <form ref={form} onSubmit={sendEmail} className="pb-10 mx-5">
       <h3 className="font-bold bg-[#850000] text-center text-white py-5 text-3xl mb-5">
         Contact Us
       </h3>
