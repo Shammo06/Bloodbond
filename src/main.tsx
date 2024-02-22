@@ -32,6 +32,7 @@ import Profile from "./Pages/Profile/Profile";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 import ManageUsers from "./Pages/ManageUsers/ManageUsers";
 import CreateBlog from "./Pages/CreateBlog/CreateBlog";
+import BlogPage from "./Pages/Blog/BlogPage";
 
 const queryClient = new QueryClient();
 
@@ -117,6 +118,10 @@ const router = createBrowserRouter([
       {
         path: "bioMedical",
         element: <BioMedical></BioMedical>,
+      },
+      {
+        path: "/blogs",
+        element: <BlogPage></BlogPage>,
       },
     ],
   },

@@ -1,38 +1,57 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
 
-interface Post {
+interface Blog {
   id: number;
   title: string;
-  excerpt: string;
-  author: string;
+  description: string;
+  photo: string;
 }
 
-const posts: Post[] = [
-  {
-    id: 1,
-    title: "Introduction to React",
-    excerpt: "Learn the basics of React and start building interactive UIs.",
-    author: "Jane Doe",
-  },
-  {
-    id: 2,
-    title: "Getting Started with Tailwind",
-    excerpt: "A guide to using Tailwind CSS for styling React applications.",
-    author: "John Doe",
-  },
-  // Add more posts as needed
-];
-
 const BlogPage: React.FC = () => {
+  const axiosPublic = useAxiosPublic();
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await axiosPublic.get("/getblogposts");
+        setBlogs(response.data.blogPosts);
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      }
+    };
+
+    fetchBlogs();
+  }, [axiosPublic]);
+
   return (
-    <div className="max-w-4xl text-white mx-auto mt-10">
-      <h1 className="text-3xl font-bold text-center mb-5">Blog Posts</h1>
-      <div className="space-y-4">
-        {posts.map((post) => (
-          <div key={post.id} className="p-5 border border-gray-200 rounded-lg">
-            <h2 className="text-xl font-bold">{post.title}</h2>
-            <p className="">{post.excerpt}</p>
-            <div className="text-sm mt-2">Author: {post.author}</div>
+    <div className="container mx-auto mt-10">
+      <h2 className="text-4xl font-bold mb-8 text-center text-white">
+        All Blogs
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {blogs.map((blog) => (
+          <div
+            key={blog.id}
+            className="bg-white p-6 rounded-lg shadow-md transition-transform transform hover:scale-105"
+          >
+            <img
+              src={blog.photo}
+              alt={blog.title}
+              className="w-full h-48 object-cover mb-4 rounded-md"
+            />
+            <h3 className="text-xl font-bold mb-2">{blog.title}</h3>
+            <p className="text-gray-700 mb-4">
+              {blog.description.slice(0, 50)}
+            </p>
+            <Link
+              to={`/blog/${blog.id}`}
+              className="block text-blue-500 hover:underline text-sm"
+            >
+              Read More
+            </Link>
           </div>
         ))}
       </div>
