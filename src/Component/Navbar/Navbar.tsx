@@ -1,12 +1,12 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
-import logo from "../../assets/icon.png";
+// import logo from "../../assets/icon.png";
 import { LuLogOut } from "react-icons/lu";
 
 const Navbar = () => {
   const auth = useAuth();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   if (!auth) {
     return;
@@ -31,7 +31,7 @@ const Navbar = () => {
               title: "Log Out Successful",
               icon: "success",
             });
-            // navigate("/");
+            navigate("/");
           })
           .catch(() => {
             Swal.fire({
@@ -67,12 +67,18 @@ const Navbar = () => {
       <li>
         <NavLink to="/communityChat">Community Chat</NavLink>
       </li>
+      {user && (
+        <li>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+        </li>
+      )}
     </>
   );
 
   return (
-    <div className=" navbar  text-white font-semibold">
+    <div className="container mx-auto navbar text-white font-semibold">
       <div className="navbar-start">
+        {/* nav items for small devices */}
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -97,34 +103,29 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <img src={logo} alt="" />
-        <p className="font-bold">BloodBond</p>
+        <img
+          className="w-10"
+          src={`https://i.ibb.co/QmWg5J0/pngwing-com.png`}
+          alt=""
+        />
+        <p className="font-bold">
+          Blood<span>Bond</span>
+        </p>
       </div>
+      {/* nav items for large devices */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal px-1 lg:text-[10px] xl:text-sm">
+          {links}
+        </ul>
       </div>
+      {/* navbar end */}
       <div className="navbar-end">
-        {/* {user ? (
-          <>
-            <button
-              className="btn btn-outline text-white"
-              onClick={handleLogOut}
-            >
-              LogOut
-            </button>
-          </>
-        ) : (
-          <NavLink to="/login">
-            <button className="btn btn-outline text-white">Login</button>
-          </NavLink>
-        )} */}
-
         {user ? (
           <div className="flex items-center text-white">
             <div className="dropdown dropdown-hover dropdown-end dropdown-bg-[#DC0000]">
               <label
                 tabIndex={0}
-                className="md:mx-2 btn btn-sm md:btn-md btn-ghost btn-circle avatar"
+                className="btn btn-sm md:btn-md btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
                   <img
@@ -136,7 +137,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="dropdown-content z-[10] menu px-5 mt-3 shadow bg-[#DC0000] rounded-box py-5 w-56"
+                className="dropdown-content z-[10] menu px-5 mt-3 shadow bg-[#DC0000] rounded-box py-5"
               >
                 <div className="flex flex-col justify-center items-center mb-4">
                   <label tabIndex={0} className="btn btn-circle avatar">
@@ -144,17 +145,21 @@ const Navbar = () => {
                       <img src={user.photoURL || ""} alt="userImg" />
                     </div>
                   </label>
-                  <h2 className="text-lg font-bold">{user.displayName}</h2>
-                  <h2>{user.email}</h2>
+                  <h2 className="text-lg font-bold w-auto">
+                    {user.displayName}
+                  </h2>
+                  <h2 className="w-auto">{user.email}</h2>
                   <Link to="/dashboard/userHome">
                     <button className="btn lg:btn-sm btn-xs btn-outline text-white mt-2">
                       View Profile
                     </button>
                   </Link>
                 </div>
-
                 <li>
-                  <button className="font-bold text-md" onClick={handleLogOut}>
+                  <button
+                    className="font-bold text-md mx-auto"
+                    onClick={handleLogOut}
+                  >
                     Logout <LuLogOut className="text-xl"></LuLogOut>
                   </button>
                 </li>
