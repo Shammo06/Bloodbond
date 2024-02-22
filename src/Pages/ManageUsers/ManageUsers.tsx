@@ -50,8 +50,8 @@ const ManageUsers: React.FC = () => {
                             {/* row 1 */}
 
                             {
-                                AllUsers?.map((user: User  )=> (
-                            <tr>
+                                AllUsers?.map((user: User  ) => 
+                            <tr key={user._id}>
                                 <td className="text-lg font-semibold">
                                     <div className="avatar static">
                                         <div className="rounded-full w-12 h-12">
@@ -72,8 +72,7 @@ const ManageUsers: React.FC = () => {
                                             <button className="btn btn-sm bg-red-600 hover:bg-white hover:text-red-600 hover:border-red-600 text-white"><RiDeleteBin6Line className="text-xl" /> Delete</button>
                                 </td>
                             </tr>
-                            ))
-                            }
+                            )}
 
 
                         </tbody>
