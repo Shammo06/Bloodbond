@@ -46,12 +46,19 @@ const Profile: React.FC = () => {
     return (
         <div className="bg-white p-5 border rounded-lg">
             <div className="max-w-3xl mx-auto py-6">
-                <div className="  md:flex items-center gap-10">
+                {
+                    !User?.donor ? <div className="  md:flex items-center gap-10">
                     <img className="rounded-full max-w-40 w-full" src={User?.photo} alt="" />
                     <div className="space-y-3">
                         <h4 className="text-2xl font-semibold">{User?.name}</h4>
-                        <p className="font-semibold text-black opacity-80">{User?.email}</p>
-                        <p></p>
+                        <p className="font-semibold text-black opacity-80 -z-10">{User?.email}</p>
+
+                    </div>
+                </div> : <> <div className="  md:flex items-center gap-10">
+                    <img className="rounded-full max-w-40 w-full" src={User?.photo} alt="" />
+                    <div className="space-y-3">
+                        <h4 className="text-2xl font-semibold">{User?.name}</h4>
+                        <p className="font-semibold text-black opacity-80 -z-10">{User?.email}</p>
                     </div>
                 </div>
                 <div className="md:flex  pt-5 text-base">
@@ -82,7 +89,9 @@ const Profile: React.FC = () => {
                         </div>
                     </div>
 
-                </div>
+                </div></>
+                }
+                
             </div>
 
         </div>
