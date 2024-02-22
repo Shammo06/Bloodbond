@@ -1,19 +1,13 @@
 import Modal from "./Modal";
 import ModalOragnization from "./ModalForOrganization";
-import bgPng from "../../assets/login-bg.png";
 export default function Donate() {
   return (
     <>
       {/* TODO: update the design of donate us page */}
 
-      <div
-        style={{
-          backgroundImage: `url(${bgPng})`,
-        }}
-        className="container mx-auto bg-cover bg-no-repeat"
-      >
+      <div className="container mx-auto">
         {/* overlay div */}
-        <div className="bg-[rgba(0,0,0,0.4)] py-32">
+        <div className="py-32">
           <div
             style={{ boxShadow: "0px 3px 14px 6px rgba(0,0,0,0.28)" }}
             className="card-body rounded-lg w-[95%] sm:w-3/4 2xl:w-3/5 mx-auto bg-white py-16"
