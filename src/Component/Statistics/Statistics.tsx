@@ -9,7 +9,7 @@ const Statistics = () => {
         Statistics
       </h3>
       <div className="border">
-        <div className="container mx-auto grid md:grid-cols-4 lg:px-0 text-white">
+        <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:px-0 text-white">
           <div className="flex flex-col justify-center items-center  py-16 rounded-xl gap-3">
             <FaHeartPulse className="text-4xl"></FaHeartPulse>
             <h5 className="text-[#FE3942] text-4xl font-semibold">75</h5>

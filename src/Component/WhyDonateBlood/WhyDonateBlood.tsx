@@ -9,8 +9,8 @@ const WhyDonateBlood = () => {
           Blood donation is a crucial part of healthcare. Here are some reasons
           why donating blood is important:
         </p>
-        <div className="mt-10 flex flex-wrap justify-center">
-          <div className="max-w-xs mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4">
+        <div className="mt-10 flex flex-wrap justify-center gap-6">
+          <div className="max-w-xs mx-auto bg-white shadow-xl rounded-lg overflow-hidden">
             <div className="px-4 py-6">
               <svg
                 className="w-12 h-12 text-red-500 mx-auto"
@@ -35,7 +35,7 @@ const WhyDonateBlood = () => {
               </p>
             </div>
           </div>
-          <div className="max-w-xs mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4">
+          <div className="max-w-xs mx-auto bg-white shadow-xl rounded-lg overflow-hidden">
             <div className="px-4 py-6">
               <svg
                 className="w-12 h-12 text-green-500 mx-auto"
@@ -59,7 +59,7 @@ const WhyDonateBlood = () => {
               </p>
             </div>
           </div>
-          <div className="max-w-xs mx-auto bg-white shadow-xl rounded-lg overflow-hidden m-4">
+          <div className="max-w-xs mx-auto bg-white shadow-xl rounded-lg overflow-hidden">
             <div className="px-4 py-6">
               <svg
                 className="w-12 h-12 text-blue-500 mx-auto"
