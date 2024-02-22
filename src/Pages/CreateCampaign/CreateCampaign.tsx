@@ -1,6 +1,7 @@
 import axios from "axios";
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik} from "formik";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
 // import useAuth from "../../hooks/useAuth";
 
 
@@ -14,12 +15,11 @@ const initialValue = {
 };
 const CreateCampaign: React.FC = () => {
     const axiosPublic = useAxiosPublic();
-
-    // const auth = useAuth(); 
-    
+    const navigate = useNavigate()
 
 
-    const handleSubmit = async (values: typeof initialValue) => {
+
+    const handleSubmit = async (values: typeof initialValue,{ resetForm }: { resetForm: () => void }) => {
         // if (!auth) {
         //     return;
         // }
@@ -64,7 +64,10 @@ const CreateCampaign: React.FC = () => {
         axiosPublic.post("/createcampaign", campaign)
             .then(res => {
                 console.log(res.data);
-                // Formik.resetForm();
+                if(res.data.message){
+                    resetForm()
+                    navigate("/dashboard/campaign")
+                }
             })
     };
 
@@ -73,7 +76,7 @@ const CreateCampaign: React.FC = () => {
             <h2 className="text-3xl font-bold text-center py-4">Create New Campaign</h2>
 
             <Formik initialValues={initialValue} onSubmit={handleSubmit}>
-                <Form className="max-w-3xl mx-auto">
+                        <Form className="max-w-3xl mx-auto">
                     <div className="mb-5">
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Campaign Title</label>
                         <Field type="text" name="title" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-1 focus:outline-red-500 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Campaign Title" required />

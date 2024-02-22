@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaArrowLeft } from "react-icons/fa6";
+import { FaArrowLeft, FaUsers } from "react-icons/fa6";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { TiHome } from "react-icons/ti";
 import { MdOutlineApproval } from "react-icons/md";
@@ -66,6 +66,16 @@ const Dashboard: React.FC = () => {
                                     }
                                 >
                                     <span className="flex items-center gap-2"><span><TbBrandCampaignmonitor className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Manage Campaign</span></span>
+                                </NavLink>
+                            </li>
+                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                <NavLink
+                                    to="/dashboard/manageusers"
+                                    className={({ isActive, isPending }) =>
+                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                    }
+                                >
+                                    <span className="flex items-center gap-2"><span><FaUsers className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Manage Users</span></span>
                                 </NavLink>
                             </li>
                             <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
