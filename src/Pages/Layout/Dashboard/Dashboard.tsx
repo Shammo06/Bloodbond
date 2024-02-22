@@ -8,9 +8,51 @@ import { TbBrandCampaignmonitor } from "react-icons/tb";
 import { LuTestTubes } from "react-icons/lu";
 import { IoMenu } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Dashboard: React.FC = () => {
     const [open, setOpen] = useState(true)
+
+    const auth = useAuth();
+    // const navigate = useNavigate();
+
+    if (!auth) {
+        return;
+    }
+
+    const { user, logOut } = auth;
+    console.log(user);
+    
+
+    const handleLogOut = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to Log Out!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Log Out",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logOut()
+                    .then(() => {
+                        Swal.fire({
+                            title: "Log Out Successful",
+                            icon: "success",
+                        });
+                        // navigate("/");
+                    })
+                    .catch(() => {
+                        Swal.fire({
+                            title: "Something went wrong, try again later.",
+                            icon: "error",
+                        });
+                    });
+            }
+        });
+    };
     return (
         <div className="">
 
@@ -124,16 +166,20 @@ const Dashboard: React.FC = () => {
                                 <div className="dropdown dropdown-end">
                                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                         <div className="w-10 rounded-full">
-                                            <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                            <img alt="Tailwind CSS Navbar component" src={user?.photoURL as string} />
                                         </div>
                                     </div>
-                                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                    <ul tabIndex={0} className=" dropdown-content bg-gray-200 mt-3 z-[1] p-2 shadow-2xl  rounded-box w-52">
                                         <li>
-                                            <Link to="/dashboard/profile" className="justify-between ">
+                                            <Link to="/dashboard/profile" className="btn btn-sm text-white hover:text-[#FF464E]   hover:border hover:border-[#FF464E] hover:bg-white  w-full text-left bg-[#FF464E]">
                                                 Profile
                                             </Link>
                                         </li>
-                                        <li><a>Logout</a></li>
+                                        <li>
+                                            <button onClick={handleLogOut} className="btn btn-sm text-white hover:text-[#FF464E]   hover:border hover:border-[#FF464E] hover:bg-white  w-full text-left bg-[#FF464E]">
+                                                Logout
+                                            </button>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
