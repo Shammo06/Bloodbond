@@ -75,6 +75,7 @@ const Navbar = () => {
   return (
     <div className="container mx-auto navbar text-white font-semibold">
       <div className="navbar-start">
+        {/* nav items for small devices */}
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -108,16 +109,20 @@ const Navbar = () => {
           Blood<span>Bond</span>
         </p>
       </div>
+      {/* nav items for large devices */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal px-1 lg:text-[10px] xl:text-sm">
+          {links}
+        </ul>
       </div>
+      {/* navbar end */}
       <div className="navbar-end">
         {user ? (
           <div className="flex items-center text-white">
             <div className="dropdown dropdown-hover dropdown-end dropdown-bg-[#DC0000]">
               <label
                 tabIndex={0}
-                className="md:mx-2 btn btn-sm md:btn-md btn-ghost btn-circle avatar"
+                className="btn btn-sm md:btn-md btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
                   <img
