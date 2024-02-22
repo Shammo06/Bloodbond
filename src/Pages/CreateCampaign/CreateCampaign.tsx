@@ -2,6 +2,7 @@ import axios from "axios";
 import { Field, Form, Formik} from "formik";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 // import useAuth from "../../hooks/useAuth";
 
 
@@ -65,6 +66,11 @@ const CreateCampaign: React.FC = () => {
             .then(res => {
                 console.log(res.data);
                 if(res.data.message){
+                    Swal.fire({
+                        title: "Good job!",
+                        text: "Campaign Create Completed!",
+                        icon: "success"
+                      });
                     resetForm()
                     navigate("/dashboard/campaign")
                 }
@@ -110,7 +116,7 @@ const CreateCampaign: React.FC = () => {
 
 
 
-                    <button type="submit" className="btn bg-red-600 hover:bg-white hover:text-red-600 hover:border-red-600 text-white">Create Campign</button>
+                    <button type="submit" className="btn bg-red-600 hover:bg-white hover:text-red-600 hover:border-red-600 text-white">Create Campaign</button>
                 </Form>
             </Formik>
 
