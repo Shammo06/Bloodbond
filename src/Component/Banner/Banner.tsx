@@ -3,9 +3,9 @@ import heroImage from "../../assets/heroImage.jpg";
 
 const Banner = () => {
   return (
-    <div className="container mx-auto">
-      <div className="flex flex-col-reverse md:flex-row gap-6 mb-5 mx-2">
-        <div className="md:w-1/2 flex items-center text-center">
+    <div className="container mx-auto mt-10 mb-20">
+      <div className="flex flex-col-reverse md:flex-row items-center justify-evenly gap-6 mx-2">
+        <div className="flex items-center text-center">
           <div className="max-w-lg mx-auto space-y-5">
             <div className="mb-5 text-3xl md:text-5xl font-bold text-white">
               <h1>Be a Lifesaver</h1>
@@ -29,8 +29,8 @@ const Banner = () => {
             </div>
           </div>
         </div>
-        <div className="md:w-1/2">
-          <img className="rounded-full" src={heroImage} alt="" />
+        <div className="">
+          <img className="rounded-full max-h-[550px]" src={heroImage} alt="" />
         </div>
       </div>
     </div>
