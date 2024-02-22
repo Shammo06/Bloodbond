@@ -1,27 +1,37 @@
 import axios from "axios";
-import { Field, Form, Formik } from "formik";
+import { Field, Form, Formik} from "formik";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+// import useAuth from "../../hooks/useAuth";
 
 
 const initialValue = {
     title: "",
-    date: "",
+    startdate: "",
     address: "",
     details: "",
     photo: "",
+    enddate: ""
 };
 const CreateCampaign: React.FC = () => {
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate()
 
 
-    const handleSubmit = async (values: typeof initialValue) => {
 
+    const handleSubmit = async (values: typeof initialValue,{ resetForm }: { resetForm: () => void }) => {
+        // if (!auth) {
+        //     return;
+        // }
+        // const { user } = auth;
 
 
         const title = values.title;
-        const date = values.date;
+        const startdate = values.startdate;
         const address = values.address;
         const details = values.details;
+        const enddate = values.enddate;
 
         const fileInput = document.getElementById("photo") as HTMLInputElement;
         if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
@@ -40,24 +50,31 @@ const CreateCampaign: React.FC = () => {
         const imgUploadResponse = await axios.post(image_hosting_api, img);
 
         const imageUrl = imgUploadResponse.data.data.url;
-        // console.log(imageUrl);
+
         const campaign = {
             title,
-            date,
+            startDate:startdate,
             address,
-            details,
-            photo: imageUrl
+            description: details,
+            photo: imageUrl,
+            endDate: enddate,
+            // email: user?.email
+
         }
         console.log(campaign);
-        axiosPublic.post("/campaigncreate",campaign)
-        .then(res => {
-            console.log(res.data);
-            // formik.resetForm();
-        })
-
-
-
-
+        axiosPublic.post("/createcampaign", campaign)
+            .then(res => {
+                console.log(res.data);
+                if(res.data.message){
+                    Swal.fire({
+                        title: "Good job!",
+                        text: "Campaign Create Completed!",
+                        icon: "success"
+                      });
+                    resetForm()
+                    navigate("/dashboard/campaign")
+                }
+            })
     };
 
     return (
@@ -65,15 +82,15 @@ const CreateCampaign: React.FC = () => {
             <h2 className="text-3xl font-bold text-center py-4">Create New Campaign</h2>
 
             <Formik initialValues={initialValue} onSubmit={handleSubmit}>
-                <Form className="max-w-3xl mx-auto">
+                        <Form className="max-w-3xl mx-auto">
                     <div className="mb-5">
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Campaign Title</label>
                         <Field type="text" name="title" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-1 focus:outline-red-500 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Campaign Title" required />
                     </div>
-                    <div className="flex items-center gap-4 ">
+                    <div className="md:flex items-center gap-4 ">
                         <div className="mb-5 w-full">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
-                            <Field type="date" name="date" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-1 focus:outline-red-500 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start Date</label>
+                            <Field type="date" name="startdate" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-1 focus:outline-red-500 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
                         </div>
                         <div className="mb-5 w-full">
                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
@@ -84,16 +101,22 @@ const CreateCampaign: React.FC = () => {
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Details</label>
                         <Field name="details" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-1 focus:outline-red-500 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" rows={5} placeholder="Campaign Details" required />
                     </div>
-                    <div className="mb-5">
-
-                        <label className="block mb-2 text-sm font-medium dark:text-white">Photo</label>
-                        <Field type="file" id="photo" name="image" className="file-input  file-input-bordered  w-full max-w-xs" />
+                    <div className="md:flex items-center gap-4">
+                        <div className="mb-5 w-full">
+                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">End Date</label>
+                            <Field type="date" name="enddate" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-1 focus:outline-red-500 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required />
+                        </div>
+                        <div className="mb-5 w-full">
+                            <label className="block mb-2 text-sm font-medium dark:text-white">Photo</label>
+                            <Field type="file" id="photo" name="image" className="file-input  file-input-bordered  w-full max-w-xs" />
+                        </div>
 
                     </div>
 
 
 
-                    <button type="submit" className="btn bg-red-600 hover:bg-white hover:text-red-600 hover:border-red-600 text-white">Create Campign</button>
+
+                    <button type="submit" className="btn bg-red-600 hover:bg-white hover:text-red-600 hover:border-red-600 text-white">Create Campaign</button>
                 </Form>
             </Formik>
 
