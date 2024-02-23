@@ -3,6 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import { Navigate, useLocation } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { Campaign } from "../../../Pages/Campaign/UpcomingCampaigns/UpcomingCampaigns";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 interface CampaignDetailsProps {
   campaign: Campaign;
@@ -15,6 +16,7 @@ const VolunteerRegisterModal: React.FC<CampaignDetailsProps> = ({
 }) => {
   const auth = useAuth();
   const location = useLocation();
+  const axiosPublic = useAxiosPublic();
   const modalBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -52,22 +54,33 @@ const VolunteerRegisterModal: React.FC<CampaignDetailsProps> = ({
 
     const formData = new FormData(e.currentTarget);
 
-    const campaignName = formData.get("campaignName") as string;
+    // const campaignName = formData.get("campaignName") as string;
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
     const address = formData.get("address") as string;
 
-    const volunteerInfo = { campaignName, name, email, phone, address };
+    const volunteerInfo = {
+      campaingId: campaign._id,
+      name,
+      email,
+      phone,
+      address,
+    };
 
     console.log(volunteerInfo);
 
-    // TODO: HAVE TO SEND VOLUNTEER REQUEST TO THE BACKEND
-    Swal.fire({
-      icon: "success",
-      title: "Your Request Is In Process",
+    // send volunteer info to the backend
+    axiosPublic.post("/volunteercreate", volunteerInfo).then((res) => {
+      console.log(res);
+      if (res.data.data._id) {
+        Swal.fire({
+          icon: "success",
+          title: "Volunteer Registration Successful!",
+        });
+        closeModal();
+      }
     });
-    closeModal();
   };
 
   console.log("modal rendered");
