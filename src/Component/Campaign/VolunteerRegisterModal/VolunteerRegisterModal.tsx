@@ -68,15 +68,24 @@ const VolunteerRegisterModal: React.FC<CampaignDetailsProps> = ({
       address,
     };
 
-    console.log(volunteerInfo);
-
     // send volunteer info to the backend
     axiosPublic.post("/volunteercreate", volunteerInfo).then((res) => {
-      console.log(res);
-      if (res.data.data._id) {
+      if (res.data.message === "Volunteer added successfully") {
         Swal.fire({
           icon: "success",
-          title: "Volunteer Registration Successful!",
+          title: "Congratulation, Now you are volunteer for this campaign",
+        });
+        closeModal();
+      } else if (res.data.message === "User already added") {
+        Swal.fire({
+          icon: "success",
+          title: "You are already volunteer for this campaign",
+        });
+        closeModal();
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Something Went Wrong!",
         });
         closeModal();
       }
