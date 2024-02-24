@@ -17,7 +17,7 @@ const UpcomingCampaigns: React.FC = () => {
   return (
     <div className="py-24">
       <h1 className="text-3xl text-center text-white font-extrabold mb-16">
-        Upcoming Campaign
+        Upcoming Campaigns
       </h1>
       {/* upcoming campaigns */}
 

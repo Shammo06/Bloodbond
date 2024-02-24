@@ -5,6 +5,7 @@ import VolunteerRegisterModal from "../../Component/Campaign/VolunteerRegisterMo
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SingleCampaign from "../../Component/Campaign/SingleCampaign/SingleCampaign";
+import ModalForPayment from "../Donate/ModalForPayment";
 
 const CampaignDetails: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,7 +38,7 @@ const CampaignDetails: React.FC = () => {
   const specificCampaign = specificCampaignAndOthers.campaign;
   const otherCampaigns = specificCampaignAndOthers.others;
 
-  const { photo, title, address, description, startDate } =
+  const { _id, photo, title, address, description, startDate } =
     specificCampaign ?? {};
 
   const [year, month, date] = startDate?.split("-") ?? [];
@@ -56,6 +57,15 @@ const CampaignDetails: React.FC = () => {
     "Nov",
     "Dec",
   ];
+
+  const openDonationModal = () => {
+    const modal = document.getElementById(
+      "my_modal_5"
+    ) as HTMLDialogElement | null;
+    if (modal) {
+      modal.showModal();
+    }
+  };
 
   return (
     <>
@@ -111,9 +121,13 @@ const CampaignDetails: React.FC = () => {
                           ></VolunteerRegisterModal>
                         )}
                       </div>
-                      <button className="btn btn-outline bg-[#DC0000] text-white hover:text-[#DC0000] hover:bg-white hover:border-[#DC0000] px-9">
-                        Donate for this Camping!
+                      <button
+                        onClick={openDonationModal}
+                        className="btn btn-outline bg-[#DC0000] text-white hover:text-[#DC0000] hover:bg-white hover:border-[#DC0000] px-9"
+                      >
+                        Donate for this Campaign!
                       </button>
+                      <ModalForPayment campaignId={_id}></ModalForPayment>
                     </div>
                   </div>
                 </div>
