@@ -1,3 +1,4 @@
+import { useState } from "react";
 import SingleCampaign from "../../../Component/Campaign/SingleCampaign/SingleCampaign";
 import useUpcomingCampaigns from "../../../hooks/useUpcomingCampaigns";
 
@@ -13,6 +14,8 @@ export interface Campaign {
 
 const UpcomingCampaigns: React.FC = () => {
   const [allCampaigns, isLoading] = useUpcomingCampaigns();
+  const [isSee, setIsSee] = useState(false);
+  const slicedCampaigns = isSee ? allCampaigns : allCampaigns?.slice(0, 6);
 
   return (
     <div className="py-24">
@@ -32,13 +35,22 @@ const UpcomingCampaigns: React.FC = () => {
           {allCampaigns && allCampaigns.length > 0 ? (
             <div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-4 xl:gap-6 px-2">
-                {allCampaigns?.map((campaign: Campaign) => (
+                {slicedCampaigns?.map((campaign: Campaign) => (
                   <SingleCampaign
                     key={campaign._id}
                     campaign={campaign}
                   ></SingleCampaign>
                 ))}
               </div>
+              {/* see all, see less btn */}
+              {allCampaigns?.length > 6 && (
+                <button
+                  onClick={() => setIsSee(!isSee)}
+                  className="mt-14 text block mx-auto btn btn-outline bg-[#EA062B] text-white"
+                >
+                  {isSee ? "See Less" : "See All"}
+                </button>
+              )}
             </div>
           ) : (
             <div>
