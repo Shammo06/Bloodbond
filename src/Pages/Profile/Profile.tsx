@@ -12,9 +12,7 @@ const Profile: React.FC = () => {
     const auth = useAuth();
 
     /*useEffect(() => {
-        if (!auth) {
-            return;
-        }
+        
         const { user } = auth;
         const fetchData = async () => {
             try {
@@ -40,7 +38,7 @@ const Profile: React.FC = () => {
     })
 
     const User = data?.user
-    console.log(User);
+    // console.log(User);
 
 
     return (
