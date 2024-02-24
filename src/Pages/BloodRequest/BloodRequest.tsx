@@ -6,7 +6,7 @@ import useAuth from "../../hooks/useAuth";
 interface FormData {
   patientName: string;
   bloodGroup: string;
-  bloodBag: number;
+  bloodBag: string;
   time: string;
   location: string;
   phone: string;
@@ -40,12 +40,13 @@ const BloodRequest = () => {
       bloodBag,
       patientName,
     };
-    console.log(request);
+    
+    
     axios
       .post("https://blood-bound.vercel.app/createbloodrequest", request)
       .then(() =>
         Swal.fire({
-          title: "Your Blood Request Created Successful",
+          title: "Your Blood Request Created Successfully",
           icon: "success",
         }).catch((error) => console.log(error.message))
       );
@@ -54,10 +55,10 @@ const BloodRequest = () => {
   };
 
   return (
-    <div className="mx-auto container   py-20">
+    <div className="mx-auto container py-10">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full mx-auto lg:w-3/4 p-8  font-medium rounded-lg"
+        className="border-2 border-gray-300 shadow-xl w-full mx-auto lg:w-3/4 p-8  font-medium rounded-lg"
       >
         <h2 className="text-3xl font-bold text-white  text-center">
           Blood Request
@@ -74,7 +75,7 @@ const BloodRequest = () => {
             />
             {errors.patientName?.type === "required" && (
               <p
-                className="text-red-600 font-bold text-center mt-1"
+                className="text-red-400 font-bold text-center mt-1"
                 role="alert"
               >
                 * Patient Name is required
@@ -102,7 +103,7 @@ const BloodRequest = () => {
             </select>
             {errors.bloodGroup?.type === "required" && (
               <p
-                className="text-red-600 font-bold text-center mt-1"
+                className="text-red-400 font-bold text-center mt-1"
                 role="alert"
               >
                 * Blood Group is required
@@ -120,7 +121,7 @@ const BloodRequest = () => {
             />
             {errors.bloodBag?.type === "required" && (
               <p
-                className="text-red-600 font-bold text-center mt-1"
+                className="text-red-400 font-bold text-center mt-1"
                 role="alert"
               >
                 * Blood Bag Number is required
@@ -138,7 +139,7 @@ const BloodRequest = () => {
             />
             {errors.time?.type === "required" && (
               <p
-                className="text-red-600 font-bold text-center mt-1"
+                className="text-red-400 font-bold text-center mt-1"
                 role="alert"
               >
                 * Date is required
@@ -159,7 +160,7 @@ const BloodRequest = () => {
             />
             {errors.location?.type === "required" && (
               <p
-                className="text-red-600 font-bold text-center mt-1"
+                className="text-red-400 font-bold text-center mt-1"
                 role="alert"
               >
                 * Address is required
@@ -177,7 +178,7 @@ const BloodRequest = () => {
             />
             {errors.phone?.type === "required" && (
               <p
-                className="text-red-600 font-bold text-center mt-1"
+                className="text-red-400 font-bold text-center mt-1"
                 role="alert"
               >
                 * Contact Number is required
