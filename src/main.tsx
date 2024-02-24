@@ -34,6 +34,7 @@ import ManageUsers from "./Pages/ManageUsers/ManageUsers";
 import CreateBlog from "./Pages/CreateBlog/CreateBlog";
 import BlogPage from "./Pages/Blog/BlogPage";
 import SingleBlog from "./Pages/SingleBlog/SingleBlog";
+import AllBlog from "./Pages/All Blog/AllBlog";
 
 const queryClient = new QueryClient();
 
@@ -178,6 +179,10 @@ const router = createBrowserRouter([
         path: "/dashboard/createBlog",
         element: <CreateBlog></CreateBlog>,
       },
+      {
+        path: "/dashboard/allBlog",
+        element: <AllBlog></AllBlog>
+      }
     ],
   },
 ]);
