@@ -3,7 +3,7 @@ import { BiSolidDonateBlood } from "react-icons/bi";
 import { TbCamper } from "react-icons/tb";
 import { FaDonate } from "react-icons/fa";
 import TopDonor from "../../Component/TopDonor/TopDonor";
-import AdminProfile from "../../Component/AdminProfile/AdminProfile";
+// import AdminProfile from "../../Component/AdminProfile/AdminProfile";
 const AdminHome: React.FC = () => {
     return (
         <div>
@@ -45,9 +45,8 @@ const AdminHome: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className="pt-6 md:flex gap-6">
+            <div className="pt-6">
                 <TopDonor></TopDonor>
-                <AdminProfile></AdminProfile>
             </div>
         </div>
     );

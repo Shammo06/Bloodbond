@@ -44,8 +44,8 @@ const UserHome: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className="pt-6 md:flex gap-6">
-                <div className="md:w-3/5 bg-white p-5 border rounded-lg ">
+            <div className="pt-6">
+                <div className=" bg-white p-5 border rounded-lg ">
                     <h1 className="text-2xl font-semibold border-l-4 border-red-600 pl-2">Who resived blood</h1>
                     <div className=" pt-4">
                         <div className="overflow-x-auto">
@@ -96,9 +96,9 @@ const UserHome: React.FC = () => {
                         </div>
                     </div>
                 </div>
-                <div className="h-fit md:w-2/5 bg-white p-5 border rounded-lg">
+                {/* <div className="h-fit md:w-2/5 bg-white p-5 border rounded-lg">
                     <h2>User Profile</h2>
-                </div>
+                </div> */}
             </div>
         </div>
     );

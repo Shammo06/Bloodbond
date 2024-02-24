@@ -30,6 +30,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CreateCampaign from "./Pages/CreateCampaign/CreateCampaign";
 import Profile from "./Pages/Profile/Profile";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
+import ManageUsers from "./Pages/ManageUsers/ManageUsers";
+import CreateBlog from "./Pages/CreateBlog/CreateBlog";
+import BlogPage from "./Pages/Blog/BlogPage";
+import SingleBlog from "./Pages/SingleBlog/SingleBlog";
 
 const queryClient = new QueryClient();
 
@@ -116,6 +120,14 @@ const router = createBrowserRouter([
         path: "bioMedical",
         element: <BioMedical></BioMedical>,
       },
+      {
+        path: "/blogs",
+        element: <BlogPage></BlogPage>,
+      },
+      {
+        path: "/blog/:id",
+        element: <SingleBlog></SingleBlog>,
+      },
     ],
   },
   {
@@ -152,24 +164,32 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/createCampaign",
-        element: <CreateCampaign></CreateCampaign>
+        element: <CreateCampaign></CreateCampaign>,
       },
       {
         path: "/dashboard/profile",
-        element: <Profile></Profile>
-      }
+        element: <Profile></Profile>,
+      },
+      {
+        path: "/dashboard/manageusers",
+        element: <ManageUsers></ManageUsers>,
+      },
+      {
+        path: "/dashboard/createBlog",
+        element: <CreateBlog></CreateBlog>,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <div className="bg-gradient-to-r from-[#5D0709] to-[#BF2012] font-serif ">
-  <React.StrictMode>
-    <AuthProvider>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router}/>
-      </QueryClientProvider> 
-    </AuthProvider>
-  </React.StrictMode>
+  <div className="bg-gradient-to-r to-[#5D0709] from-[#BF2012] font-serif container mx-auto ">
+    <React.StrictMode>
+      <AuthProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </AuthProvider>
+    </React.StrictMode>
   </div>
 );

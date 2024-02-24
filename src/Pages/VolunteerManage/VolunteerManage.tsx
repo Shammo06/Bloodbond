@@ -24,7 +24,7 @@ const VolunteerManage = () => {
                             <th>Email</th>
                             <th>Address</th>
                             <th>Contact</th>
-                            <th>Action</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
