@@ -157,11 +157,13 @@ const CampaignDetails: React.FC = () => {
                   </h6>
                 )}
               </div>
-              <Link to="/campaign">
-                <button className="btn btn-outline bg-[#EA062B] text-white mt-14 block mx-auto">
-                  Show All
-                </button>
-              </Link>
+              {otherCampaigns && otherCampaigns.length > 3 && (
+                <Link to="/campaign">
+                  <button className="btn btn-outline bg-[#EA062B] text-white mt-14 block mx-auto">
+                    Show All
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
         </div>
