@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Campaign } from "../Campaign/UpcomingCampaigns/UpcomingCampaigns";
 import { useState } from "react";
 import VolunteerRegisterModal from "../../Component/Campaign/VolunteerRegisterModal/VolunteerRegisterModal";
@@ -140,18 +140,29 @@ const CampaignDetails: React.FC = () => {
             <h3 className="text-center text-2xl font-bold mb-14 text-white">
               Other Upcoming Campaigns
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
-              {otherCampaigns && otherCampaigns.length > 0 ? (
-                otherCampaigns?.map((campaign: Campaign) => (
-                  <SingleCampaign
-                    key={campaign._id}
-                    campaign={campaign}
-                  ></SingleCampaign>
-                ))
-              ) : (
-                <h6 className="text-center text-white">
-                  No other campaigns are available.
-                </h6>
+            <div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
+                {otherCampaigns && otherCampaigns.length > 0 ? (
+                  otherCampaigns
+                    ?.slice(0, 3)
+                    .map((campaign: Campaign) => (
+                      <SingleCampaign
+                        key={campaign._id}
+                        campaign={campaign}
+                      ></SingleCampaign>
+                    ))
+                ) : (
+                  <h6 className="text-center text-white">
+                    No other campaigns are available.
+                  </h6>
+                )}
+              </div>
+              {otherCampaigns && otherCampaigns.length > 3 && (
+                <Link to="/campaign">
+                  <button className="btn btn-outline bg-[#EA062B] text-white mt-14 block mx-auto">
+                    Show All
+                  </button>
+                </Link>
               )}
             </div>
           </div>
