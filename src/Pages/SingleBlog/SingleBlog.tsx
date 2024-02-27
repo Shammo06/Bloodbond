@@ -29,13 +29,12 @@ const SingleBlog: React.FC = () => {
   }, [axiosPublic, id]);
 
   if (!blog) {
-    // You can replace this with a loading spinner or any other loading indicator
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="container mx-auto mt-10">
-      <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-md">
+    <div className="container mx-auto mt-10 py-5 px-20">
+      <div className=" bg-white p-5 rounded-lg shadow-md">
         <img
           src={blog.photo}
           alt={blog.title}

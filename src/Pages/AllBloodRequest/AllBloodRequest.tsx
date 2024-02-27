@@ -12,15 +12,25 @@ interface BloodRequest {
 }
 
 const RequestBlood: React.FC = () => {
-  const [requests, setRequests] = useState<BloodRequest[][]>([]);
+  const [requests, setRequests] = useState<BloodRequest[]>([]);
 
   useEffect(() => {
     axios
       .get("https://blood-bound.vercel.app/getbloodrequests")
-      .then((data) => {
-        setRequests(data.data.bloodRequests);
+      .then((response) => {
+        const flattenedRequests: BloodRequest[] =
+          response.data.bloodRequests.flat();
+        setRequests(flattenedRequests);
+        console.log(flattenedRequests);
+      })
+      .catch((error) => {
+        console.error("Error fetching blood requests:", error);
       });
   }, []);
+
+  const handleDonateBlood = (phone: number) => {
+    window.location.href = `tel:${phone}`;
+  };
 
   return (
     <div className="section-donate-blood my-10">
@@ -29,51 +39,57 @@ const RequestBlood: React.FC = () => {
           All Blood Request
         </p>
         <div className="grid md:grid-cols-2 gap-5">
-          {requests.map((bloodGroupRequests, index) =>
-            bloodGroupRequests.map((data) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-md border border-gray-300 shadow-md"
-              >
-                <div className="text-center text-xl font-bold text-[#850000] mb-4">
-                  {data.bloodGroup} BLOOD REQUIRED
+          {requests.map((data) => (
+            <div
+              key={data._id}
+              className="bg-white p-6 rounded-md border border-gray-300 shadow-md"
+            >
+              <div className="text-center text-xl font-bold text-[#850000] mb-4">
+                {data.bloodGroup} BLOOD REQUIRED
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-4 text-sm">
+                <div className="flex items-center">
+                  <div className="font-bold">Patient Name</div>
+                  <div className="text-left pl-2">{data.patientName}</div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4 text-sm">
-                  <div className="flex items-center">
-                    <div className="font-bold">Patient Name</div>
-                    <div className="text-left pl-2">{data.patientName}</div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <div className="font-bold">Blood Group</div>
-                    <div className="text-left pl-2">{data.bloodGroup}</div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <div className="font-bold">Need No. Of Bags</div>
-                    <div className="pl-2">{data.bloodBag} Bag</div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <div className="font-bold">Donation Time</div>
-                    <div className="pl-2">{data.time}</div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <div className="font-bold">Location</div>
-                    <div className="text-left pl-2">{data.location}</div>
-                  </div>
+                <div className="flex items-center">
+                  <div className="font-bold">Blood Group</div>
+                  <div className="text-left pl-2">{data.bloodGroup}</div>
                 </div>
 
-                <div className="text-center mt-6">
-                  <button className="py-2 px-6 bg-[#ea062b] text-white rounded-md hover:bg-red-800 transition duration-300">
-                    Donate Blood
-                  </button>
+                <div className="flex items-center">
+                  <div className="font-bold">Need No. Of Bags</div>
+                  <div className="pl-2">{data.bloodBag} Bag</div>
+                </div>
+
+                <div className="flex items-center">
+                  <div className="font-bold">Donation Time</div>
+                  <div className="pl-2">{data.time}</div>
+                </div>
+
+                <div className="flex items-center">
+                  <div className="font-bold">Location</div>
+                  <div className="text-left pl-2">{data.location}</div>
+                </div>
+
+                <div className="flex items-center">
+                  <div className="font-bold">Phone</div>
+                  <div className="text-left pl-2">{data.phone}</div>
                 </div>
               </div>
-            ))
-          )}
+
+              <div className="text-center mt-6">
+                <button
+                  className="py-2 px-6 bg-[#ea062b] text-white rounded-md hover:bg-red-800 transition duration-300"
+                  onClick={() => handleDonateBlood(data.phone)}
+                >
+                  Donate Blood
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
