@@ -3,7 +3,7 @@ import useAxiosPublic from "./useAxiosPublic";
 
 const useUpcomingCampaigns = () => {
   const axiosPublic = useAxiosPublic();
-
+  
   const {
     data: allCampaigns = [],
     isLoading,
@@ -16,6 +16,8 @@ const useUpcomingCampaigns = () => {
       return res.data.campaigns;
     },
   });
+
+  
 
   return [allCampaigns, isLoading, refetch];
 };

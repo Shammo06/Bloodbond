@@ -1,10 +1,18 @@
+import { useLocation } from "react-router-dom";
 import StripeComponent from "./StripeComonent";
 
-export default function ModalForPayment({ campaignId }: { campaignId: string }) {
+export default function ModalForPayment({
+  campaignId,
+}: {
+  campaignId: string;
+}) {
+  const location = useLocation();
+  const { pathname } = location; 
+
   return (
     <>
       <button
-        className="btn"
+        className={`btn ${pathname.match(/^\/campaign\/\S+$/) && "hidden"}`}
         onClick={() => {
           const modal = document.getElementById(
             "my_modal_5"
