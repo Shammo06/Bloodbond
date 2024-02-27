@@ -18,10 +18,14 @@ const RequestBlood: React.FC = () => {
     axios
       .get("https://blood-bound.vercel.app/getbloodrequests")
       .then((response) => {
-        const flattenedRequests: BloodRequest[] =
-          response.data.bloodRequests.flat();
-        setRequests(flattenedRequests);
-        console.log(flattenedRequests);
+        const currentDate = new Date();
+        const filteredRequests: BloodRequest[] = response.data.bloodRequests
+          .flat()
+          .filter(
+            (request: BloodRequest) => new Date(request.time) > currentDate
+          )
+          .splice(0, 2);
+        setRequests(filteredRequests);
       })
       .catch((error) => {
         console.error("Error fetching blood requests:", error);
@@ -65,8 +69,10 @@ const RequestBlood: React.FC = () => {
                 </div>
 
                 <div className="flex items-center">
-                  <div className="font-bold">Donation Time</div>
-                  <div className="pl-2">{data.time}</div>
+                  <div className="font-bold">Donation Date</div>
+                  <div className="pl-2">
+                    {new Date(data.time).toLocaleDateString()}
+                  </div>
                 </div>
 
                 <div className="flex items-center">
@@ -85,7 +91,7 @@ const RequestBlood: React.FC = () => {
                   className="py-2 px-6 bg-[#ea062b] text-white rounded-md hover:bg-red-800 transition duration-300"
                   onClick={() => handleDonateBlood(data.phone)}
                 >
-                  Donate Blood
+                  Contact Now
                 </button>
               </div>
             </div>
