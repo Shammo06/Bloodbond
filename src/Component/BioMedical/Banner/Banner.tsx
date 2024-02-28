@@ -12,25 +12,40 @@ const Banner = () => {
         <div className="container mx-auto py-28 flex flex-col items-center">
           <div className="space-y-6 lg:space-y-4 mx-4">
             <motion.h2
-              initial={{ x: 1000 }}
+              initial={{ x: "100vw" }}
               animate={{ x: 0 }}
-              transition={{ delay: 1.5, stiffness: 120, type: "spring" }}
+              transition={{
+                delay: 1.5,
+                stiffness: 120,
+                duration: 0.4,
+                type: "spring",
+              }}
               className="font-medium text-2xl text-white text-center lg:text-left"
             >
               Biomedical Services for a Healthier Tomorrow
             </motion.h2>
             <motion.h1
-              initial={{ y: -300 }}
+              initial={{ y: "-100vh" }}
               animate={{ y: 0 }}
-              transition={{ delay: 1.2, stiffness: 120, type: "spring" }}
+              transition={{
+                delay: 2,
+                stiffness: 120,
+                duration: 0.4,
+                type: "spring",
+              }}
               className="font-bold text-6xl text-white text-center lg:text-left"
             >
               Take Control of Your Health
             </motion.h1>
             <motion.h3
-              initial={{ x: -1000 }}
-              animate={{ x: 0 }}
-              transition={{ delay: 0.5, stiffness: 120, type: "spring" }}
+              initial={{ y: "-100vh" }}
+              animate={{ y: 0 }}
+              transition={{
+                delay: 1,
+                stiffness: 120,
+                duration: 0.4,
+                type: "spring",
+              }}
               className="text-lg text-white max-w-[720px] text-center lg:text-left mx-3 lg:mx-0"
             >
               Be a healthcare hero! Your involvement in our biomedical services
