@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import DonateBlood from "../DonateBlood/DonateBlood";
 
 interface BloodRequest {
   patientName: string;
   bloodGroup: string;
-  bloodBag: number;
+  bloodBag: string;
   time: string;
   location: string;
-  phone: number;
+  phone: string;
   _id: string;
 }
 
@@ -18,8 +19,8 @@ const RequestBlood: React.FC = () => {
   useEffect(() => {
     axios
       .get("https://blood-bound.vercel.app/getbloodrequests")
-      .then((data) => {
-        setRequests(data.data.bloodRequests);
+      .then((res) => {
+        setRequests(res.data.bloodRequests);
       });
   }, []);
 
@@ -31,55 +32,15 @@ const RequestBlood: React.FC = () => {
         </p>
         <div className="grid md:grid-cols-2 gap-5">
           {requests.map((bloodGroupRequests, index) =>
-            bloodGroupRequests.splice(0, 2).map((data) => (
-              <div
-                key={index}
-                className="bg-white p-6 rounded-md border border-gray-300 shadow-md"
-              >
-                <div className="text-center text-xl font-bold text-[#850000] mb-4">
-                  {data.bloodGroup} BLOOD REQUIRED
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-4 text-sm">
-                  <div className="flex items-center">
-                    <div className="font-bold">Patient Name</div>
-                    <div className="text-left pl-2">{data.patientName}</div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <div className="font-bold">Blood Group</div>
-                    <div className="text-left pl-2">{data.bloodGroup}</div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <div className="font-bold">Need No. Of Bags</div>
-                    <div className="pl-2">{data.bloodBag} Bag</div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <div className="font-bold">Donation Time</div>
-                    <div className="pl-2">{data.time}</div>
-                  </div>
-
-                  <div className="flex items-center">
-                    <div className="font-bold">Location</div>
-                    <div className="text-left pl-2">{data.location}</div>
-                  </div>
-                </div>
-
-                <div className="text-center mt-6">
-                  <button className="py-2 px-6 bg-[#ea062b] text-white rounded-md hover:bg-red-800 transition duration-300">
-                    Donate Blood
-                  </button>
-                </div>
-              </div>
+            bloodGroupRequests.slice(0, 2).map((data) => (
+              <DonateBlood key={index} data={data}></DonateBlood>
             ))
           )}
         </div>
         <div className="pt-5 text-center">
           <Link to="/allrequest">
             <button className="py-2 px-6 bg-[#DC0000] text-white rounded-md hover:bg-red-800 transition duration-300">
-              All Donor Request
+              All Blood Request
             </button>
           </Link>
         </div>
