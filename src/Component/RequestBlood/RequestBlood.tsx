@@ -30,9 +30,9 @@ const RequestBlood: React.FC = () => {
         <p className="bg-[#850000] text-3xl font-semibold text-white py-6 text-center">
           Donate Your Blood
         </p>
-        <div className="grid md:grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 gap-5 md:px-10">
           {requests.map((bloodGroupRequests, index) =>
-            bloodGroupRequests.slice(0, 2).map((data) => (
+            bloodGroupRequests.slice(0, 1).map((data) => (
               <DonateBlood key={index} data={data}></DonateBlood>
             ))
           )}
