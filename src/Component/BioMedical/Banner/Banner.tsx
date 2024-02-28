@@ -12,11 +12,11 @@ const Banner = () => {
         <div className="container mx-auto py-28 flex flex-col items-center">
           <div className="space-y-6 lg:space-y-4 mx-4">
             <motion.h2
-              initial={{ x: "100vw" }}
-              animate={{ x: 0 }}
+              initial={{ y: "-100vh" }}
+              animate={{ y: 0 }}
               transition={{
-                delay: 1.5,
-                stiffness: 120,
+                delay: 2,
+                stiffness: 80,
                 duration: 0.4,
                 type: "spring",
               }}
@@ -28,8 +28,8 @@ const Banner = () => {
               initial={{ y: "-100vh" }}
               animate={{ y: 0 }}
               transition={{
-                delay: 2,
-                stiffness: 120,
+                delay: 1.5,
+                stiffness: 80,
                 duration: 0.4,
                 type: "spring",
               }}
@@ -42,7 +42,7 @@ const Banner = () => {
               animate={{ y: 0 }}
               transition={{
                 delay: 1,
-                stiffness: 120,
+                stiffness: 80,
                 duration: 0.4,
                 type: "spring",
               }}
