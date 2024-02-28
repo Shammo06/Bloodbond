@@ -14,7 +14,6 @@
     "@stripe/react-stripe-js": "^2.4.0",
     "@stripe/stripe-js": "^2.4.0",
     "@tanstack/react-query": "^5.20.2",
-
     "@types/yup": "^0.32.0",
     "axios": "^1.6.5",
     "emailjs": "^4.0.3",
@@ -29,6 +28,7 @@
     "react-hook-form": "^7.49.3",
     "react-icons": "^5.0.1",
     "react-router-dom": "^6.21.2",
+    "react-tabs": "^6.0.2",
     "socket.io-client": "^4.7.4",
     "sort-by": "^0.0.2",
     "stripe": "^14.14.0",

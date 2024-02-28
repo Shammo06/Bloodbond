@@ -1,42 +1,63 @@
-import { useLocation } from "react-router-dom";
+import { useState } from "react";
 import StripeComponent from "./StripeComonent";
 
-export default function ModalForPayment({
-  campaignId,
-}: {
-  campaignId: string;
-}) {
-  const location = useLocation();
-  const { pathname } = location; 
+const ModalForPayment = ({ campaignId }: { campaignId: string }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+    document.body.classList.add("overflow-y-hidden");
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    document.body.classList.remove("overflow-y-hidden");
+  };
 
   return (
-    <>
+    <div>
       <button
-        className={`btn ${pathname.match(/^\/campaign\/\S+$/) && "hidden"}`}
-        onClick={() => {
-          const modal = document.getElementById(
-            "my_modal_5"
-          ) as HTMLDialogElement | null;
-          if (modal) {
-            modal.showModal();
-          }
-        }}
+        className="bg-rose-500 text-white rounded-md px-4 py-2 hover:bg-rose-700 transition"
+        onClick={openModal}
       >
         Donate
       </button>
 
-      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
-          <StripeComponent campaignId={campaignId} />
+      {isModalOpen && (
+        <div
+          id="modelConfirm"
+          className="fixed z-[100000000000000000] inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4"
+        >
+          <div className="relative top-40 mx-auto shadow-xl rounded-md bg-[#1D232A] max-w-md">
+            <div className="flex justify-end p-2">
+              <button
+                onClick={closeModal}
+                type="button"
+                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+            </div>
 
-          <div className="modal-action">
-            <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
-              <button className="btn">Close</button>
-            </form>
+            <div className="p-6 pt-0 text-center">
+              <StripeComponent campaignId={campaignId} />
+            </div>
           </div>
         </div>
-      </dialog>
-    </>
+      )}
+    </div>
   );
-}
+};
+
+export default ModalForPayment;
