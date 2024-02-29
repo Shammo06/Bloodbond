@@ -1,18 +1,22 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
-import Modal from "./Modal";
-import ModalOragnization from "./ModalForOrganization";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import axios from "axios";
 export default function Donate() {
   const [campaigns, setCampaigns] = useState([]);
+  const [organization, setOrganization] = useState([]);
 
   useEffect(() => {
     axios
       .get("https://blood-bound.vercel.app/getallcampaigns")
       .then((res) => {
         setCampaigns(res.data.campaigns);
+
+        const organization = res.data.campaigns.filter(
+          (campaign: any) => campaign._id === "65dfe98115d63327f373d13a"
+        );
+        setOrganization(organization);
       })
       .catch((err) => {
         console.log(err);
@@ -34,7 +38,7 @@ export default function Donate() {
         Support Us And Make a Difference Today!
       </h3>
 
-      <div className="px-[5rem]">
+      <div className="px-[2rem]">
         <Tabs defaultIndex={0} className={""}>
           <TabList className={"font-bold border-b-2"}>
             <Tab>Donate for campaign</Tab>
@@ -42,12 +46,27 @@ export default function Donate() {
           </TabList>
           <TabPanel className={"mt-4"}>
             <div className="flex justify-center gap-6 flex-wrap">
-              {campaigns.map((campaign, index) => (
-                <Card key={index} campaign={campaign} />
-              ))}
+              {campaigns.map((campaign, index) => {
+                // @ts-ignore
+                if (campaign._id !== "65dfe98115d63327f373d13a") {
+                  return <Card key={index} campaign={campaign} />;
+                }
+              })}
             </div>
           </TabPanel>
-          <TabPanel>ldkjfsdfasdfa</TabPanel>
+          <TabPanel>
+            {organization.length === 1 && (
+              <div className="w-full h-screen flex justify-center ">
+                <Card campaign={organization[0]} />
+              </div>
+            )}
+
+            {organization.length === 0 && (
+              <div className="w-full h-screen flex justify-center items-center text-3xl font-bold">
+                <p>No organization found</p>
+              </div>
+            )}
+          </TabPanel>
         </Tabs>
       </div>
     </>

@@ -1,8 +1,3 @@
-// volunteer
-// donationAmount
-// title
-// startDate
-
 import ModalForPayment from "./ModalForPayment";
 
 // endDate
@@ -26,20 +21,43 @@ export default function Card({ campaign }: CardType) {
     0
   );
 
-
-const id = campaign._id
-
   return (
-    <div className="card w-96 bg-base-100 shadow-xl h-[18rem]">
+    <div className="card w-96 bg-base-100 shadow-xl h-[20rem]">
       <div className="card-body">
         <h2 className="card-title">{campaign.title}</h2>
-        <p>
+        <p
+          className={`${
+            campaign._id === "65dfe98115d63327f373d13a" ? "hidden" : ""
+          }`}
+        >
           From {campaign.startDate} to {campaign.endDate}
         </p>
         <p>Total donation gathered ${totalDonationAmount}</p>
-        <p>Total volunteer registered {campaign.volunteer.length}</p>
+        <p
+          className={`${
+            campaign._id === "65dfe98115d63327f373d13a" ? "hidden" : ""
+          }`}
+        >
+          Total volunteer registered {campaign.volunteer.length}
+        </p>
+        <p
+          className={`${
+            campaign._id === "65dfe98115d63327f373d13a" ? "" : "hidden"
+          }`}
+        >
+          Our main goal is create smeless interaction between blood donor and
+          requested person. People all over the world helping each others to
+          make better world.
+        </p>
+        <p
+          className={`${
+            campaign._id === "65dfe98115d63327f373d13a" ? "" : "hidden"
+          }`}
+        >
+          Help use to run this oranization
+        </p>
         <div className="card-actions justify-end">
-          <ModalForPayment campaignId={id}  />
+          <ModalForPayment campaignId={campaign._id} />
         </div>
       </div>
     </div>
