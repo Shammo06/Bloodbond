@@ -13,12 +13,15 @@ interface BloodRequest {
 }
 
 const RequestBlood: React.FC = () => {
-  const [allBloodRequests, isLoading] = useAllBloodRequests();
-  console.log(isLoading);
+  const [requests, setRequests] = useState<BloodRequest[]>([]);
 
-  const handleDonateBlood = (phone: number) => {
-    window.location.href = `tel:${phone}`;
-  };
+  useEffect(() => {
+    axios
+      .get("https://blood-bound.vercel.app/getbloodrequests")
+      .then((data) => {
+        setRequests(data.data.bloodRequests);
+      });
+  }, []);
 
   return (
     <div className="section-donate-blood my-10">
