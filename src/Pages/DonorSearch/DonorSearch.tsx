@@ -1,18 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
-import { IoSearchSharp } from "react-icons/io5";
-import axios from "axios";
+import { IoSearchSharp } from "react-icons/io5"; 
 import DonorCard from "../../Component/DonorCard/DonorCard";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 
 const DonorSearch = () => {
+
+  const axiosPublic = useAxiosPublic();
   const [districts, setDistrict] = useState<any[]>([]);
   const [totalDonors, setTotalDonors] = useState<any[]>([]);
   const [donors, setDonors] = useState<any[]>([]);
 
-  
-  
+
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const form = e.target;
@@ -48,18 +51,29 @@ const DonorSearch = () => {
       .then((res) => res.json())
       .then((data) => setDistrict(data))
       .catch((error) => console.error("Error fetching District data:", error));
-
-    axios
-      .get("https://blood-bound.vercel.app/getdonars")
-      .then((res) => {
-        console.log(res.data);
-        setTotalDonors(res.data.donors);
-        setDonors(res.data.donors);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
   }, []);
+
+
+  const { isLoading } = useQuery({
+    queryKey: ['allDonor'],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/getdonars")
+
+      console.log(res.data);
+      setTotalDonors(res.data.donors);
+      setDonors(res.data.donors);
+      return res.data.donors
+
+    }
+  })
+
+  if(isLoading){
+    return <div className="container mx-auto py-8">
+    <div className="flex justify-center items-center">
+      <span className="loading loading-spinner loading-lg text-white"></span>
+    </div>
+  </div>
+  }
 
   return (
     <div className="mx-auto container">

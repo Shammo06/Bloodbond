@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import Swal from "sweetalert2";
 
 
 interface Blog {
@@ -14,7 +15,7 @@ const AllBlog = () => {
 
     const axiosPublic = useAxiosPublic();
 
-    const { data: Blogs } = useQuery({
+    const { data: Blogs, refetch } = useQuery({
         queryKey: ['allBlogs'],
         queryFn: async () => {
             const res = await axiosPublic.get("/getblogposts")
@@ -22,8 +23,35 @@ const AllBlog = () => {
         }
     })
 
-    console.log(Blogs);
+    // console.log(Blogs);
 
+    const handleDeleteBlog = (id: string) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosPublic.delete(`/deleteblogpost/${id}`)
+                    .then(res => {
+                        // console.log(res.data);
+                        if (res.data.message) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            refetch()
+                        }
+                    })
+            }
+        });
+
+    }
     return (
         <div className="bg-white p-5 border rounded-lg ">
             <div className="flex justify-between items-center">
@@ -54,7 +82,7 @@ const AllBlog = () => {
                                         {blog?.title}
                                     </td>
                                     <td>
-                                        <button className="btn bg-red-600 hover:bg-white hover:text-red-600 hover:border-red-600 text-white"><RiDeleteBin6Line className="text-xl" /> Delete</button>
+                                        <button onClick={() => handleDeleteBlog(blog?._id)} className="btn bg-red-600 hover:bg-white hover:text-red-600 hover:border-red-600 text-white"><RiDeleteBin6Line className="text-xl" /> Delete</button>
                                     </td>
                                 </tr>)
                             }
