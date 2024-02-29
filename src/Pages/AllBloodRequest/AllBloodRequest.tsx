@@ -13,7 +13,7 @@ interface BloodRequest {
 }
 
 const RequestBlood: React.FC = () => {
-  const [requests, setRequests] = useState<BloodRequest[][]>([]);
+  const [requests, setRequests] = useState<BloodRequest[]>([]);
 
   useEffect(() => {
     axios
@@ -31,9 +31,8 @@ const RequestBlood: React.FC = () => {
         </p>
         <div className="grid md:grid-cols-2 gap-5 md:px-5 lg:px-10">
           {requests.map((bloodGroupRequests, index) =>
-            bloodGroupRequests.map((data) => (
-              <DonateBlood data={data} key={index}></DonateBlood>
-            ))
+          <DonateBlood data={bloodGroupRequests} key={index}></DonateBlood>
+
           )}
         </div>
       </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom"; 
 
 interface donateBloodProps {
     data: {
@@ -11,9 +12,13 @@ interface donateBloodProps {
     }
 }
 
+
+
 const DonateBlood: React.FC<donateBloodProps> = ({ data }) => {
 
-
+    // const isDonor = useIsDonor();
+    // console.log(isDonor)
+    const navigate = useNavigate();
     const auth = useAuth();
     if(!auth){
         return null
@@ -78,6 +83,10 @@ const DonateBlood: React.FC<donateBloodProps> = ({ data }) => {
                 <button className="py-2 px-6 bg-[#ea062b] text-white rounded-md hover:bg-red-800 transition duration-300" onClick={() => {
                     const modal = document.getElementById('my_modal_3') as HTMLDialogElement || null;
                     if (modal) {
+                        if(!user){
+                            navigate('/login')
+                        }
+                        console.log(data.bloodBag)
                         modal.showModal()
                     }
                 }}>Donate Blood</button>
@@ -133,8 +142,7 @@ const DonateBlood: React.FC<donateBloodProps> = ({ data }) => {
                                     required
                                     name="donateBag"
                                     type="number"
-                                    className="input input-bordered w-full"
-                                    max={data.bloodBag}
+                                    className="input input-bordered w-full" 
                                     min={1}
                                     defaultValue={1}
                                 />

@@ -16,7 +16,7 @@ const Profile: React.FC = () => {
             return;
         }
 
-        // const { user } = auth;
+        const { user } = auth;
 
         const fetchData = async () => {
             try {
