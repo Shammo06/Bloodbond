@@ -1,4 +1,5 @@
-import { FaFacebookMessenger } from "react-icons/fa";
+import { MdOutlineMail } from "react-icons/md";
+
 
 interface data {
   name: string;
@@ -24,7 +25,7 @@ const DonorCard: React.FC<DonorCardProps> = ({ data }) => {
     window.location.href = mail;
   };
 
-  console.log(data);
+ 
   return (
     <div className="bg-white text-black rounded-xl font-sans font-medium">
       <div className="card  shadow-2xl ">
@@ -36,7 +37,7 @@ const DonorCard: React.FC<DonorCardProps> = ({ data }) => {
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">Name: {name}</h2>
+          <h2 className="text-lg font-semibold">Name: {name}</h2>
           <p>Blood Group: {donor.bloodGroup}</p>
           <p>Phone: {donor.phone}</p>
           <p>District: {donor.district}</p>
@@ -47,7 +48,7 @@ const DonorCard: React.FC<DonorCardProps> = ({ data }) => {
               onClick={handleMail}
               className="btn bg-[#EB2C29] text-white"
             >
-              <FaFacebookMessenger /> Contact Now
+              <MdOutlineMail className="text-xl" /> Contact Now
             </button>
           </div>
         </div>

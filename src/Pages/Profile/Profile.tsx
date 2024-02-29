@@ -11,9 +11,14 @@ const Profile: React.FC = () => {
     const axiosPublic = useAxiosPublic();
     const auth = useAuth();
 
-    /*useEffect(() => {
-        
+    useEffect(() => {
+        if (!auth) {
+            
+            return;
+        }
+
         const { user } = auth;
+
         const fetchData = async () => {
             try {
                 console.log(user?.email);

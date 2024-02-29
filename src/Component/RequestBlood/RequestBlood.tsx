@@ -5,10 +5,10 @@ import useAllBloodRequests from "../../hooks/useAllBloodRequests";
 interface BloodRequest {
   patientName: string;
   bloodGroup: string;
-  bloodBag: number;
+  bloodBag: string;
   time: string;
   location: string;
-  phone: number;
+  phone: string;
   _id: string;
 }
 
@@ -98,7 +98,7 @@ const RequestBlood: React.FC = () => {
         <div className="pt-5 text-center">
           <Link to="/allrequest">
             <button className="py-2 px-6 bg-[#DC0000] text-white rounded-md hover:bg-red-800 transition duration-300">
-              All Donor Request
+              All Blood Request
             </button>
           </Link>
         </div>
