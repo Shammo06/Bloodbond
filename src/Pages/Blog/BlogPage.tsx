@@ -26,6 +26,7 @@ const BlogPage: React.FC = () => {
     fetchBlogs();
   }, [axiosPublic]);
 
+  console.log(blogs)
   return (
     <div className="container mx-auto mt-10">
       <h2 className="text-4xl font-bold mb-8 text-center text-white">

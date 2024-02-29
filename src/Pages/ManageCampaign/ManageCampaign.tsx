@@ -20,7 +20,7 @@ export interface Campaign {
 const ManageCampaign: React.FC = () => {
     const axiosPublic = useAxiosPublic();
 
-    const [allCampaigns, isLoading, refetch] = useUpcomingCampaigns();
+    const [allCampaigns, refetch] = useUpcomingCampaigns();
     console.log(allCampaigns);
 
 

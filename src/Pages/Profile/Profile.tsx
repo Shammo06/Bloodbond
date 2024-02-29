@@ -27,10 +27,6 @@ const Profile: React.FC = () => {
         };
         fetchData();
     }, [auth, axiosPublic]);*/
-
-
-
-    const { user } = auth;
     const { data } = useQuery({
         queryKey: ['user', auth],
         queryFn: async () => {
@@ -38,6 +34,13 @@ const Profile: React.FC = () => {
             return res.data;
         }
     })
+
+    if (!auth) {
+        return;
+    }
+
+    const { user } = auth;
+   
 
     const User = data?.user
     console.log(User);
