@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import useAllBloodRequests from "../../hooks/useAllBloodRequests";
 
 interface BloodRequest {
   patientName: string;
@@ -13,15 +13,8 @@ interface BloodRequest {
 }
 
 const RequestBlood: React.FC = () => {
-  const [requests, setRequests] = useState<BloodRequest[][]>([]);
-
-  useEffect(() => {
-    axios
-      .get("https://blood-bound.vercel.app/getbloodrequests")
-      .then((data) => {
-        setRequests(data.data.bloodRequests);
-      });
-  }, []);
+  const [allBloodRequests, isLoading] = useAllBloodRequests();
+  console.log(allBloodRequests, isLoading);
 
   return (
     <div className="section-donate-blood mt-10">
@@ -30,10 +23,10 @@ const RequestBlood: React.FC = () => {
           Donate Your Blood
         </p>
         <div className="grid md:grid-cols-2 gap-5">
-          {requests.map((bloodGroupRequests, index) =>
-            bloodGroupRequests.splice(0, 2).map((data) => (
+          {allBloodRequests.length > 0 &&
+            allBloodRequests.slice(0, 2).map((data: BloodRequest) => (
               <div
-                key={index}
+                key={data._id}
                 className="bg-white p-6 rounded-md border border-gray-300 shadow-md"
               >
                 <div className="text-center text-xl font-bold text-[#850000] mb-4">
@@ -73,8 +66,7 @@ const RequestBlood: React.FC = () => {
                   </button>
                 </div>
               </div>
-            ))
-          )}
+            ))}
         </div>
         <div className="pt-5 text-center">
           <Link to="/allrequest">
