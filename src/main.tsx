@@ -181,14 +181,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/allBlog",
-        element: <AllBlog></AllBlog>
-      }
+        element: <AllBlog></AllBlog>,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <div className="bg-gradient-to-r to-[#5D0709] from-[#BF2012] font-serif container mx-auto ">
+  <div className="font-serif">
     <React.StrictMode>
       <AuthProvider>
         <QueryClientProvider client={queryClient}>

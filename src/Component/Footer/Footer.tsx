@@ -2,7 +2,7 @@ import moment from "moment";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="bg-[#050e1d]">
       <div>
         <div className="container mx-auto">
           <div className="footer p-5 text-white justify-between">

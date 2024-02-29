@@ -1,11 +1,12 @@
 const WhyDonateBlood = () => {
   return (
-    <div className="py-12 px-4 sm:px-6 lg:px-8 border mx-5">
+    <div className="py-12 px-4 sm:px-6 lg:px-8 mx-5">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
+        <h2 className="text-3xl font-extrabold inline-block sm:text-4xl">
+          {/* py-6 border-y-4 border-[#ea062c] */}
           Why Donate Blood?
         </h2>
-        <p className="mt-4 text-lg font-medium text-white">
+        <p className="mt-4 text-lg font-medium ">
           Blood donation is a crucial part of healthcare. Here are some reasons
           why donating blood is important:
         </p>
