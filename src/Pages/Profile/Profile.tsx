@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 // import { useEffect } from "react";
 // import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+// import { useEffect } from "react";
 
 
 const Profile: React.FC = () => {
@@ -11,28 +12,28 @@ const Profile: React.FC = () => {
     const axiosPublic = useAxiosPublic();
     const auth = useAuth();
 
-    useEffect(() => {
-        if (!auth) {
+    // useEffect(() => {
+    //     if (!auth) {
             
-            return;
-        }
+    //         return;
+    //     }
 
-        const { user } = auth;
+    //     const { user } = auth;
 
-        const fetchData = async () => {
-            try {
-                console.log(user?.email);
-                // const res = await axiosPublic.post('/getuser',{email: user?.email} );
-                // console.log(res.data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-        fetchData();
-    }, [auth, axiosPublic]);*/
+    //     const fetchData = async () => {
+    //         try {
+    //             console.log(user?.email);
+    //             // const res = await axiosPublic.post('/getuser',{email: user?.email} );
+    //             // console.log(res.data);
+    //         } catch (error) {
+    //             console.error('Error fetching data:', error);
+    //         }
+    //     };
+    //     fetchData();
+    // }, [auth, axiosPublic]);
 
-
-
+   
+   
     const { user } = auth;
     const { data } = useQuery({
         queryKey: ['user', auth],
