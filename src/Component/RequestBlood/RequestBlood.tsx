@@ -17,7 +17,7 @@ const RequestBlood: React.FC = () => {
   console.log(allBloodRequests, isLoading);
 
   return (
-    <div className="section-donate-blood mt-10">
+    <div className="container mx-auto section-donate-blood mt-10">
       <div className="space-y-4">
         <p className="bg-[#850000] text-3xl font-semibold text-white py-6 text-center">
           Donate Your Blood
