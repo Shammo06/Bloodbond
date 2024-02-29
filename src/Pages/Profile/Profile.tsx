@@ -6,11 +6,13 @@ import { useQuery } from "@tanstack/react-query";
 const Profile: React.FC = () => {
 
     const axiosPublic = useAxiosPublic();
-    const auth = useAuth(); 
-
-
-
-    const { user } = auth;
+    const auth = useAuth();
+    
+    if (!auth) {
+        return;
+      } 
+    const { user} = auth;
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const { data } = useQuery({
         queryKey: ['user', auth],
         queryFn: async () => {
