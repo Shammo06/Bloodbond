@@ -9,6 +9,8 @@ export default function ModalForPayment({
   const location = useLocation();
   const { pathname } = location; 
 
+console.log(campaignId)
+
   return (
     <>
       <button

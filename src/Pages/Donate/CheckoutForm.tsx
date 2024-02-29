@@ -23,59 +23,63 @@ const CheckoutForm = ({ campaignId }: { campaignId: string }) => {
     setInputAmount(event.target.value);
   };
 
-  const handleSubmit = async (event: any) => {
+  // console.log(campaignId)
+
+  const handleSubmit = async (campaginId, event) => {
     event.preventDefault();
-    setIsLoading(true);
+    console.log(campaignId)
+    console.log("clk")
+    // setIsLoading(true);
+// console.log(campaignId)
+    // if (!stripe || !elements) {
+    //   return;
+    // }
 
-    if (!stripe || !elements) {
-      return;
-    }
+    // const cardElement = elements.getElement(CardElement);
 
-    const cardElement = elements.getElement(CardElement);
+    // if (!cardElement) {
+    //   console.error("Card element not found");
+    //   return;
+    // }
 
-    if (!cardElement) {
-      console.error("Card element not found");
-      return;
-    }
+    // const { token, error } = await stripe.createToken(cardElement);
 
-    const { token, error } = await stripe.createToken(cardElement);
+    // if (error) {
+    //   console.error(error);
+    // } else {
+    //   // Send the token and amount to your server and handle the payment
+    //   // console.log(token, inputAmount);
 
-    if (error) {
-      console.error(error);
-    } else {
-      // Send the token and amount to your server and handle the payment
-      // console.log(token, inputAmount);
+    //   axios
+    //     .post("https://blood-bound.vercel.app/stripe", {
+    //       token: token.id,
+    //       amount: inputAmount,
+    //       campaignId: campaignId || "65bcd81af947cd787d3ce15a",
+    //       email: user.email,
+    //     })
+    //     .then(() => {
+    //       setIsSuccess(true);
+    //       setIsError(false);
+    //       setIsLoading(false);
+    //     })
+    //     .catch((err) => {
+    //       setIsSuccess(false);
+    //       setIsError(true);
+    //       setIsLoading(false);
+    //       console.log(err.messages);
+    //     });
 
-      axios
-        .post("https://blood-bound.vercel.app/stripe", {
-          token: token.id,
-          amount: inputAmount,
-          campaignId: campaignId || "65bcd81af947cd787d3ce15a",
-          email: user.email,
-        })
-        .then(() => {
-          setIsSuccess(true);
-          setIsError(false);
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          setIsSuccess(false);
-          setIsError(true);
-          setIsLoading(false);
-          console.log(err.messages);
-        });
-
-        setTimeout(() => { 
-          setIsSuccess(false);
-          setIsError(false);
-          setIsLoading(false);
-        }, 7000);
-    }
+    //     setTimeout(() => { 
+    //       setIsSuccess(false);
+    //       setIsError(false);
+    //       setIsLoading(false);
+    //     }, 7000);
+    // }
   };
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4">
         <div>
           <input
             type="number"
@@ -90,7 +94,7 @@ const CheckoutForm = ({ campaignId }: { campaignId: string }) => {
           <CardElement />
         </div>
         <button
-          type="submit"
+          onClick={(event)=>handleSubmit(campaignId, event)}
           disabled={isLoading === true ? true : false}
           className="btn"
         >
@@ -100,7 +104,7 @@ const CheckoutForm = ({ campaignId }: { campaignId: string }) => {
             "Donate"
           )}
         </button>
-      </form>
+      </div>
       <div className="w-full h-[32px] mt-5">
         {isSuccess && (
           <p className="text-[2rem] text-center text-green-500">
