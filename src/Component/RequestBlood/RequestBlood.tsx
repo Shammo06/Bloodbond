@@ -27,7 +27,7 @@ const RequestBlood: React.FC = () => {
   return (
     <div className="container mx-auto section-donate-blood mt-10">
       <div className="space-y-4">
-        <p className="bg-[#850000] text-3xl font-semibold text-white py-6 text-center">
+        <p className=" text-3xl font-semibold py-6 text-center">
           Donate Your Blood
         </p>
         <div className="grid md:grid-cols-2 gap-5 md:px-10">
@@ -37,7 +37,7 @@ const RequestBlood: React.FC = () => {
         </div>
         <div className="pt-5 text-center">
           <Link to="/allrequest">
-            <button className="py-2 px-6 bg-[#DC0000] text-white rounded-md hover:bg-red-800 transition duration-300">
+            <button className="py-2 px-6 bg-[#ea062b] text-white rounded-md hover:bg-red-800 transition duration-300">
               All Blood Request
             </button>
           </Link>
