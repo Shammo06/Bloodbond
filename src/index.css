@@ -2,3 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+.primary_color {
+  color: #ea062b;
+}
+.secondary_color {
+  color: black;
+}
+.primary_bg {
+  background-color: white;
+}
+.secondary_bg {
+  background-color: #ea062b;
+}

@@ -46,7 +46,7 @@ const DonorCard: React.FC<DonorCardProps> = ({ data }) => {
           <div className="card-actions justify-end">
             <button
               onClick={handleMail}
-              className="btn bg-[#EB2C29] text-white"
+              className="btn bg-[#ea062b] text-white"
             >
               <MdOutlineMail className="text-xl" /> Contact Now
             </button>

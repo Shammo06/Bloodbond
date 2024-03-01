@@ -77,14 +77,14 @@ const DonorSearch = () => {
 
   return (
     <div className="mx-auto container">
-      <h1 className="text-3xl md:text-4xl font-bold bg-[#850000] text-center my-5  text-white py-3">
+      <h1 className="text-3xl md:text-4xl font-bold bg-[#ea062b] text-center my-5  text-white py-3">
         Search Donor
       </h1>
       <form className=" w-full text-white" onSubmit={handleSubmit}>
         <div className="grid gird-cols-1 md:grid-cols-4 gap-3 px-5">
           <div>
             <label className="label" htmlFor="blGroup">
-              <span className="label-text text-slate-100">Blood Group</span>
+              <span className="label-text">Blood Group</span>
             </label>
             <select
               required
@@ -105,7 +105,7 @@ const DonorSearch = () => {
 
           <div>
             <label className="label" htmlFor="dist">
-              <span className="label-text text-slate-100">District</span>
+              <span className="label-text">District</span>
             </label>
             <select
               required
@@ -123,7 +123,7 @@ const DonorSearch = () => {
 
           <div>
             <label className="label" htmlFor="date">
-              <span className="label-text text-slate-100">Donation Date</span>
+              <span className="label-text">Donation Date</span>
             </label>
             <input
               className="text-lg text-black input input-bordered w-full"
@@ -133,7 +133,7 @@ const DonorSearch = () => {
           </div>
           <div>
             <label className="label" htmlFor="type">
-              <span className="label-text text-slate-100">Donor Type</span>
+              <span className="label-text">Donor Type</span>
             </label>
             <select
               required
@@ -148,7 +148,7 @@ const DonorSearch = () => {
 
         <div className="flex justify-center">
           <button
-            className="bg-white hover:bg-slate-500 hover:text-white text-black btn w-40 my-5"
+            className="btn rounded-none secondary_bg text-white border-[#ea062b] hover:text-[#ea062b] hover:border-[#ea062b] duration-300 w-40 my-5"
             type="submit"
           >
             <IoSearchSharp className="text-lg"></IoSearchSharp> Search
@@ -159,8 +159,8 @@ const DonorSearch = () => {
       <div className="my-10 px-5 ">
         {donors.length > 0 ? (
           <div className="text-white">
-            <h2 className="text-xl md:text-2xl font-bold mb-4 bg-[#EB2C2926]  p-4">
-              Total donors found: {donors.length}
+            <h2 className="text-xl md:text-2xl font-bold mb-4 bg-[#e8c9c9] text-black p-4">
+              Total Donors Found: {donors.length}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 ">
               {donors.map((donor) => (
@@ -175,7 +175,7 @@ const DonorSearch = () => {
               src="https://i.ibb.co/f89c3vr/not-found-2.jpg"
               alt=""
             />
-            <h2 className="text-center text-2xl font-bold text-white">
+            <h2 className="text-center text-2xl font-bold">
               Sorry No Donor Found!!!
             </h2>
           </div>

@@ -18,8 +18,18 @@ const RequestBlood: React.FC = () => {
   useEffect(() => {
     axios
       .get("https://blood-bound.vercel.app/getbloodrequests")
-      .then((data) => {
-        setRequests(data.data.bloodRequests);
+      .then((response) => {
+        const currentDate = new Date();
+        const filteredRequests: BloodRequest[] = response.data.bloodRequests
+          .flat()
+          .filter(
+            (request: BloodRequest) => new Date(request.time) > currentDate
+          )
+          .splice(0, 2);
+        setRequests(filteredRequests);
+      })
+      .catch((error) => {
+        console.error("Error fetching blood requests:", error);
       });
   }, []);
 
