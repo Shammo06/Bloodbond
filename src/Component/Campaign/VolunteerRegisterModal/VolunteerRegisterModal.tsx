@@ -180,9 +180,7 @@ const VolunteerRegisterModal: React.FC<CampaignDetailsProps> = ({
                 placeholder="Your Address"
               />
             </div>
-            <button className="w-full mt-5 btn btn-outline bg-[#DC0000] text-white hover:text-[#DC0000] hover:bg-white hover:border-[#DC0000] rounded-full">
-              Register
-            </button>
+            <button className="w-full mt-5 btn btnStyle">Register</button>
           </form>
           <form method="dialog">
             <button

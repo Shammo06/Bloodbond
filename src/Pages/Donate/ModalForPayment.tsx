@@ -16,10 +16,7 @@ const ModalForPayment = ({ campaignId }: { campaignId: string }) => {
 
   return (
     <div>
-      <button
-        className="bg-rose-500 text-white rounded-md px-4 py-2 hover:bg-rose-700 transition"
-        onClick={openModal}
-      >
+      <button className="btn btnStyle" onClick={openModal}>
         Donate
       </button>
 

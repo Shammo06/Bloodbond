@@ -57,7 +57,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
       </Link>
       <button
         onClick={openModal}
-        className="mb-5 mx-5 btn btn-outline bg-[#EA062B] text-white"
+        className="mb-5 mx-5 btn btnStyle"
       >
         Book Now
       </button>
