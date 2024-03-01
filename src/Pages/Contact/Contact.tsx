@@ -57,10 +57,10 @@ const Contact: React.FC = () => {
     <div className="py-8">
       <Container>
         <h3 className="font-bold text-center py-5 text-3xl mb-5">Contact Us</h3>
-        <div className="md:flex justify-evenly items-center">
+        <div className="md:flex justify-evenly items-center px-8">
           <div className="">
             <div className="">
-              <div className="flex justify-evenly items-center">
+              <div className="md:flex justify-evenly items-center space-y-2">
                 <div className="flex items-center gap-3">
                   <div className="p-5 bg-[#ea062c] inline-block rounded-full">
                     <FaPhoneAlt className="text-3xl  text-white" />

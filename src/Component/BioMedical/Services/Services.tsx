@@ -39,7 +39,7 @@ const Services: React.FC<shouldAnimation> = ({ shouldAnimate }) => {
             type: "spring",
             stiffness: 120,
           }}
-          className="font-bold text-center text-4xl mb-16 mx-4 text-white"
+          className="font-bold text-center text-4xl mb-16 mx-4"
         >
           Our Bio-Medical Services
         </motion.h3>

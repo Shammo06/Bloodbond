@@ -47,7 +47,7 @@ const DonateBlood: React.FC<donateBloodProps> = ({ data }) => {
 
         <div className="bg-white p-6 rounded-md border border-gray-300 shadow-md"
         >
-            <div className="text-center text-xl font-bold text-[#850000] mb-4">
+            <div className="text-center text-xl font-bold text-[#ea062b] mb-4">
                 {data.bloodGroup} BLOOD REQUIRED
             </div>
 
@@ -80,7 +80,7 @@ const DonateBlood: React.FC<donateBloodProps> = ({ data }) => {
 
             <div className="text-center mt-6">
                 
-                <button className="py-2 px-6 bg-[#ea062b] text-white rounded-md hover:bg-red-800 transition duration-300" onClick={() => {
+                <button className="btn btnStyle" onClick={() => {
                     const modal = document.getElementById('my_modal_3') as HTMLDialogElement || null;
                     if (modal) {
                         if(!user){
@@ -158,7 +158,7 @@ const DonateBlood: React.FC<donateBloodProps> = ({ data }) => {
                                     className="input input-bordered w-full"
                                 />
                             </div>
-                            <button className="w-full mt-5 btn btn-outline bg-[#DC0000] text-white hover:text-[#DC0000] hover:bg-white hover:border-[#DC0000] rounded-full">
+                            <button className="w-full mt-5 btn btnStyle">
                                 Donate
                             </button>
                         </form>

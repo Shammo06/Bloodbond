@@ -40,8 +40,7 @@ const BloodRequest = () => {
       bloodBag,
       patientName,
     };
-    
-    
+
     axios
       .post("https://blood-bound.vercel.app/createbloodrequest", request)
       .then(() =>
@@ -60,13 +59,11 @@ const BloodRequest = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="border-2 border-gray-300 shadow-xl w-full mx-auto lg:w-3/4 p-8  font-medium rounded-lg"
       >
-        <h2 className="text-3xl font-bold text-white  text-center">
-          Blood Request
-        </h2>
+        <h2 className="text-3xl font-bold  text-center">Blood Request</h2>
         <div className="gap-5">
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white ">Patient Name</span>
+              <span className="label-text ">Patient Name</span>
             </label>
             <input
               type="text"
@@ -85,7 +82,7 @@ const BloodRequest = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white ">Blood Need</span>
+              <span className="label-text">Blood Need</span>
             </label>
             <select
               className="select select-bordered  text-lg text-black "
@@ -112,7 +109,7 @@ const BloodRequest = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white">Number Blood Bags</span>
+              <span className="label-text ">Number Blood Bags</span>
             </label>
             <input
               type="number"
@@ -130,7 +127,7 @@ const BloodRequest = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white">Blood Need Time</span>
+              <span className="label-text">Blood Need Time</span>
             </label>
             <input
               type="date"
@@ -149,9 +146,7 @@ const BloodRequest = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white">
-                Blood Donate Location
-              </span>
+              <span className="label-text">Blood Donate Location</span>
             </label>
             <input
               type="text"
@@ -169,7 +164,7 @@ const BloodRequest = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white">Contact Number</span>
+              <span className="label-text">Contact Number</span>
             </label>
             <input
               type="text"
@@ -187,7 +182,7 @@ const BloodRequest = () => {
           </div>
         </div>
         <input
-          className="btn bg-yellow-400 px-4 py-2 text-black w-full mt-4"
+          className="btn btnStyle w-full mt-4"
           type="submit"
           value="Submit"
         />

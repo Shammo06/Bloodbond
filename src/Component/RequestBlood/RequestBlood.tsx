@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import DonateBlood from "../DonateBlood/DonateBlood";
+import Container from "../Container/Container";
 
 interface BloodRequest {
   patientName: string;
@@ -34,31 +35,30 @@ const RequestBlood: React.FC = () => {
       });
   }, []);
 
-  // const handleDonateBlood = (phone: number) => {
-  //   window.location.href = `tel:${phone}`;
-  // };
-
   return (
-    <div className="container mx-auto section-donate-blood mt-10">
-      <div className="space-y-4">
-        <p className="bg-[#850000] text-3xl font-semibold text-white py-6 text-center">
-          Donate Your Blood
-        </p>
-        <div className="grid md:grid-cols-2 gap-5 md:px-10">
-          {requests.slice(0, 2).map((bloodGroupRequests, index) =>
-            <DonateBlood key={index} data={bloodGroupRequests}></DonateBlood>
-          )}
+    <div className="bg-gray-200 section-donate-blood py-10">
+      <Container>
+        <div className="space-y-4 px-4 md:px-0">
+          <p className=" text-3xl font-semibold py-6 text-center">
+            Donate Your Blood
+          </p>
+          <div className="grid md:grid-cols-2 gap-5 md:px-10">
+            {requests.slice(0, 2).map((bloodGroupRequests, index) => (
+              <DonateBlood key={index} data={bloodGroupRequests}></DonateBlood>
+            ))}
+          </div>
+          <div className="pt-5 text-center">
+            <Link to="/allrequest">
+              <button className="btn btnStyle">All Blood Request</button>
+              {/* <button className="py-2 px-6 bg-[#ea062b] text-white rounded-md hover:bg-red-800 transition duration-300">
+                All Blood Request
+              </button> */}
+            </Link>
+          </div>
         </div>
-        <div className="pt-5 text-center">
-          <Link to="/allrequest">
-            <button className="py-2 px-6 bg-[#DC0000] text-white rounded-md hover:bg-red-800 transition duration-300">
-              All Blood Request
-            </button>
-          </Link>
-        </div>
-      </div>
+      </Container>
     </div>
   );
 };
 
-export default RequestBlood
+export default RequestBlood;
