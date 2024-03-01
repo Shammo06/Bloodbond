@@ -31,27 +31,6 @@ const Profile: React.FC = () => {
     }, [auth, axiosPublic]);
 
 
-    // const axiosPublic = useAxiosPublic();
-    // const auth = useAuth();
-  
-    // if (!auth) {
-    //   return;
-    // }
-  
-    // const { user } = auth;
-    // const { data } = useQuery({
-    //     queryKey: ['user'],
-    //     queryFn: async () => {
-    //         // const res = await axiosPublic.get("/getuser");
-    //         // return res.data;
-    //         const res = await axiosPublic.get(`/users/${user?.email}`);
-            
-    //         return res.data;
-    //     }
-    // })
-
-    // console.log(data);
-
     return (
         <div className="bg-white p-5 border rounded-lg">
             <div className=" max-w-3xl mx-auto  flex items-center gap-10">

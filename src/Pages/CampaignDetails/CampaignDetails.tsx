@@ -1,10 +1,11 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Campaign } from "../Campaign/UpcomingCampaigns/UpcomingCampaigns";
 import { useState } from "react";
 import VolunteerRegisterModal from "../../Component/Campaign/VolunteerRegisterModal/VolunteerRegisterModal";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import SingleCampaign from "../../Component/Campaign/SingleCampaign/SingleCampaign";
+import ModalForPayment from "../Donate/ModalForPayment";
 
 const CampaignDetails: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,7 +38,7 @@ const CampaignDetails: React.FC = () => {
   const specificCampaign = specificCampaignAndOthers.campaign;
   const otherCampaigns = specificCampaignAndOthers.others;
 
-  const { photo, title, address, description, startDate } =
+  const { _id, photo, title, address, description, startDate } =
     specificCampaign ?? {};
 
   const [year, month, date] = startDate?.split("-") ?? [];
@@ -56,6 +57,15 @@ const CampaignDetails: React.FC = () => {
     "Nov",
     "Dec",
   ];
+
+  const openDonationModal = () => {
+    const modal = document.getElementById(
+      "my_modal_5"
+    ) as HTMLDialogElement | null;
+    if (modal) {
+      modal.showModal();
+    }
+  };
 
   return (
     <>
@@ -111,9 +121,13 @@ const CampaignDetails: React.FC = () => {
                           ></VolunteerRegisterModal>
                         )}
                       </div>
-                      <button className="btn btn-outline bg-[#DC0000] text-white hover:text-[#DC0000] hover:bg-white hover:border-[#DC0000] px-9">
-                        Donate for this Camping!
+                      <button
+                        onClick={openDonationModal}
+                        className="btn btn-outline bg-[#DC0000] text-white hover:text-[#DC0000] hover:bg-white hover:border-[#DC0000] px-9"
+                      >
+                        Donate for this Campaign!
                       </button>
+                      <ModalForPayment campaignId={_id}></ModalForPayment>
                     </div>
                   </div>
                 </div>
@@ -126,18 +140,29 @@ const CampaignDetails: React.FC = () => {
             <h3 className="text-center text-2xl font-bold mb-14 text-white">
               Other Upcoming Campaigns
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
-              {otherCampaigns && otherCampaigns.length > 0 ? (
-                otherCampaigns?.map((campaign: Campaign) => (
-                  <SingleCampaign
-                    key={campaign._id}
-                    campaign={campaign}
-                  ></SingleCampaign>
-                ))
-              ) : (
-                <h6 className="text-center text-white">
-                  No other campaigns are available.
-                </h6>
+            <div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-6">
+                {otherCampaigns && otherCampaigns.length > 0 ? (
+                  otherCampaigns
+                    ?.slice(0, 3)
+                    .map((campaign: Campaign) => (
+                      <SingleCampaign
+                        key={campaign._id}
+                        campaign={campaign}
+                      ></SingleCampaign>
+                    ))
+                ) : (
+                  <h6 className="text-center text-white">
+                    No other campaigns are available.
+                  </h6>
+                )}
+              </div>
+              {otherCampaigns && otherCampaigns.length > 3 && (
+                <Link to="/campaign">
+                  <button className="btn btn-outline bg-[#EA062B] text-white mt-14 block mx-auto">
+                    Show All
+                  </button>
+                </Link>
               )}
             </div>
           </div>
