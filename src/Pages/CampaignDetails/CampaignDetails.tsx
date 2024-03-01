@@ -107,10 +107,7 @@ const CampaignDetails: React.FC = () => {
                     </p>
                     {/* ------------------- buttons ------------------- */}
                     <div className="flex flex-col md:flex-row gap-5 px-2 md:px-6 xl:px-8">
-                      <button
-                        onClick={openModal}
-                        className="btn btn-outline bg-[#DC0000] text-white hover:text-[#DC0000] hover:bg-white hover:border-[#DC0000] px-9"
-                      >
+                      <button onClick={openModal} className="btn btnStyle">
                         Register as Volunteer
                       </button>
                       <div>
@@ -123,7 +120,7 @@ const CampaignDetails: React.FC = () => {
                       </div>
                       <button
                         onClick={openDonationModal}
-                        className="btn btn-outline bg-[#DC0000] text-white hover:text-[#DC0000] hover:bg-white hover:border-[#DC0000] px-9"
+                        className="btn btnStyle px-9"
                       >
                         Donate for this Campaign!
                       </button>
@@ -159,7 +156,7 @@ const CampaignDetails: React.FC = () => {
               </div>
               {otherCampaigns && otherCampaigns.length > 3 && (
                 <Link to="/campaign">
-                  <button className="btn btn-outline bg-[#EA062B] text-white mt-14 block mx-auto">
+                  <button className="btn btnStyle mt-14 block mx-auto">
                     Show All
                   </button>
                 </Link>

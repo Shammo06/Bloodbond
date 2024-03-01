@@ -16,10 +16,7 @@ const ModalForPayment = ({ campaignId }: { campaignId: string }) => {
 
   return (
     <div>
-      <button
-        className="bg-rose-500 text-white rounded-md px-4 py-2 hover:bg-rose-700 transition"
-        onClick={openModal}
-      >
+      <button className="btn btnStyle" onClick={openModal}>
         Donate
       </button>
 
@@ -28,7 +25,7 @@ const ModalForPayment = ({ campaignId }: { campaignId: string }) => {
           id="modelConfirm"
           className="fixed z-[100000000000000000] inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4"
         >
-          <div className="relative top-40 mx-auto shadow-xl rounded-md bg-[#1D232A] max-w-md">
+          <div className="relative top-40 mx-auto shadow-xl rounded-md bg-white max-w-md">
             <div className="flex justify-end p-2">
               <button
                 onClick={closeModal}

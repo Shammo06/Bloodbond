@@ -40,8 +40,7 @@ const BloodRequest = () => {
       bloodBag,
       patientName,
     };
-    
-    
+
     axios
       .post("https://blood-bound.vercel.app/createbloodrequest", request)
       .then(() =>
@@ -60,9 +59,7 @@ const BloodRequest = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="border-2 border-gray-300 shadow-xl w-full mx-auto lg:w-3/4 p-8  font-medium rounded-lg"
       >
-        <h2 className="text-3xl font-bold  text-center">
-          Blood Request
-        </h2>
+        <h2 className="text-3xl font-bold  text-center">Blood Request</h2>
         <div className="gap-5">
           <div className="form-control">
             <label className="label">
@@ -90,7 +87,6 @@ const BloodRequest = () => {
             <select
               className="select select-bordered  text-lg text-black "
               {...register("bloodGroup", { required: true })}
-
             >
               <option value=""></option>
               <option value="A+">A+</option>
@@ -150,9 +146,7 @@ const BloodRequest = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text">
-                Blood Donate Location
-              </span>
+              <span className="label-text">Blood Donate Location</span>
             </label>
             <input
               type="text"
@@ -188,7 +182,7 @@ const BloodRequest = () => {
           </div>
         </div>
         <input
-          className="btn bg-yellow-400 px-4 py-2 text-black w-full mt-4"
+          className="btn btnStyle w-full mt-4"
           type="submit"
           value="Submit"
         />
