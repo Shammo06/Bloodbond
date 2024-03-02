@@ -117,11 +117,11 @@ const DonorRegistration = () => {
     return (
         <div className="mx-auto container px-4 ">
             <form onSubmit={handleSubmit(onSubmit)} className="border-2 border-gray-300 shadow-xl w-full mx-auto lg:w-3/4 p-5 my-5 rounded-lg ">
-                <h2 className="text-3xl font-bold text-white text-center">Donor Registration</h2>
+                <h2 className="text-3xl font-bold text-center">Donor Registration</h2>
                 <div className="grid md:grid-cols-2 gap-5">
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-white">Your Name</span>
+                            <span className="label-text text-black">Your Name</span>
                         </label>
                         <input defaultValue={user?.displayName || ''} type="text" className="input input-bordered"
                             {...register("name", { required: true })}
@@ -133,7 +133,7 @@ const DonorRegistration = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-white">Your Email</span>
+                            <span className="label-text text-black">Your Email</span>
                         </label>
                         <input readOnly defaultValue={user?.email || ''} type="email" className="input input-bordered"
                             {...register("email", { required: true })}
@@ -144,7 +144,7 @@ const DonorRegistration = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-white">Your Phone Number</span>
+                            <span className="label-text text-black">Your Phone Number</span>
                         </label>
                         <input placeholder="+880 1XXXXXXXXX" type="number" className="input input-bordered"
                             {...register("phone", { required: true })}
@@ -156,7 +156,7 @@ const DonorRegistration = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-white">Blood Group</span>
+                            <span className="label-text text-black">Blood Group</span>
                         </label>
                         <select className="select select-bordered text-lg text-black"
                             {...register("bloodGroup", { required: true })}
@@ -177,7 +177,7 @@ const DonorRegistration = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-white">Your District</span>
+                            <span className="label-text text-black">Your District</span>
                         </label>
                         <select className="select select-bordered text-lg text-black"
                             {...register("district", { required: true })}
@@ -194,7 +194,7 @@ const DonorRegistration = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-white">Your Upazila</span>
+                            <span className="label-text text-black">Your Upazila</span>
                         </label>
                         <select className="select select-bordered text-lg text-black"
                             {...register("upazila", { required: true })}
@@ -210,7 +210,7 @@ const DonorRegistration = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-white">Your Address</span>
+                            <span className="label-text text-black">Your Address</span>
                         </label>
                         <input type="text" className="input input-bordered"
                             {...register("address", { required: true })}
@@ -222,7 +222,7 @@ const DonorRegistration = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
-                            <span className="label-text text-white">Last Donation Date</span>
+                            <span className="label-text text-black">Last Donation Date</span>
                         </label>
                         <input type="date" className="input input-bordered"
                             {...register("lastDonationDate")}
@@ -230,7 +230,7 @@ const DonorRegistration = () => {
                         />
                     </div>
                 </div>
-                <input className="btn w-full mt-4 bg-yellow-400 " type="submit" value="REGISTER" />
+                <input className="w-full mt-4 btn secondary_bg text-white border-[#ea062b] hover:text-[#ea062b] hover:border-[#ea062b] duration-300" type="submit" value="REGISTER" />
             </form>
         </div>
     );

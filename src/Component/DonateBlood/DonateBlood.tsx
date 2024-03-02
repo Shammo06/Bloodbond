@@ -47,7 +47,7 @@ const DonateBlood: React.FC<donateBloodProps> = ({ data }) => {
 
         <div className="bg-white p-6 rounded-md border border-gray-300 shadow-md"
         >
-            <div className="text-center text-xl font-bold text-[#850000] mb-4">
+            <div className="text-center text-xl font-bold text-[#ea062b] mb-4">
                 {data.bloodGroup} BLOOD REQUIRED
             </div>
 
@@ -85,8 +85,7 @@ const DonateBlood: React.FC<donateBloodProps> = ({ data }) => {
                     if (modal) {
                         if(!user){
                             navigate('/login')
-                        }
-                        console.log(data.bloodBag)
+                        } 
                         modal.showModal()
                     }
                 }}>Donate Blood</button>

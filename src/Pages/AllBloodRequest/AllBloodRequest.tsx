@@ -19,19 +19,19 @@ const RequestBlood: React.FC = () => {
     axios
       .get("https://blood-bound.vercel.app/getbloodrequests")
       .then((response) => {
-        const flattenedRequests: BloodRequest[] =
-          response.data.bloodRequests.flat();
-        setRequests(flattenedRequests);
-        console.log(flattenedRequests);
+        const currentDate = new Date();
+        const filteredRequests: BloodRequest[] = response.data.bloodRequests
+          .flat()
+          .filter(
+            (request: BloodRequest) => new Date(request.time) > currentDate
+          )
+          .splice(0, 2);
+        setRequests(filteredRequests);
       })
       .catch((error) => {
         console.error("Error fetching blood requests:", error);
       });
   }, []);
-
-  // const handleDonateBlood = (phone: number) => {
-  //   window.location.href = `tel:${phone}`;
-  // };
 
   return (
     <div className="section-donate-blood my-10">
