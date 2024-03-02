@@ -273,10 +273,7 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
           <div className="divider m-0"></div>
           {/* purchase button */}
           <div className="flex justify-end">
-            <button
-              onClick={handleSubmit}
-              className="btn btn-outline bg-[#EA062B] text-white"
-            >
+            <button onClick={handleSubmit} className="btn btnStyle">
               Book This Service
             </button>
           </div>

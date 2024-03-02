@@ -46,7 +46,7 @@ const UpcomingCampaigns: React.FC = () => {
               {allCampaigns?.length > 6 && (
                 <button
                   onClick={() => setIsSee(!isSee)}
-                  className="mt-14 text block mx-auto btn btn-outline bg-[#EA062B] text-white"
+                  className="mt-14 text block mx-auto btn btnStyle"
                 >
                   {isSee ? "See Less" : "See All"}
                 </button>
