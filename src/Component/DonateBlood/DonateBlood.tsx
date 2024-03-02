@@ -85,8 +85,7 @@ const DonateBlood: React.FC<donateBloodProps> = ({ data }) => {
                     if (modal) {
                         if(!user){
                             navigate('/login')
-                        }
-                        console.log(data.bloodBag)
+                        } 
                         modal.showModal()
                     }
                 }}>Donate Blood</button>
