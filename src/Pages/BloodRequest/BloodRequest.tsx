@@ -6,7 +6,7 @@ import useAuth from "../../hooks/useAuth";
 interface FormData {
   patientName: string;
   bloodGroup: string;
-  bloodBag: number;
+  bloodBag: string;
   time: string;
   location: string;
   phone: string;
@@ -40,12 +40,12 @@ const BloodRequest = () => {
       bloodBag,
       patientName,
     };
-    console.log(request);
+
     axios
       .post("https://blood-bound.vercel.app/createbloodrequest", request)
       .then(() =>
         Swal.fire({
-          title: "Your Blood Request Created Successful",
+          title: "Your Blood Request Created Successfully",
           icon: "success",
         }).catch((error) => console.log(error.message))
       );
@@ -54,18 +54,16 @@ const BloodRequest = () => {
   };
 
   return (
-    <div className="mx-auto container   py-20">
+    <div className="mx-auto container py-10">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full mx-auto lg:w-3/4 p-8  font-medium rounded-lg"
+        className="border-2 border-gray-300 shadow-xl w-full mx-auto lg:w-3/4 p-8  font-medium rounded-lg"
       >
-        <h2 className="text-3xl font-bold text-white  text-center">
-          Blood Request
-        </h2>
+        <h2 className="text-3xl font-bold  text-center">Blood Request</h2>
         <div className="gap-5">
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white ">Patient Name</span>
+              <span className="label-text ">Patient Name</span>
             </label>
             <input
               type="text"
@@ -74,7 +72,7 @@ const BloodRequest = () => {
             />
             {errors.patientName?.type === "required" && (
               <p
-                className="text-red-600 font-bold text-center mt-1"
+                className="text-red-400 font-bold text-center mt-1"
                 role="alert"
               >
                 * Patient Name is required
@@ -84,7 +82,7 @@ const BloodRequest = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white ">Blood Need</span>
+              <span className="label-text">Blood Need</span>
             </label>
             <select
               className="select select-bordered  text-lg text-black "
@@ -102,7 +100,7 @@ const BloodRequest = () => {
             </select>
             {errors.bloodGroup?.type === "required" && (
               <p
-                className="text-red-600 font-bold text-center mt-1"
+                className="text-red-400 font-bold text-center mt-1"
                 role="alert"
               >
                 * Blood Group is required
@@ -111,7 +109,7 @@ const BloodRequest = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white">Number Blood Bags</span>
+              <span className="label-text ">Number Blood Bags</span>
             </label>
             <input
               type="number"
@@ -120,7 +118,7 @@ const BloodRequest = () => {
             />
             {errors.bloodBag?.type === "required" && (
               <p
-                className="text-red-600 font-bold text-center mt-1"
+                className="text-red-400 font-bold text-center mt-1"
                 role="alert"
               >
                 * Blood Bag Number is required
@@ -129,7 +127,7 @@ const BloodRequest = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white">Blood Need Time</span>
+              <span className="label-text">Blood Need Time</span>
             </label>
             <input
               type="date"
@@ -138,7 +136,7 @@ const BloodRequest = () => {
             />
             {errors.time?.type === "required" && (
               <p
-                className="text-red-600 font-bold text-center mt-1"
+                className="text-red-400 font-bold text-center mt-1"
                 role="alert"
               >
                 * Date is required
@@ -148,9 +146,7 @@ const BloodRequest = () => {
 
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white">
-                Blood Donate Location
-              </span>
+              <span className="label-text">Blood Donate Location</span>
             </label>
             <input
               type="text"
@@ -159,7 +155,7 @@ const BloodRequest = () => {
             />
             {errors.location?.type === "required" && (
               <p
-                className="text-red-600 font-bold text-center mt-1"
+                className="text-red-400 font-bold text-center mt-1"
                 role="alert"
               >
                 * Address is required
@@ -168,7 +164,7 @@ const BloodRequest = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-white">Contact Number</span>
+              <span className="label-text">Contact Number</span>
             </label>
             <input
               type="text"
@@ -177,7 +173,7 @@ const BloodRequest = () => {
             />
             {errors.phone?.type === "required" && (
               <p
-                className="text-red-600 font-bold text-center mt-1"
+                className="text-red-400 font-bold text-center mt-1"
                 role="alert"
               >
                 * Contact Number is required
@@ -186,7 +182,7 @@ const BloodRequest = () => {
           </div>
         </div>
         <input
-          className="btn bg-yellow-400 px-4 py-2 text-black w-full mt-4"
+          className="btn btnStyle w-full mt-4"
           type="submit"
           value="Submit"
         />

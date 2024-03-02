@@ -3,6 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import { Navigate, useLocation } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { Campaign } from "../../../Pages/Campaign/UpcomingCampaigns/UpcomingCampaigns";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 interface CampaignDetailsProps {
   campaign: Campaign;
@@ -15,6 +16,7 @@ const VolunteerRegisterModal: React.FC<CampaignDetailsProps> = ({
 }) => {
   const auth = useAuth();
   const location = useLocation();
+  const axiosPublic = useAxiosPublic();
   const modalBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -52,19 +54,42 @@ const VolunteerRegisterModal: React.FC<CampaignDetailsProps> = ({
 
     const formData = new FormData(e.currentTarget);
 
-    const campaignName = formData.get("campaignName") as string;
+    // const campaignName = formData.get("campaignName") as string;
     const name = formData.get("name") as string;
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
     const address = formData.get("address") as string;
-    console.log(campaignName, name, email, phone, address);
 
-    // TODO: HAVE TO SEND VOLUNTEER REQUEST TO THE BACKEND
-    Swal.fire({
-      icon: "success",
-      title: "Your Request Is In Process",
+    const volunteerInfo = {
+      campaingId: campaign._id,
+      name,
+      email,
+      phone,
+      address,
+    };
+
+    // send volunteer info to the backend
+    axiosPublic.post("/volunteercreate", volunteerInfo).then((res) => {
+      if (res.data.message === "Volunteer added successfully") {
+        Swal.fire({
+          icon: "success",
+          title: "Congratulation, Now you are volunteer for this campaign",
+        });
+        closeModal();
+      } else if (res.data.message === "User already added") {
+        Swal.fire({
+          icon: "success",
+          title: "You are already volunteer for this campaign",
+        });
+        closeModal();
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Something Went Wrong!",
+        });
+        closeModal();
+      }
     });
-    closeModal();
   };
 
   console.log("modal rendered");
@@ -99,7 +124,7 @@ const VolunteerRegisterModal: React.FC<CampaignDetailsProps> = ({
                 name="campaignName"
                 required
                 readOnly
-                defaultValue={campaign?.campaignTitle || ""}
+                defaultValue={campaign?.title || ""}
                 type="text"
                 className="input input-bordered w-full"
               />
@@ -155,9 +180,7 @@ const VolunteerRegisterModal: React.FC<CampaignDetailsProps> = ({
                 placeholder="Your Address"
               />
             </div>
-            <button className="w-full mt-5 btn btn-outline bg-[#DC0000] text-white hover:text-[#DC0000] hover:bg-white hover:border-[#DC0000] rounded-full">
-              Register
-            </button>
+            <button className="w-full mt-5 btn btnStyle">Register</button>
           </form>
           <form method="dialog">
             <button

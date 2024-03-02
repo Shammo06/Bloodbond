@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaArrowLeft } from "react-icons/fa6";
+import { FaArrowLeft, FaBloggerB, FaUsers } from "react-icons/fa6";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { TiHome } from "react-icons/ti";
 import { MdOutlineApproval } from "react-icons/md";
@@ -8,9 +8,62 @@ import { TbBrandCampaignmonitor } from "react-icons/tb";
 import { LuTestTubes } from "react-icons/lu";
 import { IoMenu } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const Dashboard: React.FC = () => {
     const [open, setOpen] = useState(true)
+    const axiosPublic = useAxiosPublic();
+    const auth = useAuth();
+    // const navigate = useNavigate();
+
+    const { data } = useQuery({
+        queryKey: ['user', auth],
+        queryFn: async () => {
+            const res = await axiosPublic.post('/getuser', { email: user?.email });
+            return res.data;
+        }
+    })
+
+    const User = data?.user
+
+    console.log(User);
+
+    if (!auth) {
+        return;
+    }
+    const { user, logOut } = auth;
+
+    const handleLogOut = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to Log Out!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Log Out",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                logOut()
+                    .then(() => {
+                        Swal.fire({
+                            title: "Log Out Successful",
+                            icon: "success",
+                        });
+                        // navigate("/");
+                    })
+                    .catch(() => {
+                        Swal.fire({
+                            title: "Something went wrong, try again later.",
+                            icon: "error",
+                        });
+                    });
+            }
+        });
+    };
     return (
         <div className="">
 
@@ -27,78 +80,103 @@ const Dashboard: React.FC = () => {
                         </Link>
                     </div>
                     <div className="pl-3">
-                        <ul className="space-y-1">
-                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
-                                <NavLink
-                                    to="/dashboard/home"
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
-                                    }
-                                >
-                                    <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Overview</span></span>
-                                </NavLink>
-                            </li>
-                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
-                                <NavLink
-                                    to="/dashboard/appointment"
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
-                                    }
-                                >
-                                    <span className="flex items-center gap-2"><span><MdOutlineApproval className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Approve Appointment</span></span>
-                                </NavLink>
-                            </li>
-                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
-                                <NavLink
-                                    to="/dashboard/volunteer"
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
-                                    }
-                                >
-                                    <span className="flex items-center gap-2"><span><MdOutlineVolunteerActivism className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>VolunteerManage</span></span>
-                                </NavLink>
-                            </li>
-                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
-                                <NavLink
-                                    to="/dashboard/campaign"
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
-                                    }
-                                >
-                                    <span className="flex items-center gap-2"><span><TbBrandCampaignmonitor className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Manage Campaign</span></span>
-                                </NavLink>
-                            </li>
-                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
-                                <NavLink
-                                    to="/dashboard/userhome"
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
-                                    }
-                                >
-                                    <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Overview</span></span>
-                                </NavLink>
-                            </li>
-                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
-                                <NavLink
-                                    to="/dashboard/userappointment"
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
-                                    }
-                                >
-                                    <span className="flex items-center gap-2"><span><LuTestTubes className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Test Status</span></span>
-                                </NavLink>
-                            </li>
-                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
-                                <NavLink
-                                    to="/dashboard/profile"
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
-                                    }
-                                >
-                                    <span className="flex items-center gap-2"><span><CgProfile className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Profile</span></span>
-                                </NavLink>
-                            </li>
-                        </ul>
+                        {
+                            User?.roll === "Admin" ? <ul className="space-y-1">
+                                <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                    <NavLink
+                                        to="/dashboard/home"
+                                        className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                        }
+                                    >
+                                        <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Overview</span></span>
+                                    </NavLink>
+                                </li>
+                                <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                    <NavLink
+                                        to="/dashboard/appointment"
+                                        className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                        }
+                                    >
+                                        <span className="flex items-center gap-2"><span><MdOutlineApproval className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Approve Appointment</span></span>
+                                    </NavLink>
+                                </li>
+                                <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                    <NavLink
+                                        to="/dashboard/volunteer"
+                                        className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                        }
+                                    >
+                                        <span className="flex items-center gap-2"><span><MdOutlineVolunteerActivism className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>VolunteerManage</span></span>
+                                    </NavLink>
+                                </li>
+                                <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                    <NavLink
+                                        to="/dashboard/campaign"
+                                        className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                        }
+                                    >
+                                        <span className="flex items-center gap-2"><span><TbBrandCampaignmonitor className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Manage Campaign</span></span>
+                                    </NavLink>
+                                </li>
+                                <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                    <NavLink
+                                        to="/dashboard/manageusers"
+                                        className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                        }
+                                    >
+                                        <span className="flex items-center gap-2"><span><FaUsers className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Manage Users</span></span>
+                                    </NavLink>
+                                </li>
+                                <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                    <NavLink
+                                        to="/dashboard/allBlog"
+                                        className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                        }
+                                    >
+                                        <span className="flex items-center gap-2"><span><FaBloggerB className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>All Blog</span></span>
+                                    </NavLink>
+                                </li>
+
+                            </ul> : <ul className="space-y-1">
+                                <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                    <NavLink
+                                        to="/dashboard/userhome"
+                                        className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                        }
+                                    >
+                                        <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Overview</span></span>
+                                    </NavLink>
+                                </li>
+                                <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                    <NavLink
+                                        to="/dashboard/userappointment"
+                                        className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                        }
+                                    >
+                                        <span className="flex items-center gap-2"><span><LuTestTubes className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Test Status</span></span>
+                                    </NavLink>
+                                </li>
+                                <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                    <NavLink
+                                        to="/dashboard/profile"
+                                        className={({ isActive, isPending }) =>
+                                            isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                        }
+                                    >
+                                        <span className="flex items-center gap-2"><span><CgProfile className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Profile</span></span>
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        }
+
                     </div>
                 </aside>
                 <section className="p-8 bg-black bg-opacity-5 w-full">
@@ -114,16 +192,20 @@ const Dashboard: React.FC = () => {
                                 <div className="dropdown dropdown-end">
                                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                                         <div className="w-10 rounded-full">
-                                            <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                            <img alt="Tailwind CSS Navbar component" src={user?.photoURL as string} />
                                         </div>
                                     </div>
-                                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                    <ul tabIndex={0} className=" dropdown-content bg-gray-200 mt-3 z-[1] p-2 shadow-2xl  rounded-box w-52">
                                         <li>
-                                            <Link to="/dashboard/profile" className="justify-between">
+                                            <Link to="/dashboard/profile" className="btn btn-sm text-white hover:text-[#FF464E]   hover:border hover:border-[#FF464E] hover:bg-white  w-full text-left bg-[#FF464E]">
                                                 Profile
                                             </Link>
                                         </li>
-                                        <li><a>Logout</a></li>
+                                        <li>
+                                            <button onClick={handleLogOut} className="btn btn-sm text-white hover:text-[#FF464E]   hover:border hover:border-[#FF464E] hover:bg-white  w-full text-left bg-[#FF464E]">
+                                                Logout
+                                            </button>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -149,78 +231,85 @@ const Dashboard: React.FC = () => {
                                         X
                                     </label>
                                 </div>
-                                <ul className="space-y-1">
-                                    <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
-                                        <NavLink
-                                            to="/dashboard/home"
-                                            className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
-                                            }
-                                        >
-                                            <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={` duration-500`}>Overview</span></span>
-                                        </NavLink>
-                                    </li>
-                                    <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
-                                        <NavLink
-                                            to="/dashboard/appointment"
-                                            className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
-                                            }
-                                        >
-                                            <span className="flex items-center gap-2"><span><MdOutlineApproval className="text-3xl" /></span><span className={` duration-500`}>Approve Appointment</span></span>
-                                        </NavLink>
-                                    </li>
-                                    <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
-                                        <NavLink
-                                            to="/dashboard/volunteer"
-                                            className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
-                                            }
-                                        >
-                                            <span className="flex items-center gap-2"><span><MdOutlineVolunteerActivism className="text-3xl" /></span><span className={` duration-500`}>VolunteerManage</span></span>
-                                        </NavLink>
-                                    </li>
-                                    <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
-                                        <NavLink
-                                            to="/dashboard/campaign"
-                                            className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
-                                            }
-                                        >
-                                            <span className="flex items-center gap-2"><span><TbBrandCampaignmonitor className="text-3xl" /></span><span className={` duration-500`}>Manage Campaign</span></span>
-                                        </NavLink>
-                                    </li>
-                                    <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
-                                        <NavLink
-                                            to="/dashboard/userhome"
-                                            className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
-                                            }
-                                        >
-                                            <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={` duration-500`}>Overview</span></span>
-                                        </NavLink>
-                                    </li>
-                                    <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
-                                        <NavLink
-                                            to="/dashboard/userappointment"
-                                            className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
-                                            }
-                                        >
-                                            <span className="flex items-center gap-2"><span><LuTestTubes className="text-3xl" /></span><span className={` duration-500`}>Test Status</span></span>
-                                        </NavLink>
-                                    </li>
-                                    <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
-                                        <NavLink
-                                            to="/dashboard/profile"
-                                            className={({ isActive, isPending }) =>
-                                                isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
-                                            }
-                                        >
-                                            <span className="flex items-center gap-2"><span><CgProfile className="text-3xl" /></span><span className={`${!open && "scale-0"} duration-500`}>Profile</span></span>
-                                        </NavLink>
-                                    </li>
-                                </ul>
+                                <div className="">
+                                    {
+                                        User?.roll === "Admin" ? <ul className="space-y-1">
+                                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                                <NavLink
+                                                    to="/dashboard/home"
+                                                    className={({ isActive, isPending }) =>
+                                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                                    }
+                                                >
+                                                    <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={` duration-500`}>Overview</span></span>
+                                                </NavLink>
+                                            </li>
+                                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                                <NavLink
+                                                    to="/dashboard/appointment"
+                                                    className={({ isActive, isPending }) =>
+                                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                                    }
+                                                >
+                                                    <span className="flex items-center gap-2"><span><MdOutlineApproval className="text-3xl" /></span><span className={` duration-500`}>Approve Appointment</span></span>
+                                                </NavLink>
+                                            </li>
+                                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                                <NavLink
+                                                    to="/dashboard/volunteer"
+                                                    className={({ isActive, isPending }) =>
+                                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                                    }
+                                                >
+                                                    <span className="flex items-center gap-2"><span><MdOutlineVolunteerActivism className="text-3xl" /></span><span className={` duration-500`}>VolunteerManage</span></span>
+                                                </NavLink>
+                                            </li>
+                                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                                <NavLink
+                                                    to="/dashboard/campaign"
+                                                    className={({ isActive, isPending }) =>
+                                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                                    }
+                                                >
+                                                    <span className="flex items-center gap-2"><span><TbBrandCampaignmonitor className="text-3xl" /></span><span className={` duration-500`}>Manage Campaign</span></span>
+                                                </NavLink>
+                                            </li>
+
+                                        </ul> : <ul className="space-y-1">
+                                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                                <NavLink
+                                                    to="/dashboard/userhome"
+                                                    className={({ isActive, isPending }) =>
+                                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                                    }
+                                                >
+                                                    <span className="flex items-center gap-2"><span><TiHome className="text-3xl" /></span><span className={` duration-500`}>Overview</span></span>
+                                                </NavLink>
+                                            </li>
+                                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                                <NavLink
+                                                    to="/dashboard/userappointment"
+                                                    className={({ isActive, isPending }) =>
+                                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                                    }
+                                                >
+                                                    <span className="flex items-center gap-2"><span><LuTestTubes className="text-3xl" /></span><span className={` duration-500`}>Test Status</span></span>
+                                                </NavLink>
+                                            </li>
+                                            <li className="font-medium hover:bg-red-600 hover:text-white rounded-lg">
+                                                <NavLink
+                                                    to="/dashboard/profile"
+                                                    className={({ isActive, isPending }) =>
+                                                        isPending ? "pending" : isActive ? "text-white p-2 block bg-red-600 rounded-l-lg border-black border-r-4 " : "p-2 block"
+                                                    }
+                                                >
+                                                    <span className="flex items-center gap-2"><span><CgProfile className="text-3xl" /></span><span className="">Profile</span></span>
+                                                </NavLink>
+                                            </li>
+                                        </ul>
+                                    }
+                                </div>
+
                             </div>
                         </div>
                     </div>

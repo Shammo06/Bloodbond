@@ -117,7 +117,7 @@ const DonorRegistration = () => {
     return (
         <div className="mx-auto container px-4 ">
             <form onSubmit={handleSubmit(onSubmit)} className="border-2 border-gray-300 shadow-xl w-full mx-auto lg:w-3/4 p-5 my-5 rounded-lg ">
-                <h2 className="text-3xl font-bold text-black text-center">Donor Registration</h2>
+                <h2 className="text-3xl font-bold text-center">Donor Registration</h2>
                 <div className="grid md:grid-cols-2 gap-5">
                     <div className="form-control">
                         <label className="label">
@@ -128,7 +128,7 @@ const DonorRegistration = () => {
 
                         />
                         {errors.name?.type === "required" && (
-                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Name is required</p>
+                            <p className="text-red-400 font-bold text-center mt-1" role="alert">* Name is required</p>
                         )}
                     </div>
                     <div className="form-control">
@@ -139,7 +139,7 @@ const DonorRegistration = () => {
                             {...register("email", { required: true })}
                         />
                         {errors.firstName?.type === "required" && (
-                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Email is required</p>
+                            <p className="text-red-400 font-bold text-center mt-1" role="alert">* Email is required</p>
                         )}
                     </div>
                     <div className="form-control">
@@ -151,14 +151,14 @@ const DonorRegistration = () => {
 
                         />
                         {errors.phone?.type === "required" && (
-                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Phone number is required</p>
+                            <p className="text-red-400 font-bold text-center mt-1" role="alert">* Phone number is required</p>
                         )}
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text text-black">Blood Group</span>
                         </label>
-                        <select className="select select-bordered text-lg text-black "
+                        <select className="select select-bordered text-lg text-black"
                             {...register("bloodGroup", { required: true })}
                         >
                             <option value=""></option>
@@ -172,14 +172,14 @@ const DonorRegistration = () => {
                             <option value="O-">O-</option>
                         </select>
                         {errors.bloodGroup?.type === "required" && (
-                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Blood Group is required</p>
+                            <p className="text-red-400 font-bold text-center mt-1" role="alert">* Blood Group is required</p>
                         )}
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text text-black">Your District</span>
                         </label>
-                        <select className="select select-bordered text-lg text-black "
+                        <select className="select select-bordered text-lg text-black"
                             {...register("district", { required: true })}
                             onChange={handleDistrict}
                         >
@@ -189,14 +189,14 @@ const DonorRegistration = () => {
                             }
                         </select>
                         {errors.district?.type === "required" && (
-                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* District is required</p>
+                            <p className="text-red-400 font-bold text-center mt-1" role="alert">* District is required</p>
                         )}
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text text-black">Your Upazila</span>
                         </label>
-                        <select className="select select-bordered text-lg text-black "
+                        <select className="select select-bordered text-lg text-black"
                             {...register("upazila", { required: true })}
                         >
                             <option value=""></option>
@@ -205,7 +205,7 @@ const DonorRegistration = () => {
                             }
                         </select>
                         {errors.upazila?.type === "required" && (
-                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Upazila is required</p>
+                            <p className="text-red-400 font-bold text-center mt-1" role="alert">* Upazila is required</p>
                         )}
                     </div>
                     <div className="form-control">
@@ -217,7 +217,7 @@ const DonorRegistration = () => {
 
                         />
                         {errors.address?.type === "required" && (
-                            <p className="text-red-600 font-bold text-center mt-1" role="alert">* Address is required</p>
+                            <p className="text-red-400 font-bold text-center mt-1" role="alert">* Address is required</p>
                         )}
                     </div>
                     <div className="form-control">
@@ -230,7 +230,7 @@ const DonorRegistration = () => {
                         />
                     </div>
                 </div>
-                <input className="btn w-full mt-4 bg-[#DC0000] text-white" type="submit" value="REGISTER" />
+                <input className="w-full mt-4 btn secondary_bg text-white border-[#ea062b] hover:text-[#ea062b] hover:border-[#ea062b] duration-300" type="submit" value="REGISTER" />
             </form>
         </div>
     );

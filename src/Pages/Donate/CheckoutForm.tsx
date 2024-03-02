@@ -65,11 +65,11 @@ const CheckoutForm = ({ campaignId }: { campaignId: string }) => {
           console.log(err.messages);
         });
 
-        setTimeout(() => { 
-          setIsSuccess(false);
-          setIsError(false);
-          setIsLoading(false);
-        }, 7000);
+      setTimeout(() => {
+        setIsSuccess(false);
+        setIsError(false);
+        setIsLoading(false);
+      }, 7000);
     }
   };
 
@@ -103,7 +103,7 @@ const CheckoutForm = ({ campaignId }: { campaignId: string }) => {
       </form>
       <div className="w-full h-[32px] mt-5">
         {isSuccess && (
-          <p className="text-[2rem] text-center text-green-500">
+          <p className="text-[1.5rem] text-center text-green-500">
             Donated successfully
           </p>
         )}
