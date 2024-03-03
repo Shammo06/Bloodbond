@@ -7,7 +7,6 @@ const SocialLogin = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  
   if (!auth) {
     return;
   }
@@ -38,7 +37,7 @@ const SocialLogin = () => {
         <button
           type="button"
           onClick={handleGoogleLogin}
-          className="flex btn btn-outline w-full bg-[#EA062B] items-center border px-8 py-3 text-xl rounded-lg text-white"
+          className="flex btn btnStyle w-full items-center border px-8 py-3 text-xl"
         >
           <img
             className="w-6 mr-2"

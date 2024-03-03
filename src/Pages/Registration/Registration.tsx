@@ -220,10 +220,7 @@ const Registration: React.FC = () => {
                 </p>
               </label>
               <div className="form-control mt-6">
-                <button
-                  type="submit"
-                  className="btn btn-outline bg-[#EA062B] text-white"
-                >
+                <button type="submit" className="btn btnStyle">
                   Sign Up
                 </button>
               </div>
