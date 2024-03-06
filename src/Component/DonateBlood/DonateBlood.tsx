@@ -1,14 +1,18 @@
-import React from "react";
-import useAuth from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom"; 
+import React, { useState } from "react";
+// import useAuth from "../../hooks/useAuth";
+// import { useNavigate } from "react-router-dom";
+// import useAxiosPublic from "../../hooks/useAxiosPublic";
+import DonateBloodModal from "../DonateBloodModal/DonateBloodModal";
 
-interface donateBloodProps {
+export interface donateBloodProps {
     data: {
+        _id: string,
         bloodGroup: string,
         patientName: string,
         bloodBag: string,
         time: string,
-        location: string
+        location: string,
+        phone: string
     }
 }
 
@@ -16,32 +20,51 @@ interface donateBloodProps {
 
 const DonateBlood: React.FC<donateBloodProps> = ({ data }) => {
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    // const axiosPublic = useAxiosPublic()
     // const isDonor = useIsDonor();
     // console.log(isDonor)
-    const navigate = useNavigate();
-    const auth = useAuth();
-    if(!auth){
-        return null
-    }
-    const {user} = auth;
+    // const navigate = useNavigate();
+    // const auth = useAuth();
+    // if (!auth) {
+    //     return null
+    // }
+    // const { user } = auth;
 
-    const handleBloodDonate = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
 
-        const formData = new FormData (e.currentTarget)
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
 
-        const name = formData.get("name") as string;
-        const email = formData.get("email") as string;
-        const phone = formData.get("phone") as string;
-        const donateBag = formData.get("donateBag") as string;
-        const donateTime = formData.get("donateTime") as string;
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
-        const donateData = {name, email, phone, donateBag, donateTime}
+    // const handleBloodDonate = (e: React.FormEvent<HTMLFormElement>) => {
+    //     e.preventDefault()
 
-        console.log(donateData)
-        e.currentTarget.reset();
+    //     const formData = new FormData(e.currentTarget)
 
-    }
+    //     // const name = formData.get("name") as string;
+    //     const email = formData.get("email") as string;
+    //     // const phone = formData.get("phone") as string;
+    //     const bloodBag = formData.get("donateBag") as string;
+    //     const donateTime = formData.get("donateTime") as string;
+    //     const bloodreqId = data._id;
+    //     const donateData = { email, bloodreqId, bloodBag, date: donateTime }
+
+
+    //     console.log(donateData)
+    //     axiosPublic.post('/donateonbloodreq', donateData)
+    //         .then(res => {
+    //             console.log(res.data)
+    //         })
+    //         .catch(error => {
+    //             console.error(error)
+    //         })
+    //     e.currentTarget.reset();
+
+    // }
 
     return (
 
@@ -68,7 +91,7 @@ const DonateBlood: React.FC<donateBloodProps> = ({ data }) => {
                 </div>
 
                 <div className="flex items-center">
-                    <div className="font-bold">Donation Time</div>
+                    <div className="font-bold">Donation Date</div>
                     <div className="pl-2">{data.time}</div>
                 </div>
 
@@ -76,99 +99,22 @@ const DonateBlood: React.FC<donateBloodProps> = ({ data }) => {
                     <div className="font-bold">Location</div>
                     <div className="text-left pl-2">{data.location}</div>
                 </div>
+                <div className="flex items-center">
+                    <div className="font-bold">Phone Number</div>
+                    <div className="text-left pl-2">{data.phone}</div>
+                </div>
             </div>
 
+
             <div className="text-center mt-6">
-                
-                <button className="btn btnStyle" onClick={() => {
-                    const modal = document.getElementById('my_modal_3') as HTMLDialogElement || null;
-                    if (modal) {
-                        if(!user){
-                            navigate('/login')
-                        } 
-                        modal.showModal()
-                    }
-                }}>Donate Blood</button>
-                <dialog id="my_modal_3" className="modal">
-                    <div className="modal-box">
-                        <h3 className="font-bold text-lg text-center">
-                            Donate Blood
-                        </h3>
-                        <form onSubmit={handleBloodDonate}>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Your Name</span>
-                                </label>
-                                <input
-                                    name="name"
-                                    required 
-                                    defaultValue={user?.displayName || ""}
-                                    type="text"
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Your Email</span>
-                                </label>
-                                <input
-                                    defaultValue={user?.email || ""}
-                                    name="email"
-                                    required
-                                    readOnly
-                                    type="email"
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Phone</span>
-                                </label>
-                                <input
-                                    required
-                                    name="phone"
-                                    type="text"
-                                    placeholder="+880 18XXXXXXXX"
-                                    className="input input-bordered w-full"
-                                    defaultValue={"+880"}
-                                />{" "}
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Number of Donate Bags</span>
-                                </label>
-                                <input
-                                    required
-                                    name="donateBag"
-                                    type="number"
-                                    className="input input-bordered w-full" 
-                                    min={1}
-                                    defaultValue={1}
-                                />
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Donation Time</span>
-                                </label>
-                                <input
-                                    required
-                                    name="donateTime"
-                                    type="time"
-                                    className="input input-bordered w-full"
-                                />
-                            </div>
-                            <button className="w-full mt-5 btn btnStyle">
-                                Donate
-                            </button>
-                        </form>
-                        <form method="dialog">
-                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                        </form>
-                    </div>
-                    <form method="dialog" className="modal-backdrop">
-                        <button>close</button>
-                    </form>
-                </dialog>
+                <button onClick={openModal} className="btn btnStyle">
+                    Donate Blood
+                </button>
+                {isModalOpen && (
+                    <DonateBloodModal
+                        singleData={data}
+                        closeModal={closeModal}
+                    ></DonateBloodModal>)}
             </div>
 
 

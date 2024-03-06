@@ -20,12 +20,10 @@ const RequestBlood: React.FC = () => {
       .get("https://blood-bound.vercel.app/getbloodrequests")
       .then((response) => {
         const currentDate = new Date();
-        const filteredRequests: BloodRequest[] = response.data.bloodRequests
-          .flat()
+        const filteredRequests: BloodRequest[] = response.data.bloodRequests 
           .filter(
             (request: BloodRequest) => new Date(request.time) > currentDate
-          )
-          .splice(0, 2);
+          ) 
         setRequests(filteredRequests);
       })
       .catch((error) => {

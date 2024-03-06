@@ -156,7 +156,7 @@ const DonorSearch = () => {
         </div>
       </form>
 
-      <div className="my-10 px-5 ">
+      <div className="my-10 px-5 "> 
         {donors.length > 0 ? (
           <div className="text-white">
             <h2 className="text-xl md:text-2xl font-bold mb-4 border-2 border-[#ea062b] text-black p-4 text-center">
