@@ -27,8 +27,8 @@ const RequestBlood: React.FC = () => {
           .filter(
             (request: BloodRequest) => new Date(request.time) > currentDate
           )
-          .splice(0, 2);
-        setRequests(filteredRequests);
+          const filterBloodBag = filteredRequests.filter((data: BloodRequest) => parseInt(data.bloodBag) > 0).splice(0, 2);
+        setRequests(filterBloodBag);
       })
       .catch((error) => {
         console.error("Error fetching blood requests:", error);
@@ -50,9 +50,6 @@ const RequestBlood: React.FC = () => {
           <div className="pt-5 text-center">
             <Link to="/allrequest">
               <button className="btn btnStyle">All Blood Request</button>
-              {/* <button className="py-2 px-6 bg-[#ea062b] text-white rounded-md hover:bg-red-800 transition duration-300">
-                All Blood Request
-              </button> */}
             </Link>
           </div>
         </div>

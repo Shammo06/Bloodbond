@@ -53,7 +53,7 @@ const ServiceBookModal: React.FC<ServiceCardProps> = ({
   }
 
   const { _id, testName, testPrice, imageUrl } = service;
-  console.log(testName);
+  
 
   if (!auth) {
     return;

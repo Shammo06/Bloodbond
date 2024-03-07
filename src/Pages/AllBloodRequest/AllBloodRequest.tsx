@@ -20,13 +20,12 @@ const RequestBlood: React.FC = () => {
       .get("https://blood-bound.vercel.app/getbloodrequests")
       .then((response) => {
         const currentDate = new Date();
-        const filteredRequests: BloodRequest[] = response.data.bloodRequests
-          .flat()
-          .filter(
-            (request: BloodRequest) => new Date(request.time) > currentDate
-          )
-          .splice(0, 2);
-        setRequests(filteredRequests);
+        const filteredRequests: BloodRequest[] = response.data.bloodRequests 
+        .filter(
+          (request: BloodRequest) => new Date(request.time) > currentDate
+          ) 
+          const filterBloodBag = filteredRequests.filter(data => parseInt(data.bloodBag) > 0) 
+          setRequests(filterBloodBag);
       })
       .catch((error) => {
         console.error("Error fetching blood requests:", error);
