@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-// import useAuth from "../../hooks/useAuth";
-// import { useNavigate } from "react-router-dom";
-// import useAxiosPublic from "../../hooks/useAxiosPublic";
+import React, { useState } from "react"; 
 import DonateBloodModal from "../DonateBloodModal/DonateBloodModal";
 
 export interface donateBloodProps {
@@ -20,16 +17,7 @@ export interface donateBloodProps {
 
 const DonateBlood: React.FC<donateBloodProps> = ({ data }) => {
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    // const axiosPublic = useAxiosPublic()
-    // const isDonor = useIsDonor();
-    // console.log(isDonor)
-    // const navigate = useNavigate();
-    // const auth = useAuth();
-    // if (!auth) {
-    //     return null
-    // }
-    // const { user } = auth;
+    const [isModalOpen, setIsModalOpen] = useState(false); 
 
 
     const openModal = () => {
@@ -40,31 +28,7 @@ const DonateBlood: React.FC<donateBloodProps> = ({ data }) => {
         setIsModalOpen(false);
     };
 
-    // const handleBloodDonate = (e: React.FormEvent<HTMLFormElement>) => {
-    //     e.preventDefault()
-
-    //     const formData = new FormData(e.currentTarget)
-
-    //     // const name = formData.get("name") as string;
-    //     const email = formData.get("email") as string;
-    //     // const phone = formData.get("phone") as string;
-    //     const bloodBag = formData.get("donateBag") as string;
-    //     const donateTime = formData.get("donateTime") as string;
-    //     const bloodreqId = data._id;
-    //     const donateData = { email, bloodreqId, bloodBag, date: donateTime }
-
-
-    //     console.log(donateData)
-    //     axiosPublic.post('/donateonbloodreq', donateData)
-    //         .then(res => {
-    //             console.log(res.data)
-    //         })
-    //         .catch(error => {
-    //             console.error(error)
-    //         })
-    //     e.currentTarget.reset();
-
-    // }
+ 
 
     return (
 

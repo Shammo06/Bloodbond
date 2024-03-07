@@ -1,7 +1,8 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
 import { useEffect, useRef } from "react";
+import Swal from "sweetalert2";
 
 interface donateBloodModalProps {
     singleData: {
@@ -21,29 +22,30 @@ const DonateBloodModal: React.FC<donateBloodModalProps> = ({
     closeModal
 }) => {
 
-    const axiosPublic = useAxiosPublic() 
+    const axiosPublic = useAxiosPublic()
     const auth = useAuth();
+    const navigate = useNavigate();
     const modalBtnRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
-    if (modalBtnRef.current) {
-      modalBtnRef.current.click();
-    }
-  }, []);
+    useEffect(() => {
+        if (modalBtnRef.current) {
+            modalBtnRef.current.click();
+        }
+    }, []);
 
-  useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeModal();
-      }
-    };
+    useEffect(() => {
+        const handleEsc = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        };
 
-    document.addEventListener("keydown", handleEsc);
+        document.addEventListener("keydown", handleEsc);
 
-    return () => {
-      document.removeEventListener("keydown", handleEsc);
-    };
-  }, [closeModal]);
+        return () => {
+            document.removeEventListener("keydown", handleEsc);
+        };
+    }, [closeModal]);
 
 
     if (!auth) {
@@ -53,7 +55,7 @@ const DonateBloodModal: React.FC<donateBloodModalProps> = ({
 
     if (!auth || !user) {
         return <Navigate state={location.pathname} to="/login"></Navigate>;
-      }
+    }
 
     const handleBloodDonate = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -72,26 +74,52 @@ const DonateBloodModal: React.FC<donateBloodModalProps> = ({
         console.log(donateData)
         axiosPublic.post('/donateonbloodreq', donateData)
             .then(res => {
-                console.log(res.data)
+                closeModal();
+                if (res.data) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Congratulation!!!",
+                        text: "We sent an email to the patient.",
+                    });
+                }
             })
-            .catch(error => {
-                console.error(error)
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            .catch((error: any) => {
+                console.log(error.response.data.message === 'User did not register as a donor')
+                if (error) {
+                    closeModal();
+                    if (error.response.data.message === 'User did not register as a donor') {
+                    Swal.fire({
+                            icon: "error",
+                            title: "You have to register as a donor.",
+                            text: "You are not register as a donor!",
+                        });
+                        navigate("/donorRegistration")
+                    }
+
+                    else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Something Went Wrong!",
+                        });
+                    }
+                }
+                closeModal();
             })
         e.currentTarget.reset();
-
     }
 
 
     return (
         <div>
-            <button className="btn btnStyle hidden" 
-             ref={modalBtnRef}
-            onClick={() => {
-                const modal = document.getElementById('my_modal_3') as HTMLDialogElement || null;
-                if (modal) { 
-                    modal.showModal()
-                }
-            }}>Donate Blood</button>
+            <button className="btn btnStyle hidden"
+                ref={modalBtnRef}
+                onClick={() => {
+                    const modal = document.getElementById('my_modal_3') as HTMLDialogElement || null;
+                    if (modal) {
+                        modal.showModal()
+                    }
+                }}>Donate Blood</button>
             <dialog id="my_modal_3" className="modal">
                 <div className="modal-box">
                     <h3 className="font-bold text-lg text-center">
@@ -133,7 +161,6 @@ const DonateBloodModal: React.FC<donateBloodModalProps> = ({
                                 type="text"
                                 placeholder="+880 18XXXXXXXX"
                                 className="input input-bordered w-full"
-                                defaultValue={"+880"}
                             />{" "}
                         </div>
                         <div className="form-control">
@@ -169,7 +196,7 @@ const DonateBloodModal: React.FC<donateBloodModalProps> = ({
                     <form method="dialog">
                         <button onClick={closeModal} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
-                </div> 
+                </div>
             </dialog>
         </div>
     );

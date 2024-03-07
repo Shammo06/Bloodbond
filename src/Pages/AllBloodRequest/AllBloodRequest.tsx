@@ -21,10 +21,11 @@ const RequestBlood: React.FC = () => {
       .then((response) => {
         const currentDate = new Date();
         const filteredRequests: BloodRequest[] = response.data.bloodRequests 
-          .filter(
-            (request: BloodRequest) => new Date(request.time) > currentDate
+        .filter(
+          (request: BloodRequest) => new Date(request.time) > currentDate
           ) 
-        setRequests(filteredRequests);
+          const filterBloodBag = filteredRequests.filter(data => parseInt(data.bloodBag) > 0) 
+          setRequests(filterBloodBag);
       })
       .catch((error) => {
         console.error("Error fetching blood requests:", error);
