@@ -19,8 +19,8 @@ BloodBond is a web application dedicated to facilitating blood donation and supp
 
 - **TypeScript**: The project is implemented using TypeScript, providing static typing and improved code quality.
 - **Firebase Authentication**: Firebase is used for authentication, ensuring secure user access.
-- **Frontend Framework (if applicable)**: Specify the frontend framework used, if any (e.g., React, Angular, Vue.js).
-- **Backend Framework (if applicable)**: Specify the backend framework used, if any (e.g., Express.js, Django, Flask).
+- **Frontend Framework**: Daisy UI.
+- **Backend Framework**: Mongoose.
 
 ## Installation
 
