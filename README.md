@@ -1,6 +1,6 @@
 
 # BloodBond Blood Donation Website
-##[Project Live Link](https://bloodbond-clinet.web.app/)
+## [Project Live Link](https://bloodbond-clinet.web.app/)
 
 
 BloodBond is a web application dedicated to facilitating blood donation and supporting various campaigns related to healthcare. The platform provides a seamless experience for users to register as donors, donate blood, volunteer for offline campaigns, contribute financially to specific causes, and access biomedical services.
@@ -57,7 +57,5 @@ We welcome contributions from the community to enhance BloodBond. If you would l
  
 
 ## Contact
-
-For any inquiries or feedback, please contact us at hasan@gmail.com
 
 Thank you for using BloodBond to make a difference in the world of healthcare and blood donation!
