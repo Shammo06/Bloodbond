@@ -12,7 +12,10 @@ BloodBond is a web application dedicated to facilitating blood donation and supp
 - **Campaign Participation**: Users can volunteer for offline campaigns and donate money for specific causes.
 - **Financial Donations**: Users have the option to donate money directly to the organization to support its initiatives.
 - **Role-Based Authentication**: The platform supports two types of authentication: user and admin, ensuring secure access to different functionalities.
-- **User Dashboard**: Users have access to their profile information and donation history through a personalized dashboard.
+- **User Dashboard**: Users have access to their profile information and donation history through a personalized dashboard. 
+   Admin email: bloodbond@gmail.com
+   Password: BloodBond12!@ 
+
 - **Biomedical Services**: Users can book biomedical services through the platform, which will be handled by the admin.
 
 ## Technologies Used
